@@ -1,0 +1,1 @@
+/Users/admin/Desktop/flutter_projects/flipzy_latest/build/app/intermediates/cxx/Debug/4w3d4iw5/obj/arm64-v8a

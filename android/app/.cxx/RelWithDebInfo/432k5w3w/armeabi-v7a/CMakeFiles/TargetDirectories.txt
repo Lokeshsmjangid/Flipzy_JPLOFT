@@ -1,0 +1,2 @@
+/Users/admin/Desktop/flutter_projects/flipzy_latest/android/app/.cxx/RelWithDebInfo/432k5w3w/armeabi-v7a/CMakeFiles/edit_cache.dir
+/Users/admin/Desktop/flutter_projects/flipzy_latest/android/app/.cxx/RelWithDebInfo/432k5w3w/armeabi-v7a/CMakeFiles/rebuild_cache.dir

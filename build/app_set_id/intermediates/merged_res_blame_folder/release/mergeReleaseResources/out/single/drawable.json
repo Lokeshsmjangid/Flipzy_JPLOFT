@@ -1,0 +1,74 @@
+[
+    {
+        "merged": "nl.u2312.app_set_id-release-27:/drawable/common_google_signin_btn_icon_dark.xml",
+        "source": "nl.u2312.app_set_id-jetified-play-services-base-18.0.1-18:/drawable/common_google_signin_btn_icon_dark.xml"
+    },
+    {
+        "merged": "nl.u2312.app_set_id-release-27:/drawable/notification_icon_background.xml",
+        "source": "nl.u2312.app_set_id-core-1.13.1-19:/drawable/notification_icon_background.xml"
+    },
+    {
+        "merged": "nl.u2312.app_set_id-release-27:/drawable/notification_bg.xml",
+        "source": "nl.u2312.app_set_id-core-1.13.1-19:/drawable/notification_bg.xml"
+    },
+    {
+        "merged": "nl.u2312.app_set_id-release-27:/drawable/notification_bg_low.xml",
+        "source": "nl.u2312.app_set_id-core-1.13.1-19:/drawable/notification_bg_low.xml"
+    },
+    {
+        "merged": "nl.u2312.app_set_id-release-27:/drawable/common_google_signin_btn_text_light_focused.xml",
+        "source": "nl.u2312.app_set_id-jetified-play-services-base-18.0.1-18:/drawable/common_google_signin_btn_text_light_focused.xml"
+    },
+    {
+        "merged": "nl.u2312.app_set_id-release-27:/drawable/notification_tile_bg.xml",
+        "source": "nl.u2312.app_set_id-core-1.13.1-19:/drawable/notification_tile_bg.xml"
+    },
+    {
+        "merged": "nl.u2312.app_set_id-release-27:/drawable/common_google_signin_btn_text_dark_focused.xml",
+        "source": "nl.u2312.app_set_id-jetified-play-services-base-18.0.1-18:/drawable/common_google_signin_btn_text_dark_focused.xml"
+    },
+    {
+        "merged": "nl.u2312.app_set_id-release-27:/drawable/common_google_signin_btn_text_light_normal.xml",
+        "source": "nl.u2312.app_set_id-jetified-play-services-base-18.0.1-18:/drawable/common_google_signin_btn_text_light_normal.xml"
+    },
+    {
+        "merged": "nl.u2312.app_set_id-release-27:/drawable/common_google_signin_btn_icon_light_normal.xml",
+        "source": "nl.u2312.app_set_id-jetified-play-services-base-18.0.1-18:/drawable/common_google_signin_btn_icon_light_normal.xml"
+    },
+    {
+        "merged": "nl.u2312.app_set_id-release-27:/drawable/common_google_signin_btn_text_dark.xml",
+        "source": "nl.u2312.app_set_id-jetified-play-services-base-18.0.1-18:/drawable/common_google_signin_btn_text_dark.xml"
+    },
+    {
+        "merged": "nl.u2312.app_set_id-release-27:/drawable/common_google_signin_btn_icon_disabled.xml",
+        "source": "nl.u2312.app_set_id-jetified-play-services-base-18.0.1-18:/drawable/common_google_signin_btn_icon_disabled.xml"
+    },
+    {
+        "merged": "nl.u2312.app_set_id-release-27:/drawable/common_google_signin_btn_icon_light_focused.xml",
+        "source": "nl.u2312.app_set_id-jetified-play-services-base-18.0.1-18:/drawable/common_google_signin_btn_icon_light_focused.xml"
+    },
+    {
+        "merged": "nl.u2312.app_set_id-release-27:/drawable/common_google_signin_btn_icon_dark_focused.xml",
+        "source": "nl.u2312.app_set_id-jetified-play-services-base-18.0.1-18:/drawable/common_google_signin_btn_icon_dark_focused.xml"
+    },
+    {
+        "merged": "nl.u2312.app_set_id-release-27:/drawable/common_google_signin_btn_text_dark_normal.xml",
+        "source": "nl.u2312.app_set_id-jetified-play-services-base-18.0.1-18:/drawable/common_google_signin_btn_text_dark_normal.xml"
+    },
+    {
+        "merged": "nl.u2312.app_set_id-release-27:/drawable/common_google_signin_btn_icon_light.xml",
+        "source": "nl.u2312.app_set_id-jetified-play-services-base-18.0.1-18:/drawable/common_google_signin_btn_icon_light.xml"
+    },
+    {
+        "merged": "nl.u2312.app_set_id-release-27:/drawable/common_google_signin_btn_text_disabled.xml",
+        "source": "nl.u2312.app_set_id-jetified-play-services-base-18.0.1-18:/drawable/common_google_signin_btn_text_disabled.xml"
+    },
+    {
+        "merged": "nl.u2312.app_set_id-release-27:/drawable/common_google_signin_btn_text_light.xml",
+        "source": "nl.u2312.app_set_id-jetified-play-services-base-18.0.1-18:/drawable/common_google_signin_btn_text_light.xml"
+    },
+    {
+        "merged": "nl.u2312.app_set_id-release-27:/drawable/common_google_signin_btn_icon_dark_normal.xml",
+        "source": "nl.u2312.app_set_id-jetified-play-services-base-18.0.1-18:/drawable/common_google_signin_btn_icon_dark_normal.xml"
+    }
+]

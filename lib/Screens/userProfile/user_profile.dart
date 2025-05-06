@@ -1,0 +1,294 @@
+import 'dart:convert';
+
+import 'package:flipzy/Api/api_constant.dart';
+import 'package:flipzy/Api/repos/delete__account_repo.dart';
+import 'package:flipzy/controllers/user_profile_controller.dart';
+import 'package:flipzy/custom_widgets/customAppBar.dart';
+import 'package:flipzy/dialogues/delete_acount_dialogue.dart';
+import 'package:flipzy/resources/app_assets.dart';
+import 'package:flipzy/resources/app_color.dart';
+import 'package:flipzy/resources/app_routers.dart';
+import 'package:flipzy/resources/auth_data.dart';
+import 'package:flipzy/resources/custom_loader.dart';
+import 'package:flipzy/resources/local_storage.dart';
+import 'package:flipzy/resources/text_utility.dart';
+import 'package:flipzy/resources/utils.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_navigation/get_navigation.dart';
+import 'package:get/get_state_manager/src/simple/get_state.dart';
+import 'package:percent_indicator/circular_percent_indicator.dart';
+
+class UserProfile extends StatefulWidget {
+  String fromScreen;
+  UserProfile({super.key, this.fromScreen = ""});
+
+  @override
+  State<UserProfile> createState() => _UserProfileState();
+}
+
+class _UserProfileState extends State<UserProfile> {
+  @override
+  Widget build(BuildContext context) {
+    return GetBuilder<UserProfileController>(
+        init: UserProfileController(),
+        builder: (cntrl) {
+          return Scaffold(
+            appBar: widget.fromScreen == "DashBoard"
+             ? null
+             : customAppBar(
+              backgroundColor: AppColors.bgColor,
+              leadingWidth: MediaQuery.of(context).size.width * 0.3 ,
+              leadingIcon: GestureDetector(
+                onTap: () {
+                  Get.back();
+                },
+                child: Row(
+                  children: [
+                    Icon(Icons.arrow_back_ios_outlined, color: AppColors.blackColor,size: 14,),
+                    addText400("Back", color: AppColors.blackColor,fontFamily: 'Poppins',fontSize: 12),
+                  ],
+                ).marginOnly(left: 12),
+              ),
+              centerTitle: true,
+              titleTxt: "Profile",
+              titleColor: AppColors.blackColor,
+              titleFontSize: 16,
+              actionItems: [],
+              bottomLine: false,
+            ),
+            body: SingleChildScrollView(
+              child: SafeArea(
+                child: Column(
+                  children: [
+                    SizedBox(height: 20,),
+                    //ProfilePercent
+                    Stack(
+                      children: [
+                 //ProfileImage
+                        CircularPercentIndicator(
+                          radius: 50,
+                          lineWidth: 4.0,
+                          percent: 0.50,
+                          startAngle: 180,
+                          fillColor: Colors.transparent,progressColor: AppColors.primaryColor,
+                          backgroundColor: AppColors.greenColor,
+                          center: Container(
+                            width: 80,
+                            height: 80,
+                            decoration: BoxDecoration(shape: BoxShape.circle),
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(1000),
+                              // child: Image.asset(AppAssets.brandImage),
+                              child: CachedImageCircle2(
+                                  isCircular: true,
+                                  width: 80,
+                                  height: 80,
+                                  fit: BoxFit.cover,
+                                  imageUrl: '${AuthData().userModel?.profileImage}'),
+                              // child: Image.network(
+                              //   "https://cdn.pixabay.com/photo/2012/04/26/19/43/profile-42914_640.png",
+                              //   // width: 50, height: 50,
+                              //   fit: BoxFit.contain,
+                              // ),
+                            ),
+                          ),
+                        ),
+
+                        Positioned(
+                            right: 0,
+                            left: 0,
+                            bottom: -4,
+                            child: Align(
+                              alignment: Alignment.center,
+                              child: Container(
+                                alignment: Alignment.center,
+                                height: 24,
+                                width: 36,
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(3),
+                                    border: Border.all(color: Color(0XFFE9F0CA),width: 2),
+                                    gradient: LinearGradient(
+                                      tileMode: TileMode.repeated,
+                                      colors: [Color(0xFF91B636), Color(0xffBBD15B), Color(0xff91B636)
+                                      ],)
+                                ),
+
+                                child: addText700('${AuthData().userModel?.profilePercentage}%',fontSize: 11,fontFamily: 'Poppins'),
+                              ),
+                            )),
+                      ],
+                    ),
+                    SizedBox(width: 10,),
+                 //Name
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        addText700("${AuthData().userModel?.firstname??''} ${AuthData().userModel?.lastname??''}".capitalize.toString()),
+                        SizedBox(width: 10,),
+                        SvgPicture.asset(AppAssets.verifiedIc),
+                      ],
+                    ),
+                    SizedBox(height: 2,),
+                    addText500("Complete Profile", color: AppColors.blackColor),
+
+
+                    Container(
+                      width: double.infinity,
+                      margin: EdgeInsets.symmetric(vertical: 10),
+                      decoration: BoxDecoration(
+                          color: AppColors.lightGreyColor,
+                          borderRadius: BorderRadius.only(topLeft: Radius.circular(30), topRight: Radius.circular(30) )
+                      ),
+                      child: Column(
+                        children: [
+                          Container(
+                            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 30),
+                            margin: EdgeInsets.symmetric(horizontal: 10, vertical: 20),
+                            // height: MediaQuery.of(context).size.height * 0.3,
+                            // width: MediaQuery.of(context).size.width * 0.85,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(20),
+                              // border: Border.all(color: AppColors.greyColor,),
+                              color: AppColors.whiteColor,
+                            ),
+                            child: Column(
+                              children: [
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    addText700("Personal Info", maxLines: 2, color: AppColors.blackColor, fontSize: 15),
+                                    GestureDetector(
+                                        onTap: () {
+                                          Get.toNamed(AppRoutes.editProfileScreen)?.then((value){
+                                            setState(() {});
+                                          });
+                                        },
+                                        child: addText700("Edit", maxLines: 2, color: AppColors.blackColor, fontSize: 13))
+                                  ],
+                                ),
+                                SizedBox(height: 20,),
+
+                                Row(
+                                  children: [
+                                    Container(
+                                      padding: EdgeInsets.all(8),
+                                      decoration : BoxDecoration(
+                                        shape: BoxShape.circle,
+                                        color: AppColors.lightGreyColor,
+                                      ),
+                                      child: SvgPicture.asset(AppAssets.personIC, color: AppColors.blackColor,),
+                                    ),
+                                    SizedBox(width: 20,),
+                                    addText500("${AuthData().userModel?.firstname??''} ${AuthData().userModel?.lastname??''}".capitalize.toString(), maxLines: 1, color: AppColors.blackColor, fontSize: 15),
+                                  ],
+                                ),
+                                SizedBox(height: 20,),
+
+                                Row(
+                                  children: [
+                                    Container(
+                                      padding: EdgeInsets.all(8),
+                                      decoration : BoxDecoration(
+                                        shape: BoxShape.circle,
+                                        color: AppColors.lightGreyColor,
+                                      ),
+                                      child: SvgPicture.asset(AppAssets.loactionIc),
+                                    ),
+                                    SizedBox(width: 20,),
+                                    Expanded(child: addText500("${AuthData().userModel?.location??''}", maxLines: 2, color: AppColors.blackColor, fontSize: 15)),
+                                  ],
+                                ),
+
+                                SizedBox(height: 20,),
+
+                                Row(
+                                  children: [
+                                    Container(
+                                      padding: EdgeInsets.all(8),
+                                      decoration : BoxDecoration(
+                                        shape: BoxShape.circle,
+                                        color: AppColors.lightGreyColor,
+                                      ),
+                                      child: SvgPicture.asset(AppAssets.callIcon),
+                                    ),
+                                    SizedBox(width: 20,),
+                                    addText500("${AuthData().userModel?.mobileNumber??''}", maxLines: 1, color: AppColors.blackColor, fontSize: 15),
+                                  ],
+                                ),
+
+                                SizedBox(height: 20,),
+
+                                Row(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Container(
+                                      padding: EdgeInsets.all(8),
+                                      decoration : BoxDecoration(
+                                        shape: BoxShape.circle,
+                                        color: AppColors.lightGreyColor,
+                                      ),
+                                      child: SvgPicture.asset(AppAssets.mailIC),
+                                    ),
+                                    SizedBox(width: 20,),
+                                    Expanded(child: addText500("${AuthData().userModel?.email??''}", maxLines: 2, color: AppColors.blackColor, fontSize: 15)),
+                                  ],
+                                ),
+
+                              ],
+                            ),
+                          ),
+                          // Spacer(),
+                          SizedBox(height: Get.height * 0.07,),
+
+
+                          // if(AuthData().userModel?.userType!.toLowerCase() !='user')
+                          // GestureDetector(
+                          //     onTap: () {
+                          //       Get.toNamed(AppRoutes.businessProfileScreen)?.then((value){
+                          //         Future.microtask((){
+                          //           setState((){
+                          //             AuthData().getLoginData();
+                          //           }) ;
+                          //
+                          //         });
+                          //       });
+                          //
+                          //     },
+                          //     child: addText500("Edit Business Profile", color: AppColors.darkGreenColor)),
+                          SizedBox(height: 20),
+
+
+                          GestureDetector(
+                              onTap: () {
+                                // DeleteAccountDialog
+                                DeleteAccountDialog.show(context,onTap1: () {
+                                  Get.back();
+                                  showLoader(true);
+                                  deleteAccountApi(userType: 'User').then((value){
+                                    showLoader(false);
+                                    if(value.status==true);
+                                    showToast('${value.message}');
+                                    LocalStorage().clearLocalStorage();
+                                  });
+
+                                }, onTap2: ()=> Get.back());
+                              },
+                              child: addText500("Delete Account", color: AppColors.redColor)),
+                          SizedBox(height: 20,)
+                        ],
+                      ),
+                    ),
+                    // SizedBox(height: 80,),
+
+
+                  ],
+                ),
+              ),
+            ),
+          );
+        });
+  }
+}

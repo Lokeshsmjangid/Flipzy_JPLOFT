@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "2439299823",
+    "project_id": "flipzy-nigeria-c6cb8",
+    "storage_bucket": "flipzy-nigeria-c6cb8.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:2439299823:android:52a7b92e98b26c5e51d11a",
+        "android_client_info": {
+          "package_name": "com.app.flipzy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "2439299823-q1ca449te5jsj4ru4pcomhdljhesq8e5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.app.flipzy",
+            "certificate_hash": "f47e887f75ff8d3a49d9c84a9b523850254e046e"
+          }
+        },
+        {
+          "client_id": "2439299823-ch13h76bikstp36rvr5gseso1fb9lrjl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAVPBSJcYdsTmeJbZ4-1dkgOIiFZcxGB4M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "2439299823-ch13h76bikstp36rvr5gseso1fb9lrjl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "nl.u2312.app_set_id-release-27:/color/common_google_signin_btn_text_light.xml",
+        "source": "nl.u2312.app_set_id-jetified-play-services-base-18.0.1-18:/color/common_google_signin_btn_text_light.xml"
+    },
+    {
+        "merged": "nl.u2312.app_set_id-release-27:/color/common_google_signin_btn_text_dark.xml",
+        "source": "nl.u2312.app_set_id-jetified-play-services-base-18.0.1-18:/color/common_google_signin_btn_text_dark.xml"
+    },
+    {
+        "merged": "nl.u2312.app_set_id-release-27:/color/common_google_signin_btn_tint.xml",
+        "source": "nl.u2312.app_set_id-jetified-play-services-base-18.0.1-18:/color/common_google_signin_btn_tint.xml"
+    }
+]

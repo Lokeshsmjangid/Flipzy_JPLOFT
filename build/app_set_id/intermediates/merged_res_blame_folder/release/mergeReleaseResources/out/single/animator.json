@@ -1,0 +1,26 @@
+[
+    {
+        "merged": "nl.u2312.app_set_id-release-27:/animator/fragment_open_exit.xml",
+        "source": "nl.u2312.app_set_id-fragment-1.7.1-9:/animator/fragment_open_exit.xml"
+    },
+    {
+        "merged": "nl.u2312.app_set_id-release-27:/animator/fragment_fade_enter.xml",
+        "source": "nl.u2312.app_set_id-fragment-1.7.1-9:/animator/fragment_fade_enter.xml"
+    },
+    {
+        "merged": "nl.u2312.app_set_id-release-27:/animator/fragment_close_exit.xml",
+        "source": "nl.u2312.app_set_id-fragment-1.7.1-9:/animator/fragment_close_exit.xml"
+    },
+    {
+        "merged": "nl.u2312.app_set_id-release-27:/animator/fragment_fade_exit.xml",
+        "source": "nl.u2312.app_set_id-fragment-1.7.1-9:/animator/fragment_fade_exit.xml"
+    },
+    {
+        "merged": "nl.u2312.app_set_id-release-27:/animator/fragment_close_enter.xml",
+        "source": "nl.u2312.app_set_id-fragment-1.7.1-9:/animator/fragment_close_enter.xml"
+    },
+    {
+        "merged": "nl.u2312.app_set_id-release-27:/animator/fragment_open_enter.xml",
+        "source": "nl.u2312.app_set_id-fragment-1.7.1-9:/animator/fragment_open_enter.xml"
+    }
+]

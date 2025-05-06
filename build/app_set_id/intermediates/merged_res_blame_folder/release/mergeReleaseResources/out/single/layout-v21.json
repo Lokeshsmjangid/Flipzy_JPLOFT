@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "nl.u2312.app_set_id-release-27:/layout-v21/notification_template_custom_big.xml",
+        "source": "nl.u2312.app_set_id-core-1.13.1-19:/layout-v21/notification_template_custom_big.xml"
+    },
+    {
+        "merged": "nl.u2312.app_set_id-release-27:/layout-v21/notification_template_icon_group.xml",
+        "source": "nl.u2312.app_set_id-core-1.13.1-19:/layout-v21/notification_template_icon_group.xml"
+    },
+    {
+        "merged": "nl.u2312.app_set_id-release-27:/layout-v21/notification_action.xml",
+        "source": "nl.u2312.app_set_id-core-1.13.1-19:/layout-v21/notification_action.xml"
+    },
+    {
+        "merged": "nl.u2312.app_set_id-release-27:/layout-v21/notification_action_tombstone.xml",
+        "source": "nl.u2312.app_set_id-core-1.13.1-19:/layout-v21/notification_action_tombstone.xml"
+    }
+]
