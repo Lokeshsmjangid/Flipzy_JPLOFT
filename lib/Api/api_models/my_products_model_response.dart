@@ -16,6 +16,7 @@ class MyProductsModelResponse {
   int? totalProducts;
   int? page;
   int? limit;
+  int? totalPages;
   List<Product>? myProducts;
 
   MyProductsModelResponse({
@@ -24,6 +25,7 @@ class MyProductsModelResponse {
     this.totalProducts,
     this.page,
     this.limit,
+    this.totalPages,
     this.myProducts,
   });
 
@@ -33,6 +35,7 @@ class MyProductsModelResponse {
     totalProducts: json["totalProducts"],
     page: json["page"],
     limit: json["limit"],
+    totalPages: json["totalPages"],
     myProducts: json["data"] == null ? [] : List<Product>.from(json["data"]!.map((x) => Product.fromJson(x))),
   );
 
@@ -42,6 +45,7 @@ class MyProductsModelResponse {
     "totalProducts": totalProducts,
     "page": page,
     "limit": limit,
+    "totalPages": totalPages,
     "data": myProducts == null ? [] : List<dynamic>.from(myProducts!.map((x) => x.toJson())),
   };
 }
