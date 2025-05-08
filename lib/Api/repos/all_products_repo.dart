@@ -7,16 +7,16 @@ import "package:flipzy/Api/api_constant.dart";
 import "package:flipzy/resources/auth_data.dart";
 import "package:flipzy/Api/api_models/my_products_model_response.dart";
 
-Future<MyProductsModelResponse> getAllProductsListApi({String? searchTerm}) async {
+Future<MyProductsModelResponse> getAllProductsListApi({page,String? searchTerm}) async {
   try{
 
     // String url = ApiUrls.allProductsUrl;
 
     String? url;
     if(searchTerm!=null && searchTerm.isNotEmpty){
-      url = '${ApiUrls.allProductsUrl}?searchTerm=$searchTerm';
+      url = '${ApiUrls.allProductsUrl}?page=$page&searchTerm=$searchTerm';
     } else{
-      url = '${ApiUrls.allProductsUrl}';
+      url = '${ApiUrls.allProductsUrl}?page=$page';
     }
     http.Response response = await performGetRequest(url);
 
