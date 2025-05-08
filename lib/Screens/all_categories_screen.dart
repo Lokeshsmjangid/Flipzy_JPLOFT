@@ -14,11 +14,16 @@ import 'package:get/get.dart';
 
 import '../Api/api_models/category_model.dart';
 
-class AllCategoriesScreen extends StatelessWidget {
+class AllCategoriesScreen extends StatefulWidget {
   List<Category> categoryList = [];
 
   AllCategoriesScreen({super.key, required this.categoryList});
 
+  @override
+  State<AllCategoriesScreen> createState() => _AllCategoriesScreenState();
+}
+
+class _AllCategoriesScreenState extends State<AllCategoriesScreen> {
   final ctrl = Get.find<CategoryController>();
 
   @override
@@ -87,113 +92,130 @@ class AllCategoriesScreen extends StatelessWidget {
                   ),
                   onChanged: (val) {
                     ctrl.deBounce.run(() {
-                      ctrl.fetchCategories(searchValue: val);
+                      ctrl.page = 1;
+                      ctrl.model.data=[];
+                      ctrl.fetchCategories(searchValue: val,pageNumm: 1);
                     });
                   },
                 ).marginSymmetric(horizontal: 14),
 
                 Expanded(
-                  child: GetBuilder<CategoryController>(builder: (logic) {
+                  child: GetBuilder<CategoryController>(
+                    init: CategoryController(),
+                      builder: (logic) {
                     return logic.isDataLoading
                         ? Center(child: CircularProgressIndicator(color: AppColors.secondaryColor),)
                         : logic.model.data!=null && logic.model.data!.isNotEmpty
-                        ? Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 10),
-                      // height: 300,
-                      // height: MediaQuery.of(context).size.height * 0.80,/**/
+                        ? Stack(
+                          children: [
+                            GridView.builder(
 
-                      child: ListView(
-                        physics: BouncingScrollPhysics(),
-                        shrinkWrap: true,
-                        children: [
-                          GridView.builder(
-                            // gridDelegate: SliverGridDelegate(),
-                              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                                crossAxisCount: 3, // 2 items per row
-                                crossAxisSpacing: 2,
-                                mainAxisSpacing: 1,
+                                controller: ctrl.paginationScrollController,
+                                physics: BouncingScrollPhysics(),
+                                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                                  crossAxisCount: 3, // 2 items per row
+                                  crossAxisSpacing: 2,
+                                  mainAxisSpacing: 1,
+                                  childAspectRatio: 0.8, // Adjust height-to-width ratio
+                                ),
+                                shrinkWrap: true,
+                                scrollDirection: Axis.vertical,
 
-                                childAspectRatio: 0.8, // Adjust height-to-width ratio
-                              ),
-                              shrinkWrap: true,
-                              physics: BouncingScrollPhysics(),
-                              scrollDirection: Axis.vertical,
+                                itemCount: logic.model.data!.length,
+                                itemBuilder: (context, item) {
+                                  return GestureDetector(
+                                    onTap: () {
+                                      Get.toNamed(AppRoutes.productsTwoScreen,
+                                          arguments: {
+                                            'catID': logic.model.data![item].id,
+                                            'catName': logic.model.data![item].name
+                                          }); // product based on category
 
-                              itemCount: logic.model.data!.length,
-                              itemBuilder: (context, item) {
-                                return GestureDetector(
-                                  onTap: () {
-                                    Get.toNamed(AppRoutes.productsTwoScreen,
-                                        arguments: {
-                                          'catID': logic.model.data![item].id,
-                                          'catName': logic.model.data![item].name
-                                        }); // product based on category
-
-                                  },
-                                  child: Container(
-                                    // width: MediaQuery.of(context).size.width * 0.41,
-                                      margin: const EdgeInsets.symmetric(
-                                          horizontal: 5, vertical: 5),
-                                      padding: const EdgeInsets.symmetric(
-                                          horizontal: 10, vertical: 10),
-                                      decoration: BoxDecoration(
-                                        color: AppColors.whiteColor,
-                                        //contt.featuredItems[item].isSelect ? AppColors.blackColor : AppColors.whiteColor,
-                                        border: Border.all(
-                                          color: AppColors.greyColor,
-                                          width: 1,
+                                    },
+                                    child: Container(
+                                      // width: MediaQuery.of(context).size.width * 0.41,
+                                        margin: const EdgeInsets.symmetric(
+                                            horizontal: 5, vertical: 5),
+                                        padding: const EdgeInsets.symmetric(
+                                            horizontal: 10, vertical: 10),
+                                        decoration: BoxDecoration(
+                                          color: AppColors.whiteColor,
+                                          //contt.featuredItems[item].isSelect ? AppColors.blackColor : AppColors.whiteColor,
+                                          border: Border.all(
+                                            color: AppColors.greyColor,
+                                            width: 1,
+                                          ),
+                                          // shape: BoxShape.circle,
+                                          borderRadius: BorderRadius.circular(10),
                                         ),
-                                        // shape: BoxShape.circle,
-                                        borderRadius: BorderRadius.circular(10),
-                                      ),
-                                      child: Column(
-                                        crossAxisAlignment: CrossAxisAlignment
-                                            .center,
-                                        mainAxisAlignment: MainAxisAlignment
-                                            .center,
-                                        children: [
+                                        child: Column(
+                                          crossAxisAlignment: CrossAxisAlignment
+                                              .center,
+                                          mainAxisAlignment: MainAxisAlignment
+                                              .center,
+                                          children: [
 
-                                          Container(
-                                            height: 60,
-                                            width: 60,
-                                            decoration: BoxDecoration(
-                                              color: AppColors.bgColor,
-                                              borderRadius: BorderRadius
-                                                  .circular(10),
-                                              // image: DecorationImage(image: AssetImage(contt.featuredItems[item].images,))
-                                            ),
-                                            child: Container(
-
-                                              height: 60, width: 60,
+                                            Container(
+                                              height: 60,
+                                              width: 60,
                                               decoration: BoxDecoration(
+                                                color: AppColors.bgColor,
                                                 borderRadius: BorderRadius
                                                     .circular(10),
+                                                // image: DecorationImage(image: AssetImage(contt.featuredItems[item].images,))
                                               ),
-                                              child: CachedImageCircle2(
-                                                  imageUrl: logic.model.data![item].image),
+                                              child: Container(
+
+                                                height: 60, width: 60,
+                                                decoration: BoxDecoration(
+                                                  borderRadius: BorderRadius
+                                                      .circular(10),
+                                                ),
+                                                child: CachedImageCircle2(
+                                                    imageUrl: logic.model.data![item].image),
 
 
+                                              ),
                                             ),
-                                          ),
 
-                                          SizedBox(height: 5,),
+                                            SizedBox(height: 5,),
 
-                                          addText700(
-                                              '${logic.model.data![item].name}',
-                                              textAlign: TextAlign.center,
-                                              color: AppColors.blackColor,
-                                              fontSize: 12,
-                                              maxLines: 2),
+                                            addText700(
+                                                '${logic.model.data![item].name}',
+                                                textAlign: TextAlign.center,
+                                                color: AppColors.blackColor,
+                                                fontSize: 12,
+                                                maxLines: 2),
 
-                                        ],
-                                      )
-                                  ),
-                                );
-                              }
-                          ),
-                        ],
-                      ),
-                    )
+                                          ],
+                                        )
+                                    ),
+                                  );
+                                }
+                            ).marginSymmetric(horizontal: 12,vertical: 12),
+                            if(ctrl.isPageLoading && ctrl.page != 1)
+                              Positioned(
+                                bottom:10,
+                                left: 0,right: 0,
+                                child: Container(
+                                  color: Colors.red,
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.min,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Container(
+                                          height: 16,
+                                          width: 16,
+
+                                          child: CircularProgressIndicator(color: AppColors.whiteColor,strokeWidth: 1)),
+                                      addWidth(10),
+                                      addText400('Loading...',color: AppColors.whiteColor)
+                                    ],
+                                  ).marginSymmetric(horizontal: 10,vertical: 4),
+                                ),
+                              )
+                          ],
+                        )
                         : Center(child: addText600('No categories found'));
                   }),
                 ),
