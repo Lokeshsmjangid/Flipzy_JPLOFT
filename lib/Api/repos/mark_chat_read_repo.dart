@@ -8,23 +8,25 @@ import 'package:flipzy/resources/auth_data.dart';
 import 'package:flipzy/resources/utils.dart';
 import 'package:http/http.dart' as http;
 
-Future<CommonModelResponse> addToFavApi({productId}) async {
+Future<CommonModelResponse> markChatRead({receiverId}) async {
   try{
+
+    String url = ApiUrls.markChatReadUrl;
     final Map<String, dynamic> map = {
-    'userId':AuthData().userModel?.id,
-    'productId':productId,
+    'senderId':AuthData().userModel?.id,
+    'receiverId':receiverId,
     };
 
 
-    flipzyPrint(message: '${ApiUrls.addToFavUrl},$map');
-    http.Response response = await performPostRequest(ApiUrls.addToFavUrl,map);
+    flipzyPrint(message: '$url,$map');
+    http.Response response = await performPostRequest(url,map);
     var data = json.decode(response.body);
 
     if (response.statusCode == 200) {
-      log("${ApiUrls.addToFavUrl}\n $map \n response Start-->\n\n $data \n\n<--response End" );
+      log("$url\n $map \n response Start-->\n\n $data \n\n<--response End" );
       return CommonModelResponse.fromJson(data);
     } else {
-      handleErrorCases(response, data, ApiUrls.addToFavUrl);
+      handleErrorCases(response, data, url);
     }
   } on SocketException catch (e) {
     showToastError('No Internet');
