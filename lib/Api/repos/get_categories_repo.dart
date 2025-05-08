@@ -8,15 +8,15 @@ import "package:flipzy/resources/auth_data.dart";
 import "package:flipzy/resources/utils.dart";
 import 'package:http/http.dart' as http;
 
-Future<CategoryModelResponse> getCategoriesApi({String? searchTerm}) async {
+Future<CategoryModelResponse> getCategoriesApi({page,limit=12,String? searchTerm}) async {
   try{
 
     // String url = ApiUrls.categoriesListUrl;
     String? url;
     if(searchTerm!=null && searchTerm.isNotEmpty){
-      url = '${ApiUrls.categoriesListUrl}?searchTerm=$searchTerm';
+      url = '${ApiUrls.categoriesListUrl}?searchTerm=$searchTerm&page=$page&limit=$limit';
     } else {
-      url = '${ApiUrls.categoriesListUrl}';
+      url = '${ApiUrls.categoriesListUrl}?page=$page&limit=$limit';
     }
 
     log('message:::$url');
