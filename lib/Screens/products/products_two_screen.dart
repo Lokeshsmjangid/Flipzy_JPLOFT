@@ -80,7 +80,9 @@ class ProductsTwoScreen extends StatelessWidget {
                       ),
                       onChanged: (val){
                         cntrl.deBounce.run(() {
-                          cntrl.fetchCatProductsListData(searchValue: val);
+                          cntrl.page = 1;
+                          cntrl.modelResponse.data!.clear();
+                          cntrl.fetchCatProductsListData(searchValue: val,pageNumm: 1);
                         });
                       },
                     ),
@@ -90,19 +92,11 @@ class ProductsTwoScreen extends StatelessWidget {
                     child:  cntrl.isDataLoading
                         ? Center(child: CircularProgressIndicator(color: AppColors.secondaryColor))
                         : cntrl.modelResponse.data!=null && cntrl.modelResponse.data!.isNotEmpty
-                        ? Container(
-                      padding: const EdgeInsets.only(left: 10),
-                      height: 300,
-                      // height: MediaQuery.of(context).size.height * 0.80,/**/
-
-                      child: RefreshIndicator(
-                        onRefresh: () async{
-                          cntrl.onInit();
-                        },
-                        child: ListView(
-                          shrinkWrap: true,
+                        ? Stack(
                           children: [
                             GridView.builder(
+                              controller: cntrl.paginationScrollController,
+                                physics: BouncingScrollPhysics(),
                                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                                   crossAxisCount: 2, // 2 items per row
                                   crossAxisSpacing: 2,
@@ -110,7 +104,7 @@ class ProductsTwoScreen extends StatelessWidget {
                                   childAspectRatio: 0.82, // Adjust height-to-width ratio
                                 ),
                                 shrinkWrap: true,
-                                physics: BouncingScrollPhysics(),
+
                                 scrollDirection: Axis.vertical,
 
                                 itemCount: cntrl.modelResponse.data?.length??0,
@@ -203,10 +197,30 @@ class ProductsTwoScreen extends StatelessWidget {
                                   );
                                 }
                             ),
+                            if(cntrl.isPageLoading && cntrl.page != 1)
+                              Positioned(
+                                bottom:10,
+                                left: 0,right: 0,
+                                child: Container(
+                                  color: Colors.red,
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.min,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Container(
+                                          height: 16,
+                                          width: 16,
+
+                                          child: CircularProgressIndicator(color: AppColors.whiteColor,strokeWidth: 1)),
+                                      addWidth(10),
+                                      addText400('Loading...',color: AppColors.whiteColor)
+                                    ],
+                                  ).marginSymmetric(horizontal: 10,vertical: 4),
+                                ),
+                              )
+
                           ],
-                        ),
-                      ),
-                    )
+                        )
                         : Center(child: addText500('No Data Found'))
                     ,
                   ),
