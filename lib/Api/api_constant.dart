@@ -106,8 +106,6 @@ class ApiUrls{
   static const String defaultAddressUrl = '${baseUrl}address/default';
   static const String deleteAddressUrl = '${baseUrl}address/delete';
 
-  // Chat
-  static const String markChatReadUrl = '${baseUrl}chat/mark-read';
 
 
 
