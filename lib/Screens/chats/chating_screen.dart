@@ -3,18 +3,14 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-
-import 'package:flipzy/Api/get_all_messages_model.dart';
-import 'package:flipzy/Screens/userProfile/user_profile.dart';
-import 'package:flipzy/controllers/chat_controller.dart';
 import 'package:flipzy/controllers/chating_controller.dart';
-import 'package:flipzy/custom_widgets/CustomTextField.dart';
 import 'package:flipzy/custom_widgets/customAppBar.dart';
 import 'package:flipzy/resources/app_assets.dart';
 import 'package:flipzy/resources/app_color.dart';
 import 'package:flipzy/resources/auth_data.dart';
 import 'package:flipzy/resources/text_utility.dart';
 import 'package:flipzy/resources/utils.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 class ChattingScreen extends StatelessWidget {
   ChattingScreen({super.key});
@@ -50,10 +46,15 @@ class ChattingScreen extends StatelessWidget {
           titleFontSize: 16,
           bottomLine: true,
           actionItems: [
-            Container(
-              height: 40,
-              width: 40,
-              child: Image.asset(AppAssets.chatCallIC).marginAll(8),
+            GestureDetector(
+              onTap: (){
+                launchUrlString("tel:${logic.receiverData?.mobileNumber}");
+              },
+              child: Container(
+                height: 40,
+                width: 40,
+                child: Image.asset(AppAssets.chatCallIC).marginAll(8),
+              ),
             ),
             Container(
               height: 30,
@@ -195,6 +196,7 @@ class ChattingScreen extends StatelessWidget {
       body: GetBuilder<ChattingCtrl>(
         builder: (logic) {
           return Container(
+            height: MediaQuery.sizeOf(context).height,
             margin: const EdgeInsets.all(10),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),
@@ -206,7 +208,7 @@ class ChattingScreen extends StatelessWidget {
               child: Column(
                 children: [
                   if (logic.isDataLoading)
-                    Center(child: CircularProgressIndicator(color: AppColors.secondaryColor))
+                    Center(child: CircularProgressIndicator(color: AppColors.secondaryColor).marginOnly(top: 20))
                   else if (logic.allMsg.isNotEmpty)
                     ListView.builder(
                       shrinkWrap: true,
@@ -287,7 +289,7 @@ class ChattingScreen extends StatelessWidget {
                             Align(
                               alignment: alignment,
                               child: addText200(
-                                formatTime(msg.createdAt.toString()),
+                                formatDateTime(msg.createdAt.toString()),
                                 color: AppColors.blackColor,
                                 fontSize: 9,
                               ),
@@ -297,7 +299,7 @@ class ChattingScreen extends StatelessWidget {
                       },
                     )
                   else
-                    Center(child: addText600('No messages found')),
+                    Center(child: addText600('No messages found').marginOnly(top: 20)),
                 ],
               ),
             ),
