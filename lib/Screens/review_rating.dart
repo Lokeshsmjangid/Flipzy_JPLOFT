@@ -41,7 +41,7 @@ class _ReviewsRatingScreenState extends State<ReviewsRatingScreen> {
               return
                 logic.isDataLoading
                     ? Center(child: CircularProgressIndicator(color: AppColors.secondaryColor))
-                    : logic.reviewsResponse.data!=null && logic.reviewsResponse.data!.isNotEmpty
+                    : logic.reviewsResponse.data!=null
                     ? SingleChildScrollView(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -76,7 +76,7 @@ class _ReviewsRatingScreenState extends State<ReviewsRatingScreen> {
                                           fit: BoxFit.contain, // Try 'contain' or 'fitWidth' if needed
                                         ).marginOnly(right: 4),
                                         // Image.asset(AppAssets.starImage,height: 14,width: 14).marginOnly(right: 4),
-                                        addText500('${logic.reviewsResponse.data![0].totalRatings}', fontSize: 16,
+                                        addText500('${logic.reviewsResponse.data!.totalRatings}', fontSize: 16,
                                             fontFamily: 'Manrope',
                                             color: AppColors.blackColor),
                                       ],
@@ -112,7 +112,7 @@ class _ReviewsRatingScreenState extends State<ReviewsRatingScreen> {
                                               .contain, // Try 'contain' or 'fitWidth' if needed
                                         ).marginOnly(right: 4),
                                         // Image.asset(AppAssets.reviewIcon,height: 22,width: 22).marginOnly(right: 4),
-                                        addText500('${logic.reviewsResponse.data![0].totalReview}', fontSize: 16,
+                                        addText500('${logic.reviewsResponse.data!.totalReview}', fontSize: 16,
                                             fontFamily: 'Manrope',
                                             color: AppColors.blackColor),
                                       ],
@@ -132,12 +132,12 @@ class _ReviewsRatingScreenState extends State<ReviewsRatingScreen> {
                     addHeight(16),
                     addText500('All Reviews', fontSize: 16, fontFamily: 'Poppins', color: AppColors.blackColor).marginOnly(bottom: 8),
                     ...List.generate(
-                        logic.reviewsResponse.data!.length??0, (index) {
+                        logic.reviewsResponse.data!.allReview!.length??0, (index) {
                       return build_text_tile(
-                        img: '${logic.reviewsResponse.data![index].allReview![0].profileImage}',
-                          title: '${logic.reviewsResponse.data![index].allReview![0].userName??''}',
-                          review: '${logic.reviewsResponse.data![index].allReview![0].userDescription??''}',
-                          userRating: '${logic.reviewsResponse.data![index].allReview![0].userRating??''}',
+                        img: '${logic.reviewsResponse.data!.allReview![index].userId!.profileImage}',
+                          title: '${logic.reviewsResponse.data!.allReview![index].userName??''}',
+                          review: '${logic.reviewsResponse.data!.allReview![index].userDescription??''}',
+                          userRating: '${logic.reviewsResponse.data!.allReview![index].userRating??''}',
                           onTap: () {
                         // Get.toNamed(AppRoutes.sellerProfileScreen);
                       });
