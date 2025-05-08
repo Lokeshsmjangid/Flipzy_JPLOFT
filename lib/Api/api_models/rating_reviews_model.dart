@@ -11,7 +11,7 @@ String ratingReviewsResponseToJson(RatingReviewsResponse data) => json.encode(da
 class RatingReviewsResponse {
   String? message;
   bool? status;
-  List<RatingReviews>? data;
+  RatingReviews? data;
 
   RatingReviewsResponse({
     this.message,
@@ -22,13 +22,13 @@ class RatingReviewsResponse {
   factory RatingReviewsResponse.fromJson(Map<String, dynamic> json) => RatingReviewsResponse(
     message: json["message"],
     status: json["status"],
-    data: json["data"] == null ? [] : List<RatingReviews>.from(json["data"]!.map((x) => RatingReviews.fromJson(x))),
+    data: json["data"] == null ? null : RatingReviews.fromJson(json["data"]),
   );
 
   Map<String, dynamic> toJson() => {
     "message": message,
     "status": status,
-    "data": data == null ? [] : List<dynamic>.from(data!.map((x) => x.toJson())),
+    "data": data?.toJson(),
   };
 }
 
@@ -70,7 +70,7 @@ class RatingReviews {
 
 class AllReview {
   String? id;
-  String? userId;
+  RatedUser? userId;
   String? userName;
   String? userDescription;
   String? profileImage;
@@ -87,7 +87,7 @@ class AllReview {
 
   factory AllReview.fromJson(Map<String, dynamic> json) => AllReview(
     id: json["_id"],
-    userId: json["userId"],
+    userId: json["userId"] == null ? null : RatedUser.fromJson(json["userId"]),
     userName: json["userName"],
     userDescription: json["userDescription"],
     profileImage: json["profileImage"],
@@ -96,10 +96,30 @@ class AllReview {
 
   Map<String, dynamic> toJson() => {
     "_id": id,
-    "userId": userId,
+    "userId": userId?.toJson(),
     "userName": userName,
     "userDescription": userDescription,
     "profileImage": profileImage,
     "userRating": userRating,
+  };
+}
+
+class RatedUser {
+  String? id;
+  String? profileImage;
+
+  RatedUser({
+    this.id,
+    this.profileImage,
+  });
+
+  factory RatedUser.fromJson(Map<String, dynamic> json) => RatedUser(
+    id: json["_id"],
+    profileImage: json["profileImage"],
+  );
+
+  Map<String, dynamic> toJson() => {
+    "_id": id,
+    "profileImage": profileImage,
   };
 }
