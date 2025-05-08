@@ -7,8 +7,6 @@ import 'package:flipzy/resources/debouncer.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'dart:developer' as developer;
-import 'package:flipzy/Api/chat_users_model.dart';
-import 'package:flipzy/resources/app_assets.dart';
 import 'package:flipzy/resources/app_socket.dart';
 import 'package:flipzy/resources/auth_data.dart';
 
@@ -30,8 +28,6 @@ class ChatController extends GetxController {
     connectWithThreads();
   }
 
-
-
   connectWithThreads({searchTerm}){
     developer.log('lokesh:::chat:::::$socketService');
     developer.log('lokesh:::chat:::::${AuthData().userModel?.id}');
@@ -43,6 +39,7 @@ class ChatController extends GetxController {
     };
     developer.log('Requesting threads list with data: $requestData');
     socketService.socket?.emit('userOnline', { 'userId': userID});
+
     socketService.socket?.emit('getSupportMessages', requestData);
     socketService.socket?.on('getAllChatMessages', (data) {
       print('data data data: ${jsonEncode(data)}');
@@ -70,7 +67,9 @@ class ChatController extends GetxController {
       }
     });
 
+
   }
+
   fetchUsersList({String? searchValue}) async{
     isDataLoading = true;
     await getChatUsersListApi(searchParam: searchValue).then((value){
@@ -84,7 +83,6 @@ class ChatController extends GetxController {
       update();
     });
   }
-
 
 }
 
