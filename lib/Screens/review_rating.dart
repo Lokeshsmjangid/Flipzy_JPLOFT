@@ -42,8 +42,7 @@ class _ReviewsRatingScreenState extends State<ReviewsRatingScreen> {
                 logic.isDataLoading
                     ? Center(child: CircularProgressIndicator(color: AppColors.secondaryColor))
                     : logic.reviewsResponse.data!=null
-                    ? SingleChildScrollView(
-                child: Column(
+                    ? SingleChildScrollView(child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     addHeight(20),
@@ -127,7 +126,6 @@ class _ReviewsRatingScreenState extends State<ReviewsRatingScreen> {
                       ),
                     ),
 
-
                     // Withdrawal History
                     addHeight(16),
                     addText500('All Reviews', fontSize: 16, fontFamily: 'Poppins', color: AppColors.blackColor).marginOnly(bottom: 8),
@@ -143,8 +141,7 @@ class _ReviewsRatingScreenState extends State<ReviewsRatingScreen> {
                       });
                     })
                   ],
-                ).marginSymmetric(horizontal: 20),
-              )
+                ).marginSymmetric(horizontal: 20))
                     : Center(child: addText500('No Data Found'));
             }))
 
