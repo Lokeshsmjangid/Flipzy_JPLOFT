@@ -12,15 +12,18 @@ import "package:flipzy/resources/auth_data.dart";
 import "package:flipzy/resources/utils.dart";
 import 'package:http/http.dart' as http;
 
-Future<ProductsByCategoryModelResponse> getCatProductsApi({catID,String? searchTerm}) async {
+Future<ProductsByCategoryModelResponse> getCatProductsApi({catID,page,String? searchTerm}) async {
   try{
     String? url;
     if(searchTerm!=null && searchTerm.isNotEmpty){
-       url = '${ApiUrls.productByCategoryUrl}/${catID}?searchTerm=$searchTerm';
+       url = '${ApiUrls.productByCategoryUrl}/${catID}?page=$page&searchTerm=$searchTerm';
     } else{
-      url = '${ApiUrls.productByCategoryUrl}/${catID}';
+      url = '${ApiUrls.productByCategoryUrl}/${catID}?page=$page';
     }
 
+
+
+flipzyPrint(message: 'Url=>$url');
     http.Response response = await performGetRequest(url);
 
     var data = json.decode(response.body);
