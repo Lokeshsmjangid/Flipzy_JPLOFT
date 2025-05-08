@@ -39,7 +39,7 @@ class ChattingCtrl extends GetxController{
     if(Get.arguments!=null){
       receiverData = Get.arguments['receiver_data'];
       socketService = Get.arguments['socket_instance'];
-      socketService?.connect();
+      // socketService?.connect();
       if(receiverData!=null){
         connectWithSupport();
       }
@@ -60,6 +60,10 @@ class ChattingCtrl extends GetxController{
 
     socketService?.socket?.emit("CONNECT",{"loginId": senderId} );
     socketService?.socket?.emit('joinRoom', requestData);
+    socketService?.socket?.emit('markRead', {
+      "receiverId":receiverData?.userId,
+      "senderId": userID
+    });
     listenReceiveMessage(msgCtrl.text);
     socketService?.socket?.emit('getAllMessages', {
       'sender_id': userID,
@@ -264,6 +268,7 @@ class ChattingCtrl extends GetxController{
 
   Future<void> openNetworkFile(String url) async {
     // Download the file
+    showLoader(true);
     final response = await http.get(Uri.parse(url));
     final bytes = response.bodyBytes;
 
@@ -274,6 +279,7 @@ class ChattingCtrl extends GetxController{
     // Write the file
     await file.writeAsBytes(bytes);
 
+    showLoader(false);
     // Open the file
     OpenFile.open(file.path);
   }
