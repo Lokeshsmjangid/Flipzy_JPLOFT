@@ -1,14 +1,12 @@
-import 'package:flipzy/Screens/chats/chating_screen.dart';
+
 import 'package:flipzy/controllers/chat_controller.dart';
 import 'package:flipzy/custom_widgets/CustomTextField.dart';
-import 'package:flipzy/custom_widgets/customAppBar.dart';
-import 'package:flipzy/resources/app_assets.dart';
 import 'package:flipzy/resources/app_color.dart';
 import 'package:flipzy/resources/app_routers.dart';
+import 'package:flipzy/resources/auth_data.dart';
 import 'package:flipzy/resources/text_utility.dart';
 import 'package:flipzy/resources/utils.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
 class ChatListingScreen extends StatelessWidget {
@@ -63,7 +61,13 @@ class ChatListingScreen extends StatelessWidget {
                       onTap: () {
                         Get.toNamed(AppRoutes.chattingScreen,arguments: {
                           'socket_instance':cntrl.socketService,
-                          'receiver_data':cntrl.usersList[index]});
+                          'receiver_data':cntrl.usersList[index]})?.then((valu){
+                          cntrl.socketService.socket?.emit('markRead', {
+                            "receiverId":cntrl.usersList[index].userId,
+                            "senderId": AuthData().userModel?.id
+                          });
+                        });
+
                       },
                       child: Container(
                         margin: EdgeInsets.symmetric(
