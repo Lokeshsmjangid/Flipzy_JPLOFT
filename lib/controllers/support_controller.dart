@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'dart:developer' as developer;
 import 'dart:developer';
 import 'dart:io';
-
+import 'package:path/path.dart' as p;
 import 'package:file_picker/file_picker.dart';
 import 'package:flipzy/Api/api_models/support_file_upload_model.dart';
 import 'package:flipzy/Api/repos/support_upload_file_repo.dart';
@@ -17,6 +17,7 @@ import 'package:get/get.dart';
 import 'package:open_file/open_file.dart';
 import 'package:http/http.dart' as http;
 import 'package:path_provider/path_provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class SupportController extends GetxController {
   List<SupportAllMsgChatModel> allMsg = [];
@@ -253,10 +254,13 @@ class SupportController extends GetxController {
     }
   }
 
-  Future<void> openNetworkFile(String url) async {
+  /*Future<void> openNetworkFile(String url) async { // working code
     // Download the file
+    showLoader(true);
     final response = await http.get(Uri.parse(url));
     final bytes = response.bodyBytes;
+
+
 
     // Get a local path
     final dir = await getTemporaryDirectory();
@@ -266,8 +270,72 @@ class SupportController extends GetxController {
     await file.writeAsBytes(bytes);
 
     // Open the file
+    showLoader(false);
     OpenFile.open(file.path);
+  }*/
+
+  Future<void> openNetworkFile(String url) async {
+    showLoader(true);
+
+    try {
+      final uri = Uri.parse(url);
+      String fileName = p.basename(uri.path);
+      String extension = p.extension(fileName).replaceFirst('.', '').toLowerCase();
+
+      // File types to redirect to browser
+      final browserExtensions = [
+        'pdf', 'jpg', 'jpeg', 'png', 'gif',
+        'doc', 'docx', 'xls', 'xlsx',
+        'ppt', 'pptx', 'txt'
+      ];
+
+      // If the extension matches, launch in browser
+      if (browserExtensions.contains(extension)) {
+        showLoader(false);
+        if (await canLaunchUrl(uri)) {
+          await launchUrl(uri, mode: LaunchMode.externalApplication);
+        } else {
+          flipzyPrint(message: 'Could not launch $url');
+        }
+        return;
+      }
+
+      // Otherwise, proceed to download and open locally
+      final response = await http.get(uri);
+
+      if (response.statusCode != 200) {
+        showLoader(false);
+        flipzyPrint(message: 'Failed to download file. Status code: ${response.statusCode}');
+        return;
+      }
+
+      final bytes = response.bodyBytes;
+
+      if (fileName.isEmpty || !fileName.contains('.')) {
+        fileName = 'downloaded_file';
+        final contentType = response.headers['content-type'];
+        if (contentType != null && contentType.contains('/')) {
+          final ext = contentType.split('/').last;
+          fileName += '.$ext';
+        } else {
+          fileName += '.tmp';
+        }
+      }
+
+      final dir = await getTemporaryDirectory();
+      final file = File('${dir.path}/$fileName');
+      await file.writeAsBytes(bytes);
+
+      final result = await OpenFile.open(file.path);
+      flipzyPrint(message: 'OpenFile result: ${result.message}');
+    } catch (e) {
+      flipzyPrint(message: 'Error: $e');
+    } finally {
+      showLoader(false);
+    }
   }
+
+
 
   void sendFile(PlatformFile file) {
     // Send the file to the backend or socket
