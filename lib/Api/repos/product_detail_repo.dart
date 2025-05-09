@@ -9,12 +9,15 @@ import "package:flipzy/resources/auth_data.dart";
 import "package:flipzy/Api/api_models/my_products_model_response.dart";
 
 Future<ProductDetailResponse> getProductDetailApi({productId}) async {
+  bool checkInternet = await hasInternetConnection();
+  if (!checkInternet) { // checkInternet is false
+    showToastError('No Internet Connection');
+    return ProductDetailResponse.fromJson({});
+  }
   try{
-
     String url = '${ApiUrls.productDetailUrl}/${productId}';
 
     http.Response response = await performGetRequest(url);
-
     var data = json.decode(response.body);
 
     if (response.statusCode == 200) {
@@ -23,10 +26,12 @@ Future<ProductDetailResponse> getProductDetailApi({productId}) async {
     } else {
       handleErrorCases(response, data, url);
     }
-  } on SocketException catch (e) {
-    showToastError('No Internet');
+  }
+  // on SocketException catch (e) {
+  //   showToastError('No Internet');
     // log('message::00::$e');
-  }catch(e)
+  // }
+  catch(e)
   {
     showToastError('$e');
   }

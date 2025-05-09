@@ -9,11 +9,15 @@ import 'package:flipzy/resources/utils.dart';
 import 'package:http/http.dart' as http;
 
 Future<CommonModelResponse> refundPickUpApi({orderId,message}) async {
+  bool checkInternet = await hasInternetConnection();
+  if (!checkInternet) { // checkInternet is false
+    showToastError('No Internet Connection');
+    return CommonModelResponse.fromJson({});
+  }
   try{
 
     String url = '${ApiUrls.refundPickUpUrl}/$orderId';
     final Map<String, dynamic> map = {};
-
 
     flipzyPrint(message: '${url},$map');
     http.Response response = await performPostRequest(url,map);
@@ -25,9 +29,10 @@ Future<CommonModelResponse> refundPickUpApi({orderId,message}) async {
     } else {
       handleErrorCases(response, data, url);
     }
-  } on SocketException catch (e) {
-    showToastError('No Internet');
   }
+  // on SocketException catch (e) {
+  //   showToastError('No Internet');
+  // }
   catch(e){
     log('$e');
     showToastError('$e');

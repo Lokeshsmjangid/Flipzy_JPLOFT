@@ -11,6 +11,11 @@ import 'package:flipzy/resources/utils.dart';
 import 'package:http/http.dart' as http;
 
 Future<PaymentVerifiedModel> verifyPaymentApi({productId,tx_ref,bool isBoost = false,shippingCharges,discount}) async {
+  bool checkInternet = await hasInternetConnection();
+  if (!checkInternet) { // checkInternet is false
+    showToastError('No Internet Connection');
+    return PaymentVerifiedModel.fromJson({});
+  }
   try{
     final Map<String, dynamic> map = {
     'userId':AuthData().userModel?.id,
@@ -34,9 +39,10 @@ Future<PaymentVerifiedModel> verifyPaymentApi({productId,tx_ref,bool isBoost = f
     } else {
       handleErrorCases(response, data, url);
     }
-  } on SocketException catch (e) {
-    showToastError('No Internet');
   }
+  // on SocketException catch (e) {
+  //   showToastError('No Internet');
+  // }
   catch(e){
     log('$e');
     showToastError('$e');

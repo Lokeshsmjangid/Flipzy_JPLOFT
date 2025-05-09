@@ -9,9 +9,12 @@ import "package:flipzy/resources/utils.dart";
 import 'package:http/http.dart' as http;
 
 Future<CategoryModelResponse> getCategoriesApi({page,limit=12,String? searchTerm}) async {
+  bool checkInternet = await hasInternetConnection();
+  if (!checkInternet) { // checkInternet is false
+    showToastError('No Internet Connection');
+    return CategoryModelResponse.fromJson({});
+  }
   try{
-
-    // String url = ApiUrls.categoriesListUrl;
     String? url;
     if(searchTerm!=null && searchTerm.isNotEmpty){
       url = '${ApiUrls.categoriesListUrl}?searchTerm=$searchTerm&page=$page&limit=$limit';
@@ -31,10 +34,12 @@ Future<CategoryModelResponse> getCategoriesApi({page,limit=12,String? searchTerm
     } else {
       handleErrorCases(response, data, url);
     }
-  } on SocketException catch (e) {
-    showToastError('No Internet');
-    // log('message::00::$e');
-  }catch(e)
+  }
+  // on SocketException catch (e) {
+  //   showToastError('No Internet');
+  //  // log('message::00::$e');
+  // }
+  catch(e)
   {
     showToastError('$e');
   }

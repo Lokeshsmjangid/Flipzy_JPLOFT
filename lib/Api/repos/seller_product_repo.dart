@@ -12,6 +12,11 @@ import "package:flipzy/resources/utils.dart";
 import 'package:http/http.dart' as http;
 
 Future<SellerProductsModelResponse> getSellerProductsApi({sellerID,String? searchTerm}) async {
+  bool checkInternet = await hasInternetConnection();
+  if (!checkInternet) { // checkInternet is false
+    showToastError('No Internet Connection');
+    return SellerProductsModelResponse.fromJson({});
+  }
   try{
     String? url;
     if(searchTerm!=null && searchTerm.isNotEmpty){
@@ -30,10 +35,12 @@ Future<SellerProductsModelResponse> getSellerProductsApi({sellerID,String? searc
     } else {
       handleErrorCases(response, data, url);
     }
-  } on SocketException catch (e) {
-    showToastError('No Internet');
+  }
+  // on SocketException catch (e) {
+  //   showToastError('No Internet');
     // log('message::00::$e');
-  }catch(e)
+  // }
+  catch(e)
   {
     showToastError('$e');
   }

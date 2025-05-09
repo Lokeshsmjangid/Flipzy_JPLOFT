@@ -13,6 +13,11 @@ Future<CommonModelResponse> giveFeedBackApi({
   productId,
   userDescription
 }) async {
+  bool checkInternet = await hasInternetConnection();
+  if (!checkInternet) { // checkInternet is false
+    showToastError('No Internet Connection');
+    return CommonModelResponse.fromJson({});
+  }
   try{
     final Map<String, dynamic> map = {
       'orderId':productId,
@@ -31,9 +36,10 @@ Future<CommonModelResponse> giveFeedBackApi({
     } else {
       handleErrorCases(response, data, ApiUrls.feedBackUrl);
     }
-  } on SocketException catch (e) {
-    showToastError('No Internet');
   }
+  // on SocketException catch (e) {
+  //   showToastError('No Internet');
+  // }
   catch(e){
     log('$e');
     showToastError('$e');

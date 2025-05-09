@@ -9,9 +9,12 @@ import 'package:flipzy/resources/auth_data.dart';
 import 'package:flipzy/resources/utils.dart';
 import 'package:http/http.dart' as http;
 
-Future<AddressCommonModel> deleteAddressApi({String? addressId,
-
-}) async {
+Future<AddressCommonModel> deleteAddressApi({String? addressId}) async {
+  bool checkInternet = await hasInternetConnection();
+  if (!checkInternet) { // checkInternet is false
+    showToastError('No Internet Connection');
+    return AddressCommonModel.fromJson({});
+  }
   try{
 
     String url = '${ApiUrls.deleteAddressUrl}/${addressId}';
@@ -27,9 +30,10 @@ Future<AddressCommonModel> deleteAddressApi({String? addressId,
     } else {
       handleErrorCases(response, data, url);
     }
-  } on SocketException catch (e) {
-    showToastError('No Internet');
   }
+  // on SocketException catch (e) {
+  //   showToastError('No Internet');
+  // }
   catch(e){
     log('$e');
     showToastError('$e');

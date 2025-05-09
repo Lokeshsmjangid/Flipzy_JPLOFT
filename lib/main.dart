@@ -58,7 +58,6 @@ class MyApp extends StatelessWidget {
                 useMaterial3: false
             ),
             builder: (context, child) {
-
               return MediaQuery(
                 data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0), // Set the desired text scaling factor here
                 child: child!,
@@ -78,3 +77,4 @@ class MyApp extends StatelessWidget {
 
 
 
+// latest code

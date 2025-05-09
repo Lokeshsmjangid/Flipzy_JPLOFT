@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -113,6 +114,8 @@ flipzyPrint({required String message}){
   return log('$message');
 }
 
+
+
 // toast
 showToast(String msg){ return Fluttertoast.showToast(
     msg: msg,
@@ -133,7 +136,6 @@ showToastError(String msg){ return Fluttertoast.showToast(
     textColor: Colors.white,
     fontSize: 16.0
 );}
-
 
 String formatDateTime(String dateTimeString) { // Last Today at 9:42 AM
   DateTime dateTime = DateTime.parse(dateTimeString).toLocal(); // Convert to local time
@@ -169,4 +171,13 @@ String formatTime(String isoString) {
   DateTime dateTime = DateTime.parse(isoString).toLocal(); // toLocal() for local timezone
   String formattedTime = DateFormat.jm().format(dateTime); // e.g., 10:48 AM
   return formattedTime;
+}
+
+// internet checker
+Future<bool> hasInternetConnection() async {
+  final connectivityResult = await Connectivity().checkConnectivity();
+  bool isInternet = connectivityResult.first == ConnectivityResult.none?false:true;
+  flipzyPrint(message: 'internet Status:::$connectivityResult');
+  flipzyPrint(message: 'internet :::$isInternet');
+  return isInternet;
 }

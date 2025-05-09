@@ -8,6 +8,11 @@ import 'package:flipzy/resources/utils.dart';
 import 'package:http/http.dart' as http;
 
 Future<CommonModelResponse> verifyFgPassOTPApi({email,otp}) async {
+  bool checkInternet = await hasInternetConnection();
+  if (!checkInternet) { // checkInternet is false
+    showToastError('No Internet Connection');
+    return CommonModelResponse.fromJson({});
+  }
   try{
     final Map<String, dynamic> map = {
     'email':email,
@@ -25,9 +30,10 @@ Future<CommonModelResponse> verifyFgPassOTPApi({email,otp}) async {
     } else {
       handleErrorCases(response, data, ApiUrls.verifyFgPassOtpUrl);
     }
-  } on SocketException catch (e) {
-    showToastError('No Internet');
   }
+  // on SocketException catch (e) {
+  //   showToastError('No Internet');
+  // }
   catch(e){
     log('$e');
     showToastError('$e');

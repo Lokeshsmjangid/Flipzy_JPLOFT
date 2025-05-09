@@ -14,12 +14,16 @@ import "package:flipzy/resources/utils.dart";
 import 'package:http/http.dart' as http;
 
 Future<ChatWithUsersModel> getChatUsersListApi({String? searchParam }) async {
-  try{
-      String url = '${ApiUrls.getSupportUsersListUrl}/${AuthData().userModel?.id}?searchParam=$searchParam';
 
+  bool checkInternet = await hasInternetConnection();
+  if (!checkInternet) { // checkInternet is false
+    showToastError('No Internet Connection');
+    return ChatWithUsersModel.fromJson({});
+  }
+  try{
+    String url = '${ApiUrls.getSupportUsersListUrl}/${AuthData().userModel?.id}?searchParam=$searchParam';
 
     http.Response response = await performGetRequest(url);
-
     var data = json.decode(response.body);
 
     if (response.statusCode == 200) {
@@ -28,10 +32,12 @@ Future<ChatWithUsersModel> getChatUsersListApi({String? searchParam }) async {
     } else {
       handleErrorCases(response, data, url);
     }
-  } on SocketException catch (e) {
-    showToastError('No Internet');
-    // log('message::00::$e');
-  }catch(e)
+  }
+  // on SocketException catch (e) {
+  //   showToastError('No Internet');
+  //  // log('message::00::$e');
+  // }
+  catch(e)
   {
     showToastError('$e');
   }

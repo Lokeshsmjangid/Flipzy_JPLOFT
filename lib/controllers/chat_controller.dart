@@ -16,7 +16,6 @@ class ChatController extends GetxController {
   ChatWithUsersModel model = ChatWithUsersModel();
   bool isDataLoading = false;
   List<ChatWithUser> usersList = [];
-
   final deBounce = Debouncer(milliseconds: 1000);
 
   @override

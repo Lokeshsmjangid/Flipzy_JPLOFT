@@ -9,17 +9,21 @@ import "package:flipzy/resources/utils.dart";
 import 'package:http/http.dart' as http;
 
 Future<WishlistModelResponse> getWishlistApi({String? searchTerm}) async {
+  bool checkInternet = await hasInternetConnection();
+  if (!checkInternet) { // checkInternet is false
+    showToastError('No Internet Connection');
+    return WishlistModelResponse.fromJson({});
+  }
   try{
 
     String? url;
     if(searchTerm!=null && searchTerm.isNotEmpty){
-  url = '${ApiUrls.wishlistUrl}/${AuthData().userModel?.id}?searchTerm=$searchTerm';
+      url = '${ApiUrls.wishlistUrl}/${AuthData().userModel?.id}?searchTerm=$searchTerm';
     }else{
       url = '${ApiUrls.wishlistUrl}/${AuthData().userModel?.id}';
     }
 
     http.Response response = await performGetRequest(url);
-
     var data = json.decode(response.body);
 
     if (response.statusCode == 200) {
@@ -28,10 +32,12 @@ Future<WishlistModelResponse> getWishlistApi({String? searchTerm}) async {
     } else {
       handleErrorCases(response, data, url);
     }
-  } on SocketException catch (e) {
-    showToastError('No Internet');
-    // log('message::00::$e');
-  }catch(e)
+  }
+  // on SocketException catch (e) {
+  //   showToastError('No Internet');
+  //  // log('message::00::$e');
+  // }
+  catch(e)
   {
     showToastError('$e');
   }

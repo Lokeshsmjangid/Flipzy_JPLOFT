@@ -9,6 +9,11 @@ import 'package:flipzy/resources/utils.dart';
 import 'package:http/http.dart' as http;
 
 Future<CommonModelResponse> declinedOrderApi({orderId,orderStatus,message}) async {
+  bool checkInternet = await hasInternetConnection();
+  if (!checkInternet) { // checkInternet is false
+    showToastError('No Internet Connection');
+    return CommonModelResponse.fromJson({});
+  }
   try{
     final Map<String, dynamic> map = {
     'orderId':orderId,
@@ -27,9 +32,10 @@ Future<CommonModelResponse> declinedOrderApi({orderId,orderStatus,message}) asyn
     } else {
       handleErrorCases(response, data, ApiUrls.changeOrderStatusUrl);
     }
-  } on SocketException catch (e) {
-    showToastError('No Internet');
   }
+  // on SocketException catch (e) {
+  //   showToastError('No Internet');
+  // }
   catch(e){
     log('$e');
     showToastError('$e');

@@ -9,6 +9,11 @@ import 'package:flipzy/resources/utils.dart';
 import 'package:http/http.dart' as http;
 
 Future<CommonModelResponse> acceptDeclineProductReturnApi({orderId,action,declineReason}) async {
+  bool checkInternet = await hasInternetConnection();
+  if (!checkInternet) { // checkInternet is false
+    showToastError('No Internet Connection');
+    return CommonModelResponse.fromJson({});
+  }
   try{
     String url = '${ApiUrls.acceptDeclineProductReturnUrl}/$orderId';
 
@@ -28,10 +33,10 @@ Future<CommonModelResponse> acceptDeclineProductReturnApi({orderId,action,declin
       return CommonModelResponse.fromJson(data);
     } else {
       handleErrorCases(response, data, url);
-    }
-  } on SocketException catch (e) {
-    showToastError('No Internet');
-  }
+    }}
+  // on SocketException catch (e) {
+  //   showToastError('No Internet');
+  // }
   catch(e){
     log('$e');
     showToastError('$e');

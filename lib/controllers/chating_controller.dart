@@ -225,8 +225,6 @@ class ChattingCtrl extends GetxController{
     }); }
   }
 
-
-
   void scrollDown() {
     scrollController.animateTo(
       scrollController.position.maxScrollExtent,
@@ -234,7 +232,6 @@ class ChattingCtrl extends GetxController{
       curve: Curves.fastOutSlowIn,
     );
   }
-
 
   PlatformFile? pickedFile;
   List<SupportUpload> attachments = [];

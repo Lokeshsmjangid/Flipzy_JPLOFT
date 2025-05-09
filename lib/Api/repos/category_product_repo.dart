@@ -13,6 +13,11 @@ import "package:flipzy/resources/utils.dart";
 import 'package:http/http.dart' as http;
 
 Future<ProductsByCategoryModelResponse> getCatProductsApi({catID,page,String? searchTerm}) async {
+  bool checkInternet = await hasInternetConnection();
+  if (!checkInternet) { // checkInternet is false
+    showToastError('No Internet Connection');
+    return ProductsByCategoryModelResponse.fromJson({});
+  }
   try{
     String? url;
     if(searchTerm!=null && searchTerm.isNotEmpty){
@@ -20,10 +25,7 @@ Future<ProductsByCategoryModelResponse> getCatProductsApi({catID,page,String? se
     } else{
       url = '${ApiUrls.productByCategoryUrl}/${catID}?page=$page';
     }
-
-
-
-flipzyPrint(message: 'Url=>$url');
+    flipzyPrint(message: 'Url=>$url');
     http.Response response = await performGetRequest(url);
 
     var data = json.decode(response.body);
@@ -34,10 +36,12 @@ flipzyPrint(message: 'Url=>$url');
     } else {
       handleErrorCases(response, data, url);
     }
-  } on SocketException catch (e) {
-    showToastError('No Internet');
-    // log('message::00::$e');
-  }catch(e)
+  }
+  // on SocketException catch (e) {
+  //   showToastError('No Internet');
+  //  // log('message::00::$e');
+  // }
+  catch(e)
   {
     showToastError('$e');
   }

@@ -8,6 +8,11 @@ import "package:flipzy/resources/utils.dart";
 import 'package:http/http.dart' as http;
 
 Future<HomeModelResponse> getHomeApi() async {
+  bool checkInternet = await hasInternetConnection();
+  if (!checkInternet) { // checkInternet is false
+    showToastError('No Internet Connection');
+    return HomeModelResponse.fromJson({});
+  }
   try{
 
     String url = ApiUrls.homePageUrl+'/${AuthData().userModel?.id}';
@@ -24,10 +29,12 @@ Future<HomeModelResponse> getHomeApi() async {
     } else {
       handleErrorCases(response, data, url);
     }
-  } on SocketException catch (e) {
-    showToastError('No Internet');
-    // log('message::00::$e');
-  }catch(e)
+  }
+  // on SocketException catch (e) {
+  //   showToastError('No Internet');
+  //  // log('message::00::$e');
+  // }
+  catch(e)
   {
     showToastError('$e');
   }

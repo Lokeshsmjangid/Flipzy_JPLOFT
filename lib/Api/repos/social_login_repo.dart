@@ -9,6 +9,11 @@ import 'package:flipzy/resources/utils.dart';
 import 'package:http/http.dart' as http;
 
 Future<CommonModelResponse> socialLoginApi({firstName,lastName,email,social_id,login_type}) async {
+  bool checkInternet = await hasInternetConnection();
+  if (!checkInternet) { // checkInternet is false
+    showToastError('No Internet Connection');
+    return CommonModelResponse.fromJson({});
+  }
   try{
     String? fcmToken = await FirebaseMessaging.instance.getToken();
     String url = ApiUrls.socialLoginUrl;
@@ -30,9 +35,10 @@ Future<CommonModelResponse> socialLoginApi({firstName,lastName,email,social_id,l
     } else {
       handleErrorCases(response, data, url);
     }
-  } on SocketException catch (e) {
-    showToastError('No Internet');
   }
+  // on SocketException catch (e) {
+  //   showToastError('No Internet');
+  // }
   catch(e){
     log('$e');
     showToastError('$e');

@@ -14,12 +14,15 @@ import "package:flipzy/resources/utils.dart";
 import 'package:http/http.dart' as http;
 
 Future<AddressResponseModel> getAllAddressApi() async {
+  bool checkInternet = await hasInternetConnection();
+  if (!checkInternet) { // checkInternet is false
+    showToastError('No Internet Connection');
+    return AddressResponseModel.fromJson({});
+  }
   try{
     String url = '${ApiUrls.getAllAddressUrl}/${AuthData().userModel?.id}';
 
-
     http.Response response = await performGetRequest(url);
-
     var data = json.decode(response.body);
 
     if (response.statusCode == 200) {
@@ -28,10 +31,12 @@ Future<AddressResponseModel> getAllAddressApi() async {
     } else {
       handleErrorCases(response, data, url);
     }
-  } on SocketException catch (e) {
-    showToastError('No Internet');
-    // log('message::00::$e');
-  }catch(e)
+  }
+  // on SocketException catch (e) {
+  //   showToastError('No Internet');
+  //  // log('message::00::$e');
+  // }
+  catch(e)
   {
     showToastError('$e');
   }

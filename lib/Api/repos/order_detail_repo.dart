@@ -10,6 +10,11 @@ import 'package:flipzy/resources/utils.dart';
 import 'package:http/http.dart' as http;
 
 Future<OrderDetailResponse> getOrderDetailApi({orderId}) async {
+  bool checkInternet = await hasInternetConnection();
+  if (!checkInternet) { // checkInternet is false
+    showToastError('No Internet Connection');
+    return OrderDetailResponse.fromJson({});
+  }
   try{
     final Map<String, dynamic> map = {
       'userId':AuthData().userModel?.id,
@@ -27,9 +32,10 @@ Future<OrderDetailResponse> getOrderDetailApi({orderId}) async {
     } else {
       handleErrorCases(response, data, ApiUrls.orderDetailUrl);
     }
-  } on SocketException catch (e) {
-    showToastError('No Internet');
   }
+  // on SocketException catch (e) {
+  //   showToastError('No Internet');
+  // }
   catch(e){
     log('$e');
     showToastError('$e');

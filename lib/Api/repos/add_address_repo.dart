@@ -14,6 +14,11 @@ Future<AddressCommonModel> addAddressApi({bool isEdit = false,String? addressId,
   String? city,String? state,
   String? country,String? zipCode
 }) async {
+  bool checkInternet = await hasInternetConnection();
+  if (!checkInternet) { // checkInternet is false
+    showToastError('No Internet Connection');
+    return AddressCommonModel.fromJson({});
+  }
   try{
 
     String url = isEdit?'${ApiUrls.editAddressUrl}/${addressId}':ApiUrls.addAddressUrl;
@@ -39,9 +44,10 @@ Future<AddressCommonModel> addAddressApi({bool isEdit = false,String? addressId,
     } else {
       handleErrorCases(response, data, url);
     }
-  } on SocketException catch (e) {
-    showToastError('No Internet');
   }
+  // on SocketException catch (e) {
+  //   showToastError('No Internet');
+  // }
   catch(e){
     log('$e');
     showToastError('$e');

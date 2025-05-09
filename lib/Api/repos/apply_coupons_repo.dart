@@ -12,14 +12,17 @@ import 'package:flipzy/resources/utils.dart';
 import 'package:http/http.dart' as http;
 
 Future<ApplyCouponModel> applyCouponApi({promoCode}) async {
+  bool checkInternet = await hasInternetConnection();
+  if (!checkInternet) { // checkInternet is false
+    showToastError('No Internet Connection');
+    return ApplyCouponModel.fromJson({});
+  }
   try{
 
     String url = ApiUrls.applyCouponUrl;
     final Map<String, dynamic> map = {
     'promoCode': promoCode,
     };
-
-
     flipzyPrint(message: '${url},$map');
     http.Response response = await performPostRequest(url,map);
     var data = json.decode(response.body);
@@ -30,9 +33,10 @@ Future<ApplyCouponModel> applyCouponApi({promoCode}) async {
     } else {
       handleErrorCases(response, data, url);
     }
-  } on SocketException catch (e) {
-    showToastError('No Internet');
   }
+  // on SocketException catch (e) {
+  //   showToastError('No Internet');
+  // }
   catch(e){
     // log('$e');
     showToastError('$e');

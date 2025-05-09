@@ -15,6 +15,11 @@ Future<CommonModelResponse> applyProductReturnApi({
   String? reasonType,
   List<File>? productImages, // Multiple image files
 }) async {
+  bool checkInternet = await hasInternetConnection();
+  if (!checkInternet) { // checkInternet is false
+    showToastError('No Internet Connection');
+    return CommonModelResponse.fromJson({});
+  }
   try {
     String url = '${ApiUrls.applyProductReturnUrl}/$orderId';
 
@@ -61,9 +66,11 @@ Future<CommonModelResponse> applyProductReturnApi({
       log("❌ Server Error [${response.statusCode}]: $data");
       handleErrorCases(response, data, url);
     }
-  } on SocketException {
-    showToastError('No Internet');
-  } catch (e) {
+  }
+  // on SocketException {
+  //   showToastError('No Internet');
+  // }
+  catch (e) {
     log('❗ Error: $e');
     showToastError('$e');
   }

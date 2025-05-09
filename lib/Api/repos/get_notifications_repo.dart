@@ -10,6 +10,11 @@ import "package:flipzy/resources/utils.dart";
 import 'package:http/http.dart' as http;
 
 Future<NotificationModelResponse> getNotificationListApi() async {
+  bool checkInternet = await hasInternetConnection();
+  if (!checkInternet) { // checkInternet is false
+    showToastError('No Internet Connection');
+    return NotificationModelResponse.fromJson({});
+  }
   try{
 
     String url = '${ApiUrls.notificationsUrl}/${AuthData().userModel?.id}';
@@ -24,10 +29,12 @@ Future<NotificationModelResponse> getNotificationListApi() async {
     } else {
       handleErrorCases(response, data, url);
     }
-  } on SocketException catch (e) {
-    showToastError('No Internet');
+  }
+  // on SocketException catch (e) {
+  //   showToastError('No Internet');
     // log('message::00::$e');
-  }catch(e)
+  // }
+  catch(e)
   {
     showToastError('$e');
   }

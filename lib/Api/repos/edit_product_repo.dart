@@ -29,6 +29,11 @@ Future<CommonModelResponse> editProductApi({
   String? stock,
   List<File>? productImages, // Multiple image files
 }) async {
+  bool checkInternet = await hasInternetConnection();
+  if (!checkInternet) { // checkInternet is false
+    showToastError('No Internet Connection');
+    return CommonModelResponse.fromJson({});
+  }
   try {
     var request = http.MultipartRequest('POST', Uri.parse(ApiUrls.editProductUrl));
 
@@ -109,9 +114,11 @@ Future<CommonModelResponse> editProductApi({
       log("❌ Server Error [${response.statusCode}]: $data");
       handleErrorCases(response, data, ApiUrls.editProductUrl);
     }
-  } on SocketException {
-    showToastError('No Internet');
-  } catch (e) {
+  }
+  // on SocketException {
+  //   showToastError('No Internet');
+  // }
+  catch (e) {
     log('❗ Error: $e');
     showToastError('$e');
   }

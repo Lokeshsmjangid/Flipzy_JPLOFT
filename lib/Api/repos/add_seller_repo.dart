@@ -82,6 +82,11 @@ Future<CommonModelResponse> addSellerApi({
   bool businessCheck = false,
   File? image, // ✅ File instead of String
 }) async {
+  bool checkInternet = await hasInternetConnection();
+  if (!checkInternet) { // checkInternet is false
+    showToastError('No Internet Connection');
+    return CommonModelResponse.fromJson({});
+  }
   try {
     var request = http.MultipartRequest('POST', Uri.parse(ApiUrls.addSellerUrl));
 
@@ -158,9 +163,9 @@ Future<CommonModelResponse> addSellerApi({
       handleErrorCases(response, data, ApiUrls.addSellerUrl);
     }
   }
-  on SocketException {
-    showToastError('No Internet');
-  }
+  // on SocketException {
+  //   showToastError('No Internet');
+  // }
   catch (e) {
     log('$e');
     showToastError('$e');

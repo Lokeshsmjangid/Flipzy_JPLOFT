@@ -10,6 +10,11 @@ import 'package:flipzy/resources/utils.dart';
 import 'package:http/http.dart' as http;
 
 Future<CheckOutDetailModel> checkOutDetailApi({productId,String? promoCode}) async {
+  bool checkInternet = await hasInternetConnection();
+  if (!checkInternet) { // checkInternet is false
+    showToastError('No Internet Connection');
+    return CheckOutDetailModel.fromJson({});
+  }
   try{
 
     String url = ApiUrls.checkoutDetailsUrl;
@@ -31,9 +36,10 @@ Future<CheckOutDetailModel> checkOutDetailApi({productId,String? promoCode}) asy
     } else {
       handleErrorCases(response, data, url);
     }
-  } on SocketException catch (e) {
-    showToastError('No Internet');
   }
+  // on SocketException catch (e) {
+  //   showToastError('No Internet');
+  // }
   catch(e){
     // log('$e');
     showToastError('$e');

@@ -18,6 +18,11 @@ Future<CommonModelResponse> profileSetupApi({
   required String password,
   File? image,
 }) async {
+  bool checkInternet = await hasInternetConnection();
+  if (!checkInternet) { // checkInternet is false
+    showToastError('No Internet Connection');
+    return CommonModelResponse.fromJson({});
+  }
   try {
     String? fcmToken = await FirebaseMessaging.instance.getToken();
     var request = http.MultipartRequest('POST', Uri.parse(ApiUrls.profileSetUpUrl));
@@ -72,9 +77,11 @@ Future<CommonModelResponse> profileSetupApi({
     } else {
       handleErrorCases(response, data, ApiUrls.profileSetUpUrl);
     }
-  } on SocketException {
-    showToastError('No Internet');
-  } catch (e) {
+  }
+  // on SocketException {
+  //   showToastError('No Internet');
+  // }
+  catch (e) {
     log('❌ $e');
     showToastError('$e');
   }

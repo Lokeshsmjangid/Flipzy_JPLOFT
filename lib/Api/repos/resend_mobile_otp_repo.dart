@@ -8,6 +8,11 @@ import 'package:flipzy/resources/utils.dart';
 import 'package:http/http.dart' as http;
 
 Future<CommonModelResponse> resendPhoneOTPApi({mobileNumber}) async {
+  bool checkInternet = await hasInternetConnection();
+  if (!checkInternet) { // checkInternet is false
+    showToastError('No Internet Connection');
+    return CommonModelResponse.fromJson({});
+  }
   try{
     final Map<String, dynamic> map = {
     'mobileNumber':mobileNumber,
@@ -23,9 +28,10 @@ Future<CommonModelResponse> resendPhoneOTPApi({mobileNumber}) async {
     } else {
       handleErrorCases(response, data, ApiUrls.resendMobileOtpUrl);
     }
-  } on SocketException catch (e) {
-    showToastError('No Internet');
   }
+  // on SocketException catch (e) {
+  //   showToastError('No Internet');
+  // }
   catch(e){
     log('$e');
     showToastError('$e');

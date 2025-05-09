@@ -10,28 +10,31 @@ import "package:flipzy/resources/utils.dart";
 import 'package:http/http.dart' as http;
 
 Future<CommonModelResponse> fetchProfileApi({String? searchTerm}) async {
+  bool checkInternet = await hasInternetConnection();
+  if (!checkInternet) { // checkInternet is false
+    showToastError('No Internet Connection');
+    return CommonModelResponse.fromJson({});
+  }
   try{
-
-    // String url = ApiUrls.categoriesListUrl;
     String? url = '${ApiUrls.fetchProfileUrl}/${AuthData().userModel?.id}';
-
-
     log('message:::$url');
 
     http.Response response = await performGetRequest(url);
-
     var data = json.decode(response.body);
 
     if (response.statusCode == 200) {
       log("$url response Start-->\ntoken ${AuthData().userToken}\n $data \n\n<--response End" );
       return CommonModelResponse.fromJson(data);
-    } else {
+    }
+    else {
       handleErrorCases(response, data, url);
     }
-  } on SocketException catch (e) {
-    showToastError('No Internet');
-    // log('message::00::$e');
-  }catch(e)
+  }
+  // on SocketException catch (e) {
+  //   showToastError('No Internet');
+ //   // log('message::00::$e');
+ //  }
+  catch(e)
   {
     showToastError('$e');
   }

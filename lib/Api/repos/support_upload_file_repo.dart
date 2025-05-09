@@ -15,6 +15,11 @@ Future<SupportFileUploadModel> supportUploadApi({
   String? file_type,
   List<PlatformFile>? supportFile,
 }) async {
+  bool checkInternet = await hasInternetConnection();
+  if (!checkInternet) { // checkInternet is false
+    showToastError('No Internet Connection');
+    return SupportFileUploadModel.fromJson({});
+  }
   try {
     String url = ApiUrls.supportFileUploadUrl;
 
@@ -52,9 +57,11 @@ Future<SupportFileUploadModel> supportUploadApi({
       log("❌ Server Error [${response.statusCode}]: $data");
       handleErrorCases(response, data, url);
     }
-  } on SocketException {
-    showToastError('No Internet');
-  } catch (e) {
+  }
+  // on SocketException {
+  //   showToastError('No Internet');
+  // }
+  catch (e) {
     log('❗ Error: $e');
     showToastError('$e');
   }
