@@ -125,6 +125,7 @@ class ChattingScreen extends StatelessWidget {
                 PopupMenuItem(value: 'Report',
                     child: addText400(
                         'Report', fontSize: 14, color: AppColors.blackColor)),
+                if(logic.senderBlockId==null || logic.senderBlockId==AuthData().userModel?.id)
                 PopupMenuItem(value: 'Block',
                     child: addText400(
                         logic.isBlock == true ? 'UnBlock' : 'Block',
@@ -424,10 +425,7 @@ class ChattingScreen extends StatelessWidget {
         },
       ),
     );
-  }
-
-
-}
+  }}
 
 /*
 import 'dart:io';

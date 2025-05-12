@@ -31,6 +31,7 @@ class ChattingCtrl extends GetxController{
   bool endReceiveMsg = false;
   ChatWithUser? receiverData;
   bool isBlock = false;
+  String? senderBlockId;
 
   @override
   void onInit() {
@@ -82,13 +83,16 @@ class ChattingCtrl extends GetxController{
 
       // Access the blockedUsers list safely
       bool isBlocked  = decoded['isBlocked'] ?? false;
+      String? blockByUser  = decoded['senderBlockId'];
 
       flipzyPrint(message: 'Is user blocked? $isBlocked');
 
       // Update state
       isBlock = isBlocked;
+      senderBlockId = blockByUser;
       update();
       flipzyPrint(message: 'isBlock isBlock isBlock: ${isBlock}');
+      flipzyPrint(message: 'block by user: ${blockByUser}');
     });
 
     socketService?.socket?.on('blockUserResponse', (data) { // emit blockUser response
@@ -99,11 +103,13 @@ class ChattingCtrl extends GetxController{
 
       // Access the blockedUsers list safely
       bool isBlocked  = decoded['data']?['isBlock'] ?? false;
+      String? blockByUser  = decoded['data']?['senderBlockId'];
 
       flipzyPrint(message: 'Is user blocked? $isBlocked');
 
       // Update state
       isBlock = isBlocked;
+      senderBlockId = blockByUser;
       update();
       flipzyPrint(message: 'isBlock isBlock isBlock: ${isBlock}');
     });
