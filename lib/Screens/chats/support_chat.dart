@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flipzy/Api/support_all_msg_model.dart';
 import 'package:flipzy/controllers/support_controller.dart';
+import 'package:flipzy/custom_widgets/customAppBar.dart';
 import 'package:flipzy/resources/app_color.dart';
 import 'package:flipzy/resources/auth_data.dart';
 import 'package:flipzy/resources/text_utility.dart';
@@ -16,21 +17,24 @@ class SupportChatScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-          backgroundColor: Colors.white,
-          centerTitle: true,
-          leading: IconButton(
-              onPressed: () {
-                Get.back();
-              },
-              icon: Icon(
-                Icons.arrow_back,
-                color: AppColors.blackColor,
-              )),
-          title: addText500('Support Chat',
-              color: AppColors.blackColor,
-              fontSize: 18,
-              fontFamily: 'Manrope')),
+      appBar: customAppBar(
+        backgroundColor: AppColors.whiteColor,
+        leadingWidth: MediaQuery.of(context).size.width * 0.3 ,
+        leadingIcon: IconButton(
+            onPressed: (){
+              Get.back();},
+            icon: Row(
+              children: [
+                Icon(Icons.arrow_back_ios_outlined, color: AppColors.blackColor,size: 14,),
+                addText400("Back", color: AppColors.blackColor,fontSize: 12,fontFamily: 'Poppins'),
+              ],
+            ).marginOnly(left: 12)),
+        centerTitle: true,
+        titleTxt: "Support Chat",
+        titleColor: AppColors.blackColor,
+        titleFontSize: 16,
+        bottomLine: true,
+      ),
       body: Column(
         children: [
           Expanded(

@@ -17,7 +17,7 @@
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable_common_google_signin_btn_text_dark_focused.xml.flat",
-        "source": "com.app.flipzy.app-jetified-play-services-base-18.3.0-25:/drawable/common_google_signin_btn_text_dark_focused.xml"
+        "source": "com.app.flipzy.app-jetified-play-services-base-18.3.0-24:/drawable/common_google_signin_btn_text_dark_focused.xml"
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable_abc_btn_borderless_material.xml.flat",
@@ -25,7 +25,7 @@
     },
     {
         "merged": "com.app.flipzy.app-release-41:/layout_ime_secondary_split_test_activity.xml.flat",
-        "source": "com.app.flipzy.app-core-1.13.1-30:/layout/ime_secondary_split_test_activity.xml"
+        "source": "com.app.flipzy.app-core-1.13.1-29:/layout/ime_secondary_split_test_activity.xml"
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable-xxxhdpi-v4_abc_btn_radio_to_on_mtrl_015.png.flat",
@@ -33,7 +33,7 @@
     },
     {
         "merged": "com.app.flipzy.app-release-41:/raw_firebase_common_keep.xml.flat",
-        "source": "com.app.flipzy.app-jetified-firebase-common-21.0.0-21:/raw/firebase_common_keep.xml"
+        "source": "com.app.flipzy.app-jetified-firebase-common-21.0.0-20:/raw/firebase_common_keep.xml"
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable-mdpi-v4_abc_text_select_handle_right_mtrl.png.flat",
@@ -57,7 +57,7 @@
     },
     {
         "merged": "com.app.flipzy.app-release-41:/animator_fragment_open_enter.xml.flat",
-        "source": "com.app.flipzy.app-fragment-1.7.1-17:/animator/fragment_open_enter.xml"
+        "source": "com.app.flipzy.app-fragment-1.7.1-16:/animator/fragment_open_enter.xml"
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable-xhdpi-v4_abc_ic_commit_search_api_mtrl_alpha.png.flat",
@@ -65,11 +65,11 @@
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable_toast_bg.xml.flat",
-        "source": "com.app.flipzy.app-release-49:/drawable/toast_bg.xml"
+        "source": "com.app.flipzy.app-release-50:/drawable/toast_bg.xml"
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable-xhdpi-v4_common_google_signin_btn_icon_dark_normal_background.9.png.flat",
-        "source": "com.app.flipzy.app-jetified-play-services-base-18.3.0-25:/drawable-xhdpi-v4/common_google_signin_btn_icon_dark_normal_background.9.png"
+        "source": "com.app.flipzy.app-jetified-play-services-base-18.3.0-24:/drawable-xhdpi-v4/common_google_signin_btn_icon_dark_normal_background.9.png"
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable-mdpi-v4_abc_btn_radio_to_on_mtrl_015.png.flat",
@@ -81,7 +81,7 @@
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable-hdpi-v4_notification_oversize_large_icon_bg.png.flat",
-        "source": "com.app.flipzy.app-core-1.13.1-30:/drawable-hdpi-v4/notification_oversize_large_icon_bg.png"
+        "source": "com.app.flipzy.app-core-1.13.1-29:/drawable-hdpi-v4/notification_oversize_large_icon_bg.png"
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable-xxhdpi-v4_abc_btn_radio_to_on_mtrl_015.png.flat",
@@ -133,11 +133,11 @@
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable-anydpi-v21_ic_call_answer_video_low.xml.flat",
-        "source": "com.app.flipzy.app-core-1.13.1-30:/drawable-anydpi-v21/ic_call_answer_video_low.xml"
+        "source": "com.app.flipzy.app-core-1.13.1-29:/drawable-anydpi-v21/ic_call_answer_video_low.xml"
     },
     {
         "merged": "com.app.flipzy.app-release-41:/xml_image_share_filepaths.xml.flat",
-        "source": "com.app.flipzy.app-browser-1.5.0-10:/xml/image_share_filepaths.xml"
+        "source": "com.app.flipzy.app-browser-1.8.0-30:/xml/image_share_filepaths.xml"
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable-mdpi-v4_ic_passkey.png.flat",
@@ -145,7 +145,7 @@
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable-xhdpi-v4_googleg_disabled_color_18.png.flat",
-        "source": "com.app.flipzy.app-jetified-play-services-base-18.3.0-25:/drawable-xhdpi-v4/googleg_disabled_color_18.png"
+        "source": "com.app.flipzy.app-jetified-play-services-base-18.3.0-24:/drawable-xhdpi-v4/googleg_disabled_color_18.png"
     },
     {
         "merged": "com.app.flipzy.app-release-41:/layout_notification_media_action.xml.flat",
@@ -153,11 +153,11 @@
     },
     {
         "merged": "com.app.flipzy.app-release-41:/layout-v21_notification_action_tombstone.xml.flat",
-        "source": "com.app.flipzy.app-core-1.13.1-30:/layout-v21/notification_action_tombstone.xml"
+        "source": "com.app.flipzy.app-core-1.13.1-29:/layout-v21/notification_action_tombstone.xml"
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable_notification_bg.xml.flat",
-        "source": "com.app.flipzy.app-core-1.13.1-30:/drawable/notification_bg.xml"
+        "source": "com.app.flipzy.app-core-1.13.1-29:/drawable/notification_bg.xml"
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable_btn_checkbox_unchecked_to_checked_mtrl_animation.xml.flat",
@@ -169,7 +169,7 @@
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable-xhdpi-v4_notification_bg_low_pressed.9.png.flat",
-        "source": "com.app.flipzy.app-core-1.13.1-30:/drawable-xhdpi-v4/notification_bg_low_pressed.9.png"
+        "source": "com.app.flipzy.app-core-1.13.1-29:/drawable-xhdpi-v4/notification_bg_low_pressed.9.png"
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable-mdpi-v4_abc_ic_commit_search_api_mtrl_alpha.png.flat",
@@ -185,7 +185,7 @@
     },
     {
         "merged": "com.app.flipzy.app-release-41:/animator_fragment_fade_enter.xml.flat",
-        "source": "com.app.flipzy.app-fragment-1.7.1-17:/animator/fragment_fade_enter.xml"
+        "source": "com.app.flipzy.app-fragment-1.7.1-16:/animator/fragment_fade_enter.xml"
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable-xxxhdpi-v4_ic_password.png.flat",
@@ -233,7 +233,7 @@
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable-mdpi-v4_notification_bg_normal.9.png.flat",
-        "source": "com.app.flipzy.app-core-1.13.1-30:/drawable-mdpi-v4/notification_bg_normal.9.png"
+        "source": "com.app.flipzy.app-core-1.13.1-29:/drawable-mdpi-v4/notification_bg_normal.9.png"
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable-hdpi-v4_abc_scrubber_primary_mtrl_alpha.9.png.flat",
@@ -269,7 +269,7 @@
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable-hdpi-v4_googleg_standard_color_18.png.flat",
-        "source": "com.app.flipzy.app-jetified-play-services-base-18.3.0-25:/drawable-hdpi-v4/googleg_standard_color_18.png"
+        "source": "com.app.flipzy.app-jetified-play-services-base-18.3.0-24:/drawable-hdpi-v4/googleg_standard_color_18.png"
     },
     {
         "merged": "com.app.flipzy.app-release-41:/anim_abc_slide_in_top.xml.flat",
@@ -277,7 +277,7 @@
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable-mdpi-v4_ic_call_decline.png.flat",
-        "source": "com.app.flipzy.app-core-1.13.1-30:/drawable-mdpi-v4/ic_call_decline.png"
+        "source": "com.app.flipzy.app-core-1.13.1-29:/drawable-mdpi-v4/ic_call_decline.png"
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable-xxhdpi-v4_ic_passkey.png.flat",
@@ -293,7 +293,7 @@
     },
     {
         "merged": "com.app.flipzy.app-release-41:/animator_fragment_fade_exit.xml.flat",
-        "source": "com.app.flipzy.app-fragment-1.7.1-17:/animator/fragment_fade_exit.xml"
+        "source": "com.app.flipzy.app-fragment-1.7.1-16:/animator/fragment_fade_exit.xml"
     },
     {
         "merged": "com.app.flipzy.app-release-41:/color_abc_hint_foreground_material_dark.xml.flat",
@@ -305,7 +305,7 @@
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable-xxhdpi-v4_ic_call_answer_video.png.flat",
-        "source": "com.app.flipzy.app-core-1.13.1-30:/drawable-xxhdpi-v4/ic_call_answer_video.png"
+        "source": "com.app.flipzy.app-core-1.13.1-29:/drawable-xxhdpi-v4/ic_call_answer_video.png"
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable_abc_seekbar_track_material.xml.flat",
@@ -325,7 +325,7 @@
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable-ldpi-v4_ic_call_answer_video_low.png.flat",
-        "source": "com.app.flipzy.app-core-1.13.1-30:/drawable-ldpi-v4/ic_call_answer_video_low.png"
+        "source": "com.app.flipzy.app-core-1.13.1-29:/drawable-ldpi-v4/ic_call_answer_video_low.png"
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable_abc_ic_ab_back_material.xml.flat",
@@ -341,7 +341,7 @@
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable-xhdpi-v4_ic_call_answer_video.png.flat",
-        "source": "com.app.flipzy.app-core-1.13.1-30:/drawable-xhdpi-v4/ic_call_answer_video.png"
+        "source": "com.app.flipzy.app-core-1.13.1-29:/drawable-xhdpi-v4/ic_call_answer_video.png"
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable_abc_seekbar_thumb_material.xml.flat",
@@ -349,7 +349,7 @@
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable_common_google_signin_btn_icon_dark_normal.xml.flat",
-        "source": "com.app.flipzy.app-jetified-play-services-base-18.3.0-25:/drawable/common_google_signin_btn_icon_dark_normal.xml"
+        "source": "com.app.flipzy.app-jetified-play-services-base-18.3.0-24:/drawable/common_google_signin_btn_icon_dark_normal.xml"
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable-anydpi-v24_ic_passkey.xml.flat",
@@ -357,7 +357,7 @@
     },
     {
         "merged": "com.app.flipzy.app-release-41:/color_common_google_signin_btn_tint.xml.flat",
-        "source": "com.app.flipzy.app-jetified-play-services-base-18.3.0-25:/color/common_google_signin_btn_tint.xml"
+        "source": "com.app.flipzy.app-jetified-play-services-base-18.3.0-24:/color/common_google_signin_btn_tint.xml"
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable_abc_ic_go_search_api_material.xml.flat",
@@ -365,11 +365,11 @@
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable-anydpi-v21_ic_call_answer.xml.flat",
-        "source": "com.app.flipzy.app-core-1.13.1-30:/drawable-anydpi-v21/ic_call_answer.xml"
+        "source": "com.app.flipzy.app-core-1.13.1-29:/drawable-anydpi-v21/ic_call_answer.xml"
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable-hdpi-v4_common_google_signin_btn_icon_dark_normal_background.9.png.flat",
-        "source": "com.app.flipzy.app-jetified-play-services-base-18.3.0-25:/drawable-hdpi-v4/common_google_signin_btn_icon_dark_normal_background.9.png"
+        "source": "com.app.flipzy.app-jetified-play-services-base-18.3.0-24:/drawable-hdpi-v4/common_google_signin_btn_icon_dark_normal_background.9.png"
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable_abc_ic_menu_cut_mtrl_alpha.xml.flat",
@@ -385,7 +385,7 @@
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable-hdpi-v4_ic_call_answer.png.flat",
-        "source": "com.app.flipzy.app-core-1.13.1-30:/drawable-hdpi-v4/ic_call_answer.png"
+        "source": "com.app.flipzy.app-core-1.13.1-29:/drawable-hdpi-v4/ic_call_answer.png"
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable-xhdpi-v4_abc_list_focused_holo.9.png.flat",
@@ -393,7 +393,7 @@
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable-anydpi-v21_ic_call_answer_video.xml.flat",
-        "source": "com.app.flipzy.app-core-1.13.1-30:/drawable-anydpi-v21/ic_call_answer_video.xml"
+        "source": "com.app.flipzy.app-core-1.13.1-29:/drawable-anydpi-v21/ic_call_answer_video.xml"
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable-xhdpi-v4_abc_btn_radio_to_on_mtrl_000.png.flat",
@@ -401,7 +401,7 @@
     },
     {
         "merged": "com.app.flipzy.app-release-41:/xml_filepaths.xml.flat",
-        "source": "com.app.flipzy.app-release-54:/xml/filepaths.xml"
+        "source": "com.app.flipzy.app-release-55:/xml/filepaths.xml"
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable_btn_radio_off_to_on_mtrl_animation.xml.flat",
@@ -413,7 +413,7 @@
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable-xxhdpi-v4_googleg_disabled_color_18.png.flat",
-        "source": "com.app.flipzy.app-jetified-play-services-base-18.3.0-25:/drawable-xxhdpi-v4/googleg_disabled_color_18.png"
+        "source": "com.app.flipzy.app-jetified-play-services-base-18.3.0-24:/drawable-xxhdpi-v4/googleg_disabled_color_18.png"
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable-hdpi-v4_abc_btn_radio_to_on_mtrl_000.png.flat",
@@ -445,7 +445,7 @@
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable_notification_bg_low.xml.flat",
-        "source": "com.app.flipzy.app-core-1.13.1-30:/drawable/notification_bg_low.xml"
+        "source": "com.app.flipzy.app-core-1.13.1-29:/drawable/notification_bg_low.xml"
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable-xxhdpi-v4_abc_scrubber_track_mtrl_alpha.9.png.flat",
@@ -465,11 +465,11 @@
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable-v21_notification_action_background.xml.flat",
-        "source": "com.app.flipzy.app-core-1.13.1-30:/drawable-v21/notification_action_background.xml"
+        "source": "com.app.flipzy.app-core-1.13.1-29:/drawable-v21/notification_action_background.xml"
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable-anydpi-v21_ic_call_decline_low.xml.flat",
-        "source": "com.app.flipzy.app-core-1.13.1-30:/drawable-anydpi-v21/ic_call_decline_low.xml"
+        "source": "com.app.flipzy.app-core-1.13.1-29:/drawable-anydpi-v21/ic_call_decline_low.xml"
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable-mdpi-v4_ic_password.png.flat",
@@ -481,11 +481,11 @@
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable-hdpi-v4_notification_bg_low_normal.9.png.flat",
-        "source": "com.app.flipzy.app-core-1.13.1-30:/drawable-hdpi-v4/notification_bg_low_normal.9.png"
+        "source": "com.app.flipzy.app-core-1.13.1-29:/drawable-hdpi-v4/notification_bg_low_normal.9.png"
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable-hdpi-v4_common_google_signin_btn_icon_light_normal_background.9.png.flat",
-        "source": "com.app.flipzy.app-jetified-play-services-base-18.3.0-25:/drawable-hdpi-v4/common_google_signin_btn_icon_light_normal_background.9.png"
+        "source": "com.app.flipzy.app-jetified-play-services-base-18.3.0-24:/drawable-hdpi-v4/common_google_signin_btn_icon_light_normal_background.9.png"
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable-xhdpi-v4_abc_text_select_handle_left_mtrl.png.flat",
@@ -521,15 +521,15 @@
     },
     {
         "merged": "com.app.flipzy.app-release-41:/animator_fragment_close_enter.xml.flat",
-        "source": "com.app.flipzy.app-fragment-1.7.1-17:/animator/fragment_close_enter.xml"
+        "source": "com.app.flipzy.app-fragment-1.7.1-16:/animator/fragment_close_enter.xml"
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable_common_google_signin_btn_icon_dark_focused.xml.flat",
-        "source": "com.app.flipzy.app-jetified-play-services-base-18.3.0-25:/drawable/common_google_signin_btn_icon_dark_focused.xml"
+        "source": "com.app.flipzy.app-jetified-play-services-base-18.3.0-24:/drawable/common_google_signin_btn_icon_dark_focused.xml"
     },
     {
         "merged": "com.app.flipzy.app-release-41:/animator_fragment_close_exit.xml.flat",
-        "source": "com.app.flipzy.app-fragment-1.7.1-17:/animator/fragment_close_exit.xml"
+        "source": "com.app.flipzy.app-fragment-1.7.1-16:/animator/fragment_close_exit.xml"
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable-xhdpi-v4_abc_menu_hardkey_panel_mtrl_mult.9.png.flat",
@@ -541,7 +541,7 @@
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable_common_google_signin_btn_text_dark.xml.flat",
-        "source": "com.app.flipzy.app-jetified-play-services-base-18.3.0-25:/drawable/common_google_signin_btn_text_dark.xml"
+        "source": "com.app.flipzy.app-jetified-play-services-base-18.3.0-24:/drawable/common_google_signin_btn_text_dark.xml"
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable-xxhdpi-v4_abc_scrubber_control_off_mtrl_alpha.png.flat",
@@ -561,7 +561,7 @@
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable-xhdpi-v4_notification_bg_low_normal.9.png.flat",
-        "source": "com.app.flipzy.app-core-1.13.1-30:/drawable-xhdpi-v4/notification_bg_low_normal.9.png"
+        "source": "com.app.flipzy.app-core-1.13.1-29:/drawable-xhdpi-v4/notification_bg_low_normal.9.png"
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable-hdpi-v4_ic_password.png.flat",
@@ -601,7 +601,7 @@
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable-xhdpi-v4_common_google_signin_btn_text_dark_normal_background.9.png.flat",
-        "source": "com.app.flipzy.app-jetified-play-services-base-18.3.0-25:/drawable-xhdpi-v4/common_google_signin_btn_text_dark_normal_background.9.png"
+        "source": "com.app.flipzy.app-jetified-play-services-base-18.3.0-24:/drawable-xhdpi-v4/common_google_signin_btn_text_dark_normal_background.9.png"
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable-xxhdpi-v4_abc_scrubber_primary_mtrl_alpha.9.png.flat",
@@ -609,7 +609,7 @@
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable_common_google_signin_btn_text_light.xml.flat",
-        "source": "com.app.flipzy.app-jetified-play-services-base-18.3.0-25:/drawable/common_google_signin_btn_text_light.xml"
+        "source": "com.app.flipzy.app-jetified-play-services-base-18.3.0-24:/drawable/common_google_signin_btn_text_light.xml"
     },
     {
         "merged": "com.app.flipzy.app-release-41:/interpolator_btn_checkbox_checked_mtrl_animation_interpolator_0.xml.flat",
@@ -629,7 +629,7 @@
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable-xhdpi-v4_common_full_open_on_phone.png.flat",
-        "source": "com.app.flipzy.app-jetified-play-services-base-18.3.0-25:/drawable-xhdpi-v4/common_full_open_on_phone.png"
+        "source": "com.app.flipzy.app-jetified-play-services-base-18.3.0-24:/drawable-xhdpi-v4/common_full_open_on_phone.png"
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable_abc_cab_background_top_material.xml.flat",
@@ -645,7 +645,7 @@
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable-xxhdpi-v4_googleg_standard_color_18.png.flat",
-        "source": "com.app.flipzy.app-jetified-play-services-base-18.3.0-25:/drawable-xxhdpi-v4/googleg_standard_color_18.png"
+        "source": "com.app.flipzy.app-jetified-play-services-base-18.3.0-24:/drawable-xxhdpi-v4/googleg_standard_color_18.png"
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable-mdpi-v4_abc_spinner_mtrl_am_alpha.9.png.flat",
@@ -689,7 +689,7 @@
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable_notification_tile_bg.xml.flat",
-        "source": "com.app.flipzy.app-core-1.13.1-30:/drawable/notification_tile_bg.xml"
+        "source": "com.app.flipzy.app-core-1.13.1-29:/drawable/notification_tile_bg.xml"
     },
     {
         "merged": "com.app.flipzy.app-release-41:/mipmap-xxxhdpi_ic_launcher_round.png.flat",
@@ -697,7 +697,7 @@
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable-mdpi-v4_ic_call_answer.png.flat",
-        "source": "com.app.flipzy.app-core-1.13.1-30:/drawable-mdpi-v4/ic_call_answer.png"
+        "source": "com.app.flipzy.app-core-1.13.1-29:/drawable-mdpi-v4/ic_call_answer.png"
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable_abc_btn_radio_material_anim.xml.flat",
@@ -717,7 +717,7 @@
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable-xxhdpi-v4_common_google_signin_btn_text_dark_normal_background.9.png.flat",
-        "source": "com.app.flipzy.app-jetified-play-services-base-18.3.0-25:/drawable-xxhdpi-v4/common_google_signin_btn_text_dark_normal_background.9.png"
+        "source": "com.app.flipzy.app-jetified-play-services-base-18.3.0-24:/drawable-xxhdpi-v4/common_google_signin_btn_text_dark_normal_background.9.png"
     },
     {
         "merged": "com.app.flipzy.app-release-41:/color_abc_primary_text_disable_only_material_dark.xml.flat",
@@ -737,11 +737,11 @@
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable-mdpi-v4_notification_bg_low_pressed.9.png.flat",
-        "source": "com.app.flipzy.app-core-1.13.1-30:/drawable-mdpi-v4/notification_bg_low_pressed.9.png"
+        "source": "com.app.flipzy.app-core-1.13.1-29:/drawable-mdpi-v4/notification_bg_low_pressed.9.png"
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable-ldpi-v4_ic_call_answer.png.flat",
-        "source": "com.app.flipzy.app-core-1.13.1-30:/drawable-ldpi-v4/ic_call_answer.png"
+        "source": "com.app.flipzy.app-core-1.13.1-29:/drawable-ldpi-v4/ic_call_answer.png"
     },
     {
         "merged": "com.app.flipzy.app-release-41:/interpolator_fast_out_slow_in.xml.flat",
@@ -761,7 +761,7 @@
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable-xhdpi-v4_ic_call_decline.png.flat",
-        "source": "com.app.flipzy.app-core-1.13.1-30:/drawable-xhdpi-v4/ic_call_decline.png"
+        "source": "com.app.flipzy.app-core-1.13.1-29:/drawable-xhdpi-v4/ic_call_decline.png"
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable_abc_vector_test.xml.flat",
@@ -777,7 +777,7 @@
     },
     {
         "merged": "com.app.flipzy.app-release-41:/layout_ime_base_split_test_activity.xml.flat",
-        "source": "com.app.flipzy.app-core-1.13.1-30:/layout/ime_base_split_test_activity.xml"
+        "source": "com.app.flipzy.app-core-1.13.1-29:/layout/ime_base_split_test_activity.xml"
     },
     {
         "merged": "com.app.flipzy.app-release-41:/layout_abc_action_mode_bar.xml.flat",
@@ -809,7 +809,7 @@
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable-mdpi-v4_ic_call_answer_video.png.flat",
-        "source": "com.app.flipzy.app-core-1.13.1-30:/drawable-mdpi-v4/ic_call_answer_video.png"
+        "source": "com.app.flipzy.app-core-1.13.1-29:/drawable-mdpi-v4/ic_call_answer_video.png"
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable-xxhdpi-v4_abc_textfield_search_default_mtrl_alpha.9.png.flat",
@@ -817,7 +817,7 @@
     },
     {
         "merged": "com.app.flipzy.app-release-41:/layout_toast_custom.xml.flat",
-        "source": "com.app.flipzy.app-release-49:/layout/toast_custom.xml"
+        "source": "com.app.flipzy.app-release-50:/layout/toast_custom.xml"
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable-xxhdpi-v4_abc_popup_background_mtrl_mult.9.png.flat",
@@ -825,11 +825,11 @@
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable-hdpi-v4_notification_bg_normal_pressed.9.png.flat",
-        "source": "com.app.flipzy.app-core-1.13.1-30:/drawable-hdpi-v4/notification_bg_normal_pressed.9.png"
+        "source": "com.app.flipzy.app-core-1.13.1-29:/drawable-hdpi-v4/notification_bg_normal_pressed.9.png"
     },
     {
         "merged": "com.app.flipzy.app-release-41:/layout_custom_dialog.xml.flat",
-        "source": "com.app.flipzy.app-core-1.13.1-30:/layout/custom_dialog.xml"
+        "source": "com.app.flipzy.app-core-1.13.1-29:/layout/custom_dialog.xml"
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable_abc_ic_search_api_material.xml.flat",
@@ -837,15 +837,15 @@
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable-mdpi-v4_notify_panel_notification_icon_bg.png.flat",
-        "source": "com.app.flipzy.app-core-1.13.1-30:/drawable-mdpi-v4/notify_panel_notification_icon_bg.png"
+        "source": "com.app.flipzy.app-core-1.13.1-29:/drawable-mdpi-v4/notify_panel_notification_icon_bg.png"
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable-xxxhdpi-v4_ic_call_answer.png.flat",
-        "source": "com.app.flipzy.app-core-1.13.1-30:/drawable-xxxhdpi-v4/ic_call_answer.png"
+        "source": "com.app.flipzy.app-core-1.13.1-29:/drawable-xxxhdpi-v4/ic_call_answer.png"
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable_common_google_signin_btn_icon_disabled.xml.flat",
-        "source": "com.app.flipzy.app-jetified-play-services-base-18.3.0-25:/drawable/common_google_signin_btn_icon_disabled.xml"
+        "source": "com.app.flipzy.app-jetified-play-services-base-18.3.0-24:/drawable/common_google_signin_btn_icon_disabled.xml"
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable-xxhdpi-v4_abc_text_select_handle_right_mtrl.png.flat",
@@ -857,19 +857,19 @@
     },
     {
         "merged": "com.app.flipzy.app-release-41:/layout-v21_notification_template_custom_big.xml.flat",
-        "source": "com.app.flipzy.app-core-1.13.1-30:/layout-v21/notification_template_custom_big.xml"
+        "source": "com.app.flipzy.app-core-1.13.1-29:/layout-v21/notification_template_custom_big.xml"
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable-hdpi-v4_common_google_signin_btn_text_light_normal_background.9.png.flat",
-        "source": "com.app.flipzy.app-jetified-play-services-base-18.3.0-25:/drawable-hdpi-v4/common_google_signin_btn_text_light_normal_background.9.png"
+        "source": "com.app.flipzy.app-jetified-play-services-base-18.3.0-24:/drawable-hdpi-v4/common_google_signin_btn_text_light_normal_background.9.png"
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable-hdpi-v4_common_google_signin_btn_text_dark_normal_background.9.png.flat",
-        "source": "com.app.flipzy.app-jetified-play-services-base-18.3.0-25:/drawable-hdpi-v4/common_google_signin_btn_text_dark_normal_background.9.png"
+        "source": "com.app.flipzy.app-jetified-play-services-base-18.3.0-24:/drawable-hdpi-v4/common_google_signin_btn_text_dark_normal_background.9.png"
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable-anydpi-v21_ic_call_decline.xml.flat",
-        "source": "com.app.flipzy.app-core-1.13.1-30:/drawable-anydpi-v21/ic_call_decline.xml"
+        "source": "com.app.flipzy.app-core-1.13.1-29:/drawable-anydpi-v21/ic_call_decline.xml"
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable-mdpi-v4_abc_menu_hardkey_panel_mtrl_mult.9.png.flat",
@@ -893,7 +893,7 @@
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable-xhdpi-v4_googleg_standard_color_18.png.flat",
-        "source": "com.app.flipzy.app-jetified-play-services-base-18.3.0-25:/drawable-xhdpi-v4/googleg_standard_color_18.png"
+        "source": "com.app.flipzy.app-jetified-play-services-base-18.3.0-24:/drawable-xhdpi-v4/googleg_standard_color_18.png"
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable-xhdpi-v4_ic_password.png.flat",
@@ -901,11 +901,11 @@
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable_common_google_signin_btn_icon_dark.xml.flat",
-        "source": "com.app.flipzy.app-jetified-play-services-base-18.3.0-25:/drawable/common_google_signin_btn_icon_dark.xml"
+        "source": "com.app.flipzy.app-jetified-play-services-base-18.3.0-24:/drawable/common_google_signin_btn_icon_dark.xml"
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable-mdpi-v4_ic_call_answer_low.png.flat",
-        "source": "com.app.flipzy.app-core-1.13.1-30:/drawable-mdpi-v4/ic_call_answer_low.png"
+        "source": "com.app.flipzy.app-core-1.13.1-29:/drawable-mdpi-v4/ic_call_answer_low.png"
     },
     {
         "merged": "com.app.flipzy.app-release-41:/interpolator_btn_checkbox_unchecked_mtrl_animation_interpolator_1.xml.flat",
@@ -917,7 +917,7 @@
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable-xhdpi-v4_common_google_signin_btn_icon_light_normal_background.9.png.flat",
-        "source": "com.app.flipzy.app-jetified-play-services-base-18.3.0-25:/drawable-xhdpi-v4/common_google_signin_btn_icon_light_normal_background.9.png"
+        "source": "com.app.flipzy.app-jetified-play-services-base-18.3.0-24:/drawable-xhdpi-v4/common_google_signin_btn_icon_light_normal_background.9.png"
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable-hdpi-v4_abc_tab_indicator_mtrl_alpha.9.png.flat",
@@ -933,11 +933,11 @@
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable_corner.xml.flat",
-        "source": "com.app.flipzy.app-release-49:/drawable/corner.xml"
+        "source": "com.app.flipzy.app-release-50:/drawable/corner.xml"
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable-mdpi-v4_common_google_signin_btn_text_dark_normal_background.9.png.flat",
-        "source": "com.app.flipzy.app-jetified-play-services-base-18.3.0-25:/drawable-mdpi-v4/common_google_signin_btn_text_dark_normal_background.9.png"
+        "source": "com.app.flipzy.app-jetified-play-services-base-18.3.0-24:/drawable-mdpi-v4/common_google_signin_btn_text_dark_normal_background.9.png"
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable-mdpi-v4_abc_scrubber_primary_mtrl_alpha.9.png.flat",
@@ -949,11 +949,11 @@
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable-xxxhdpi-v4_ic_call_decline.png.flat",
-        "source": "com.app.flipzy.app-core-1.13.1-30:/drawable-xxxhdpi-v4/ic_call_decline.png"
+        "source": "com.app.flipzy.app-core-1.13.1-29:/drawable-xxxhdpi-v4/ic_call_decline.png"
     },
     {
         "merged": "com.app.flipzy.app-release-41:/anim-v21_fragment_fast_out_extra_slow_in.xml.flat",
-        "source": "com.app.flipzy.app-fragment-1.7.1-17:/anim-v21/fragment_fast_out_extra_slow_in.xml"
+        "source": "com.app.flipzy.app-fragment-1.7.1-16:/anim-v21/fragment_fast_out_extra_slow_in.xml"
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable-ldrtl-hdpi-v17_abc_spinner_mtrl_am_alpha.9.png.flat",
@@ -969,7 +969,7 @@
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable-xhdpi-v4_ic_call_answer_video_low.png.flat",
-        "source": "com.app.flipzy.app-core-1.13.1-30:/drawable-xhdpi-v4/ic_call_answer_video_low.png"
+        "source": "com.app.flipzy.app-core-1.13.1-29:/drawable-xhdpi-v4/ic_call_answer_video_low.png"
     },
     {
         "merged": "com.app.flipzy.app-release-41:/interpolator_btn_checkbox_checked_mtrl_animation_interpolator_1.xml.flat",
@@ -985,7 +985,7 @@
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable-ldpi-v4_ic_call_decline_low.png.flat",
-        "source": "com.app.flipzy.app-core-1.13.1-30:/drawable-ldpi-v4/ic_call_decline_low.png"
+        "source": "com.app.flipzy.app-core-1.13.1-29:/drawable-ldpi-v4/ic_call_decline_low.png"
     },
     {
         "merged": "com.app.flipzy.app-release-41:/color-v23_abc_tint_spinner.xml.flat",
@@ -993,11 +993,11 @@
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable_common_google_signin_btn_text_disabled.xml.flat",
-        "source": "com.app.flipzy.app-jetified-play-services-base-18.3.0-25:/drawable/common_google_signin_btn_text_disabled.xml"
+        "source": "com.app.flipzy.app-jetified-play-services-base-18.3.0-24:/drawable/common_google_signin_btn_text_disabled.xml"
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable-xhdpi-v4_notification_bg_normal_pressed.9.png.flat",
-        "source": "com.app.flipzy.app-core-1.13.1-30:/drawable-xhdpi-v4/notification_bg_normal_pressed.9.png"
+        "source": "com.app.flipzy.app-core-1.13.1-29:/drawable-xhdpi-v4/notification_bg_normal_pressed.9.png"
     },
     {
         "merged": "com.app.flipzy.app-release-41:/color_abc_background_cache_hint_selector_material_light.xml.flat",
@@ -1017,7 +1017,7 @@
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable-hdpi-v4_ic_call_answer_video.png.flat",
-        "source": "com.app.flipzy.app-core-1.13.1-30:/drawable-hdpi-v4/ic_call_answer_video.png"
+        "source": "com.app.flipzy.app-core-1.13.1-29:/drawable-hdpi-v4/ic_call_answer_video.png"
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable-xhdpi-v4_abc_list_pressed_holo_dark.9.png.flat",
@@ -1029,7 +1029,7 @@
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable-mdpi-v4_ic_call_answer_video_low.png.flat",
-        "source": "com.app.flipzy.app-core-1.13.1-30:/drawable-mdpi-v4/ic_call_answer_video_low.png"
+        "source": "com.app.flipzy.app-core-1.13.1-29:/drawable-mdpi-v4/ic_call_answer_video_low.png"
     },
     {
         "merged": "com.app.flipzy.app-release-41:/layout_abc_activity_chooser_view.xml.flat",
@@ -1037,7 +1037,7 @@
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable-xxhdpi-v4_ic_call_answer_video_low.png.flat",
-        "source": "com.app.flipzy.app-core-1.13.1-30:/drawable-xxhdpi-v4/ic_call_answer_video_low.png"
+        "source": "com.app.flipzy.app-core-1.13.1-29:/drawable-xxhdpi-v4/ic_call_answer_video_low.png"
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable-mdpi-v4_abc_text_select_handle_left_mtrl.png.flat",
@@ -1057,7 +1057,7 @@
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable_common_google_signin_btn_icon_light_focused.xml.flat",
-        "source": "com.app.flipzy.app-jetified-play-services-base-18.3.0-25:/drawable/common_google_signin_btn_icon_light_focused.xml"
+        "source": "com.app.flipzy.app-jetified-play-services-base-18.3.0-24:/drawable/common_google_signin_btn_icon_light_focused.xml"
     },
     {
         "merged": "com.app.flipzy.app-release-41:/anim_btn_radio_to_on_mtrl_ring_outer_animation.xml.flat",
@@ -1089,7 +1089,7 @@
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable-hdpi-v4_ic_call_decline.png.flat",
-        "source": "com.app.flipzy.app-core-1.13.1-30:/drawable-hdpi-v4/ic_call_decline.png"
+        "source": "com.app.flipzy.app-core-1.13.1-29:/drawable-hdpi-v4/ic_call_decline.png"
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable-hdpi-v4_abc_list_pressed_holo_light.9.png.flat",
@@ -1121,11 +1121,11 @@
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable-hdpi-v4_common_full_open_on_phone.png.flat",
-        "source": "com.app.flipzy.app-jetified-play-services-base-18.3.0-25:/drawable-hdpi-v4/common_full_open_on_phone.png"
+        "source": "com.app.flipzy.app-jetified-play-services-base-18.3.0-24:/drawable-hdpi-v4/common_full_open_on_phone.png"
     },
     {
         "merged": "com.app.flipzy.app-release-41:/layout-v21_notification_action.xml.flat",
-        "source": "com.app.flipzy.app-core-1.13.1-30:/layout-v21/notification_action.xml"
+        "source": "com.app.flipzy.app-core-1.13.1-29:/layout-v21/notification_action.xml"
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable-xhdpi-v4_abc_btn_check_to_on_mtrl_015.png.flat",
@@ -1141,7 +1141,7 @@
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable-mdpi-v4_googleg_disabled_color_18.png.flat",
-        "source": "com.app.flipzy.app-jetified-play-services-base-18.3.0-25:/drawable-mdpi-v4/googleg_disabled_color_18.png"
+        "source": "com.app.flipzy.app-jetified-play-services-base-18.3.0-24:/drawable-mdpi-v4/googleg_disabled_color_18.png"
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable-ldrtl-mdpi-v17_abc_spinner_mtrl_am_alpha.9.png.flat",
@@ -1153,11 +1153,11 @@
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable-ldpi-v4_ic_call_answer_low.png.flat",
-        "source": "com.app.flipzy.app-core-1.13.1-30:/drawable-ldpi-v4/ic_call_answer_low.png"
+        "source": "com.app.flipzy.app-core-1.13.1-29:/drawable-ldpi-v4/ic_call_answer_low.png"
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable-mdpi-v4_notification_bg_low_normal.9.png.flat",
-        "source": "com.app.flipzy.app-core-1.13.1-30:/drawable-mdpi-v4/notification_bg_low_normal.9.png"
+        "source": "com.app.flipzy.app-core-1.13.1-29:/drawable-mdpi-v4/notification_bg_low_normal.9.png"
     },
     {
         "merged": "com.app.flipzy.app-release-41:/layout-watch-v20_abc_alert_dialog_button_bar_material.xml.flat",
@@ -1173,7 +1173,7 @@
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable-xxxhdpi-v4_ic_call_answer_low.png.flat",
-        "source": "com.app.flipzy.app-core-1.13.1-30:/drawable-xxxhdpi-v4/ic_call_answer_low.png"
+        "source": "com.app.flipzy.app-core-1.13.1-29:/drawable-xxxhdpi-v4/ic_call_answer_low.png"
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable-xhdpi-v4_abc_scrubber_primary_mtrl_alpha.9.png.flat",
@@ -1181,7 +1181,7 @@
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable-xhdpi-v4_notify_panel_notification_icon_bg.png.flat",
-        "source": "com.app.flipzy.app-core-1.13.1-30:/drawable-xhdpi-v4/notify_panel_notification_icon_bg.png"
+        "source": "com.app.flipzy.app-core-1.13.1-29:/drawable-xhdpi-v4/notify_panel_notification_icon_bg.png"
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable-hdpi-v4_abc_scrubber_track_mtrl_alpha.9.png.flat",
@@ -1193,15 +1193,15 @@
     },
     {
         "merged": "com.app.flipzy.app-release-41:/layout_browser_actions_context_menu_row.xml.flat",
-        "source": "com.app.flipzy.app-browser-1.5.0-10:/layout/browser_actions_context_menu_row.xml"
+        "source": "com.app.flipzy.app-browser-1.8.0-30:/layout/browser_actions_context_menu_row.xml"
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable-hdpi-v4_googleg_disabled_color_18.png.flat",
-        "source": "com.app.flipzy.app-jetified-play-services-base-18.3.0-25:/drawable-hdpi-v4/googleg_disabled_color_18.png"
+        "source": "com.app.flipzy.app-jetified-play-services-base-18.3.0-24:/drawable-hdpi-v4/googleg_disabled_color_18.png"
     },
     {
         "merged": "com.app.flipzy.app-release-41:/layout_notification_template_part_chronometer.xml.flat",
-        "source": "com.app.flipzy.app-core-1.13.1-30:/layout/notification_template_part_chronometer.xml"
+        "source": "com.app.flipzy.app-core-1.13.1-29:/layout/notification_template_part_chronometer.xml"
     },
     {
         "merged": "com.app.flipzy.app-release-41:/layout_select_dialog_singlechoice_material.xml.flat",
@@ -1209,7 +1209,7 @@
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable-hdpi-v4_ic_call_answer_video_low.png.flat",
-        "source": "com.app.flipzy.app-core-1.13.1-30:/drawable-hdpi-v4/ic_call_answer_video_low.png"
+        "source": "com.app.flipzy.app-core-1.13.1-29:/drawable-hdpi-v4/ic_call_answer_video_low.png"
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable-v21_abc_edit_text_material.xml.flat",
@@ -1253,7 +1253,7 @@
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable-hdpi-v4_ic_call_decline_low.png.flat",
-        "source": "com.app.flipzy.app-core-1.13.1-30:/drawable-hdpi-v4/ic_call_decline_low.png"
+        "source": "com.app.flipzy.app-core-1.13.1-29:/drawable-hdpi-v4/ic_call_decline_low.png"
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable-mdpi-v4_abc_textfield_search_default_mtrl_alpha.9.png.flat",
@@ -1277,7 +1277,7 @@
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable_common_google_signin_btn_text_light_normal.xml.flat",
-        "source": "com.app.flipzy.app-jetified-play-services-base-18.3.0-25:/drawable/common_google_signin_btn_text_light_normal.xml"
+        "source": "com.app.flipzy.app-jetified-play-services-base-18.3.0-24:/drawable/common_google_signin_btn_text_light_normal.xml"
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable-hdpi-v4_abc_btn_switch_to_on_mtrl_00012.9.png.flat",
@@ -1289,7 +1289,7 @@
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable-xhdpi-v4_common_google_signin_btn_text_light_normal_background.9.png.flat",
-        "source": "com.app.flipzy.app-jetified-play-services-base-18.3.0-25:/drawable-xhdpi-v4/common_google_signin_btn_text_light_normal_background.9.png"
+        "source": "com.app.flipzy.app-jetified-play-services-base-18.3.0-24:/drawable-xhdpi-v4/common_google_signin_btn_text_light_normal_background.9.png"
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable_abc_ic_menu_selectall_mtrl_alpha.xml.flat",
@@ -1297,7 +1297,7 @@
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable-xhdpi-v4_notification_bg_normal.9.png.flat",
-        "source": "com.app.flipzy.app-core-1.13.1-30:/drawable-xhdpi-v4/notification_bg_normal.9.png"
+        "source": "com.app.flipzy.app-core-1.13.1-29:/drawable-xhdpi-v4/notification_bg_normal.9.png"
     },
     {
         "merged": "com.app.flipzy.app-release-41:/layout_abc_select_dialog_material.xml.flat",
@@ -1313,15 +1313,15 @@
     },
     {
         "merged": "com.app.flipzy.app-release-41:/layout-v21_notification_template_icon_group.xml.flat",
-        "source": "com.app.flipzy.app-core-1.13.1-30:/layout-v21/notification_template_icon_group.xml"
+        "source": "com.app.flipzy.app-core-1.13.1-29:/layout-v21/notification_template_icon_group.xml"
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable-xhdpi-v4_ic_call_answer_low.png.flat",
-        "source": "com.app.flipzy.app-core-1.13.1-30:/drawable-xhdpi-v4/ic_call_answer_low.png"
+        "source": "com.app.flipzy.app-core-1.13.1-29:/drawable-xhdpi-v4/ic_call_answer_low.png"
     },
     {
         "merged": "com.app.flipzy.app-release-41:/color_common_google_signin_btn_text_dark.xml.flat",
-        "source": "com.app.flipzy.app-jetified-play-services-base-18.3.0-25:/color/common_google_signin_btn_text_dark.xml"
+        "source": "com.app.flipzy.app-jetified-play-services-base-18.3.0-24:/color/common_google_signin_btn_text_dark.xml"
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable-ldpi-v4_ic_passkey.png.flat",
@@ -1333,7 +1333,7 @@
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable-xxxhdpi-v4_ic_call_answer_video.png.flat",
-        "source": "com.app.flipzy.app-core-1.13.1-30:/drawable-xxxhdpi-v4/ic_call_answer_video.png"
+        "source": "com.app.flipzy.app-core-1.13.1-29:/drawable-xxxhdpi-v4/ic_call_answer_video.png"
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable-xxhdpi-v4_abc_tab_indicator_mtrl_alpha.9.png.flat",
@@ -1341,7 +1341,7 @@
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable-xxxhdpi-v4_ic_call_decline_low.png.flat",
-        "source": "com.app.flipzy.app-core-1.13.1-30:/drawable-xxxhdpi-v4/ic_call_decline_low.png"
+        "source": "com.app.flipzy.app-core-1.13.1-29:/drawable-xxxhdpi-v4/ic_call_decline_low.png"
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable_abc_btn_check_material_anim.xml.flat",
@@ -1353,7 +1353,7 @@
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable-mdpi-v4_ic_call_decline_low.png.flat",
-        "source": "com.app.flipzy.app-core-1.13.1-30:/drawable-mdpi-v4/ic_call_decline_low.png"
+        "source": "com.app.flipzy.app-core-1.13.1-29:/drawable-mdpi-v4/ic_call_decline_low.png"
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable_abc_ic_arrow_drop_right_black_24dp.xml.flat",
@@ -1361,15 +1361,15 @@
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable-xxhdpi-v4_common_google_signin_btn_text_light_normal_background.9.png.flat",
-        "source": "com.app.flipzy.app-jetified-play-services-base-18.3.0-25:/drawable-xxhdpi-v4/common_google_signin_btn_text_light_normal_background.9.png"
+        "source": "com.app.flipzy.app-jetified-play-services-base-18.3.0-24:/drawable-xxhdpi-v4/common_google_signin_btn_text_light_normal_background.9.png"
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable-hdpi-v4_ic_call_answer_low.png.flat",
-        "source": "com.app.flipzy.app-core-1.13.1-30:/drawable-hdpi-v4/ic_call_answer_low.png"
+        "source": "com.app.flipzy.app-core-1.13.1-29:/drawable-hdpi-v4/ic_call_answer_low.png"
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable-mdpi-v4_common_google_signin_btn_icon_dark_normal_background.9.png.flat",
-        "source": "com.app.flipzy.app-jetified-play-services-base-18.3.0-25:/drawable-mdpi-v4/common_google_signin_btn_icon_dark_normal_background.9.png"
+        "source": "com.app.flipzy.app-jetified-play-services-base-18.3.0-24:/drawable-mdpi-v4/common_google_signin_btn_icon_dark_normal_background.9.png"
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable_abc_ic_menu_overflow_material.xml.flat",
@@ -1389,7 +1389,7 @@
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable-ldpi-v4_ic_call_decline.png.flat",
-        "source": "com.app.flipzy.app-core-1.13.1-30:/drawable-ldpi-v4/ic_call_decline.png"
+        "source": "com.app.flipzy.app-core-1.13.1-29:/drawable-ldpi-v4/ic_call_decline.png"
     },
     {
         "merged": "com.app.flipzy.app-release-41:/layout_abc_screen_content_include.xml.flat",
@@ -1397,7 +1397,7 @@
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable-xxhdpi-v4_ic_call_decline_low.png.flat",
-        "source": "com.app.flipzy.app-core-1.13.1-30:/drawable-xxhdpi-v4/ic_call_decline_low.png"
+        "source": "com.app.flipzy.app-core-1.13.1-29:/drawable-xxhdpi-v4/ic_call_decline_low.png"
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable-v21_abc_action_bar_item_background_material.xml.flat",
@@ -1425,11 +1425,11 @@
     },
     {
         "merged": "com.app.flipzy.app-release-41:/color_common_google_signin_btn_text_light.xml.flat",
-        "source": "com.app.flipzy.app-jetified-play-services-base-18.3.0-25:/color/common_google_signin_btn_text_light.xml"
+        "source": "com.app.flipzy.app-jetified-play-services-base-18.3.0-24:/color/common_google_signin_btn_text_light.xml"
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable-mdpi-v4_googleg_standard_color_18.png.flat",
-        "source": "com.app.flipzy.app-jetified-play-services-base-18.3.0-25:/drawable-mdpi-v4/googleg_standard_color_18.png"
+        "source": "com.app.flipzy.app-jetified-play-services-base-18.3.0-24:/drawable-mdpi-v4/googleg_standard_color_18.png"
     },
     {
         "merged": "com.app.flipzy.app-release-41:/color-v23_abc_tint_switch_track.xml.flat",
@@ -1469,7 +1469,7 @@
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable-xxhdpi-v4_ic_call_decline.png.flat",
-        "source": "com.app.flipzy.app-core-1.13.1-30:/drawable-xxhdpi-v4/ic_call_decline.png"
+        "source": "com.app.flipzy.app-core-1.13.1-29:/drawable-xxhdpi-v4/ic_call_decline.png"
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable-xhdpi-v4_abc_scrubber_control_off_mtrl_alpha.png.flat",
@@ -1493,15 +1493,15 @@
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable-xhdpi-v4_ic_call_decline_low.png.flat",
-        "source": "com.app.flipzy.app-core-1.13.1-30:/drawable-xhdpi-v4/ic_call_decline_low.png"
+        "source": "com.app.flipzy.app-core-1.13.1-29:/drawable-xhdpi-v4/ic_call_decline_low.png"
     },
     {
         "merged": "com.app.flipzy.app-release-41:/xml_flutter_image_picker_file_paths.xml.flat",
-        "source": "com.app.flipzy.app-release-53:/xml/flutter_image_picker_file_paths.xml"
+        "source": "com.app.flipzy.app-release-54:/xml/flutter_image_picker_file_paths.xml"
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable_common_google_signin_btn_text_light_focused.xml.flat",
-        "source": "com.app.flipzy.app-jetified-play-services-base-18.3.0-25:/drawable/common_google_signin_btn_text_light_focused.xml"
+        "source": "com.app.flipzy.app-jetified-play-services-base-18.3.0-24:/drawable/common_google_signin_btn_text_light_focused.xml"
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable-xhdpi-v4_abc_list_selector_disabled_holo_light.9.png.flat",
@@ -1509,7 +1509,7 @@
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable_common_google_signin_btn_text_dark_normal.xml.flat",
-        "source": "com.app.flipzy.app-jetified-play-services-base-18.3.0-25:/drawable/common_google_signin_btn_text_dark_normal.xml"
+        "source": "com.app.flipzy.app-jetified-play-services-base-18.3.0-24:/drawable/common_google_signin_btn_text_dark_normal.xml"
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable-xhdpi-v4_abc_list_selector_disabled_holo_dark.9.png.flat",
@@ -1561,7 +1561,7 @@
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable-ldpi-v4_ic_call_answer_video.png.flat",
-        "source": "com.app.flipzy.app-core-1.13.1-30:/drawable-ldpi-v4/ic_call_answer_video.png"
+        "source": "com.app.flipzy.app-core-1.13.1-29:/drawable-ldpi-v4/ic_call_answer_video.png"
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable-xxhdpi-v4_abc_list_pressed_holo_dark.9.png.flat",
@@ -1577,7 +1577,7 @@
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable-xxhdpi-v4_common_google_signin_btn_icon_dark_normal_background.9.png.flat",
-        "source": "com.app.flipzy.app-jetified-play-services-base-18.3.0-25:/drawable-xxhdpi-v4/common_google_signin_btn_icon_dark_normal_background.9.png"
+        "source": "com.app.flipzy.app-jetified-play-services-base-18.3.0-24:/drawable-xxhdpi-v4/common_google_signin_btn_icon_dark_normal_background.9.png"
     },
     {
         "merged": "com.app.flipzy.app-release-41:/color-v23_abc_tint_seek_thumb.xml.flat",
@@ -1585,7 +1585,7 @@
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable-mdpi-v4_common_google_signin_btn_icon_light_normal_background.9.png.flat",
-        "source": "com.app.flipzy.app-jetified-play-services-base-18.3.0-25:/drawable-mdpi-v4/common_google_signin_btn_icon_light_normal_background.9.png"
+        "source": "com.app.flipzy.app-jetified-play-services-base-18.3.0-24:/drawable-mdpi-v4/common_google_signin_btn_icon_light_normal_background.9.png"
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable-xxxhdpi-v4_abc_text_select_handle_right_mtrl.png.flat",
@@ -1593,7 +1593,7 @@
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable_notification_icon_background.xml.flat",
-        "source": "com.app.flipzy.app-core-1.13.1-30:/drawable/notification_icon_background.xml"
+        "source": "com.app.flipzy.app-core-1.13.1-29:/drawable/notification_icon_background.xml"
     },
     {
         "merged": "com.app.flipzy.app-release-41:/mipmap-hdpi_ic_launcher_round.png.flat",
@@ -1601,11 +1601,11 @@
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable_common_google_signin_btn_icon_light_normal.xml.flat",
-        "source": "com.app.flipzy.app-jetified-play-services-base-18.3.0-25:/drawable/common_google_signin_btn_icon_light_normal.xml"
+        "source": "com.app.flipzy.app-jetified-play-services-base-18.3.0-24:/drawable/common_google_signin_btn_icon_light_normal.xml"
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable-mdpi-v4_notification_bg_normal_pressed.9.png.flat",
-        "source": "com.app.flipzy.app-core-1.13.1-30:/drawable-mdpi-v4/notification_bg_normal_pressed.9.png"
+        "source": "com.app.flipzy.app-core-1.13.1-29:/drawable-mdpi-v4/notification_bg_normal_pressed.9.png"
     },
     {
         "merged": "com.app.flipzy.app-release-41:/color_abc_hint_foreground_material_light.xml.flat",
@@ -1653,7 +1653,7 @@
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable-mdpi-v4_common_google_signin_btn_text_light_normal_background.9.png.flat",
-        "source": "com.app.flipzy.app-jetified-play-services-base-18.3.0-25:/drawable-mdpi-v4/common_google_signin_btn_text_light_normal_background.9.png"
+        "source": "com.app.flipzy.app-jetified-play-services-base-18.3.0-24:/drawable-mdpi-v4/common_google_signin_btn_text_light_normal_background.9.png"
     },
     {
         "merged": "com.app.flipzy.app-release-41:/color_switch_thumb_material_light.xml.flat",
@@ -1661,7 +1661,7 @@
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable-xxxhdpi-v4_ic_call_answer_video_low.png.flat",
-        "source": "com.app.flipzy.app-core-1.13.1-30:/drawable-xxxhdpi-v4/ic_call_answer_video_low.png"
+        "source": "com.app.flipzy.app-core-1.13.1-29:/drawable-xxxhdpi-v4/ic_call_answer_video_low.png"
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable-xhdpi-v4_abc_ab_share_pack_mtrl_alpha.9.png.flat",
@@ -1697,7 +1697,7 @@
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable_common_google_signin_btn_icon_light.xml.flat",
-        "source": "com.app.flipzy.app-jetified-play-services-base-18.3.0-25:/drawable/common_google_signin_btn_icon_light.xml"
+        "source": "com.app.flipzy.app-jetified-play-services-base-18.3.0-24:/drawable/common_google_signin_btn_icon_light.xml"
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable-xxxhdpi-v4_ic_other_sign_in.png.flat",
@@ -1705,11 +1705,11 @@
     },
     {
         "merged": "com.app.flipzy.app-release-41:/animator_fragment_open_exit.xml.flat",
-        "source": "com.app.flipzy.app-fragment-1.7.1-17:/animator/fragment_open_exit.xml"
+        "source": "com.app.flipzy.app-fragment-1.7.1-16:/animator/fragment_open_exit.xml"
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable-anydpi-v21_ic_call_answer_low.xml.flat",
-        "source": "com.app.flipzy.app-core-1.13.1-30:/drawable-anydpi-v21/ic_call_answer_low.xml"
+        "source": "com.app.flipzy.app-core-1.13.1-29:/drawable-anydpi-v21/ic_call_answer_low.xml"
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable-xhdpi-v4_abc_textfield_search_default_mtrl_alpha.9.png.flat",
@@ -1721,7 +1721,7 @@
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable-xxhdpi-v4_ic_call_answer.png.flat",
-        "source": "com.app.flipzy.app-core-1.13.1-30:/drawable-xxhdpi-v4/ic_call_answer.png"
+        "source": "com.app.flipzy.app-core-1.13.1-29:/drawable-xxhdpi-v4/ic_call_answer.png"
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable-xxxhdpi-v4_abc_text_select_handle_left_mtrl.png.flat",
@@ -1737,7 +1737,7 @@
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable-hdpi-v4_notification_bg_low_pressed.9.png.flat",
-        "source": "com.app.flipzy.app-core-1.13.1-30:/drawable-hdpi-v4/notification_bg_low_pressed.9.png"
+        "source": "com.app.flipzy.app-core-1.13.1-29:/drawable-hdpi-v4/notification_bg_low_pressed.9.png"
     },
     {
         "merged": "com.app.flipzy.app-release-41:/layout_support_simple_spinner_dropdown_item.xml.flat",
@@ -1761,7 +1761,7 @@
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable-hdpi-v4_notify_panel_notification_icon_bg.png.flat",
-        "source": "com.app.flipzy.app-core-1.13.1-30:/drawable-hdpi-v4/notify_panel_notification_icon_bg.png"
+        "source": "com.app.flipzy.app-core-1.13.1-29:/drawable-hdpi-v4/notify_panel_notification_icon_bg.png"
     },
     {
         "merged": "com.app.flipzy.app-release-41:/color_abc_background_cache_hint_selector_material_dark.xml.flat",
@@ -1777,7 +1777,7 @@
     },
     {
         "merged": "com.app.flipzy.app-release-41:/layout_notification_template_part_time.xml.flat",
-        "source": "com.app.flipzy.app-core-1.13.1-30:/layout/notification_template_part_time.xml"
+        "source": "com.app.flipzy.app-core-1.13.1-29:/layout/notification_template_part_time.xml"
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable_abc_ratingbar_material.xml.flat",
@@ -1793,7 +1793,7 @@
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable-xxhdpi-v4_ic_call_answer_low.png.flat",
-        "source": "com.app.flipzy.app-core-1.13.1-30:/drawable-xxhdpi-v4/ic_call_answer_low.png"
+        "source": "com.app.flipzy.app-core-1.13.1-29:/drawable-xxhdpi-v4/ic_call_answer_low.png"
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable-hdpi-v4_abc_textfield_default_mtrl_alpha.9.png.flat",
@@ -1805,7 +1805,7 @@
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable-xxhdpi-v4_common_google_signin_btn_icon_light_normal_background.9.png.flat",
-        "source": "com.app.flipzy.app-jetified-play-services-base-18.3.0-25:/drawable-xxhdpi-v4/common_google_signin_btn_icon_light_normal_background.9.png"
+        "source": "com.app.flipzy.app-jetified-play-services-base-18.3.0-24:/drawable-xxhdpi-v4/common_google_signin_btn_icon_light_normal_background.9.png"
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable-ldrtl-xhdpi-v17_abc_spinner_mtrl_am_alpha.9.png.flat",
@@ -1869,7 +1869,7 @@
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable-xhdpi-v4_ic_call_answer.png.flat",
-        "source": "com.app.flipzy.app-core-1.13.1-30:/drawable-xhdpi-v4/ic_call_answer.png"
+        "source": "com.app.flipzy.app-core-1.13.1-29:/drawable-xhdpi-v4/ic_call_answer.png"
     },
     {
         "merged": "com.app.flipzy.app-release-41:/interpolator_btn_radio_to_on_mtrl_animation_interpolator_0.xml.flat",
@@ -1877,7 +1877,7 @@
     },
     {
         "merged": "com.app.flipzy.app-release-41:/layout_browser_actions_context_menu_page.xml.flat",
-        "source": "com.app.flipzy.app-browser-1.5.0-10:/layout/browser_actions_context_menu_page.xml"
+        "source": "com.app.flipzy.app-browser-1.8.0-30:/layout/browser_actions_context_menu_page.xml"
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable_abc_ratingbar_indicator_material.xml.flat",
@@ -1897,7 +1897,7 @@
     },
     {
         "merged": "com.app.flipzy.app-release-41:/drawable-hdpi-v4_notification_bg_normal.9.png.flat",
-        "source": "com.app.flipzy.app-core-1.13.1-30:/drawable-hdpi-v4/notification_bg_normal.9.png"
+        "source": "com.app.flipzy.app-core-1.13.1-29:/drawable-hdpi-v4/notification_bg_normal.9.png"
     },
     {
         "merged": "com.app.flipzy.app-release-41:/layout_notification_template_big_media_narrow_custom.xml.flat",

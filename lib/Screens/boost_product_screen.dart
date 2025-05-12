@@ -7,6 +7,7 @@ import 'package:flipzy/Api/repos/boost_plans_repo.dart';
 import 'package:flipzy/Api/repos/make_product_boost_repo.dart';
 import 'package:flipzy/Api/repos/verify_payment_repo.dart';
 import 'package:flipzy/Screens/boost_product.dart';
+import 'package:flipzy/custom_widgets/customAppBar.dart';
 import 'package:flipzy/custom_widgets/custom_dropdown.dart';
 import 'package:flipzy/dialogues/boost_product_dialogue.dart';
 import 'package:flipzy/resources/app_button.dart';
@@ -62,14 +63,32 @@ class _BoostProductScreenState extends State<BoostProductScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.appBgColor,
+      appBar: customAppBar(
+        backgroundColor: AppColors.bgColor,
+        leadingWidth: MediaQuery.of(context).size.width * 0.3 ,
+        leadingIcon: IconButton(
+            onPressed: (){
+              Get.back();},
+            icon: Row(
+              children: [
+                Icon(Icons.arrow_back_ios_outlined, color: AppColors.blackColor,size: 14,),
+                addText400("Back", color: AppColors.blackColor,fontSize: 12,fontFamily: 'Poppins'),
+              ],
+            ).marginOnly(left: 12)),
+        centerTitle: true,
+        titleTxt: "Boost Product",
+        titleColor: AppColors.blackColor,
+        titleFontSize: 16,
+        bottomLine: true,
+      ),
       body: Column(
         children: [
-          addHeight(44),
-          backAppBar(
-              onTapBack: () {
-                Get.back();
-              },
-              title: 'Boost Project'),
+          // addHeight(44),
+          // backAppBar(
+          //     onTapBack: () {
+          //       Get.back();
+          //     },
+          //     title: 'Boost Project'),
           Expanded(
               child: SingleChildScrollView(
             child: Column(

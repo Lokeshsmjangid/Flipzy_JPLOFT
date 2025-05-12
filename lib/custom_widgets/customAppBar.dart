@@ -1,3 +1,4 @@
+import 'package:flipzy/resources/text_utility.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -12,16 +13,19 @@ PreferredSizeWidget customAppBar({double? leadingWidth , Widget? leadingIcon, Co
     leadingWidth: leadingWidth ?? 0,
     leading: leadingIcon ?? const IgnorePointer(),
     backgroundColor: backgroundColor ?? AppColors.whiteColor,
-    title: Text(
-      titleTxt ?? "",
-      style: TextStyle(
-        color: titleColor ?? Color(0xFF241F1F),
-        fontSize: titleFontSize ?? 16,
-        fontFamily: 'Manrope',
-        fontWeight: titleFontWeigth ?? FontWeight.w700,
-        letterSpacing: -1,
-      ),
-    ),
+    title: addText700(titleTxt ?? "",fontSize: 16,color: titleColor ?? Color(0xFF241F1F),
+        fontFamily: 'Manrope',textAlign: TextAlign.center,height: 0),
+    // title: Text(
+    //   titleTxt ?? "",
+    //   textAlign: TextAlign.center,
+    //   style: TextStyle(
+    //     color: titleColor ?? Color(0xFF241F1F),
+    //     fontSize: titleFontSize ?? 16,
+    //     fontFamily: 'Manrope',
+    //     fontWeight: titleFontWeigth ?? FontWeight.w700,
+    //     letterSpacing: -1,
+    //   ),
+    // ),
     centerTitle: centerTitle ?? false,
     actions: actionItems,
     shadowColor: Colors.transparent,

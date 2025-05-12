@@ -31,9 +31,17 @@ Future<RatingReviewsResponse> getRatingReviewApi() async {
   //   showToastError('No Internet');
   //  // log('message::00::$e');
   // }
-  catch(e)
-  {
-    showToastError('$e');
+  // catch(e)
+  // {
+  //   showToastError('$e');
+  // }
+  catch (e) {
+    if (e.toString().contains('Failed host lookup')) {
+      showToastError('Cannot connect to server. Check your network or domain.');
+    } else {
+      showToastError('Something went wrong');
+      log('❗ Something went wrong: $e');
+    }
   }
   return RatingReviewsResponse.fromJson({}); // please add try catch to use this
   // return CountryListResponse.fromJson(data); // please UnComment to print data and remove try catch

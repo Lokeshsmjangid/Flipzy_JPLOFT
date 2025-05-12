@@ -29,20 +29,15 @@ class _AllAddressScreenState extends State<AllAddressScreen> {
               .of(context)
               .size
               .width * 0.3,
-          leadingIcon: GestureDetector(
-            onTap: () {
-              Get.back();
-            },
-            child: Row(
-              children: [
-                Icon(Icons.arrow_back_ios_outlined, color: AppColors.blackColor,
-                  size: 14,),
-                addText400("Back", color: AppColors.blackColor,
-                    fontSize: 12,
-                    fontFamily: 'Poppins'),
-              ],
-            ).marginOnly(left: 12),
-          ),
+          leadingIcon: IconButton(
+              onPressed: (){
+                Get.back();},
+              icon: Row(
+                children: [
+                  Icon(Icons.arrow_back_ios_outlined, color: AppColors.blackColor,size: 14,),
+                  addText400("Back", color: AppColors.blackColor,fontSize: 12,fontFamily: 'Poppins'),
+                ],
+              ).marginOnly(left: 12)),
           centerTitle: true,
           titleTxt: "Shipping Address",
           titleColor: AppColors.blackColor,
@@ -87,7 +82,7 @@ class _AllAddressScreenState extends State<AllAddressScreen> {
               ...List.generate(logic.addressList.length, (index){
                 final address = logic.addressList[index];
                 return build_address_box(
-                  onTap: (){
+                    onTap: (){
                     if(address.isDefault==false){
                       showLoader(true);
                       defaultAddressApi(addressId: address.id).then((value){
@@ -109,11 +104,11 @@ class _AllAddressScreenState extends State<AllAddressScreen> {
                     fullAddress: '${logic.addressList[index].address}',
                     landmark: 'Landmark: ${logic.addressList[index].landmark}',
                     isSelected: address.isDefault!,
-                  onTapEdit: (){
+                    onTapEdit: (){
                     Get.toNamed(AppRoutes.addAddressScreen,
                         arguments: {'is_edit':true,'address_detail':address});
                   },
-                  onTapDelete: (){
+                    onTapDelete: (){
                     showLoader(true);
                     deleteAddressApi(addressId: address.id).then((value){
                       showLoader(false);
@@ -260,22 +255,22 @@ class _AllAddressScreenState extends State<AllAddressScreen> {
           Row(
             children: [
 
-              addText500('$addressType', fontSize: 16, color: isSelected ? AppColors.greenColor : AppColors.redColor,),
+              addText500('$addressType', fontSize: 15, color: isSelected ? AppColors.greenColor : AppColors.redColor,fontFamily: 'Manrope'),
               Spacer(),
               buildPopUp(onTapEdit: onTapEdit, onTapDelete: isSelected==false ?onTapDelete:null)
             ],
           ),
           addHeight(4),
-          addText500('${fullAddress}', fontSize: 14, color: AppColors.textColor1),
+          addText500('${fullAddress}', fontSize: 13, color: AppColors.blackColor,fontFamily: 'Manrope'),
 
           addHeight(4),
-          addText400('${landmark!.capitalize}', fontSize: 13, color: AppColors.textColor1),
+          addText400('${landmark!.capitalize}', fontSize: 13, color: AppColors.textColor1,fontFamily: 'Manrope'),
 
 
         ],
       ),
 
-    ).marginOnly(left: 20, right: 20, bottom: 20),
+    ).marginOnly(left: 20, right: 20, bottom: 12),
   );}
 
   buildPopUp({void Function()? onTapEdit, void Function()? onTapDelete}) {
@@ -299,18 +294,14 @@ class _AllAddressScreenState extends State<AllAddressScreen> {
                   height: 30,
                   padding: EdgeInsets.only(left: 12),
                   value: 'Edit',
-                  child: addText400('Edit',
-                      fontSize: 14,
-                      color: AppColors.blackColor)),
+                  child: addText400('Edit', fontSize: 14, color: AppColors.blackColor,fontFamily: 'Manrope')),
               if(onTapDelete!=null)
               PopupMenuItem(
                   onTap: onTapDelete,
                   height: 30,
                   padding: EdgeInsets.only(left: 12),
                   value: 'Delete',
-                  child: addText400('Delete',
-                      fontSize: 14,
-                      color: AppColors.blackColor)),
+                  child: addText400('Delete', fontSize: 14, color: AppColors.blackColor,fontFamily: 'Manrope')),
 
             ];
           }),

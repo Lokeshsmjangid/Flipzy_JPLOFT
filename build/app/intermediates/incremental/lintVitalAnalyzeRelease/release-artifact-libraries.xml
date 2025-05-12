@@ -18,6 +18,20 @@
       externalAnnotations="annotations.zip"
       proguardRules="proguard.txt"/>
   <library
+      name=":@@:connectivity_plus::release"
+      jars="/Users/admin/.gradle/caches/8.11.1/transforms/d5218465900b5e339d93e4a84d851307/transformed/out/jars/classes.jar:/Users/admin/.gradle/caches/8.11.1/transforms/d5218465900b5e339d93e4a84d851307/transformed/out/jars/libs/R.jar"
+      resolved="dev.fluttercommunity.plus.connectivity:connectivity_plus:1.0-SNAPSHOT"
+      partialResultsDir="/Users/admin/Desktop/flutter_projects/flipzy_latest/build/connectivity_plus/intermediates/lint_vital_partial_results/release/lintVitalAnalyzeRelease/out"
+      folder="/Users/admin/.gradle/caches/8.11.1/transforms/d5218465900b5e339d93e4a84d851307/transformed/out"
+      manifest="AndroidManifest.xml"
+      resFolder="res"
+      assetsFolder="assets"
+      lintJar="lint.jar"
+      publicResources="public.txt"
+      symbolFile="R.txt"
+      externalAnnotations="annotations.zip"
+      proguardRules="proguard.txt"/>
+  <library
       name=":@@:file_picker::release"
       jars="/Users/admin/.gradle/caches/8.11.1/transforms/c6f6b8e65142c9a522e562c283c26e3c/transformed/out/jars/classes.jar:/Users/admin/.gradle/caches/8.11.1/transforms/c6f6b8e65142c9a522e562c283c26e3c/transformed/out/jars/libs/R.jar"
       resolved="com.mr.flutter.plugin.filepicker:file_picker:1.0-SNAPSHOT"
@@ -219,6 +233,20 @@
       resolved="com.aboutyou.dart_packages.sign_in_with_apple:sign_in_with_apple:1.0-SNAPSHOT"
       partialResultsDir="/Users/admin/Desktop/flutter_projects/flipzy_latest/build/sign_in_with_apple/intermediates/lint_vital_partial_results/release/lintVitalAnalyzeRelease/out"
       folder="/Users/admin/.gradle/caches/8.11.1/transforms/456ac3831f93d237e5e4a36cdd248df4/transformed/out"
+      manifest="AndroidManifest.xml"
+      resFolder="res"
+      assetsFolder="assets"
+      lintJar="lint.jar"
+      publicResources="public.txt"
+      symbolFile="R.txt"
+      externalAnnotations="annotations.zip"
+      proguardRules="proguard.txt"/>
+  <library
+      name=":@@:url_launcher_android::release"
+      jars="/Users/admin/.gradle/caches/8.11.1/transforms/d5ae0d7bc9e02dc7439a4ab35a1cd788/transformed/out/jars/classes.jar:/Users/admin/.gradle/caches/8.11.1/transforms/d5ae0d7bc9e02dc7439a4ab35a1cd788/transformed/out/jars/libs/R.jar"
+      resolved="io.flutter.plugins.urllauncher:url_launcher_android:1.0-SNAPSHOT"
+      partialResultsDir="/Users/admin/Desktop/flutter_projects/flipzy_latest/build/url_launcher_android/intermediates/lint_vital_partial_results/release/lintVitalAnalyzeRelease/out"
+      folder="/Users/admin/.gradle/caches/8.11.1/transforms/d5ae0d7bc9e02dc7439a4ab35a1cd788/transformed/out"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -483,9 +511,9 @@
       jars="/Users/admin/.gradle/caches/modules-2/files-2.1/androidx.collection/collection/1.1.0/1f27220b47669781457de0d600849a5de0e89909/collection-1.1.0.jar"
       resolved="androidx.collection:collection:1.1.0"/>
   <library
-      name="androidx.annotation:annotation-jvm:1.8.2@jar"
-      jars="/Users/admin/.gradle/caches/modules-2/files-2.1/androidx.annotation/annotation-jvm/1.8.2/b8a16fe526014b7941c1debaccaf9c5153692dbb/annotation-jvm-1.8.2.jar"
-      resolved="androidx.annotation:annotation-jvm:1.8.2"/>
+      name="androidx.annotation:annotation-jvm:1.9.1@jar"
+      jars="/Users/admin/.gradle/caches/modules-2/files-2.1/androidx.annotation/annotation-jvm/1.9.1/b17951747e38bf3986a24431b9ba0d039958aa5f/annotation-jvm-1.9.1.jar"
+      resolved="androidx.annotation:annotation-jvm:1.9.1"/>
   <library
       name="org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3@jar"
       jars="/Users/admin/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlinx/kotlinx-coroutines-android/1.7.3/38d9cad3a0b03a10453b56577984bdeb48edeed5/kotlinx-coroutines-android-1.7.3.jar"
@@ -510,6 +538,14 @@
       name="io.flutter:armeabi_v7a_release:1.0.0-cf56914b326edb0ccb123ffdc60f00060bd513fa@jar"
       jars="/Users/admin/.gradle/caches/modules-2/files-2.1/io.flutter/armeabi_v7a_release/1.0.0-cf56914b326edb0ccb123ffdc60f00060bd513fa/b6f4f69fec231389b192723a46e0e0d5b53b85db/armeabi_v7a_release-1.0.0-cf56914b326edb0ccb123ffdc60f00060bd513fa.jar"
       resolved="io.flutter:armeabi_v7a_release:1.0.0-cf56914b326edb0ccb123ffdc60f00060bd513fa"/>
+  <library
+      name="io.flutter:arm64_v8a_release:1.0.0-cf56914b326edb0ccb123ffdc60f00060bd513fa@jar"
+      jars="/Users/admin/.gradle/caches/modules-2/files-2.1/io.flutter/arm64_v8a_release/1.0.0-cf56914b326edb0ccb123ffdc60f00060bd513fa/5adac80dc087c6b4eca5a03b665d7097d7817006/arm64_v8a_release-1.0.0-cf56914b326edb0ccb123ffdc60f00060bd513fa.jar"
+      resolved="io.flutter:arm64_v8a_release:1.0.0-cf56914b326edb0ccb123ffdc60f00060bd513fa"/>
+  <library
+      name="io.flutter:x86_64_release:1.0.0-cf56914b326edb0ccb123ffdc60f00060bd513fa@jar"
+      jars="/Users/admin/.gradle/caches/modules-2/files-2.1/io.flutter/x86_64_release/1.0.0-cf56914b326edb0ccb123ffdc60f00060bd513fa/5cb0b818f7233be6a4a6f2366198573ce461c74/x86_64_release-1.0.0-cf56914b326edb0ccb123ffdc60f00060bd513fa.jar"
+      resolved="io.flutter:x86_64_release:1.0.0-cf56914b326edb0ccb123ffdc60f00060bd513fa"/>
   <library
       name="org.jetbrains:annotations:23.0.0@jar"
       jars="/Users/admin/.gradle/caches/modules-2/files-2.1/org.jetbrains/annotations/23.0.0/8cc20c07506ec18e0834947b84a864bfc094484e/annotations-23.0.0.jar"
@@ -961,10 +997,10 @@
       externalAnnotations="annotations.zip"
       proguardRules="proguard.txt"/>
   <library
-      name="androidx.browser:browser:1.5.0@aar"
-      jars="/Users/admin/.gradle/caches/8.11.1/transforms/4f9e99017a3690f1c954d8ecc967ae21/transformed/browser-1.5.0/jars/classes.jar"
-      resolved="androidx.browser:browser:1.5.0"
-      folder="/Users/admin/.gradle/caches/8.11.1/transforms/4f9e99017a3690f1c954d8ecc967ae21/transformed/browser-1.5.0"
+      name="androidx.browser:browser:1.8.0@aar"
+      jars="/Users/admin/.gradle/caches/8.11.1/transforms/e7b71e21756f864161ac97d51a820217/transformed/browser-1.8.0/jars/classes.jar"
+      resolved="androidx.browser:browser:1.8.0"
+      folder="/Users/admin/.gradle/caches/8.11.1/transforms/e7b71e21756f864161ac97d51a820217/transformed/browser-1.8.0"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"

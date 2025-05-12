@@ -1,5 +1,8 @@
+import 'dart:convert';
 import 'dart:developer' as developer;
 import 'dart:io';
+import 'package:flipzy/resources/utils.dart';
+import 'package:path/path.dart' as p;
 import 'package:flipzy/Api/chat_with_users_model.dart';
 import 'package:http/http.dart' as http;
 import 'package:file_picker/file_picker.dart';
@@ -14,22 +17,20 @@ import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:open_file/open_file.dart';
 import 'package:path_provider/path_provider.dart';
-
-import 'chat_controller.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ChattingCtrl extends GetxController{
   List<SupportAllMsgChatModel> allMsg = [];
 
   final ScrollController scrollController = ScrollController();
   TextEditingController msgCtrl = TextEditingController();
+  TextEditingController reportCtrl = TextEditingController();
   // final SocketService socketService = SocketService();
   SocketService? socketService;
   bool isDataLoading = false;
   bool endReceiveMsg = false;
   ChatWithUser? receiverData;
-
-
-
+  bool isBlock = false;
 
   @override
   void onInit() {
@@ -41,6 +42,8 @@ class ChattingCtrl extends GetxController{
       socketService = Get.arguments['socket_instance'];
       // socketService?.connect();
       if(receiverData!=null){
+        flipzyPrint(message: "receiver_data data on ChattingCtrl::::${jsonEncode(receiverData)}");
+        isBlock = receiverData!.isBlock;
         connectWithSupport();
       }
     }
@@ -50,8 +53,10 @@ class ChattingCtrl extends GetxController{
   connectWithSupport({senderId}){
     developer.log('lokesh:::chat:::::$socketService');
     developer.log('lokesh:::chat:::::${AuthData().userModel?.id}');
+
     String? userID = AuthData().userModel?.id;
     isDataLoading = true;
+
     final requestData = {
       'userId': userID,
       'reciverid': receiverData?.userId,
@@ -64,18 +69,71 @@ class ChattingCtrl extends GetxController{
       "receiverId":receiverData?.userId,
       "senderId": userID
     });
+
+    socketService?.socket?.emit('checkBlockUser', { // to check first time user is block or not
+      "userId": AuthData().userModel?.id,
+      "receiverId":receiverData?.userId,});
+
+    socketService?.socket?.on('checkBlockUserResponse', (data) {  // checkBlockUser response
+      flipzyPrint(message: 'checkBlockUserResponse data::: $data');
+
+      // If data is already a Map, don't decode it
+      Map<String, dynamic> decoded = data is String ? json.decode(data) : Map<String, dynamic>.from(data);
+
+      // Access the blockedUsers list safely
+      bool isBlocked  = decoded['isBlocked'] ?? false;
+
+      flipzyPrint(message: 'Is user blocked? $isBlocked');
+
+      // Update state
+      isBlock = isBlocked;
+      update();
+      flipzyPrint(message: 'isBlock isBlock isBlock: ${isBlock}');
+    });
+
+    socketService?.socket?.on('blockUserResponse', (data) { // emit blockUser response
+      flipzyPrint(message: 'blockUserResponse data::: $data');
+
+      // If data is already a Map, don't decode it
+      Map<String, dynamic> decoded = data is String ? json.decode(data) : Map<String, dynamic>.from(data);
+
+      // Access the blockedUsers list safely
+      bool isBlocked  = decoded['data']?['isBlock'] ?? false;
+
+      flipzyPrint(message: 'Is user blocked? $isBlocked');
+
+      // Update state
+      isBlock = isBlocked;
+      update();
+      flipzyPrint(message: 'isBlock isBlock isBlock: ${isBlock}');
+    });
+
+    socketService?.socket?.on('reportResponse', (data) {// report user response
+      flipzyPrint(message: 'reportResponse data::: $data');
+
+      // If data is already a Map, don't decode it
+      Map<String, dynamic> decoded = data is String ? json.decode(data) : Map<String, dynamic>.from(data);
+
+      // Access the blockedUsers list safely
+      bool isBlocked  = decoded['data']?['isBlock'] ?? false;
+
+      flipzyPrint(message: 'Is user blocked? $isBlocked');
+
+      // Update state
+      isBlock = isBlocked;
+      update();
+      if(isBlock ==true){
+        Get.back();
+        showToast('Person reported successfully.');
+      }
+      flipzyPrint(message: 'isBlock isBlock isBlock: ${isBlock}');
+    });
+
     listenReceiveMessage(msgCtrl.text);
     socketService?.socket?.emit('getAllMessages', {
       'sender_id': userID,
       'receiver_id':  receiverData?.userId,
     });
-    // socketService.socket?.on('connect_error', (error) {
-    //   developer.log('Connection Error inside support: $error');
-    //    showToastError('$error');
-    //    isDataLoading = false;
-    //    allMsg = [];
-    //    update();
-    // });
 
     socketService?.socket?.on('getAllMessages', (data) {
       developer.log('GET-ALL-MESSAGES START:\n$data\n::END');
@@ -263,7 +321,7 @@ class ChattingCtrl extends GetxController{
     }
   }
 
-  Future<void> openNetworkFile(String url) async {
+  /*Future<void> openNetworkFile(String url) async {
     // Download the file
     showLoader(true);
     final response = await http.get(Uri.parse(url));
@@ -279,6 +337,67 @@ class ChattingCtrl extends GetxController{
     showLoader(false);
     // Open the file
     OpenFile.open(file.path);
+  }*/
+
+  Future<void> openNetworkFile(String url) async {
+    showLoader(true);
+
+    try {
+      final uri = Uri.parse(url);
+      String fileName = p.basename(uri.path);
+      String extension = p.extension(fileName).replaceFirst('.', '').toLowerCase();
+
+      // File types to redirect to browser
+      final browserExtensions = [
+        'pdf', 'jpg', 'jpeg', 'png', 'gif',
+        'doc', 'docx', 'xls', 'xlsx',
+        'ppt', 'pptx', 'txt'
+      ];
+
+      // If the extension matches, launch in browser
+      if (browserExtensions.contains(extension)) {
+        showLoader(false);
+        if (await canLaunchUrl(uri)) {
+          await launchUrl(uri, mode: LaunchMode.externalApplication);
+        } else {
+          flipzyPrint(message: 'Could not launch $url');
+        }
+        return;
+      }
+
+      // Otherwise, proceed to download and open locally
+      final response = await http.get(uri);
+
+      if (response.statusCode != 200) {
+        showLoader(false);
+        flipzyPrint(message: 'Failed to download file. Status code: ${response.statusCode}');
+        return;
+      }
+
+      final bytes = response.bodyBytes;
+
+      if (fileName.isEmpty || !fileName.contains('.')) {
+        fileName = 'downloaded_file';
+        final contentType = response.headers['content-type'];
+        if (contentType != null && contentType.contains('/')) {
+          final ext = contentType.split('/').last;
+          fileName += '.$ext';
+        } else {
+          fileName += '.tmp';
+        }
+      }
+
+      final dir = await getTemporaryDirectory();
+      final file = File('${dir.path}/$fileName');
+      await file.writeAsBytes(bytes);
+
+      final result = await OpenFile.open(file.path);
+      flipzyPrint(message: 'OpenFile result: ${result.message}');
+    } catch (e) {
+      flipzyPrint(message: 'Error: $e');
+    } finally {
+      showLoader(false);
+    }
   }
 
   void sendFile(PlatformFile file) {
@@ -295,5 +414,4 @@ class ChattingCtrl extends GetxController{
     ));
     update();
   }
-
 }

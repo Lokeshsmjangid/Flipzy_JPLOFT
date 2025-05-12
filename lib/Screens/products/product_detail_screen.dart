@@ -37,9 +37,10 @@ class ProductDetailScreen extends StatelessWidget {
                 }),
 
             Expanded(child:
-                logic.isDataLoading
+            logic.isDataLoading
                     ? Center(child: CircularProgressIndicator(color: AppColors.secondaryColor,))
-                    : logic.response.data!=null?SingleChildScrollView(
+                    : logic.response.data!=null
+                    ? SingleChildScrollView(
               child: Column(
                 children: [
                   addHeight(14),
@@ -514,7 +515,8 @@ class ProductDetailScreen extends StatelessWidget {
                   addHeight(24)
                 ],
               ).marginSymmetric(horizontal: 16),
-            ) : Center(child: addText600('No detail found')))
+            )
+                    : Center(child: addText600('No detail found')))
 
 
           ],

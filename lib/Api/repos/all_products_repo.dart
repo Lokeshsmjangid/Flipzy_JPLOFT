@@ -35,9 +35,17 @@ Future<MyProductsModelResponse> getAllProductsListApi({page,String? searchTerm})
   //   showToastError('No Internet');
   //  // log('message::00::$e');
   // }
-  catch(e)
-  {
-    showToastError('$e');
+  // catch(e)
+  // {
+  //   showToastError('$e');
+  // }
+  catch (e) {
+    if (e.toString().contains('Failed host lookup')) {
+      showToastError('Cannot connect to server. Check your network or domain.');
+    } else {
+      showToastError('Something went wrong');
+      log('❗ Something went wrong: $e');
+    }
   }
 
   return MyProductsModelResponse.fromJson({}); // please add try catch to use this

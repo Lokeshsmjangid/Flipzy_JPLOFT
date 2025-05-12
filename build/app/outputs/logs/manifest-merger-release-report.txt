@@ -8,6 +8,8 @@ MERGED from [com.google.android.gms:play-services-location:21.2.0] /Users/admin/
 MERGED from [com.google.android.gms:play-services-location:21.2.0] /Users/admin/.gradle/caches/8.11.1/transforms/105f847b4d396461ad0a72ac0864e227/transformed/jetified-play-services-location-21.2.0/AndroidManifest.xml:7:5-20
 MERGED from [:image_picker_android] /Users/admin/Desktop/flutter_projects/flipzy_latest/build/image_picker_android/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:8:5-32:19
 MERGED from [:image_picker_android] /Users/admin/Desktop/flutter_projects/flipzy_latest/build/image_picker_android/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:8:5-32:19
+MERGED from [:url_launcher_android] /Users/admin/Desktop/flutter_projects/flipzy_latest/build/url_launcher_android/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:7:5-12:19
+MERGED from [:url_launcher_android] /Users/admin/Desktop/flutter_projects/flipzy_latest/build/url_launcher_android/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:7:5-12:19
 MERGED from [:firebase_auth] /Users/admin/Desktop/flutter_projects/flipzy_latest/build/firebase_auth/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:7:5-13:19
 MERGED from [:firebase_auth] /Users/admin/Desktop/flutter_projects/flipzy_latest/build/firebase_auth/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:7:5-13:19
 MERGED from [:firebase_messaging] /Users/admin/Desktop/flutter_projects/flipzy_latest/build/firebase_messaging/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:13:5-46:19
@@ -88,16 +90,18 @@ MERGED from [com.google.android.play:core-common:2.0.3] /Users/admin/.gradle/cac
 		INJECTED from /Users/admin/Desktop/flutter_projects/flipzy_latest/android/app/src/main/AndroidManifest.xml
 		ADDED from /Users/admin/Desktop/flutter_projects/flipzy_latest/android/app/src/main/AndroidManifest.xml:15:9-42
 manifest
-ADDED from /Users/admin/Desktop/flutter_projects/flipzy_latest/android/app/src/main/AndroidManifest.xml:1:1-57:12
-INJECTED from /Users/admin/Desktop/flutter_projects/flipzy_latest/android/app/src/main/AndroidManifest.xml:1:1-57:12
-INJECTED from /Users/admin/Desktop/flutter_projects/flipzy_latest/android/app/src/main/AndroidManifest.xml:1:1-57:12
-INJECTED from /Users/admin/Desktop/flutter_projects/flipzy_latest/android/app/src/main/AndroidManifest.xml:1:1-57:12
+ADDED from /Users/admin/Desktop/flutter_projects/flipzy_latest/android/app/src/main/AndroidManifest.xml:1:1-76:12
+INJECTED from /Users/admin/Desktop/flutter_projects/flipzy_latest/android/app/src/main/AndroidManifest.xml:1:1-76:12
+INJECTED from /Users/admin/Desktop/flutter_projects/flipzy_latest/android/app/src/main/AndroidManifest.xml:1:1-76:12
+INJECTED from /Users/admin/Desktop/flutter_projects/flipzy_latest/android/app/src/main/AndroidManifest.xml:1:1-76:12
 MERGED from [:app_set_id] /Users/admin/Desktop/flutter_projects/flipzy_latest/build/app_set_id/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:2:1-7:12
 MERGED from [:geolocator_android] /Users/admin/Desktop/flutter_projects/flipzy_latest/build/geolocator_android/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:2:1-15:12
 MERGED from [com.google.android.gms:play-services-location:21.2.0] /Users/admin/.gradle/caches/8.11.1/transforms/105f847b4d396461ad0a72ac0864e227/transformed/jetified-play-services-location-21.2.0/AndroidManifest.xml:2:1-9:12
 MERGED from [:image_picker_android] /Users/admin/Desktop/flutter_projects/flipzy_latest/build/image_picker_android/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:2:1-34:12
 MERGED from [:file_picker] /Users/admin/Desktop/flutter_projects/flipzy_latest/build/file_picker/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:2:1-15:12
 MERGED from [:flutter_local_notifications] /Users/admin/Desktop/flutter_projects/flipzy_latest/build/flutter_local_notifications/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:2:1-10:12
+MERGED from [:url_launcher_android] /Users/admin/Desktop/flutter_projects/flipzy_latest/build/url_launcher_android/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:2:1-14:12
+MERGED from [:connectivity_plus] /Users/admin/Desktop/flutter_projects/flipzy_latest/build/connectivity_plus/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:2:1-9:12
 MERGED from [:firebase_auth] /Users/admin/Desktop/flutter_projects/flipzy_latest/build/firebase_auth/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:2:1-15:12
 MERGED from [:firebase_messaging] /Users/admin/Desktop/flutter_projects/flipzy_latest/build/firebase_messaging/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:2:1-48:12
 MERGED from [:firebase_core] /Users/admin/Desktop/flutter_projects/flipzy_latest/build/firebase_core/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:2:1-15:12
@@ -151,7 +155,7 @@ MERGED from [com.google.firebase:firebase-measurement-connector:19.0.0] /Users/a
 MERGED from [com.google.android.gms:play-services-basement:18.4.0] /Users/admin/.gradle/caches/8.11.1/transforms/a36fcf300b87f60f79b9ea1ffbeb8a6a/transformed/jetified-play-services-basement-18.4.0/AndroidManifest.xml:2:1-9:12
 MERGED from [androidx.fragment:fragment:1.7.1] /Users/admin/.gradle/caches/8.11.1/transforms/6ba857622a22f845dd31be2021a0b786/transformed/fragment-1.7.1/AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.activity:activity:1.9.1] /Users/admin/.gradle/caches/8.11.1/transforms/34a48d1dff5567ad9dd12fbb05b0a297/transformed/jetified-activity-1.9.1/AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.browser:browser:1.5.0] /Users/admin/.gradle/caches/8.11.1/transforms/4f9e99017a3690f1c954d8ecc967ae21/transformed/browser-1.5.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.browser:browser:1.8.0] /Users/admin/.gradle/caches/8.11.1/transforms/e7b71e21756f864161ac97d51a820217/transformed/browser-1.8.0/AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.webkit:webkit:1.12.0] /Users/admin/.gradle/caches/8.11.1/transforms/bd7692250e2083b5b0c548c46ccda861/transformed/webkit-1.12.0/AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] /Users/admin/.gradle/caches/8.11.1/transforms/5f5d6dc4cd388a52cab4a7c77759469f/transformed/drawerlayout-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.viewpager:viewpager:1.0.0] /Users/admin/.gradle/caches/8.11.1/transforms/dc1f335dd34ab8323a2654bcede16e39/transformed/viewpager-1.0.0/AndroidManifest.xml:17:1-22:12
@@ -227,19 +231,29 @@ ADDED from /Users/admin/Desktop/flutter_projects/flipzy_latest/android/app/src/m
 	android:name
 		ADDED from /Users/admin/Desktop/flutter_projects/flipzy_latest/android/app/src/main/AndroidManifest.xml:10:22-78
 queries
-ADDED from /Users/admin/Desktop/flutter_projects/flipzy_latest/android/app/src/main/AndroidManifest.xml:51:5-56:15
+ADDED from /Users/admin/Desktop/flutter_projects/flipzy_latest/android/app/src/main/AndroidManifest.xml:47:5-62:15
 MERGED from [:file_picker] /Users/admin/Desktop/flutter_projects/flipzy_latest/build/file_picker/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:7:5-13:15
 MERGED from [:file_picker] /Users/admin/Desktop/flutter_projects/flipzy_latest/build/file_picker/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:7:5-13:15
-intent#action:name:android.intent.action.PROCESS_TEXT+data:mimeType:text/plain
-ADDED from /Users/admin/Desktop/flutter_projects/flipzy_latest/android/app/src/main/AndroidManifest.xml:52:9-55:18
-action#android.intent.action.PROCESS_TEXT
-ADDED from /Users/admin/Desktop/flutter_projects/flipzy_latest/android/app/src/main/AndroidManifest.xml:53:13-72
+intent#action:name:android.intent.action.VIEW+data:scheme:sms
+ADDED from /Users/admin/Desktop/flutter_projects/flipzy_latest/android/app/src/main/AndroidManifest.xml:49:9-52:18
+action#android.intent.action.VIEW
+ADDED from /Users/admin/Desktop/flutter_projects/flipzy_latest/android/app/src/main/AndroidManifest.xml:50:13-65
 	android:name
-		ADDED from /Users/admin/Desktop/flutter_projects/flipzy_latest/android/app/src/main/AndroidManifest.xml:53:21-70
+		ADDED from /Users/admin/Desktop/flutter_projects/flipzy_latest/android/app/src/main/AndroidManifest.xml:50:21-62
 data
-ADDED from /Users/admin/Desktop/flutter_projects/flipzy_latest/android/app/src/main/AndroidManifest.xml:54:13-50
+ADDED from /Users/admin/Desktop/flutter_projects/flipzy_latest/android/app/src/main/AndroidManifest.xml:51:13-42
+	android:scheme
+		ADDED from /Users/admin/Desktop/flutter_projects/flipzy_latest/android/app/src/main/AndroidManifest.xml:51:19-39
 	android:mimeType
-		ADDED from /Users/admin/Desktop/flutter_projects/flipzy_latest/android/app/src/main/AndroidManifest.xml:54:19-48
+		ADDED from /Users/admin/Desktop/flutter_projects/flipzy_latest/android/app/src/main/AndroidManifest.xml:73:19-48
+intent#action:name:android.intent.action.VIEW+data:scheme:tel
+ADDED from /Users/admin/Desktop/flutter_projects/flipzy_latest/android/app/src/main/AndroidManifest.xml:54:9-57:18
+intent#action:name:android.support.customtabs.action.CustomTabsService
+ADDED from /Users/admin/Desktop/flutter_projects/flipzy_latest/android/app/src/main/AndroidManifest.xml:59:9-61:18
+action#android.support.customtabs.action.CustomTabsService
+ADDED from /Users/admin/Desktop/flutter_projects/flipzy_latest/android/app/src/main/AndroidManifest.xml:60:13-90
+	android:name
+		ADDED from /Users/admin/Desktop/flutter_projects/flipzy_latest/android/app/src/main/AndroidManifest.xml:60:21-87
 activity#com.app.flipzy.MainActivity
 ADDED from /Users/admin/Desktop/flutter_projects/flipzy_latest/android/app/src/main/AndroidManifest.xml:18:9-39:20
 	android:launchMode
@@ -280,6 +294,12 @@ ADDED from /Users/admin/Desktop/flutter_projects/flipzy_latest/android/app/src/m
 		ADDED from /Users/admin/Desktop/flutter_projects/flipzy_latest/android/app/src/main/AndroidManifest.xml:44:13-30
 	android:name
 		ADDED from /Users/admin/Desktop/flutter_projects/flipzy_latest/android/app/src/main/AndroidManifest.xml:43:13-44
+intent#action:name:android.intent.action.PROCESS_TEXT+data:mimeType:text/plain
+ADDED from /Users/admin/Desktop/flutter_projects/flipzy_latest/android/app/src/main/AndroidManifest.xml:71:9-74:18
+action#android.intent.action.PROCESS_TEXT
+ADDED from /Users/admin/Desktop/flutter_projects/flipzy_latest/android/app/src/main/AndroidManifest.xml:72:13-72
+	android:name
+		ADDED from /Users/admin/Desktop/flutter_projects/flipzy_latest/android/app/src/main/AndroidManifest.xml:72:21-70
 uses-sdk
 INJECTED from /Users/admin/Desktop/flutter_projects/flipzy_latest/android/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from /Users/admin/Desktop/flutter_projects/flipzy_latest/android/app/src/main/AndroidManifest.xml
@@ -296,6 +316,10 @@ MERGED from [:file_picker] /Users/admin/Desktop/flutter_projects/flipzy_latest/b
 MERGED from [:file_picker] /Users/admin/Desktop/flutter_projects/flipzy_latest/build/file_picker/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:5:5-44
 MERGED from [:flutter_local_notifications] /Users/admin/Desktop/flutter_projects/flipzy_latest/build/flutter_local_notifications/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:5:5-44
 MERGED from [:flutter_local_notifications] /Users/admin/Desktop/flutter_projects/flipzy_latest/build/flutter_local_notifications/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:5:5-44
+MERGED from [:url_launcher_android] /Users/admin/Desktop/flutter_projects/flipzy_latest/build/url_launcher_android/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:5:5-44
+MERGED from [:url_launcher_android] /Users/admin/Desktop/flutter_projects/flipzy_latest/build/url_launcher_android/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:5:5-44
+MERGED from [:connectivity_plus] /Users/admin/Desktop/flutter_projects/flipzy_latest/build/connectivity_plus/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:5:5-44
+MERGED from [:connectivity_plus] /Users/admin/Desktop/flutter_projects/flipzy_latest/build/connectivity_plus/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:5:5-44
 MERGED from [:firebase_auth] /Users/admin/Desktop/flutter_projects/flipzy_latest/build/firebase_auth/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:5:5-44
 MERGED from [:firebase_auth] /Users/admin/Desktop/flutter_projects/flipzy_latest/build/firebase_auth/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:5:5-44
 MERGED from [:firebase_messaging] /Users/admin/Desktop/flutter_projects/flipzy_latest/build/firebase_messaging/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:5:5-44
@@ -402,8 +426,8 @@ MERGED from [androidx.fragment:fragment:1.7.1] /Users/admin/.gradle/caches/8.11.
 MERGED from [androidx.fragment:fragment:1.7.1] /Users/admin/.gradle/caches/8.11.1/transforms/6ba857622a22f845dd31be2021a0b786/transformed/fragment-1.7.1/AndroidManifest.xml:5:5-44
 MERGED from [androidx.activity:activity:1.9.1] /Users/admin/.gradle/caches/8.11.1/transforms/34a48d1dff5567ad9dd12fbb05b0a297/transformed/jetified-activity-1.9.1/AndroidManifest.xml:20:5-44
 MERGED from [androidx.activity:activity:1.9.1] /Users/admin/.gradle/caches/8.11.1/transforms/34a48d1dff5567ad9dd12fbb05b0a297/transformed/jetified-activity-1.9.1/AndroidManifest.xml:20:5-44
-MERGED from [androidx.browser:browser:1.5.0] /Users/admin/.gradle/caches/8.11.1/transforms/4f9e99017a3690f1c954d8ecc967ae21/transformed/browser-1.5.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.browser:browser:1.5.0] /Users/admin/.gradle/caches/8.11.1/transforms/4f9e99017a3690f1c954d8ecc967ae21/transformed/browser-1.5.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.browser:browser:1.8.0] /Users/admin/.gradle/caches/8.11.1/transforms/e7b71e21756f864161ac97d51a820217/transformed/browser-1.8.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.browser:browser:1.8.0] /Users/admin/.gradle/caches/8.11.1/transforms/e7b71e21756f864161ac97d51a820217/transformed/browser-1.8.0/AndroidManifest.xml:5:5-44
 MERGED from [androidx.webkit:webkit:1.12.0] /Users/admin/.gradle/caches/8.11.1/transforms/bd7692250e2083b5b0c548c46ccda861/transformed/webkit-1.12.0/AndroidManifest.xml:5:5-44
 MERGED from [androidx.webkit:webkit:1.12.0] /Users/admin/.gradle/caches/8.11.1/transforms/bd7692250e2083b5b0c548c46ccda861/transformed/webkit-1.12.0/AndroidManifest.xml:5:5-44
 MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] /Users/admin/.gradle/caches/8.11.1/transforms/5f5d6dc4cd388a52cab4a7c77759469f/transformed/drawerlayout-1.0.0/AndroidManifest.xml:20:5-44
@@ -536,6 +560,34 @@ MERGED from [com.google.firebase:firebase-messaging:24.1.1] /Users/admin/.gradle
 MERGED from [com.google.firebase:firebase-messaging:24.1.1] /Users/admin/.gradle/caches/8.11.1/transforms/56c26a24fcc8006f20614fe1ceb319cb/transformed/jetified-firebase-messaging-24.1.1/AndroidManifest.xml:23:5-77
 	android:name
 		ADDED from [:flutter_local_notifications] /Users/admin/Desktop/flutter_projects/flipzy_latest/build/flutter_local_notifications/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:8:22-74
+activity#io.flutter.plugins.urllauncher.WebViewActivity
+ADDED from [:url_launcher_android] /Users/admin/Desktop/flutter_projects/flipzy_latest/build/url_launcher_android/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:8:9-11:74
+	android:exported
+		ADDED from [:url_launcher_android] /Users/admin/Desktop/flutter_projects/flipzy_latest/build/url_launcher_android/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:10:13-37
+	android:theme
+		ADDED from [:url_launcher_android] /Users/admin/Desktop/flutter_projects/flipzy_latest/build/url_launcher_android/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:11:13-71
+	android:name
+		ADDED from [:url_launcher_android] /Users/admin/Desktop/flutter_projects/flipzy_latest/build/url_launcher_android/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:9:13-74
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from [:connectivity_plus] /Users/admin/Desktop/flutter_projects/flipzy_latest/build/connectivity_plus/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:7:5-79
+MERGED from [:firebase_messaging] /Users/admin/Desktop/flutter_projects/flipzy_latest/build/firebase_messaging/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:9:5-79
+MERGED from [:firebase_messaging] /Users/admin/Desktop/flutter_projects/flipzy_latest/build/firebase_messaging/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:9:5-79
+MERGED from [com.google.firebase:firebase-auth:23.2.0] /Users/admin/.gradle/caches/8.11.1/transforms/882c07cff0e2706b0e62483f01491a00/transformed/jetified-firebase-auth-23.2.0/AndroidManifest.xml:26:5-79
+MERGED from [com.google.firebase:firebase-auth:23.2.0] /Users/admin/.gradle/caches/8.11.1/transforms/882c07cff0e2706b0e62483f01491a00/transformed/jetified-firebase-auth-23.2.0/AndroidManifest.xml:26:5-79
+MERGED from [com.google.firebase:firebase-messaging:24.1.1] /Users/admin/.gradle/caches/8.11.1/transforms/56c26a24fcc8006f20614fe1ceb319cb/transformed/jetified-firebase-messaging-24.1.1/AndroidManifest.xml:22:5-79
+MERGED from [com.google.firebase:firebase-messaging:24.1.1] /Users/admin/.gradle/caches/8.11.1/transforms/56c26a24fcc8006f20614fe1ceb319cb/transformed/jetified-firebase-messaging-24.1.1/AndroidManifest.xml:22:5-79
+MERGED from [com.google.firebase:firebase-installations:18.0.0] /Users/admin/.gradle/caches/8.11.1/transforms/741a00f31bb750be070ae36888ac4c69/transformed/jetified-firebase-installations-18.0.0/AndroidManifest.xml:7:5-79
+MERGED from [com.google.firebase:firebase-installations:18.0.0] /Users/admin/.gradle/caches/8.11.1/transforms/741a00f31bb750be070ae36888ac4c69/transformed/jetified-firebase-installations-18.0.0/AndroidManifest.xml:7:5-79
+MERGED from [com.google.android.recaptcha:recaptcha:18.6.1] /Users/admin/.gradle/caches/8.11.1/transforms/454e00d99ab9f58e0c50d39353837012/transformed/jetified-recaptcha-18.6.1/AndroidManifest.xml:8:5-79
+MERGED from [com.google.android.recaptcha:recaptcha:18.6.1] /Users/admin/.gradle/caches/8.11.1/transforms/454e00d99ab9f58e0c50d39353837012/transformed/jetified-recaptcha-18.6.1/AndroidManifest.xml:8:5-79
+MERGED from [com.google.android.gms:play-services-cloud-messaging:17.2.0] /Users/admin/.gradle/caches/8.11.1/transforms/55e13457aec64a17a173bf73518f069f/transformed/jetified-play-services-cloud-messaging-17.2.0/AndroidManifest.xml:7:5-79
+MERGED from [com.google.android.gms:play-services-cloud-messaging:17.2.0] /Users/admin/.gradle/caches/8.11.1/transforms/55e13457aec64a17a173bf73518f069f/transformed/jetified-play-services-cloud-messaging-17.2.0/AndroidManifest.xml:7:5-79
+MERGED from [com.google.android.datatransport:transport-backend-cct:3.1.9] /Users/admin/.gradle/caches/8.11.1/transforms/ec3e7baadf91b48291d1fe563b31d74f/transformed/jetified-transport-backend-cct-3.1.9/AndroidManifest.xml:24:5-79
+MERGED from [com.google.android.datatransport:transport-backend-cct:3.1.9] /Users/admin/.gradle/caches/8.11.1/transforms/ec3e7baadf91b48291d1fe563b31d74f/transformed/jetified-transport-backend-cct-3.1.9/AndroidManifest.xml:24:5-79
+MERGED from [com.google.android.datatransport:transport-runtime:3.1.9] /Users/admin/.gradle/caches/8.11.1/transforms/345525c1bbfeb943ac60457797dff39c/transformed/jetified-transport-runtime-3.1.9/AndroidManifest.xml:22:5-79
+MERGED from [com.google.android.datatransport:transport-runtime:3.1.9] /Users/admin/.gradle/caches/8.11.1/transforms/345525c1bbfeb943ac60457797dff39c/transformed/jetified-transport-runtime-3.1.9/AndroidManifest.xml:22:5-79
+	android:name
+		ADDED from [:connectivity_plus] /Users/admin/Desktop/flutter_projects/flipzy_latest/build/connectivity_plus/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:7:22-76
 service#com.google.firebase.components.ComponentDiscoveryService
 ADDED from [:firebase_auth] /Users/admin/Desktop/flutter_projects/flipzy_latest/build/firebase_auth/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:8:9-12:19
 MERGED from [:firebase_messaging] /Users/admin/Desktop/flutter_projects/flipzy_latest/build/firebase_messaging/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:35:9-39:19
@@ -576,24 +628,6 @@ MERGED from [com.google.android.gms:play-services-cloud-messaging:17.2.0] /Users
 MERGED from [com.google.android.gms:play-services-cloud-messaging:17.2.0] /Users/admin/.gradle/caches/8.11.1/transforms/55e13457aec64a17a173bf73518f069f/transformed/jetified-play-services-cloud-messaging-17.2.0/AndroidManifest.xml:9:5-68
 	android:name
 		ADDED from [:firebase_messaging] /Users/admin/Desktop/flutter_projects/flipzy_latest/build/firebase_messaging/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:8:22-65
-uses-permission#android.permission.ACCESS_NETWORK_STATE
-ADDED from [:firebase_messaging] /Users/admin/Desktop/flutter_projects/flipzy_latest/build/firebase_messaging/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:9:5-79
-MERGED from [com.google.firebase:firebase-auth:23.2.0] /Users/admin/.gradle/caches/8.11.1/transforms/882c07cff0e2706b0e62483f01491a00/transformed/jetified-firebase-auth-23.2.0/AndroidManifest.xml:26:5-79
-MERGED from [com.google.firebase:firebase-auth:23.2.0] /Users/admin/.gradle/caches/8.11.1/transforms/882c07cff0e2706b0e62483f01491a00/transformed/jetified-firebase-auth-23.2.0/AndroidManifest.xml:26:5-79
-MERGED from [com.google.firebase:firebase-messaging:24.1.1] /Users/admin/.gradle/caches/8.11.1/transforms/56c26a24fcc8006f20614fe1ceb319cb/transformed/jetified-firebase-messaging-24.1.1/AndroidManifest.xml:22:5-79
-MERGED from [com.google.firebase:firebase-messaging:24.1.1] /Users/admin/.gradle/caches/8.11.1/transforms/56c26a24fcc8006f20614fe1ceb319cb/transformed/jetified-firebase-messaging-24.1.1/AndroidManifest.xml:22:5-79
-MERGED from [com.google.firebase:firebase-installations:18.0.0] /Users/admin/.gradle/caches/8.11.1/transforms/741a00f31bb750be070ae36888ac4c69/transformed/jetified-firebase-installations-18.0.0/AndroidManifest.xml:7:5-79
-MERGED from [com.google.firebase:firebase-installations:18.0.0] /Users/admin/.gradle/caches/8.11.1/transforms/741a00f31bb750be070ae36888ac4c69/transformed/jetified-firebase-installations-18.0.0/AndroidManifest.xml:7:5-79
-MERGED from [com.google.android.recaptcha:recaptcha:18.6.1] /Users/admin/.gradle/caches/8.11.1/transforms/454e00d99ab9f58e0c50d39353837012/transformed/jetified-recaptcha-18.6.1/AndroidManifest.xml:8:5-79
-MERGED from [com.google.android.recaptcha:recaptcha:18.6.1] /Users/admin/.gradle/caches/8.11.1/transforms/454e00d99ab9f58e0c50d39353837012/transformed/jetified-recaptcha-18.6.1/AndroidManifest.xml:8:5-79
-MERGED from [com.google.android.gms:play-services-cloud-messaging:17.2.0] /Users/admin/.gradle/caches/8.11.1/transforms/55e13457aec64a17a173bf73518f069f/transformed/jetified-play-services-cloud-messaging-17.2.0/AndroidManifest.xml:7:5-79
-MERGED from [com.google.android.gms:play-services-cloud-messaging:17.2.0] /Users/admin/.gradle/caches/8.11.1/transforms/55e13457aec64a17a173bf73518f069f/transformed/jetified-play-services-cloud-messaging-17.2.0/AndroidManifest.xml:7:5-79
-MERGED from [com.google.android.datatransport:transport-backend-cct:3.1.9] /Users/admin/.gradle/caches/8.11.1/transforms/ec3e7baadf91b48291d1fe563b31d74f/transformed/jetified-transport-backend-cct-3.1.9/AndroidManifest.xml:24:5-79
-MERGED from [com.google.android.datatransport:transport-backend-cct:3.1.9] /Users/admin/.gradle/caches/8.11.1/transforms/ec3e7baadf91b48291d1fe563b31d74f/transformed/jetified-transport-backend-cct-3.1.9/AndroidManifest.xml:24:5-79
-MERGED from [com.google.android.datatransport:transport-runtime:3.1.9] /Users/admin/.gradle/caches/8.11.1/transforms/345525c1bbfeb943ac60457797dff39c/transformed/jetified-transport-runtime-3.1.9/AndroidManifest.xml:22:5-79
-MERGED from [com.google.android.datatransport:transport-runtime:3.1.9] /Users/admin/.gradle/caches/8.11.1/transforms/345525c1bbfeb943ac60457797dff39c/transformed/jetified-transport-runtime-3.1.9/AndroidManifest.xml:22:5-79
-	android:name
-		ADDED from [:firebase_messaging] /Users/admin/Desktop/flutter_projects/flipzy_latest/build/firebase_messaging/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:9:22-76
 service#io.flutter.plugins.firebase.messaging.FlutterFirebaseMessagingBackgroundService
 ADDED from [:firebase_messaging] /Users/admin/Desktop/flutter_projects/flipzy_latest/build/firebase_messaging/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml:14:9-17:72
 	android:exported
@@ -678,10 +712,6 @@ ADDED from [com.google.firebase:firebase-auth:23.2.0] /Users/admin/.gradle/cache
 		ADDED from [com.google.firebase:firebase-auth:23.2.0] /Users/admin/.gradle/caches/8.11.1/transforms/882c07cff0e2706b0e62483f01491a00/transformed/jetified-firebase-auth-23.2.0/AndroidManifest.xml:30:13-80
 intent-filter#action:name:android.intent.action.VIEW+category:name:android.intent.category.BROWSABLE+category:name:android.intent.category.DEFAULT+data:host:firebase.auth+data:path:/+data:scheme:genericidp
 ADDED from [com.google.firebase:firebase-auth:23.2.0] /Users/admin/.gradle/caches/8.11.1/transforms/882c07cff0e2706b0e62483f01491a00/transformed/jetified-firebase-auth-23.2.0/AndroidManifest.xml:35:13-45:29
-action#android.intent.action.VIEW
-ADDED from [com.google.firebase:firebase-auth:23.2.0] /Users/admin/.gradle/caches/8.11.1/transforms/882c07cff0e2706b0e62483f01491a00/transformed/jetified-firebase-auth-23.2.0/AndroidManifest.xml:36:17-69
-	android:name
-		ADDED from [com.google.firebase:firebase-auth:23.2.0] /Users/admin/.gradle/caches/8.11.1/transforms/882c07cff0e2706b0e62483f01491a00/transformed/jetified-firebase-auth-23.2.0/AndroidManifest.xml:36:25-66
 category#android.intent.category.DEFAULT
 ADDED from [com.google.firebase:firebase-auth:23.2.0] /Users/admin/.gradle/caches/8.11.1/transforms/882c07cff0e2706b0e62483f01491a00/transformed/jetified-firebase-auth-23.2.0/AndroidManifest.xml:38:17-76
 	android:name

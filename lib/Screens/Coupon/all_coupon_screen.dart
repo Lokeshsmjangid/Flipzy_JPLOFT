@@ -2,6 +2,7 @@ import 'package:flipzy/Api/api_models/coupon_model.dart';
 import 'package:flipzy/Api/repos/apply_coupons_repo.dart';
 import 'package:flipzy/controllers/all_coupon_ctrl.dart';
 import 'package:flipzy/controllers/checkOut_controller.dart';
+import 'package:flipzy/custom_widgets/customAppBar.dart';
 import 'package:flipzy/dialogues/apply_coupon_success_dialogue.dart';
 import 'package:flipzy/resources/app_color.dart';
 import 'package:flipzy/resources/custom_loader.dart';
@@ -16,15 +17,24 @@ class CouponScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: addText600('APPLY COUPON', fontSize: 16),
+      appBar: customAppBar(
+        backgroundColor: AppColors.bgColor,
+        leadingWidth: MediaQuery.of(context).size.width * 0.3 ,
+        leadingIcon: IconButton(
+            onPressed: (){
+              Get.back(result: Get.find<AllCouponCtrl>().appliedCoupons.isNotEmpty?Get.find<AllCouponCtrl>().appliedCoupons:[]);
+              },
+            icon: Row(
+              children: [
+                Icon(Icons.arrow_back_ios_outlined, color: AppColors.blackColor,size: 14,),
+                addText400("Back", color: AppColors.blackColor,fontSize: 12,fontFamily: 'Poppins'),
+              ],
+            ).marginOnly(left: 12)),
         centerTitle: true,
-        leading: BackButton(onPressed: (){
-          Get.back(result: Get.find<AllCouponCtrl>().appliedCoupons.isNotEmpty?Get.find<AllCouponCtrl>().appliedCoupons:[]);
-        },),
-        backgroundColor: Colors.white,
-        foregroundColor: Colors.black,
-        elevation: 0,
+        titleTxt: "Apply Coupon",
+        titleColor: AppColors.blackColor,
+        titleFontSize: 16,
+        bottomLine: true,
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),

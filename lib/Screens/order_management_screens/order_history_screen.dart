@@ -3,6 +3,7 @@ import 'package:flipzy/Api/api_models/order_list_model.dart';
 import 'package:flipzy/Api/repos/give_review_repo.dart';
 import 'package:flipzy/controllers/order_list_controller.dart';
 import 'package:flipzy/custom_widgets/CustomTextField.dart';
+import 'package:flipzy/custom_widgets/customAppBar.dart';
 import 'package:flipzy/dialogues/review_dialogue.dart';
 import 'package:flipzy/resources/app_assets.dart';
 import 'package:flipzy/resources/app_color.dart';
@@ -30,15 +31,33 @@ class _OrderHistoryScreenState extends State<OrderHistoryScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.whiteColor,
+      appBar: customAppBar(
+        backgroundColor: AppColors.bgColor,
+        leadingWidth: MediaQuery.of(context).size.width * 0.3 ,
+        leadingIcon: IconButton(
+            onPressed: (){
+              Get.back();},
+            icon: Row(
+              children: [
+                Icon(Icons.arrow_back_ios_outlined, color: AppColors.blackColor,size: 14,),
+                addText400("Back", color: AppColors.blackColor,fontSize: 12,fontFamily: 'Poppins'),
+              ],
+            ).marginOnly(left: 12)),
+        centerTitle: true,
+        titleTxt: "Order History",
+        titleColor: AppColors.blackColor,
+        titleFontSize: 16,
+        bottomLine: false,
+      ),
       body: GetBuilder< OrderListController>(builder: (logic) {
         return Column(
           children: [
-            addHeight(44),
-            backAppBar(onTapBack: () {
-              Get.back();
-            }, title: 'Order History'),
+            // addHeight(44),
+            // backAppBar(onTapBack: () {
+            //   Get.back();
+            // }, title: 'Order History'),
 
-            addHeight(20),
+            addHeight(6),
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 7),
               child: CustomTextField(

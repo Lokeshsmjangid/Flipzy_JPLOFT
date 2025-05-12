@@ -1,4 +1,5 @@
 import 'package:flipzy/controllers/rating_review_controller.dart';
+import 'package:flipzy/custom_widgets/customAppBar.dart' show customAppBar;
 import 'package:flipzy/resources/app_assets.dart';
 import 'package:flipzy/resources/app_color.dart';
 import 'package:flipzy/resources/app_routers.dart';
@@ -26,15 +27,33 @@ class _ReviewsRatingScreenState extends State<ReviewsRatingScreen> {
     return Scaffold(
       resizeToAvoidBottomInset: true,
       backgroundColor: AppColors.whiteColor,
+      appBar: customAppBar(
+        backgroundColor: AppColors.bgColor,
+        leadingWidth: MediaQuery.of(context).size.width * 0.3 ,
+        leadingIcon: IconButton(
+            onPressed: (){
+              Get.back();},
+            icon: Row(
+              children: [
+                Icon(Icons.arrow_back_ios_outlined, color: AppColors.blackColor,size: 14,),
+                addText400("Back", color: AppColors.blackColor,fontSize: 12,fontFamily: 'Poppins'),
+              ],
+            ).marginOnly(left: 12)),
+        centerTitle: true,
+        titleTxt: "Reviews and Ratings",
+        titleColor: AppColors.blackColor,
+        titleFontSize: 16,
+        bottomLine: false,
+      ),
       body: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
 
             addHeight(20),
-            backAppBar(onTapBack: () {
-              Get.back();
-            }, title: 'Reviews and Ratings'),
+            // backAppBar(onTapBack: () {
+            //   Get.back();
+            // }, title: 'Reviews and Ratings'),
             // addHeight(20),
 
             Expanded(child: GetBuilder<RatingReviewsController>(builder: (logic) {

@@ -43,6 +43,7 @@ class ChatWithUser {
   DateTime? createdAt;
   dynamic mobileNumber;
   bool? isOnline;
+  bool isBlock;
   dynamic unreadCount;
 
   ChatWithUser({
@@ -56,6 +57,7 @@ class ChatWithUser {
     this.createdAt,
     this.mobileNumber,
     this.isOnline,
+    this.isBlock = false,
     this.unreadCount
   });
 
@@ -64,6 +66,7 @@ class ChatWithUser {
     isRead: json["isRead"],
     mobileNumber: json["mobileNumber"],
     isOnline: json["isOnline"],
+    isBlock: json["isBlock"],
     unreadCount: json["unreadCount"],
     session: json["session"],
     userId: json["userId"],
@@ -78,6 +81,7 @@ class ChatWithUser {
     "isRead": isRead,
     "mobileNumber": mobileNumber,
     "isOnline": isOnline,
+    "isBlock": isBlock,
     "unreadCount": unreadCount,
     "session": session,
     "userId": userId,

@@ -27,20 +27,15 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
       appBar: customAppBar(
         backgroundColor: AppColors.whiteColor,
         leadingWidth: MediaQuery.of(context).size.width * 0.3,
-        leadingIcon: GestureDetector(
-          onTap: () {
-            Get.back();
-          },
-          child: Row(
-            children: [
-              Icon(Icons.arrow_back_ios_outlined, color: AppColors.blackColor,
-                size: 14,),
-              addText400("Back", color: AppColors.blackColor,
-                  fontSize: 12,
-                  fontFamily: 'Poppins'),
-            ],
-          ).marginOnly(left: 12),
-        ),
+        leadingIcon: IconButton(
+            onPressed: (){
+              Get.back();},
+            icon: Row(
+              children: [
+                Icon(Icons.arrow_back_ios_outlined, color: AppColors.blackColor,size: 14,),
+                addText400("Back", color: AppColors.blackColor,fontSize: 12,fontFamily: 'Poppins'),
+              ],
+            ).marginOnly(left: 12)),
         centerTitle: true,
         titleTxt: "Saved Address",
         titleColor: AppColors.blackColor,

@@ -44,7 +44,7 @@ class ChatListingScreen extends StatelessWidget {
                   child: Icon(Icons.search, color: Colors.black,),
                 ).marginOnly(right: 10),
               ),
-            ).marginSymmetric(horizontal: 16),
+            ).marginSymmetric(horizontal: 16,vertical: 4),
 
             Expanded(
               child: cntrl.isDataLoading
@@ -190,7 +190,7 @@ class ChatListingScreen extends StatelessWidget {
                       ),
                     );
                   }).marginOnly(bottom: 90)
-                  : Center(child: addText600('No chat found'),),
+                  : Center(child: addText600('No Chat Found')),
             )
           ],
         );

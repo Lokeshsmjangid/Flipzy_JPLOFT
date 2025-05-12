@@ -27,6 +27,7 @@
 -keep class io.flutter.plugins.firebase.messaging.FlutterFirebaseMessagingReceiver { <init>(); }
 -keep class io.flutter.plugins.firebase.messaging.FlutterFirebaseMessagingService { <init>(); }
 -keep class io.flutter.plugins.imagepicker.ImagePickerFileProvider { <init>(); }
+-keep class io.flutter.plugins.urllauncher.WebViewActivity { <init>(); }
 -keep class android.widget.Space { <init>(android.content.Context, android.util.AttributeSet); }
 
 -keep class androidx.appcompat.app.AlertController$RecycleListView { <init>(android.content.Context, android.util.AttributeSet); }
@@ -769,7 +770,7 @@
   public *** apply(***);
 }
 # End of content from /Users/admin/.gradle/caches/8.11.1/transforms/2a40fdafec25e3387c9b260ce89cd658/transformed/jetified-core-1.0.0/proguard.txt
-# The proguard configuration file for the following section is /Users/admin/.gradle/caches/8.11.1/transforms/132d556e1d1b77767f55ac002f7a9d59/transformed/rules/lib/META-INF/proguard/androidx-annotations.pro
+# The proguard configuration file for the following section is /Users/admin/.gradle/caches/8.11.1/transforms/5e98cf9a9ce12888a1f84b78e76feeff/transformed/rules/lib/META-INF/proguard/androidx-annotations.pro
 -keep,allowobfuscation @interface androidx.annotation.Keep
 -keep @androidx.annotation.Keep class * {*;}
 
@@ -789,7 +790,7 @@
   @androidx.annotation.DoNotInline <methods>;
 }
 
-# End of content from /Users/admin/.gradle/caches/8.11.1/transforms/132d556e1d1b77767f55ac002f7a9d59/transformed/rules/lib/META-INF/proguard/androidx-annotations.pro
+# End of content from /Users/admin/.gradle/caches/8.11.1/transforms/5e98cf9a9ce12888a1f84b78e76feeff/transformed/rules/lib/META-INF/proguard/androidx-annotations.pro
 # The proguard configuration file for the following section is /Users/admin/.gradle/caches/8.11.1/transforms/6dca958e2b28ef1a465069942e1f34a8/transformed/rules/lib/META-INF/proguard/gson.pro
 ### Gson ProGuard and R8 rules which are relevant for all users
 ### This file is automatically recognized by ProGuard and R8, see https://developer.android.com/build/shrink-code#configuration-files

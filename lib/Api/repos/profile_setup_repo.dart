@@ -81,9 +81,17 @@ Future<CommonModelResponse> profileSetupApi({
   // on SocketException {
   //   showToastError('No Internet');
   // }
+  // catch (e) {
+  //   log('❌ $e');
+  //   showToastError('$e');
+  // }
   catch (e) {
-    log('❌ $e');
-    showToastError('$e');
+    if (e.toString().contains('Failed host lookup')) {
+      showToastError('Cannot connect to server. Check your network or domain.');
+    } else {
+      showToastError('Something went wrong');
+      log('❗ Something went wrong: $e');
+    }
   }
 
   return CommonModelResponse.fromJson({});

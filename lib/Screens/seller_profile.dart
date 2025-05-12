@@ -87,17 +87,15 @@ class _SellerProfileScreenState extends State<SellerProfileScreen> {
       appBar: customAppBar(
         backgroundColor: AppColors.whiteColor,
         leadingWidth: MediaQuery.of(context).size.width * 0.3 ,
-        leadingIcon: GestureDetector(
-          onTap: () {
-            Get.back();
-          },
-          child: Row(
-            children: [
-              Icon(Icons.arrow_back_ios_outlined, color: AppColors.blackColor,),
-              addText400("Back", color: AppColors.blackColor),
-            ],
-          ),
-        ),
+        leadingIcon: IconButton(
+            onPressed: (){
+              Get.back();},
+            icon: Row(
+              children: [
+                Icon(Icons.arrow_back_ios_outlined, color: AppColors.blackColor,size: 14,),
+                addText400("Back", color: AppColors.blackColor,fontSize: 12,fontFamily: 'Poppins'),
+              ],
+            ).marginOnly(left: 12)),
         centerTitle: true,
         titleTxt: "${widget.sellerName?.capitalize}",
         titleColor: AppColors.blackColor,

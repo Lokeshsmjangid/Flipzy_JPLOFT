@@ -4,6 +4,23 @@
             "outputFile": "com.app.flipzy.app-mergeReleaseResources-38:/values-bs/values-bs.xml",
             "map": [
                 {
+                    "source": "/Users/admin/.gradle/caches/8.11.1/transforms/e7b71e21756f864161ac97d51a820217/transformed/browser-1.8.0/res/values-bs/values-bs.xml",
+                    "from": {
+                        "startLines": "2,3,4,5",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "55,159,259,373",
+                        "endColumns": "103,99,113,99",
+                        "endOffsets": "154,254,368,468"
+                    },
+                    "to": {
+                        "startLines": "56,57,58,59",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "5981,6085,6185,6299",
+                        "endColumns": "103,99,113,99",
+                        "endOffsets": "6080,6180,6294,6394"
+                    }
+                },
+                {
                     "source": "/Users/admin/.gradle/caches/8.11.1/transforms/d7d7623938a912af72b237bb32665b84/transformed/core-1.13.1/res/values-bs/values-bs.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9",
@@ -69,23 +86,6 @@
                         "startOffsets": "2830,2941",
                         "endColumns": "110,121",
                         "endOffsets": "2936,3058"
-                    }
-                },
-                {
-                    "source": "/Users/admin/.gradle/caches/8.11.1/transforms/4f9e99017a3690f1c954d8ecc967ae21/transformed/browser-1.5.0/res/values-bs/values-bs.xml",
-                    "from": {
-                        "startLines": "2,3,4,5",
-                        "startColumns": "4,4,4,4",
-                        "startOffsets": "55,159,259,373",
-                        "endColumns": "103,99,113,99",
-                        "endOffsets": "154,254,368,468"
-                    },
-                    "to": {
-                        "startLines": "56,57,58,59",
-                        "startColumns": "4,4,4,4",
-                        "startOffsets": "5981,6085,6185,6299",
-                        "endColumns": "103,99,113,99",
-                        "endOffsets": "6080,6180,6294,6394"
                     }
                 },
                 {

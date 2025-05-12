@@ -241,7 +241,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
                       onTap: (){
                         Get.back();
                     Get.to(UserProfile());
-                      }),
+                    }),
                   if(AuthData().userModel?.guestId ==null)
                     build_text_tile(imgPath: AppAssets.drawerMyProduct,title: 'My Products',upperBorder: false,
                       onTap: (){

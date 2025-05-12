@@ -144,73 +144,96 @@ class AppRoutes {
     GetPage(
       name: AppRoutes.reviewsRatingScreen,
       page: () => ReviewsRatingScreen(),
-    ),GetPage(
+    ),
+    GetPage(
       name: AppRoutes.orderHistoryScreen,
       page: () => OrderHistoryScreen(),
-    ),GetPage(
+    ),
+    GetPage(
       name: AppRoutes.orderListScreen,
       page: () => OrderListScreen(),
-    ),GetPage(
+    ),
+    GetPage(
       name: AppRoutes.cartScreen,
       page: () => CartScreen(),
-    ),GetPage(
+    ),
+    GetPage(
       name: AppRoutes.contactUsScreen,
       page: () => ContactUs(),
-    ),GetPage(
+    ),
+    GetPage(
       name: AppRoutes.businessProfileScreen,
       page: () => BusinessProfile(),
-    ),GetPage(
+    ),
+    GetPage(
       name: AppRoutes.orderDetailScreen,
       page: () => OrderDetailScreen(),
-    ),GetPage(
+    ),
+    GetPage(
       name: AppRoutes.boostProductScreen,
       page: () => BoostProductScreen(),
-    ),GetPage(
+    ),
+    GetPage(
       name: AppRoutes.editProfileScreen,
       page: () => EditProfile(),
-    ),GetPage(
+    ),
+    GetPage(
       name: AppRoutes.orderConfirmScreen,
       page: () => OrderConfirmScreen(),
-    ),GetPage(
+    ),
+    GetPage(
       name: AppRoutes.orderMarkShipScreen,
       page: () => OrderMarkShipScreen(),
-    ),GetPage(
+    ),
+    GetPage(
       name: AppRoutes.orderDetailRefundsScreen,
       page: () => OrderDetailRefundsScreen(),
-    ),GetPage(
+    ),
+    GetPage(
       name: AppRoutes.productDetailScreen,
       page: () => ProductDetailScreen(),
-    ),GetPage(
+    ),
+    GetPage(
       name: AppRoutes.allBoostProduct,
       page: () => AllBoostProduct(),
-    ),GetPage(
+    ),
+    GetPage(
       name: AppRoutes.productsTwoScreen, // for categories
       page: () => ProductsTwoScreen(),
-    ),GetPage(
+    ),
+    GetPage(
       name: AppRoutes.allCategoriesScreen, // for categories
       page: () => AllCategoriesScreen(categoryList: [],),
-    ),GetPage(
+    ),
+    GetPage(
       name: AppRoutes.chattingScreen, // for categories
       page: () => ChattingScreen(),
-    ),GetPage(
+    ),
+    GetPage(
       name: AppRoutes.paymentWebView,
       page: () => PaymentWebView(),
-    ),GetPage(
+    ),
+    GetPage(
       name: AppRoutes.allProductsScreen,
       page: () => AllProductsScreen(),
-    ),GetPage(
+    ),
+    GetPage(
       name: AppRoutes.supportScreen,
       page: () => SupportChatScreen(),
-    ),GetPage(
+    ),
+    GetPage(
       name: AppRoutes.checkOutScreen,
       page: () => CheckOutScreen(),
-    ),GetPage(
+    ),
+    GetPage(
       name: AppRoutes.allAddressScreen,
       page: () => AllAddressScreen(),
-    ),GetPage(
+    ),
+    GetPage(
       name: AppRoutes.addAddressScreen,
       page: () => AddAddressScreen(),
-    ),GetPage(
+    ),
+    GetPage(
       name: AppRoutes.allCouponScreen,
       page: () => CouponScreen(),
     ),

@@ -70,9 +70,17 @@ Future<CommonModelResponse> applyProductReturnApi({
   // on SocketException {
   //   showToastError('No Internet');
   // }
+  // catch (e) {
+  //   log('❗ Error: $e');
+  //   showToastError('$e');
+  // }
   catch (e) {
-    log('❗ Error: $e');
-    showToastError('$e');
+    if (e.toString().contains('Failed host lookup')) {
+      showToastError('Cannot connect to server. Check your network or domain.');
+    } else {
+      showToastError('Something went wrong');
+      log('❗ Something went wrong: $e');
+    }
   }
 
   return CommonModelResponse.fromJson({});

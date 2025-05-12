@@ -26,6 +26,7 @@
 -keep class io.flutter.plugins.firebase.messaging.FlutterFirebaseMessagingReceiver { <init>(); }
 -keep class io.flutter.plugins.firebase.messaging.FlutterFirebaseMessagingService { <init>(); }
 -keep class io.flutter.plugins.imagepicker.ImagePickerFileProvider { <init>(); }
+-keep class io.flutter.plugins.urllauncher.WebViewActivity { <init>(); }
 -keep class android.widget.Space { <init>(android.content.Context, android.util.AttributeSet); }
 
 -keep class androidx.appcompat.app.AlertController$RecycleListView { <init>(android.content.Context, android.util.AttributeSet); }

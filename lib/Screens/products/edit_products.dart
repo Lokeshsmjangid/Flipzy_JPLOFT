@@ -8,6 +8,7 @@ import 'package:flipzy/Screens/boost_product_screen.dart';
 import 'package:flipzy/controllers/edit_product_controller.dart';
 import 'package:flipzy/controllers/my_products_controller.dart';
 import 'package:flipzy/custom_widgets/CustomTextField.dart';
+import 'package:flipzy/custom_widgets/customAppBar.dart';
 
 import 'package:flipzy/custom_widgets/custom_dropdown.dart';
 import 'package:flipzy/dialogues/upload_product_sucess_dialogue.dart';
@@ -35,17 +36,35 @@ class EditProducts extends StatelessWidget {
         builder: (contt) {
           return Scaffold(
             // backgroundColor: AppColors.bgColor,
+            appBar: customAppBar(
+              backgroundColor: AppColors.whiteColor,
+              leadingWidth: MediaQuery.of(context).size.width * 0.3 ,
+              leadingIcon: IconButton(
+                  onPressed: (){
+                    Get.back();},
+                  icon: Row(
+                    children: [
+                      Icon(Icons.arrow_back_ios_outlined, color: AppColors.blackColor,size: 14,),
+                      addText400("Back", color: AppColors.blackColor,fontSize: 12,fontFamily: 'Poppins'),
+                    ],
+                  ).marginOnly(left: 12)),
+              centerTitle: true,
+              titleTxt: "Edit Product",
+              titleColor: AppColors.blackColor,
+              titleFontSize: 16,
+              bottomLine: true,
+            ),
             body: Form(
               key: formKey,
               child: SingleChildScrollView(
                 child: Column(
                   children: [
-                    addHeight(52),
-                    backAppBar(title: "Edit Poducts",onTapBack: (){
-                      print('tap');
-                      Get.back();
-                      // scaffoldKey.currentState?.openDrawer();
-                    }),
+                    // addHeight(52),
+                    // backAppBar(title: "Edit Poducts",onTapBack: (){
+                    //   print('tap');
+                    //   Get.back();
+                    //   // scaffoldKey.currentState?.openDrawer();
+                    // }),
                     SizedBox(height: 10,),
                 //AddImageGrid
                     Container(

@@ -17,11 +17,11 @@ class SocketService {
 
     // Add event listeners
     socket?.on('connect', (_) {
-      developer.log('Connected to server');
+      developer.log('Socket Connected 🙋');
     });
 
     socket?.on('disconnect', (_) {
-      developer.log('Disconnected from server');
+      developer.log('Socket Disconnected');
 
     });
 

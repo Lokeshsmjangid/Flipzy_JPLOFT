@@ -5,6 +5,7 @@ import 'package:flipzy/Api/repos/accept_decline_product_return_repo.dart';
 import 'package:flipzy/Api/repos/send_refund_repo.dart';
 import 'package:flipzy/Screens/order_management_screens/order_confirm_screen.dart';
 import 'package:flipzy/controllers/order_list_controller.dart';
+import 'package:flipzy/custom_widgets/customAppBar.dart';
 import 'package:flipzy/dialogues/decline_order_success_dialogue.dart';
 import 'package:flipzy/dialogues/decline_return_request_dialogue.dart';
 import 'package:flipzy/dialogues/refund_order_confirmation_dialogue.dart';
@@ -41,18 +42,36 @@ class _OrderListScreenState extends State<OrderListScreen> {
       backgroundColor: AppColors.appBgColor,
       // drawerEnableOpenDragGesture: false,
       // drawer: CustomDrawer(),
+      appBar: customAppBar(
+        backgroundColor: AppColors.bgColor,
+        leadingWidth: MediaQuery.of(context).size.width * 0.3 ,
+        leadingIcon: IconButton(
+            onPressed: (){
+              Get.back();},
+            icon: Row(
+              children: [
+                Icon(Icons.arrow_back_ios_outlined, color: AppColors.blackColor,size: 14,),
+                addText400("Back", color: AppColors.blackColor,fontSize: 12,fontFamily: 'Poppins'),
+              ],
+            ).marginOnly(left: 12)),
+        centerTitle: true,
+        titleTxt: "Order Management",
+        titleColor: AppColors.blackColor,
+        titleFontSize: 16,
+        bottomLine: true,
+      ),
       body: GetBuilder<OrderListController>(builder: (logic) {
         return SafeArea(
           child: Column(
             children: [
-              addHeight(20),
-              backAppBar(onTapBack: () {
-                print('tap');
-                Get.back();
-                // scaffoldKey.currentState?.openDrawer();
-              }),
+              // addHeight(20),
+              // backAppBar(onTapBack: () {
+              //   print('tap');
+              //   Get.back();
+              //   // scaffoldKey.currentState?.openDrawer();
+              // }),
 
-              addHeight(14),
+              addHeight(8),
               ClipRRect(
                 borderRadius: BorderRadius.circular(1000),
                 child: CustomTextField(

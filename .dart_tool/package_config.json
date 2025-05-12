@@ -56,6 +56,18 @@
       "languageVersion": "3.4"
     },
     {
+      "name": "connectivity_plus",
+      "rootUri": "file:///Users/admin/.pub-cache/hosted/pub.dev/connectivity_plus-6.1.4",
+      "packageUri": "lib/",
+      "languageVersion": "3.2"
+    },
+    {
+      "name": "connectivity_plus_platform_interface",
+      "rootUri": "file:///Users/admin/.pub-cache/hosted/pub.dev/connectivity_plus_platform_interface-2.0.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.18"
+    },
+    {
       "name": "cross_file",
       "rootUri": "file:///Users/admin/.pub-cache/hosted/pub.dev/cross_file-0.3.4+2",
       "packageUri": "lib/",
@@ -548,6 +560,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "nm",
+      "rootUri": "file:///Users/admin/.pub-cache/hosted/pub.dev/nm-0.5.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "open_file",
       "rootUri": "file:///Users/admin/.pub-cache/hosted/pub.dev/open_file-3.5.10",
       "packageUri": "lib/",
@@ -860,6 +878,54 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "url_launcher",
+      "rootUri": "file:///Users/admin/.pub-cache/hosted/pub.dev/url_launcher-6.3.1",
+      "packageUri": "lib/",
+      "languageVersion": "3.3"
+    },
+    {
+      "name": "url_launcher_android",
+      "rootUri": "file:///Users/admin/.pub-cache/hosted/pub.dev/url_launcher_android-6.3.16",
+      "packageUri": "lib/",
+      "languageVersion": "3.6"
+    },
+    {
+      "name": "url_launcher_ios",
+      "rootUri": "file:///Users/admin/.pub-cache/hosted/pub.dev/url_launcher_ios-6.3.3",
+      "packageUri": "lib/",
+      "languageVersion": "3.4"
+    },
+    {
+      "name": "url_launcher_linux",
+      "rootUri": "file:///Users/admin/.pub-cache/hosted/pub.dev/url_launcher_linux-3.2.1",
+      "packageUri": "lib/",
+      "languageVersion": "3.3"
+    },
+    {
+      "name": "url_launcher_macos",
+      "rootUri": "file:///Users/admin/.pub-cache/hosted/pub.dev/url_launcher_macos-3.2.2",
+      "packageUri": "lib/",
+      "languageVersion": "3.3"
+    },
+    {
+      "name": "url_launcher_platform_interface",
+      "rootUri": "file:///Users/admin/.pub-cache/hosted/pub.dev/url_launcher_platform_interface-2.3.2",
+      "packageUri": "lib/",
+      "languageVersion": "3.1"
+    },
+    {
+      "name": "url_launcher_web",
+      "rootUri": "file:///Users/admin/.pub-cache/hosted/pub.dev/url_launcher_web-2.4.1",
+      "packageUri": "lib/",
+      "languageVersion": "3.6"
+    },
+    {
+      "name": "url_launcher_windows",
+      "rootUri": "file:///Users/admin/.pub-cache/hosted/pub.dev/url_launcher_windows-3.1.4",
+      "packageUri": "lib/",
+      "languageVersion": "3.4"
+    },
+    {
       "name": "uuid",
       "rootUri": "file:///Users/admin/.pub-cache/hosted/pub.dev/uuid-4.5.1",
       "packageUri": "lib/",
@@ -956,7 +1022,7 @@
       "languageVersion": "3.4"
     }
   ],
-  "generated": "2025-05-06T05:41:43.536227Z",
+  "generated": "2025-05-12T07:14:19.376980Z",
   "generator": "pub",
   "generatorVersion": "3.7.2",
   "flutterRoot": "file:///Users/admin/Documents/flutter",

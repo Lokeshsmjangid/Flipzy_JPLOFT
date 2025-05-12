@@ -44,9 +44,17 @@ Future<OrderListResponse> getOrderListApi({orderStatus,String? orderId,userType}
   // on SocketException catch (e) {
   //   showToastError('No Internet');
   // }
-  catch(e){
-    log('$e');
-    showToastError('$e');
+  // catch(e){
+  //   log('$e');
+  //   showToastError('$e');
+  // }
+  catch (e) {
+    if (e.toString().contains('Failed host lookup')) {
+      showToastError('Cannot connect to server. Check your network or domain.');
+    } else {
+      showToastError('Something went wrong');
+      log('❗ Something went wrong: $e');
+    }
   }
   return OrderListResponse.fromJson({}); // please add try catch to use this
   // return OrderListResponse.fromJson(data); // please UnComment to print data and remove try catch

@@ -4,6 +4,23 @@
             "outputFile": "com.app.flipzy.app-mergeReleaseResources-38:/values-es-rUS/values-es-rUS.xml",
             "map": [
                 {
+                    "source": "/Users/admin/.gradle/caches/8.11.1/transforms/e7b71e21756f864161ac97d51a820217/transformed/browser-1.8.0/res/values-es-rUS/values-es-rUS.xml",
+                    "from": {
+                        "startLines": "2,3,4,5",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "55,164,266,381",
+                        "endColumns": "108,101,114,105",
+                        "endOffsets": "159,261,376,482"
+                    },
+                    "to": {
+                        "startLines": "56,57,58,59",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "6118,6227,6329,6444",
+                        "endColumns": "108,101,114,105",
+                        "endOffsets": "6222,6324,6439,6545"
+                    }
+                },
+                {
                     "source": "/Users/admin/.gradle/caches/8.11.1/transforms/0cf5ef321d906a25daaeee9672a618fc/transformed/jetified-credentials-1.2.0-rc01/res/values-es-rUS/values-es-rUS.xml",
                     "from": {
                         "startLines": "2,3",
@@ -86,23 +103,6 @@
                         "startOffsets": "105,225,334,442,527,629,745,830,910,1001,1094,1189,1283,1382,1475,1574,1670,1761,1852,1934,2041,2140,2239,2347,2455,2562,2721,6550",
                         "endColumns": "119,108,107,84,101,115,84,79,90,92,94,93,98,92,98,95,90,90,81,106,98,98,107,107,106,158,99,82",
                         "endOffsets": "220,329,437,522,624,740,825,905,996,1089,1184,1278,1377,1470,1569,1665,1756,1847,1929,2036,2135,2234,2342,2450,2557,2716,2816,6628"
-                    }
-                },
-                {
-                    "source": "/Users/admin/.gradle/caches/8.11.1/transforms/4f9e99017a3690f1c954d8ecc967ae21/transformed/browser-1.5.0/res/values-es-rUS/values-es-rUS.xml",
-                    "from": {
-                        "startLines": "2,3,4,5",
-                        "startColumns": "4,4,4,4",
-                        "startOffsets": "55,164,266,381",
-                        "endColumns": "108,101,114,105",
-                        "endOffsets": "159,261,376,482"
-                    },
-                    "to": {
-                        "startLines": "56,57,58,59",
-                        "startColumns": "4,4,4,4",
-                        "startOffsets": "6118,6227,6329,6444",
-                        "endColumns": "108,101,114,105",
-                        "endOffsets": "6222,6324,6439,6545"
                     }
                 }
             ]

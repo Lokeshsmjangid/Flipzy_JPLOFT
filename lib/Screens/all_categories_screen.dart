@@ -34,29 +34,20 @@ class _AllCategoriesScreenState extends State<AllCategoriesScreen> {
           backgroundColor: AppColors.bgColor,
           appBar: customAppBar(
             backgroundColor: AppColors.bgColor,
-            leadingWidth: MediaQuery
-                .of(context)
-                .size
-                .width * 0.3,
-            leadingIcon: GestureDetector(
-              onTap: () {
-                Get.back();
-              },
-              child: Row(
-                children: [
-                  Icon(
-                    Icons.arrow_back_ios_outlined, color: AppColors.blackColor,
-                    size: 16,).marginSymmetric(horizontal: 12),
-                  addText400("Back", color: AppColors.blackColor,),
-                ],
-              ),
-            ),
+            leadingWidth: MediaQuery.of(context).size.width * 0.3 ,
+            leadingIcon: IconButton(
+                onPressed: (){
+                  Get.back();},
+                icon: Row(
+                  children: [
+                    Icon(Icons.arrow_back_ios_outlined, color: AppColors.blackColor,size: 14,),
+                    addText400("Back", color: AppColors.blackColor,fontSize: 12,fontFamily: 'Poppins'),
+                  ],
+                ).marginOnly(left: 12)),
             centerTitle: true,
             titleTxt: "All Categories",
             titleColor: AppColors.blackColor,
             titleFontSize: 16,
-            actionItems: [
-            ],
             bottomLine: true,
           ),
           extendBody: true,
@@ -64,7 +55,7 @@ class _AllCategoriesScreenState extends State<AllCategoriesScreen> {
             child: Column(
               children: [
                 // SearchTxtForm
-                addHeight(10),
+                addHeight(8),
                 CustomTextField(
                   borderRadius: 30,
                   // controller: ctrl.searchCtrl,

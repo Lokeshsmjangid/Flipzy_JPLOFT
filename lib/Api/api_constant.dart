@@ -107,8 +107,6 @@ class ApiUrls{
   static const String deleteAddressUrl = '${baseUrl}address/delete';
 
 
-
-
   // refund
   static const String refundInitiateUrl = '${baseUrl}refund/initiate'; // implemented
   static const String refundRespondUrl = '${baseUrl}refund/respond';
