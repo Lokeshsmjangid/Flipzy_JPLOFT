@@ -30,7 +30,7 @@ class _OrderHistoryScreenState extends State<OrderHistoryScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.whiteColor,
+      backgroundColor: AppColors.bgColor,
       appBar: customAppBar(
         backgroundColor: AppColors.bgColor,
         leadingWidth: MediaQuery.of(context).size.width * 0.3 ,
@@ -184,6 +184,18 @@ class _OrderHistoryScreenState extends State<OrderHistoryScreen> {
                                           fontFamily: 'Manrope',
                                           color: AppColors.textColor2,
                                           fontSize: 14)),
+                                  addWidth(4),
+                                  Container(
+                                    width: 14,
+                                    height: 14,
+                                    decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      color: order.shippingIndicator=="F"?AppColors.primaryColor
+                                          : order.shippingIndicator=="S"?AppColors.redColor: AppColors.blueColor2
+                                    ),
+                                    child: Center(child: addText500('${order.shippingIndicator}',fontSize: 10,
+                                        textAlign: TextAlign.center,height: 1.0,color: AppColors.whiteColor)),
+                                  ),
                                   Spacer(),
                                   Icon(Icons.arrow_forward_ios, size: 14,)
                                 ],

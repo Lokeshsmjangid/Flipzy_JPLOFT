@@ -184,7 +184,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                   ),
                                   child: Center(
                                     child: CachedImageCircle2(
-                                        imageUrl: '${contt.homeModel.data!.categoryList![item].image}',fit: BoxFit.contain,
+                                        imageUrl: '${contt.homeModel.data!.categoryList![item].image}',
+                                        fit: BoxFit.cover,
                                         height: 40,width: 40).marginAll(4),
                                     // child: SvgPicture.asset(contt.categoryItems[item].images,
                                     //   color: AppColors.blackColor,),
@@ -290,6 +291,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                 child: ClipRRect(
                                                   borderRadius: BorderRadius.circular(10),
                                                   child: CachedImageCircle2(
+                                                    fit: BoxFit.cover,
                                                     imageUrl: item!.productImages!.isNotEmpty?'${item.productImages![0]}':ApiUrls.productEmptyImgUrl,
                                                     isCircular: false,
                                                     // fit: BoxFit.fill,
@@ -498,6 +500,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                   child: CachedImageCircle2(
                                                     imageUrl: item!.productImages!.isNotEmpty?'${item.productImages![0]}':ApiUrls.productEmptyImgUrl,
                                                     isCircular: false,
+                                                    fit: BoxFit.cover
                                                     // fit: BoxFit.fill,
                                                   ),
                                                 ),

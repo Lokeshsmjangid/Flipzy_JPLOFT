@@ -202,17 +202,17 @@ class MyProductsScreen extends StatelessWidget {
                                             ),
                                             child: Stack(
                                               children: [
-                                                ClipRRect(
+                                                Container(
+                                                  width: double.infinity,
+                                                  height: double.infinity,
                                                   clipBehavior: Clip.antiAliasWithSaveLayer,
-                                                  borderRadius: BorderRadius.circular(20),
-                                                  child: SizedBox(
-                                                    width: double.infinity,
-                                                    height: double.infinity,
-                                                    child: CachedImageCircle2(
-                                                        isCircular: false,fit: BoxFit.fill,
-                                                        imageUrl: item.productImages!.isNotEmpty?'${item.productImages![0]}':'${ApiUrls.productEmptyImgUrl}'),
-
+                                                  decoration: BoxDecoration(
+                                                    borderRadius: BorderRadius.circular(10),
                                                   ),
+                                                  child: CachedImageCircle2(
+                                                      isCircular: false,fit: BoxFit.cover,
+                                                      imageUrl: item.productImages!.isNotEmpty?'${item.productImages![0]}':'${ApiUrls.productEmptyImgUrl}'),
+
                                                 ),
 
                                               ],

@@ -41,6 +41,7 @@ class OrderData {
   List<String>? productImages;
   String? productName;
   ReturnRequestClass? returnRequest;
+  String? shippingIndicator;
 
   OrderData({
     this.orderId,
@@ -51,6 +52,7 @@ class OrderData {
     this.productImages,
     this.productName,
     this.returnRequest,
+    this.shippingIndicator
   });
 
   factory OrderData.fromJson(Map<String, dynamic> json) => OrderData(
@@ -64,6 +66,7 @@ class OrderData {
     returnRequest: (json["returnRequest"] is Map<String, dynamic>)
         ? ReturnRequestClass.fromJson(json["returnRequest"])
         : null,
+    shippingIndicator: json["shippingIndicator"],
   );
 
   Map<String, dynamic> toJson() => {
@@ -75,6 +78,7 @@ class OrderData {
     "productImages": productImages == null ? [] : List<dynamic>.from(productImages!.map((x) => x)),
     "productName": productName,
     "returnRequest": returnRequest,
+    "shippingIndicator": shippingIndicator,
   };
 }
 

@@ -218,21 +218,12 @@ class _OrderListScreenState extends State<OrderListScreen> {
                                               width: 15,
                                               decoration: BoxDecoration(
                                                   shape: BoxShape.circle,
-                                                  color: index % 2 == 0
-                                                      ? AppColors.appRedColor
-                                                      : AppColors.secondaryColor
+                                                  color: order.shippingIndicator=="F"?AppColors.primaryColor
+                                                      : order.shippingIndicator=="S"?AppColors.redColor: AppColors.blueColor2
                                               ),
                                               child: Center(
-                                                child: addText500(
-                                                    index % 2 == 0 ? 's'
-                                                        .toUpperCase() : 'f'
-                                                        .toUpperCase(),
-                                                    color: index % 2 == 0
-                                                        ? AppColors.whiteColor
-                                                        : AppColors.blackColor,
-                                                    height: 1.2,
-                                                    fontFamily: 'Manrope',
-                                                    fontSize: 12),
+                                                child: addText500('${order.shippingIndicator}',fontSize: 10,
+                                                    textAlign: TextAlign.center,height: 1.0,color: AppColors.whiteColor),
                                               ),
                                             )
                                           ],

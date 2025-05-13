@@ -21,6 +21,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:shimmer/shimmer.dart';
 
 class FavouriteScreen extends StatelessWidget {
 
@@ -75,7 +76,8 @@ class FavouriteScreen extends StatelessWidget {
                       height: 300,
 
                       child: contt.isDataLoading
-                          ? Center(child: CircularProgressIndicator(color: AppColors.secondaryColor))
+                          // ? Center(child: CircularProgressIndicator(color: AppColors.secondaryColor))
+                          ? build_shimmer_loader()
                           : contt.modelResponse.wishlist!=null && contt.modelResponse.wishlist!.isNotEmpty
                           ? ListView(
                         physics: BouncingScrollPhysics(),
@@ -125,29 +127,22 @@ class FavouriteScreen extends StatelessWidget {
                                             decoration: BoxDecoration(
                                               color: AppColors.containerBorderColor,
                                               borderRadius: BorderRadius.circular(10),
-                                              // image: DecorationImage(
-                                              //     fit: BoxFit.fill,
-                                              //     image: AssetImage(contt.featuredItems[item].images)
-                                              //
-                                              // )
                                             ),
                                             child: Stack(
                                               children: [
-                                                ClipRRect(
+                                                Container(
+                                                  width: double.infinity,
+                                                  height: double.infinity,
                                                   clipBehavior: Clip.antiAliasWithSaveLayer,
-                                                  borderRadius: BorderRadius.circular(20),
-                                                  child: SizedBox(
-                                                    width: double.infinity,
-                                                    height: double.infinity,
-                                                    child: CachedImageCircle2(
-                                                        isCircular: false,fit: BoxFit.fill,
-                                                        imageUrl: item.productImages!.isNotEmpty
-                                                            ?'${item.productImages![0]}'
-                                                            :'${ApiUrls.productEmptyImgUrl}'),
+                                                  decoration: BoxDecoration(
+                                                    borderRadius: BorderRadius.circular(10),),
+                                                  child: CachedImageCircle2(
+                                                      isCircular: false,fit: BoxFit.fill,
+                                                      imageUrl: item.productImages!.isNotEmpty
+                                                          ?'${item.productImages![0]}'
+                                                          :'${ApiUrls.productEmptyImgUrl}'),
 
-                                                  ),
                                                 ),
-
                                               ],
                                             ),
                                           ),
@@ -215,5 +210,58 @@ class FavouriteScreen extends StatelessWidget {
             ),
           );
         });
+  }
+  build_shimmer_loader() {
+    return GridView.builder(
+      physics: BouncingScrollPhysics(),
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 2, // 2 items per row
+        crossAxisSpacing: 2,
+        mainAxisSpacing: 1,
+        childAspectRatio: 0.78, // Adjust height-to-width ratio
+      ),
+      shrinkWrap: true,
+      itemCount: 12, // Placeholder count
+      itemBuilder: (context, index) {
+        return Shimmer.fromColors(
+          baseColor: Colors.grey.shade300,
+          highlightColor: Colors.grey.shade100,
+          child: Container(
+            margin: const EdgeInsets.all(5),
+            padding: const EdgeInsets.all(10),
+            decoration: BoxDecoration(
+              color: AppColors.whiteColor,
+              borderRadius: BorderRadius.circular(10),
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  height: 147, width: 147,
+                  decoration: BoxDecoration(
+                    color: Colors.grey.shade300,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                ),
+                SizedBox(height: 5),
+                Container(
+                  height: 10,
+                  width: 60,
+                  color: Colors.grey.shade300,
+                ),
+                SizedBox(height: 5),
+                Container(
+                  height: 10,
+                  width: 40,
+                  color: Colors.grey.shade300,
+                ),
+              ],
+            ),
+          ),
+        );
+      },
+    );
   }
 }

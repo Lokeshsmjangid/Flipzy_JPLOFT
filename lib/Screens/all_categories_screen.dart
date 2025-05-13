@@ -11,6 +11,7 @@ import 'package:flipzy/resources/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:shimmer/shimmer.dart';
 
 import '../Api/api_models/category_model.dart';
 
@@ -95,7 +96,8 @@ class _AllCategoriesScreenState extends State<AllCategoriesScreen> {
                     init: CategoryController(),
                       builder: (logic) {
                     return logic.isDataLoading
-                        ? Center(child: CircularProgressIndicator(color: AppColors.secondaryColor),)
+                        // ? Center(child: CircularProgressIndicator(color: AppColors.secondaryColor),)
+                        ? build_shimmer_loader()
                         : logic.model.data!=null && logic.model.data!.isNotEmpty
                         ? Stack(
                           children: [
@@ -151,18 +153,16 @@ class _AllCategoriesScreenState extends State<AllCategoriesScreen> {
                                               width: 60,
                                               decoration: BoxDecoration(
                                                 color: AppColors.bgColor,
-                                                borderRadius: BorderRadius
-                                                    .circular(10),
-                                                // image: DecorationImage(image: AssetImage(contt.featuredItems[item].images,))
+                                                borderRadius: BorderRadius.circular(10),
                                               ),
                                               child: Container(
-
+                                                clipBehavior: Clip.antiAliasWithSaveLayer,
                                                 height: 60, width: 60,
                                                 decoration: BoxDecoration(
-                                                  borderRadius: BorderRadius
-                                                      .circular(10),
+                                                  borderRadius: BorderRadius.circular(10),
                                                 ),
                                                 child: CachedImageCircle2(
+                                                  isCircular: false,
                                                     imageUrl: logic.model.data![item].image),
 
 
@@ -217,6 +217,60 @@ class _AllCategoriesScreenState extends State<AllCategoriesScreen> {
         ),
 
       ],
+    );
+  }
+
+  build_shimmer_loader() {
+    return GridView.builder(
+      physics: BouncingScrollPhysics(),
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 3,
+        crossAxisSpacing: 2,
+        mainAxisSpacing: 1,
+        childAspectRatio: 0.8,
+      ),
+      itemCount: 15, // Placeholder count
+      itemBuilder: (context, index) {
+        return Shimmer.fromColors(
+          baseColor: Colors.grey.shade300,
+          highlightColor: Colors.grey.shade100,
+          child: Container(
+            margin: const EdgeInsets.all(5),
+            padding: const EdgeInsets.all(10),
+            decoration: BoxDecoration(
+              color: AppColors.whiteColor,
+              borderRadius: BorderRadius.circular(10),
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  height: 60,
+                  width: 60,
+                  decoration: BoxDecoration(
+                    color: Colors.grey.shade300,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                ),
+                SizedBox(height: 5),
+                Container(
+                  height: 10,
+                  width: 60,
+                  color: Colors.grey.shade300,
+                ),
+                SizedBox(height: 5),
+                Container(
+                  height: 10,
+                  width: 40,
+                  color: Colors.grey.shade300,
+                ),
+              ],
+            ),
+          ),
+        );
+      },
     );
   }
 }

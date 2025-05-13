@@ -52,7 +52,6 @@ backAppBar({void Function()? onTapBack,String? title}){
   );
 }
 
-
 Widget BorderedContainer({double padding = 10,double radius = 18, bool isBorder = true,
   Color bGColor = AppColors.whiteColor,Color borderColor= AppColors.containerBorderColor1,Widget? child}){ return Container(
     padding: EdgeInsets.all(padding),
@@ -155,8 +154,6 @@ String formatDateTime(String dateTimeString) { // Last Today at 9:42 AM
 }
 
 String formatDate({String? dateTimeString}) {
-
-
   if(dateTimeString!=null){
     // String isoDate = "2025-03-31T09:04:26.502Z";
     DateTime dateTime = DateTime.parse(dateTimeString.toString());
@@ -173,7 +170,7 @@ String formatTime(String isoString) {
   return formattedTime;
 }
 
-// internet checker
+// to check internet
 Future<bool> hasInternetConnection() async {
   final connectivityResult = await Connectivity().checkConnectivity();
   bool isInternet = connectivityResult.first == ConnectivityResult.none?false:true;

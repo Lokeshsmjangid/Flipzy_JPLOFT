@@ -171,17 +171,19 @@ class AllBoostProduct extends StatelessWidget {
                                     ),
                                     child: Stack(
                                       children: [
-                                        ClipRRect(
+                                        Container(
+                                          width: double.infinity,
+                                          height: double.infinity,
                                           clipBehavior: Clip.antiAliasWithSaveLayer,
-                                          borderRadius: BorderRadius.circular(20),
-                                          child: SizedBox(
-                                            width: double.infinity,
-                                            height: double.infinity,
-                                            child: CachedImageCircle2(
-                                                isCircular: false,fit: BoxFit.fill,
-                                                imageUrl: item!.productImages!.isNotEmpty?'${item.productImages![0]}':'${ApiUrls.productEmptyImgUrl}'),
-
+                                          decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.circular(10),
                                           ),
+                                          child: CachedImageCircle2(
+                                              isCircular: false,fit: BoxFit.cover,
+                                              imageUrl: item!.productImages!.isNotEmpty
+                                                  ? '${item.productImages![0]}'
+                                                  : '${ApiUrls.productEmptyImgUrl}'),
+
                                         ),
 
                                       ],
@@ -196,7 +198,7 @@ class AllBoostProduct extends StatelessWidget {
                                       addHeight(0.5.h),
 
 
-                                      if(contt.selectedBox==1)
+                                      if(contt.selectedBox==1 && item.boostProduct![0].status!.isNotEmpty)
                                       Align(
                                         alignment: Alignment.centerLeft,
                                         child: Container(

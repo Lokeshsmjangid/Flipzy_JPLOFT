@@ -130,13 +130,7 @@ class SupportChatScreen extends StatelessWidget {
                       Container(
                         margin: EdgeInsets.symmetric(vertical: 5),
                         padding: EdgeInsets.all(12),
-                        constraints: BoxConstraints(
-                            maxWidth:
-                            MediaQuery
-                                .of(context)
-                                .size
-                                .width *
-                                0.7),
+                        constraints: BoxConstraints( maxWidth: MediaQuery.of(context).size.width * 0.7),
                         decoration: BoxDecoration(
                           color:
                           msg.senderId == AuthData().userModel?.id
@@ -165,14 +159,13 @@ class SupportChatScreen extends StatelessWidget {
                           ],
                         ),
                       ),
-                      addText400(formatTime('${msg.createdAt}'),
-                          fontSize: 10),
+                      addText400(formatDateTime('${msg.createdAt}'), fontSize: 10),
+
                       if (msg.session == false)
                         Align(
                           alignment: Alignment.center,
                           child: Container(
                             margin: EdgeInsets.symmetric(vertical: 5),
-                            padding: EdgeInsets.all(12),
                             constraints: BoxConstraints(
                                 maxWidth: MediaQuery
                                     .of(context)
@@ -183,10 +176,16 @@ class SupportChatScreen extends StatelessWidget {
                               color: Colors.red,
                               borderRadius: BorderRadius.circular(12),
                             ),
-                            child: Text(
-                              'Session Expired',
-                              style: TextStyle(color: Colors.white),
-                            ),
+                            child: Column(children: [
+                                addText500(
+                                  'Session Expired',
+                                  color: Colors.white,
+                                  fontSize: 13,height: 1.0
+                                ),
+                            addText500(formatDateTime('${msg.createdAt}'),
+                                height: 1.2,fontSize: 9,color: AppColors.whiteColor),
+                              ],
+                            ).marginSymmetric(horizontal: 12,vertical: 8),
                           ),
                         ),
                     ],
@@ -306,7 +305,6 @@ class SupportChatScreen extends StatelessWidget {
               ],
             );
           }),
-
 
 
           /*   GetBuilder<SupportController>(builder: (logic) {

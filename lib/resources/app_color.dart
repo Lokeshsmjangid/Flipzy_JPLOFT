@@ -41,6 +41,7 @@ class AppColors {
 
   static const blueColor = Color(0xff4299E1);
   static const blueColor1 = Color(0xff8DBFEB);
+  static const blueColor2 = Color(0xff0000FF);
 
   static const buttonColor = Color(0xffE5F7E9);
   static const redLightColor = Color(0xffFF6363);

@@ -12,6 +12,7 @@ import 'package:flipzy/resources/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:shimmer/shimmer.dart';
 import '../../Api/api_models/home_model_response.dart';
 
 
@@ -86,7 +87,8 @@ class ProductsTwoScreen extends StatelessWidget {
 
                   Expanded(
                     child:  cntrl.isDataLoading
-                        ? Center(child: CircularProgressIndicator(color: AppColors.secondaryColor))
+                        // ? Center(child: CircularProgressIndicator(color: AppColors.secondaryColor))
+                        ? build_shimmer_loader()
                         : cntrl.modelResponse.data!=null && cntrl.modelResponse.data!.isNotEmpty
                         ? Stack(
                           children: [
@@ -146,17 +148,17 @@ class ProductsTwoScreen extends StatelessWidget {
                                               ),
                                               child: Stack(
                                                 children: [
-                                                  ClipRRect(
-                                                    clipBehavior: Clip.antiAliasWithSaveLayer,
-                                                    borderRadius: BorderRadius.circular(20),
-                                                    child: SizedBox(
-                                                      width: double.infinity,
-                                                      height: double.infinity,
-                                                      child: CachedImageCircle2(
-                                                          isCircular: false,fit: BoxFit.fill,
-                                                          imageUrl: item.productImages!.isNotEmpty?'${item.productImages![0]}':'${ApiUrls.productEmptyImgUrl}'),
+                                                  Container(
 
-                                                    ),
+                                                    width: double.infinity,
+                                                    height: double.infinity,
+                                                    clipBehavior: Clip.antiAliasWithSaveLayer,
+                                                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(10)),
+                                                    child: CachedImageCircle2(
+                                                        isCircular: false,
+                                                        fit: BoxFit.cover,
+                                                        imageUrl: item.productImages!.isNotEmpty?'${item.productImages![0]}':'${ApiUrls.productEmptyImgUrl}'),
+
                                                   ),
 
                                                 ],
@@ -228,5 +230,58 @@ class ProductsTwoScreen extends StatelessWidget {
         ],
       );
     });
+  }
+  build_shimmer_loader() {
+    return GridView.builder(
+      physics: BouncingScrollPhysics(),
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 2, // 2 items per row
+        crossAxisSpacing: 2,
+        mainAxisSpacing: 1,
+        childAspectRatio: 0.82, // Adjust height-to-width ratio
+      ),
+      shrinkWrap: true,
+      itemCount: 12, // Placeholder count
+      itemBuilder: (context, index) {
+        return Shimmer.fromColors(
+          baseColor: Colors.grey.shade300,
+          highlightColor: Colors.grey.shade100,
+          child: Container(
+            margin: const EdgeInsets.all(5),
+            padding: const EdgeInsets.all(10),
+            decoration: BoxDecoration(
+              color: AppColors.whiteColor,
+              borderRadius: BorderRadius.circular(10),
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  height: 147, width: 147,
+                  decoration: BoxDecoration(
+                    color: Colors.grey.shade300,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                ),
+                SizedBox(height: 5),
+                Container(
+                  height: 10,
+                  width: 60,
+                  color: Colors.grey.shade300,
+                ),
+                SizedBox(height: 5),
+                Container(
+                  height: 10,
+                  width: 40,
+                  color: Colors.grey.shade300,
+                ),
+              ],
+            ),
+          ),
+        );
+      },
+    );
   }
 }
