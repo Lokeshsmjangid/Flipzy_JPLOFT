@@ -28,9 +28,6 @@ class SupportController extends GetxController {
   bool isDataLoading = false;
   bool endReceiveMsg = false;
 
-
-
-
   @override
   void onInit() {
     // TODO: implement onInit
@@ -58,13 +55,6 @@ class SupportController extends GetxController {
       'sender_id': userID,
       'receiver_id': receiver_id,
     });
-    // socketService.socket?.on('connect_error', (error) {
-    //   developer.log('Connection Error inside support: $error');
-    //    showToastError('$error');
-    //    isDataLoading = false;
-    //    allMsg = [];
-    //    update();
-    // });
 
     socketService.socket?.on('getAllMessages', (data) {
       developer.log('GET-ALL-MESSAGES START:\n$data\n::END');
@@ -214,15 +204,14 @@ class SupportController extends GetxController {
   }
 
 
-
   void scrollDown() {
+    if (scrollController.hasClients) // to remove _positions.isNotEmpty console error
     scrollController.animateTo(
       scrollController.position.maxScrollExtent,
       duration: Duration(seconds: 2),
       curve: Curves.fastOutSlowIn,
     );
   }
-
 
   PlatformFile? pickedFile;
   List<SupportUpload> attachments = [];

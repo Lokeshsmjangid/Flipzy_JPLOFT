@@ -76,6 +76,8 @@ class Product {
   String? productDescription;
   String? productWeight;
   String? productDimentions;
+  String? productCondition;
+  String? pickupLocation;
   bool? localPickUp;
   bool? deliveryFee;
   bool? bestseller;
@@ -113,6 +115,8 @@ class Product {
     this.productDescription,
     this.productWeight,
     this.productDimentions,
+    this.productCondition,
+    this.pickupLocation,
     this.localPickUp,
     this.isReturnAvailable,
     this.deliveryFee,
@@ -151,6 +155,8 @@ class Product {
     productDescription: json["productDescription"],
     productWeight: json["productWeight"],
     productDimentions: json["productDimentions"],
+    productCondition: json["productCondition"],
+    pickupLocation: json["pickupLocation"],
     localPickUp: json["localPickUp"],
     isReturnAvailable: json["isReturnAvailable"],
     deliveryFee: json["deliveryFee"],
@@ -189,6 +195,8 @@ class Product {
     "productDescription": productDescription,
     "productWeight": productWeight,
     "productDimentions": productDimentions,
+    "productCondition": productCondition,
+    "pickupLocation": pickupLocation,
     "localPickUp": localPickUp,
     "isReturnAvailable": isReturnAvailable,
     "deliveryFee": deliveryFee,

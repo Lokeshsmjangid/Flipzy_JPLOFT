@@ -113,7 +113,8 @@ class ApiUrls{
   static const String refundPickUpUrl = '${baseUrl}refund/pickup';
   static const String sendRefundUrl = '${baseUrl}order/refundSend';
 
-
+  // Shipping Api ShipBubble
+  static const String shipBubbleUrl = '${baseUrl}calculateShippingFromShipbubble';
 }
 
 

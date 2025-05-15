@@ -1,18 +1,12 @@
 import 'dart:developer';
 import 'dart:io';
-
 import 'package:flipzy/Api/api_models/category_model.dart';
 import 'package:flipzy/Api/repos/add_product_repo.dart';
-import 'package:flipzy/Screens/complete_seller_info.dart';
 import 'package:flipzy/Screens/help/help_support.dart';
 import 'package:flipzy/controllers/addProduct_controller.dart';
 import 'package:flipzy/custom_widgets/CustomTextField.dart';
-import 'package:flipzy/custom_widgets/appButton.dart';
-import 'package:flipzy/custom_widgets/customAppBar.dart';
-import 'package:flipzy/dialogues/upload_product_sucess_dialogue.dart';
 import 'package:flipzy/resources/app_assets.dart';
 import 'package:flipzy/resources/app_color.dart';
-import 'package:flipzy/resources/app_routers.dart';
 import 'package:flipzy/resources/custom_loader.dart';
 import 'package:flipzy/resources/text_utility.dart';
 import 'package:flipzy/resources/utils.dart';
@@ -29,6 +23,7 @@ class AddProduct extends StatelessWidget {
   AddProduct({super.key});
 
   final formKey = GlobalKey<FormState>();
+  final focusNode = FocusNode();
   @override
   Widget build(BuildContext context) {
     return GetBuilder<AddProductController>(
@@ -213,6 +208,28 @@ class AddProduct extends StatelessWidget {
 
                       ),
 
+
+                      //Product Condition
+                      SizedBox(height: 10,),
+                      Align(
+                          alignment: Alignment.centerLeft,
+                          child: addText500("Product Condition", textAlign: TextAlign.start,
+                              fontFamily: 'Manrope')
+                      ),
+
+                      SizedBox(height: 10,),
+                      CustomDropdownButton2<String>(
+                        hintText: "Choose Product Condition",
+                        items: contt.conditionList ?? [],
+                        value: contt.selectedProductCondition,
+                        displayText: (item) => "${item}",
+                        onChanged: (value) {
+                          contt.selectedProductCondition = value;
+                          contt.update();
+                        },
+                        borderRadius: 10,
+                      ),
+
                       //Category
                       SizedBox(height: 10,),
                       Align(
@@ -289,6 +306,77 @@ class AddProduct extends StatelessWidget {
                             borderRadius: BorderRadius.circular(15)),
                         maxLines: 5,
                       ),
+
+
+                      // //Pick Up Location
+                      SizedBox(height: 10,),
+                      Align(
+                          alignment: Alignment.centerLeft,
+                          child: addText600(
+                              "Pick Up Location", textAlign: TextAlign.start)
+                      ),
+
+                      SizedBox(height: 10,),
+
+                      CustomTextField(
+                          controller: contt.pickUpLocation,
+                          hintText: 'Enter your location',
+                          onChanged: (val){
+                            contt.deBounce.run(() {
+                              contt.getSuggestion(val);
+                            });
+                          },
+                          suffixIcon: contt.pickUpLocation.text.isNotEmpty
+                              ? IconButton(onPressed: (){
+                            contt.pickUpLocation.clear();
+                            contt.update();
+                          }, icon: Icon(Icons.cancel_outlined))
+                              : null),
+                      if(contt.placePredication.isNotEmpty)
+                        SizedBox(
+                          height: 200,
+                          child: ListView.separated(shrinkWrap: true,
+                            physics: BouncingScrollPhysics(),
+                            padding: EdgeInsets.zero,
+                            itemCount: contt.placePredication.length,
+                            itemBuilder: (context, index) {
+                              return ListTile(
+                                onTap: (){
+                                  showLoader(true);
+                                  contt.getAddressFromPlaceId(contt.placePredication[index].placeId.toString()).then((value) {
+                                    if(value.responseCode==200){
+                                      log('Manual address:${value.address}');
+                                      log('Manual description:${contt.placePredication[index].description}');
+                                      contt.pickUpLocation.text = "${contt.placePredication[index].description}";
+                                      contt.placePredication.clear();
+                                      contt.update();
+                                      log('Manual city:${value.city}');
+                                      log('Manual state:${value.state}');
+                                      log('Manual country:${value.country}');
+                                      log('Manual postalCode:${value.postalCode}');
+                                      log('Manual latitude:${value.latitude}');
+                                      log('Manual longitude:${value.longitude}');
+                                    }
+                                  });
+
+
+                                },
+                                contentPadding: EdgeInsets.symmetric(horizontal: 14),visualDensity: VisualDensity(horizontal: -4,vertical: -4),
+                                title: Row(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Icon(Icons.male_rounded,color: AppColors.blackColor),
+                                    addWidth(5),
+                                    Expanded(child: addText400('${contt.placePredication[index].description}',fontSize: 14)),
+                                  ],
+                                ),
+                                // Add more widgets to display additional information as needed
+                              );
+                            }, separatorBuilder: (BuildContext context, int index) {
+                              return Divider();
+                            },
+                          ),
+                        ),
 
                       //ProductWeight
                       SizedBox(height: 10,),
@@ -685,12 +773,12 @@ class AddProduct extends StatelessWidget {
                       SizedBox(height: 10,),
                       Align(
                           alignment: Alignment.centerLeft,
-                          child: addText600("Stoke", textAlign: TextAlign.start)
+                          child: addText600("Stock", textAlign: TextAlign.start)
                       ),
 
                       SizedBox(height: 10,),
                       CustomDropdownButton2(
-                        hintText: "In Stoke",
+                        hintText: "In Stock",
                         items: contt.stokeList ?? [],
                         value: contt.selectedStock,
                         displayText: (item) => "$item",
@@ -785,6 +873,8 @@ class AddProduct extends StatelessWidget {
                               addProductApi(
                                 brandName: contt.brandName.text,
                                 productName: contt.productName.text,
+                                productCondition: contt.selectedProductCondition,
+                                pickupLocation: contt.pickUpLocation.text,
                                 catagory: contt.selectedCategory!.name,
                                 price: contt.productPrice.text,
                                 commission: contt.commissionAmount.toString(),
@@ -811,9 +901,11 @@ class AddProduct extends StatelessWidget {
                                   contt.productDL.clear();
                                   contt.productDW.clear();
                                   contt.productDH.clear();
+                                  contt.pickUpLocation.clear();
                                   contt.selectedFile=[];
                                   contt.isReturnAvailable=false;
                                   contt.selectedCategory=null;
+                                  contt.selectedProductCondition = null;
                                   contt.selectedDeliviry=null;
                                   contt.selectedStock =null;
                                   contt.qtyCtrl.text=='0';
@@ -849,7 +941,7 @@ class AddProduct extends StatelessWidget {
 
                       GestureDetector(
                         onTap: () {
-                          Get.to(HelpSupport());
+                          Get.to(()=>HelpSupport());
                         },
                         child: Container(
                           margin: EdgeInsets.only(right: 15),

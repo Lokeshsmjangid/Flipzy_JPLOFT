@@ -136,8 +136,9 @@ class EditBankInfo extends StatelessWidget {
                           validator: MultiValidator([RequiredValidator(errorText: 'Account Number is required.'),]),
                           prefixIcon: SvgPicture.asset(AppAssets.bankBuildingIC)),
 
-                      SizedBox(height: 20,),
-                                //IFSC_CODE
+                      //IFSC_CODE
+                      /*SizedBox(height: 20,),
+
                       Align(
                           alignment: Alignment.centerLeft,
                           child: addText500("IFSC Code", color: AppColors.blackColor)),
@@ -148,8 +149,8 @@ class EditBankInfo extends StatelessWidget {
                           hintText: 'IFSC Code',
                           textCapitalization: TextCapitalization.characters,
                           validator: MultiValidator([RequiredValidator(errorText: 'Ifsc code is required.')]),
-                          prefixIcon: SvgPicture.asset(AppAssets.bankBuildingIC)),
-
+                          prefixIcon: SvgPicture.asset(AppAssets.bankBuildingIC)),*/
+//IFSC_CODE
                       // Spacer(),
                       //
                       // Padding(

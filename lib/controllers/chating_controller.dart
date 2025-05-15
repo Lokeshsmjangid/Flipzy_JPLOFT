@@ -290,6 +290,7 @@ class ChattingCtrl extends GetxController{
   }
 
   void scrollDown() {
+    if (scrollController.hasClients)
     scrollController.animateTo(
       scrollController.position.maxScrollExtent,
       duration: Duration(seconds: 2),

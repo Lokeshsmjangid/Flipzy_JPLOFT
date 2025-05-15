@@ -102,20 +102,17 @@ class ChattingScreen extends StatelessWidget {
                   // handle block
                 }
                 else if (value == 'Clear Chat') {
+
                   String senderId = '${AuthData().userModel?.id}';
                   String receiverId = '${logic.receiverData?.userId}';
-
 
                   flipzyPrint(message: 'senderId::${senderId}');
                   flipzyPrint(message: 'receiverId::${receiverId}');
 
-                  logic.socketService?.socket?.emit('deleteUserChat',
-                      {
+                  logic.socketService?.socket?.emit('deleteUserChat', {
                         'senderId': senderId,
                         'receiverId': receiverId,
                       });
-
-                  // handle clear chat
                 }
               },
               itemBuilder: (context) => [
@@ -279,11 +276,8 @@ class ChattingScreen extends StatelessWidget {
         );
       }),
       body: GetBuilder<ChattingCtrl>(
-        builder: (logic) {
-          return Container(
-            height: MediaQuery
-                .sizeOf(context)
-                .height,
+        builder: (logic) { return Container(
+            height: MediaQuery.sizeOf(context).height,
             margin: const EdgeInsets.all(10),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),
@@ -421,11 +415,13 @@ class ChattingScreen extends StatelessWidget {
                 ],
               ),
             ),
-          );
-        },
-      ),
-    );
-  }}
+          ); },
+      )
+    );}}
+
+
+
+
 
 /*
 import 'dart:io';

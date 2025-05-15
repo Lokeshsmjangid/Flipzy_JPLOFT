@@ -7,7 +7,7 @@ import "package:flipzy/Api/api_constant.dart";
 import "package:flipzy/resources/auth_data.dart";
 import "package:flipzy/Api/api_models/my_products_model_response.dart";
 
-Future<MyProductsModelResponse> getAllProductsListApi({page,String? searchTerm}) async {
+Future<MyProductsModelResponse> getAllProductsListApi({page,String? searchTerm,bool isFilter = false, String? location,String? price,String? sortBy,String? productCondition}) async {
   bool checkInternet = await hasInternetConnection();
   if (!checkInternet) { // checkInternet is false
     showToastError('No Internet Connection');
@@ -17,6 +17,8 @@ Future<MyProductsModelResponse> getAllProductsListApi({page,String? searchTerm})
     String? url;
     if(searchTerm!=null && searchTerm.isNotEmpty){
       url = '${ApiUrls.allProductsUrl}?page=$page&searchTerm=$searchTerm';
+    } else if(isFilter){
+      url = '${ApiUrls.allProductsUrl}?page=$page&location=$location&price=$price&sortBy=$sortBy&productCondition=$productCondition';
     } else{
       url = '${ApiUrls.allProductsUrl}?page=$page';
     }

@@ -12,6 +12,8 @@ import 'package:http/http.dart' as http;
 Future<CommonModelResponse> addProductApi({
   String? brandName,
   String? productName,
+  String? productCondition,
+  String? pickupLocation,
   String? catagory, // 🔁 Rename to 'category' if backend expects that
   String? price,
   String? commission,
@@ -48,6 +50,8 @@ Future<CommonModelResponse> addProductApi({
     // Optional Fields
     if (brandName?.isNotEmpty ?? false) request.fields['brandName'] = brandName!;
     if (productName?.isNotEmpty ?? false) request.fields['productName'] = productName!;
+    if (productCondition?.isNotEmpty ?? false) request.fields['productCondition'] = productCondition!;
+    if (pickupLocation?.isNotEmpty ?? false) request.fields['pickupLocation'] = pickupLocation!;
     if (catagory?.isNotEmpty ?? false) request.fields['category'] = catagory!;
     if (price?.isNotEmpty ?? false) request.fields['price'] = price!;
     if (commission?.isNotEmpty ?? false) request.fields['commission'] = commission!;

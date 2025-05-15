@@ -24,6 +24,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
+import 'package:shimmer/shimmer.dart';
 
 class AllProductsScreen extends StatefulWidget {
   AllProductsScreen({super.key});
@@ -108,49 +110,86 @@ class _AllProductsScreenState extends State<AllProductsScreen> {
                 children: [
 //SearchTxtForm
                   Container(
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: 15, vertical: 7),
-                    child: CustomTextField(
-                      borderRadius: 30,
-                      controller: contt.searchController,
-                      hintText: "Search Product Name",
-                      fillColor: AppColors.whiteColor,
-                      suffixIcon: Container(
-                        margin: const EdgeInsets.only(
-                            left: 15, right: 15, top: 2, bottom: 2),
-                        padding: const EdgeInsets.symmetric(
-                            vertical: 10, horizontal: 8),
-                        decoration: BoxDecoration(
-                          color: AppColors.primaryColor,
-                          border: Border.all(
-                            color: AppColors.primaryColor,
-                            width: 1.5,
+                    padding:const EdgeInsets.symmetric(horizontal: 15, vertical: 7),
+                    child: Row(
+                      children: [
+                        Expanded(
+                          child: CustomTextField(
+                            borderRadius: 30,
+                            controller: contt.searchController,
+                            hintText: "Search Product Name",
+                            fillColor: AppColors.whiteColor,
+                            suffixIcon: Container(
+                              margin: const EdgeInsets.only(
+                                  left: 15, right: 15, top: 2, bottom: 2),
+                              padding: const EdgeInsets.symmetric(
+                                  vertical: 10, horizontal: 8),
+                              decoration: BoxDecoration(
+                                color: AppColors.primaryColor,
+                                border: Border.all(
+                                  color: AppColors.primaryColor,
+                                  width: 1.5,
+                                ),
+                                borderRadius: BorderRadius.circular(20),
+                              ),
+                              child: SvgPicture.asset(
+                                AppAssets.searchIcon,
+                                color: AppColors.blackColor,
+                                width: 31,
+                                height: 30,
+                              ),
+                            ),
+                            onChanged: (val) {
+                              contt.deBounce.run(() {
+                                contt.page = 1;
+                                contt.modelResponse.myProducts?.clear();
+                                contt.fetchMyProductsListData(
+                                    searchValue: val, pageNumm: 1,ISFILTER: false);
+                              });
+                            },
                           ),
-                          borderRadius: BorderRadius.circular(20),
                         ),
-                        child: SvgPicture.asset(
-                          AppAssets.searchIcon,
-                          color: AppColors.blackColor,
-                          width: 31,
-                          height: 30,
-                        ),
-                      ),
-                      onChanged: (val) {
-                        contt.deBounce.run(() {
-                          contt.page = 1;
-                          contt.modelResponse.myProducts?.clear();
-                          contt.fetchMyProductsListData(
-                              searchValue: val, pageNumm: 1);
-                        });
-                      },
+                        addWidth(12),
+                        GestureDetector(
+                          onTap: (){
+                            FilterBottomsheet.show(context,
+                                onTap1: (){
+                              Get.back();
+                              contt.modelResponse.myProducts?.clear();
+                              String? sortBy  = contt.shortList.firstWhereOrNull((item) => item.isSelect?.value == true)?.shortValSend?.value;
+                              String? pd  = contt.productConditionList.firstWhereOrNull((item) => item.isSelect?.value == true)?.conditionVal?.value;
+
+
+                                  contt.fetchMyProductsListData(
+                                      pageNumm: 1,
+                                      ISFILTER: true,
+                                      PRICE: "${contt.currentRangeValues.value.start.round()}-${contt.currentRangeValues.value.end.round()}",
+                                    SORT: sortBy,
+                                    PD: pd
+                                  );
+                                },
+                                onTap2: (){
+                              contt.filterLocation.clear();
+                              for (var item in contt.shortList) {
+                                item.isSelect?.value = false;
+                              }
+                              for (var item in contt.productConditionList) {
+                                item.isSelect?.value = false;
+                              }
+                            });
+                          },
+                          child: Container(
+                              decoration: BoxDecoration(shape: BoxShape.circle),
+                              child: SvgPicture.asset(AppAssets.filterIc,color: AppColors.blackColor,).marginAll(6)),
+                        )
+]
                     ),
                   ),
 
                   Expanded(
                     child: contt.isDataLoading
-                        ? Center(
-                            child: CircularProgressIndicator(
-                                color: AppColors.secondaryColor))
+                        // ? Center(child: CircularProgressIndicator(color: AppColors.secondaryColor))
+                        ? build_shimmer_loader()
                         : contt.modelResponse.myProducts != null &&
                                 contt.modelResponse.myProducts!.isNotEmpty
                             ? Stack(
@@ -186,16 +225,11 @@ class _AllProductsScreenState extends State<AllProductsScreen> {
                                         },
                                         child: Container(
                                             height: 270,
-                                            width:
-                                                MediaQuery.of(context).size.width *
-                                                    0.40,
-                                            margin: const EdgeInsets.symmetric(
-                                                horizontal: 10, vertical: 5),
-                                            padding: const EdgeInsets.symmetric(
-                                                horizontal: 8, vertical: 5),
+                                            width: MediaQuery.of(context).size.width * 0.40,
+                                            margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                                            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 5),
                                             decoration: BoxDecoration(
-                                              color: AppColors
-                                                  .whiteColor, //contt.featuredItems[item].isSelect ? AppColors.blackColor : AppColors.whiteColor,
+                                              color: AppColors.whiteColor, //contt.featuredItems[item].isSelect ? AppColors.blackColor : AppColors.whiteColor,
                                               border: Border.all(
                                                 color: Color(0XFFEDEDED),
                                                 width: 1,
@@ -213,37 +247,41 @@ class _AllProductsScreenState extends State<AllProductsScreen> {
                                                   height: 147,
                                                   width: 147,
                                                   decoration: BoxDecoration(
-                                                    color: AppColors
-                                                        .containerBorderColor,
-                                                    borderRadius:
-                                                        BorderRadius.circular(10),
-                                                    // image: DecorationImage(
-                                                    //     fit: BoxFit.fill,
-                                                    //     image: AssetImage(contt.featuredItems[item].images)
-                                                    //
-                                                    // )
+                                                    color: AppColors.containerBorderColor,
+                                                    borderRadius: BorderRadius.circular(10),
                                                   ),
                                                   child: Stack(
                                                     children: [
                                                       ClipRRect(
-                                                        clipBehavior: Clip
-                                                            .antiAliasWithSaveLayer,
-                                                        borderRadius:
-                                                            BorderRadius.circular(
-                                                                20),
+                                                        clipBehavior: Clip.antiAliasWithSaveLayer,
+                                                        borderRadius: BorderRadius.circular(10),
                                                         child: SizedBox(
                                                           width: double.infinity,
                                                           height: double.infinity,
                                                           child: CachedImageCircle2(
                                                               isCircular: false,
-                                                              fit: BoxFit.fill,
-                                                              imageUrl: item
-                                                                      .productImages!
-                                                                      .isNotEmpty
+                                                              fit: BoxFit.cover,
+                                                              imageUrl: item.productImages!.isNotEmpty
                                                                   ? '${item.productImages![0]}'
                                                                   : '${ApiUrls.productEmptyImgUrl}'),
                                                         ),
                                                       ),
+                                                      Visibility(
+                                                        visible: item.bestseller??false,
+                                                        child: Align(
+                                                          alignment: Alignment.topRight,
+                                                          child: Container(
+                                                            margin: EdgeInsets.only(top: 5, right: 5),
+                                                            padding: EdgeInsets.symmetric(horizontal: 10, vertical: 3),
+                                                            decoration: BoxDecoration(
+                                                              color: AppColors.yellowColor,
+                                                              borderRadius: BorderRadius.circular(20),
+                                                            ),
+                                                            child: addText400("Best Seller",
+                                                              color: AppColors.blackColor, fontSize: 11, ),
+                                                          ),
+                                                        ),
+                                                      )
                                                     ],
                                                   ),
                                                 ),
@@ -341,5 +379,59 @@ class _AllProductsScreenState extends State<AllProductsScreen> {
             ),
           );
         });
+  }
+  build_shimmer_loader() {
+    return GridView.builder(
+      physics: BouncingScrollPhysics(),
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 2, // 2 items per row
+        crossAxisSpacing: 2,
+        mainAxisSpacing: 1,
+        childAspectRatio:
+        0.78, // Adjust height-to-width ratio
+      ),
+      shrinkWrap: true,
+      itemCount: 12, // Placeholder count
+      itemBuilder: (context, index) {
+        return Shimmer.fromColors(
+          baseColor: Colors.grey.shade300,
+          highlightColor: Colors.grey.shade100,
+          child: Container(
+            margin: const EdgeInsets.all(5),
+            padding: const EdgeInsets.all(10),
+            decoration: BoxDecoration(
+              color: AppColors.whiteColor,
+              borderRadius: BorderRadius.circular(10),
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  height: 147, width: 147,
+                  decoration: BoxDecoration(
+                    color: Colors.grey.shade300,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                ),
+                SizedBox(height: 5),
+                Container(
+                  height: 10,
+                  width: 60,
+                  color: Colors.grey.shade300,
+                ),
+                SizedBox(height: 5),
+                Container(
+                  height: 10,
+                  width: 40,
+                  color: Colors.grey.shade300,
+                ),
+              ],
+            ),
+          ),
+        );
+      },
+    );
   }
 }

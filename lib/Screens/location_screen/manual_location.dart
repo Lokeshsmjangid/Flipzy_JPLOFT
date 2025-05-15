@@ -77,7 +77,13 @@ class _ManualLocationState extends State<ManualLocation> {
 
             GestureDetector(
               onTap: (){
-                Get.back();
+                showLoader(true);
+                mlCtrl.getCurrentLocation();
+
+                Future.delayed(Duration(milliseconds: 2500),(){
+                  showLoader(false);
+                  Get.back();
+                });
               },
               child: Container(
                 height: 48,

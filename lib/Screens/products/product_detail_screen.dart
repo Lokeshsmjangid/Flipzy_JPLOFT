@@ -1,6 +1,8 @@
 
 import 'package:flipzy/Api/api_constant.dart';
 import 'package:flipzy/Api/chat_with_users_model.dart';
+import 'package:flipzy/Api/repos/add_to_fav_repo.dart';
+import 'package:flipzy/Api/repos/bubble_ship_repo.dart';
 import 'package:flipzy/Screens/makeOfferChat.dart';
 import 'package:flipzy/Screens/seller_profile.dart';
 import 'package:flipzy/controllers/chat_controller.dart';
@@ -9,6 +11,7 @@ import 'package:flipzy/custom_widgets/appButton.dart';
 import 'package:flipzy/resources/app_assets.dart';
 import 'package:flipzy/resources/app_color.dart';
 import 'package:flipzy/resources/app_routers.dart';
+import 'package:flipzy/resources/custom_loader.dart';
 import 'package:flipzy/resources/text_utility.dart';
 import 'package:flipzy/resources/utils.dart';
 import 'package:flutter/material.dart';
@@ -127,7 +130,36 @@ class ProductDetailScreen extends StatelessWidget {
                       addText700('₦${logic.response.data?.productList?.price??0}', fontFamily: '',
                           color: AppColors.blackColor,
                           fontSize: 24),
-                      // SvgPicture.asset(AppAssets.cartIC),
+                      GestureDetector(
+                        onTap: () {
+                          logic.response.data?.productList!.favoriteIcon = !logic.response.data!.productList!.favoriteIcon!;
+                          logic.update();
+                          flipzyPrint(
+                              message: 'message: ${logic.response.data?.productList!.favoriteIcon}');
+
+                          addToFavApi(
+                              productId: logic.response.data?.productList!.id)
+                              .then((value) {
+                            if (value.status == true) {
+                              showToast('${value.message}');
+                            }
+                          });
+                        },
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: AppColors.appGreenColor,
+                            shape: BoxShape.circle ,
+                          ),
+                          // margin: EdgeInsets.only(right: 5),
+                          child: SvgPicture.asset(
+                            AppAssets.isFavouriteSelect,
+                            // AppAssets.editPenIc,
+                            color: logic.response.data?.productList!.favoriteIcon==true?null:AppColors.containerBorderColor1,
+                            fit: BoxFit.contain,
+                            height: 15, width: 15,
+                          ).marginAll(6),
+                        ),
+                      ),
                     ],
                   ),
                   Align(
@@ -139,41 +171,47 @@ class ProductDetailScreen extends StatelessWidget {
                   if(logic.response.data!.productList?.stock == 'In Stock')
                   Align(
                     alignment: Alignment.centerLeft,
-                    child: Row(
-
+                    child: Column(
                       mainAxisSize: MainAxisSize.min,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        GestureDetector(
-                          onTap: () {
-                            logic.updateCounter(
-                                true, logic.response.data!.productList!.stockQuantity!);
-                            logic.update();
-                          },
-                          child: Container(
-                              decoration: BoxDecoration(
-                                  color: AppColors.containerBorderColor,
-                                  shape: BoxShape.circle),
-                              child: Icon(Icons.add, size: 18,).marginAll(4)),
+                        addText500('Qty:').marginOnly(top: 12),
+                        Row(
+
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            GestureDetector(
+                              onTap: () {
+                                logic.updateCounter(
+                                    true, logic.response.data!.productList!.stockQuantity!);
+                                logic.update();
+                              },
+                              child: Container(
+                                  decoration: BoxDecoration(
+                                      color: AppColors.containerBorderColor,
+                                      shape: BoxShape.circle),
+                                  child: Icon(Icons.add, size: 18,).marginAll(4)),
+                            ),
+                            // Image.asset(AppAssets.starImage,height: 13,width: 13).marginOnly(right: 4),
+                            addText500('${logic.counter}', fontSize: 14,
+                                fontFamily: 'Manrope',
+                                color: AppColors.blackColor).marginSymmetric(horizontal: 8),
+                            GestureDetector(
+                              onTap: () {
+                                logic.updateCounter( false, logic.response.data!.productList!.stockQuantity!);
+                                logic.update();
+                              },
+                              child: Container(
+                                  decoration: BoxDecoration(
+                                      color: AppColors.containerBorderColor,
+                                      shape: BoxShape.circle),
+                                  child: Icon(Icons.remove, size: 18,).marginAll(
+                                      4)),
+                            )
+                          ],
                         ),
-                        // Image.asset(AppAssets.starImage,height: 13,width: 13).marginOnly(right: 4),
-                        addText500('${logic.counter}', fontSize: 14,
-                            fontFamily: 'Manrope',
-                            color: AppColors.blackColor).marginSymmetric(horizontal: 8),
-                        GestureDetector(
-                          onTap: () {
-                            logic.updateCounter(
-                                false, logic.response.data!.productList!.stockQuantity!);
-                            logic.update();
-                          },
-                          child: Container(
-                              decoration: BoxDecoration(
-                                  color: AppColors.containerBorderColor,
-                                  shape: BoxShape.circle),
-                              child: Icon(Icons.remove, size: 18,).marginAll(
-                                  4)),
-                        )
                       ],
-                    ).marginOnly(top: 12),
+                    ),
                   ),
                   addHeight(20),
 
@@ -197,12 +235,20 @@ class ProductDetailScreen extends StatelessWidget {
 
                           addHeight(12),
                           build_tile(title: 'Category',subTitle: '${logic.response.data?.productList?.category?.capitalize??''}',subTitleColor: AppColors.blackColor),
-  addHeight(12),
-                          build_tile(title: 'Stock',
-                              subTitle: '${logic.response.data?.productList?.stock?.capitalize??''}',subTitleColor: AppColors.blackColor),
 
                           addHeight(12),
-                          
+                          build_tile(title: 'Stock', subTitle: '${logic.response.data?.productList?.stock?.capitalize??''}',subTitleColor: AppColors.blackColor),
+
+                          if(logic.response.data!.productList!.shippingCharges!.isNotEmpty)
+                          Align(
+                            alignment: Alignment.centerLeft,
+                            child: richText2(text1: 'Available In Cities: ',fontSize1: 14,fontWeight1:FontWeight.w500,textColor1: AppColors.textColor3,
+                            text2: '${logic.response.data!.productList!.shippingCharges?.map((city)=> city.city!.capitalize)}',fontSize2: 14,fontWeight2:FontWeight.w500,textColor2: AppColors.blackColor,
+                                textAlign: TextAlign.left
+                            ),
+                          ).marginOnly(top: 12),
+                          addHeight(12),
+
 
                         ],
                       )
@@ -233,12 +279,22 @@ class ProductDetailScreen extends StatelessWidget {
                         )
                     ),
                   ),
-                  addHeight(10),
+
+
 
                   GestureDetector(
                     onTap: () {
-                      Get.to(SellerProfileScreen(sellerId: logic.response.data?.productList?.sellerId??'',
-                        sellerName: logic.response.data?.sellerName??'',));
+
+                      String? productIdToReopen = logic.productId;
+                      String? productNameToReopen = logic.productName;
+                      Get.back();
+                      Get.to(() =>
+                          SellerProfileScreen(sellerId: logic.response.data?.productList?.sellerId??'',
+                        sellerName: logic.response.data?.sellerName??''))?.then((onBack){
+                        Get.toNamed(AppRoutes.productDetailScreen,
+                            arguments: {'product_id':productIdToReopen,'product_name':productNameToReopen});
+                      });
+
                     },
                     child: Container(
                       padding: EdgeInsets.symmetric(vertical: 5),
@@ -250,10 +306,7 @@ class ProductDetailScreen extends StatelessWidget {
                         children: [
 
                           Container(
-                            width: MediaQuery
-                                .of(context)
-                                .size
-                                .width * 0.12,
+                            width: MediaQuery.of(context).size.width * 0.12,
                             padding: EdgeInsets.symmetric(vertical: 5),
                             margin: EdgeInsets.only(left: 15),
                             decoration: BoxDecoration(
@@ -306,7 +359,7 @@ class ProductDetailScreen extends StatelessWidget {
                         ],
                       ),
                     ),
-                  ),
+                  ).marginOnly(top: 10),
 
                   // addHeight(10),
                   //
@@ -330,7 +383,7 @@ class ProductDetailScreen extends StatelessWidget {
                         Expanded(
                           child: GestureDetector(
                             onTap: () {
-                              Get.to(
+                              Get.to(() =>
                                   MakeOfferChatScreen(
                                     price: logic.response.data?.productList?.price,
                                 receiverData: ChatWithUser(
@@ -454,7 +507,9 @@ class ProductDetailScreen extends StatelessWidget {
 
                   addHeight(16),
 
-                  AppButton(
+
+
+                  logic.response.data!.productList?.stock == 'In Stock'? AppButton(
                     onButtonTap: () {
                       // makePayment(context);
 /*// web view
@@ -483,10 +538,6 @@ class ProductDetailScreen extends StatelessWidget {
                         }
 
                       });*/
-
-
-
-
                       // buy now Old api
                       /*buyNowApi(
                           productId: logic.productId,
@@ -498,18 +549,41 @@ class ProductDetailScreen extends StatelessWidget {
                             }});*/
 
 
-                      Get.toNamed(AppRoutes.checkOutScreen,
-                          arguments: {
-                        'quantity':logic.counter,
-                        'product_detail':logic.response.data?.productList})?.then((val){
+                      if(logic.response.data?.productList?.sellBeyondCityLimits?.toLowerCase()=='yes'){
+                        showLoader(true);
+                        bubbleShipApi(productId: logic.productId).then((onValue){
+                          showLoader(false);
+                          if(onValue.status==true){
+                            Get.toNamed(AppRoutes.checkOutScreen, arguments: {
+                              'quantity':logic.counter,
+                              'product_detail':logic.response.data?.productList})?.then((val){
+                              if(val!=null){
+                                logic.counter=val;
+                                logic.update();
+                              }
+                            });
+                          } else if(onValue.status==false){
+                            showToastError('${onValue.message}');
+                          }
+                        });
+                      }
+                      else {
+                        Get.toNamed(AppRoutes.checkOutScreen, arguments: {
+                          'quantity':logic.counter,
+                          'product_detail':logic.response.data?.productList})?.then((val){
                           if(val!=null){
                             logic.counter=val;
                             logic.update();
                           }
-                      });
+                        });
+                      };
 
                       },
                     buttonText: 'Buy Now',
+                    buttonTxtColor: AppColors.blackColor):AppButton(
+                    onButtonTap: (){},
+                    buttonText: 'Out Of Stock',
+                      buttonColor: AppColors.containerBorderColor1,
                     buttonTxtColor: AppColors.blackColor),
 
                   addHeight(24)

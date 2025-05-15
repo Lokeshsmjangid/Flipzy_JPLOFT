@@ -214,10 +214,7 @@ class _SellerProfileScreenState extends State<SellerProfileScreen> {
         // Withdrawal History
                   ...List.generate(products.length??0, (index){
                     return build_text_tile(item: products[index],title: '₦${products[index].price}',onTap: (){
-                      // Get.back();
-                      // // Get.back();
-                      // Get.toNamed(AppRoutes.productDetailScreen,
-                      //     arguments: {'product_id':products[index].id,'product_name':products[index].productName});
+                      Get.toNamed(AppRoutes.productDetailScreen, arguments: {'product_id':products[index].id,'product_name':products[index].productName});
                     });
                   })
                 ],

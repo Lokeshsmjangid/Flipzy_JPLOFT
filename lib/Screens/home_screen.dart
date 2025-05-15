@@ -210,9 +210,14 @@ class _HomeScreenState extends State<HomeScreen> {
                             ),
                             GestureDetector(
                               onTap: () {
-                                if(AuthData().userModel?.guestId!=null){Get.toNamed(AppRoutes.loginScreen);}else{
+                                if(AuthData().userModel?.guestId!=null){Get.toNamed(AppRoutes.loginScreen);}
+                                else{
 
-                                Get.to(ViewAllHomeScreen(products: contt.homeModel.data?.featuredProducts??[]));
+                                // Get.to(ViewAllHomeScreen(products: contt.homeModel.data?.featuredProducts??[]));
+                                  Get.toNamed(AppRoutes.allProductsScreen,arguments: {'searchTerm': ''})?.then((valu){
+                                    contt.searchCtrl.clear();
+                                    contt.update();
+                                  });
                                 }
                               },
                               child: Container(
@@ -423,8 +428,11 @@ class _HomeScreenState extends State<HomeScreen> {
                             GestureDetector(
                               onTap: () {
                                 if(AuthData().userModel?.guestId!=null){Get.toNamed(AppRoutes.loginScreen);}else{
-
-                                Get.to(ViewAllHomeScreen(products: contt.homeModel.data?.productList??[]));
+                                // Get.to(ViewAllHomeScreen(products: contt.homeModel.data?.productList??[]));
+                                  Get.toNamed(AppRoutes.allProductsScreen,arguments: {'searchTerm': ''})?.then((valu){
+                                    contt.searchCtrl.clear();
+                                    contt.update();
+                                  });
                                 }
                               },
                               child: Container(

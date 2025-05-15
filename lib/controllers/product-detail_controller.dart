@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:flipzy/Api/api_models/product_detail_model.dart';
 import 'package:flipzy/Api/repos/product_detail_repo.dart';
+import 'package:flipzy/resources/utils.dart';
 import 'package:get/get.dart';
 
 class ProductDetailController extends GetxController {
@@ -39,6 +40,9 @@ class ProductDetailController extends GetxController {
     if(Get.arguments!=null){
       productId = Get.arguments['product_id'];
       productName = Get.arguments['product_name'];
+
+      flipzyPrint(message: 'product_id::::${productId} && productName::::${productName}');
+
       fetchPDetail();
     }
   }

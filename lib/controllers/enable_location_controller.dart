@@ -14,6 +14,8 @@ import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:permission_handler/permission_handler.dart';
+
+import 'add_or_edit_address_ctrl.dart';
 String address = '';
 class EnableLocationController extends GetxController {
 
@@ -26,6 +28,7 @@ class EnableLocationController extends GetxController {
     Uri uri = Uri.https('maps.googleapis.com','maps/api/place/autocomplete/json',{
       'input': query,
       'key': ApiUrls.googleApiKey,
+      'components': 'country:ng', // only for nigeria
     });
 
     String? response = await fetchUrl(uri);
@@ -152,6 +155,15 @@ class EnableLocationController extends GetxController {
         // countryCtrl.text = placemarks[0].country.toString();
         address = placemarks[0].name! + ', ' + placemarks[0].subLocality! + ', '+ placemarks[0].locality! + ', ' + placemarks[0].administrativeArea!+ ' ' +placemarks[0].postalCode!  + ', ' + placemarks[0].country!;
         // streetCtrl.text = placemarks[0].name! + ', ' + placemarks[0].subLocality! + ', '+ placemarks[0].locality! + ', ' + placemarks[0].administrativeArea!+ ' ' +placemarks[0].postalCode!  + ', ' + placemarks[0].country!;
+
+        Get.find<AddOrEditAddressCtrl>().picLat = latitude;
+        Get.find<AddOrEditAddressCtrl>().picLang = longitude;
+        Get.find<AddOrEditAddressCtrl>().addressCtrl.text = address;
+        Get.find<AddOrEditAddressCtrl>().cityCtrl.text = '${placemarks[0].locality}';
+        Get.find<AddOrEditAddressCtrl>().stateCtrl.text = '${placemarks[0].administrativeArea}';
+        Get.find<AddOrEditAddressCtrl>().countryCtrl.text = '${placemarks[0].country}';
+        Get.find<AddOrEditAddressCtrl>().postCodeCtrl.text = '${placemarks[0].postalCode}';
+        Get.find<AddOrEditAddressCtrl>().update();
 
       } else {
         address = 'Address not found';

@@ -338,7 +338,7 @@ class BusinessProfile extends StatelessWidget {
                               ],
                             ),
 
-                            SizedBox(height: 20),
+                            /*SizedBox(height: 20),
                             Row(
                               children: [
                                 Container(
@@ -352,7 +352,8 @@ class BusinessProfile extends StatelessWidget {
                                 SizedBox(width: 20),
                                 Expanded(child: addText500("${AuthData().userModel?.ifsc??''}", maxLines: 2, color: AppColors.blackColor, fontSize: 15)),
                               ],
-                            )]))])),
+                            )*/
+                          ]))])),
                 GestureDetector(
                     onTap: () {
                       // DeleteAccountDialog

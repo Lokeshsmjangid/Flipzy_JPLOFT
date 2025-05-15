@@ -190,6 +190,23 @@ class _CustomDrawerState extends State<CustomDrawer> {
                       onTap: (){
                     Get.back();
                       }),
+
+                  if(AuthData().userModel?.guestId ==null)
+                    build_text_tile(imgPath: AppAssets.drawerMyProfile,title: 'My Profile',upperBorder: false,
+                        onTap: (){
+                          Get.back();
+                          Get.to(UserProfile());
+                        }),
+
+                  if(AuthData().userModel?.guestId ==null)
+                    build_text_tile(imgPath: AppAssets.drawerNotification,title: 'Notifications',upperBorder: false,
+                        onTap: (){
+                          Future.microtask((){
+                            Get.back();
+                            Get.toNamed(AppRoutes.notificationScreen);
+                          });
+                        }),
+
                   build_text_tile(imgPath: AppAssets.textLocationIcon,title: 'shipping address',upperBorder: false,
                       onTap: (){
                     Get.back();
@@ -208,14 +225,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
                           Get.toNamed(AppRoutes.reviewsRatingScreen);
                         });
                       }),
-                  if(AuthData().userModel?.guestId ==null)
-                    build_text_tile(imgPath: AppAssets.drawerNotification,title: 'Notifications',upperBorder: false,
-                      onTap: (){
-                    Future.microtask((){
-                      Get.back();
-                      Get.toNamed(AppRoutes.notificationScreen);
-                    });
-                      }),
+
                   /*build_text_tile(imgPath: AppAssets.drawerCart,title: 'Cart',upperBorder: false,
                       onTap: (){
                   Future.microtask((){
@@ -236,28 +246,34 @@ class _CustomDrawerState extends State<CustomDrawer> {
                         Get.back();
                     Get.to(ManageBusiness());
                       }),
-                  if(AuthData().userModel?.guestId ==null)
-                    build_text_tile(imgPath: AppAssets.drawerMyProfile,title: 'My Profile',upperBorder: false,
-                      onTap: (){
-                        Get.back();
-                    Get.to(UserProfile());
-                    }),
-                  if(AuthData().userModel?.guestId ==null)
+
+
+                  // my product and boost product
+                  /*if(AuthData().userModel?.guestId ==null)
                     build_text_tile(imgPath: AppAssets.drawerMyProduct,title: 'My Products',upperBorder: false,
                       onTap: (){
                     Future.microtask((){
                       Get.back();
                       Get.toNamed(AppRoutes.myProductsScreen);
-                    });
-                      }),
+                    });}),
                   if(AuthData().userModel?.guestId ==null)
                     build_text_tile(imgPath: AppAssets.drawerMyProduct,title: 'Boost Products',upperBorder: false,
                       onTap: (){
                     Get.back();
-                    // Get.to(AllBoostProduct());
                     Get.toNamed(AppRoutes.allBoostProduct,arguments: {'selectedBox':1});
-                    // Get.to(SellerProfileScreen());
+
+                      }),*/
+                  // my product and boost product
+
+
+                  build_text_tile(imgPath: AppAssets.drawerHelp,title: 'Contact Us',upperBorder: false,
+                      onTap: (){
+                        Future.microtask((){
+                          Get.back();
+                          Get.toNamed(AppRoutes.contactUsScreen);
+                        });
                       }),
+
                   build_text_tile(imgPath: AppAssets.drawerHelp,title: 'Help & Support ',upperBorder: false,
                       onTap: (){
                         Get.back();
@@ -268,13 +284,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
                         Get.back();
                     Get.toNamed(AppRoutes.supportScreen);
                       }),
-                  build_text_tile(imgPath: AppAssets.drawerHelp,title: 'Contact Us',upperBorder: false,
-                      onTap: (){
-                        Future.microtask((){
-                          Get.back();
-                          Get.toNamed(AppRoutes.contactUsScreen);
-                        });
-                      }),
+
 
 
 

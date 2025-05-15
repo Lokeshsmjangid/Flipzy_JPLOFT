@@ -219,10 +219,8 @@ class ProductsTwoScreen extends StatelessWidget {
 
                           ],
                         )
-                        : Center(child: addText500('No Data Found'))
-                    ,
+                        : Center(child: addText500('No Data Found')),
                   ),
-                  
                 ],
               ),
             ),

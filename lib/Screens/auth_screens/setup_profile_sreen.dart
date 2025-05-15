@@ -1,27 +1,10 @@
 import 'dart:convert';
 import 'dart:developer';
 import 'dart:io';
-
-import 'package:flipzy/Api/api_constant.dart';
 import 'package:flipzy/Api/repos/profile_setup_repo.dart';
 import 'package:flipzy/Screens/custom_bottom_navigation.dart';
-import 'package:flipzy/Screens/home_screen.dart';
 import 'package:flipzy/controllers/setup_profile_ctrl.dart';
-import 'package:flipzy/dialogues/boost_product_dialogue.dart';
-import 'package:flipzy/dialogues/decline_order_dialogue.dart';
-import 'package:flipzy/dialogues/decline_order_success_dialogue.dart';
-import 'package:flipzy/dialogues/delete_acount_dialogue.dart';
-import 'package:flipzy/dialogues/delete_product_dialogue.dart';
-import 'package:flipzy/dialogues/dont_agree_dialogue.dart';
-import 'package:flipzy/dialogues/feedback_thanks_dialogue.dart';
 import 'package:flipzy/dialogues/get_ready_dialog.dart';
-import 'package:flipzy/dialogues/profile_ready_dialogue.dart';
-import 'package:flipzy/dialogues/purchase_thanks_dialogue.dart';
-import 'package:flipzy/dialogues/review_dialogue.dart';
-import 'package:flipzy/dialogues/seller_product_ready_dialogue.dart';
-import 'package:flipzy/dialogues/setisfied_product_dialogue.dart';
-import 'package:flipzy/dialogues/upload_product_sucess_dialogue.dart';
-import 'package:flipzy/dialogues/who_are_you_dialogue.dart';
 import 'package:flipzy/resources/app_assets.dart';
 import 'package:flipzy/resources/app_button.dart';
 import 'package:flipzy/resources/app_color.dart';
@@ -36,8 +19,6 @@ import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 import 'package:get/get.dart';
-import 'package:google_places_flutter/google_places_flutter.dart';
-import 'package:google_places_flutter/model/place_type.dart';
 
 class SetupProfileScreen extends StatelessWidget {
   SetupProfileScreen({super.key});
@@ -203,63 +184,66 @@ class SetupProfileScreen extends StatelessWidget {
                   //     validator: MultiValidator(
                   //         [RequiredValidator(errorText: 'Location is required.')]),
                   //     prefixIcon: SvgPicture.asset(AppAssets.textLocationIcon)),
-                  GooglePlaceAutoCompleteTextField(
-                    focusNode: focusNode,
-                    textEditingController: logic.locationCtrl,
-                    googleAPIKey: ApiUrls.googleApiKey,
-                    textStyle: ManropeTextStyle(fontSize: 14,fontWeight: FontWeight.w500,color: AppColors.textColor1),
-                    inputDecoration: InputDecoration(
-                      errorStyle: TextStyle(color: AppColors.redColor),
-                      floatingLabelBehavior: FloatingLabelBehavior.always,
-                      enabled: true,
-                      hintText: 'Enter Your Location',
-                      hintStyle: ManropeTextStyle(color: AppColors.textFieldHintColor,fontWeight: FontWeight.w500),
-                      // labelText: widget.labelText,
-                      // filled: widget.filled,
-                      fillColor: AppColors.containerBorderColor.withOpacity(0.1),
-                      border: OutlineInputBorder(borderRadius: BorderRadius.circular(1000)),
-                      prefixIcon: SvgPicture.asset(AppAssets.textLocationIcon),
-                      // suffixIcon: widget.suffixIcon,
-                      prefixIconConstraints: const BoxConstraints(maxHeight: 44,minWidth: 44),// use because unbalanced height of text area after adding prefix icon
-                      suffixIconConstraints: const BoxConstraints(maxHeight: 44,minWidth: 44),
-                      contentPadding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 14.0),
-                      focusedBorder: OutlineInputBorder(
-                        borderSide: const BorderSide(color: AppColors.primaryColor),
-                        borderRadius:BorderRadius.circular(10),
-                      ),
-                      enabledBorder: OutlineInputBorder(
-                        borderSide: const BorderSide(
-                            color: AppColors.containerBorderColor),
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      errorBorder: OutlineInputBorder(
-                        borderSide:  const BorderSide(
-                            color: AppColors.containerBorderColor),
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      focusedErrorBorder: OutlineInputBorder(
-                        borderSide:  const BorderSide(
-                            color: AppColors.containerBorderColor),
-                        borderRadius: BorderRadius.circular(10),
-                      ),
 
-                    ),
-                    debounceTime: 800, // Delay before fetching results
-                    isLatLngRequired: true, // If you need latitude & longitude
-                    placeType: PlaceType.establishment,
-                    getPlaceDetailWithLatLng: (prediction) {
-                      print("Selected Place: ${prediction.description}");
-                      print("Latitude: ${prediction.lat}");
-                      print("Longitude: ${prediction.lng}");
-                    },
-                    itemClick: (prediction) {
-                      logic.locationCtrl.text = prediction.description!;
-                      logic.locationCtrl.selection = TextSelection.fromPosition(TextPosition(offset: logic.locationCtrl.text.length),);
-                      focusNode.requestFocus(); // re-focus to prevent jumping
-            },
+                  CustomTextField(
+                      controller: logic.locationCtrl,
+                      hintText: 'Enter your location',
+                      onChanged: (val){
+                        logic.deBounce.run(() {
+                          logic.getSuggestion(val);
+                        });
+                      },
+                      suffixIcon: logic.locationCtrl.text.isNotEmpty
+                          ? IconButton(onPressed: (){
+                        logic.locationCtrl.clear();
+                        logic.update();
+                      }, icon: Icon(Icons.cancel_outlined))
+                          : null),
+                  if(logic.placePredication.isNotEmpty)
+                      SizedBox(
+                        height: 200,
+                        child: ListView.separated(shrinkWrap: true,
+                          physics: BouncingScrollPhysics(),
+                          padding: EdgeInsets.zero,
+                          itemCount: logic.placePredication.length,
+                          itemBuilder: (context, index) {
+                            return ListTile(
+                              onTap: (){
+                                showLoader(true);
+                                logic.getAddressFromPlaceId(logic.placePredication[index].placeId.toString()).then((value) {
+                                  if(value.responseCode==200){
+                                    log('Manual address:${value.address}');
+                                    log('Manual description:${logic.placePredication[index].description}');
+                                    logic.locationCtrl.text = "${logic.placePredication[index].description}";
+                                    logic.placePredication.clear();
+                                    logic.update();
+                                    log('Manual city:${value.city}');
+                                    log('Manual state:${value.state}');
+                                    log('Manual country:${value.country}');
+                                    log('Manual postalCode:${value.postalCode}');
+                                    log('Manual latitude:${value.latitude}');
+                                    log('Manual longitude:${value.longitude}');
+                                  }
+                                });
 
-                  ),
 
+                              },
+                              contentPadding: EdgeInsets.symmetric(horizontal: 14),visualDensity: VisualDensity(horizontal: -4,vertical: -4),
+                              title: Row(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Icon(Icons.male_rounded,color: AppColors.blackColor),
+                                  addWidth(5),
+                                  Expanded(child: addText400('${logic.placePredication[index].description}',fontSize: 14)),
+                                ],
+                              ),
+                              // Add more widgets to display additional information as needed
+                            );
+                          }, separatorBuilder: (BuildContext context, int index) {
+                            return Divider();
+                          },
+                        ),
+                      ),
                   addHeight(16),
 
 
