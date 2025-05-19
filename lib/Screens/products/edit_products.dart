@@ -6,11 +6,13 @@ import 'package:flipzy/Screens/boost_product_screen.dart';
 import 'package:flipzy/controllers/edit_product_controller.dart';
 import 'package:flipzy/controllers/my_products_controller.dart';
 import 'package:flipzy/custom_widgets/CustomTextField.dart';
+import 'package:flipzy/custom_widgets/appButton.dart';
 import 'package:flipzy/custom_widgets/customAppBar.dart';
 
 import 'package:flipzy/custom_widgets/custom_dropdown.dart';
 import 'package:flipzy/resources/app_assets.dart';
 import 'package:flipzy/resources/app_color.dart';
+import 'package:flipzy/resources/app_routers.dart';
 import 'package:flipzy/resources/custom_loader.dart';
 import 'package:flipzy/resources/text_utility.dart';
 import 'package:flipzy/resources/utils.dart';
@@ -951,22 +953,22 @@ class EditProducts extends StatelessWidget {
                       ),
                     ),
                     SizedBox(height: 10,),
+                    
+                    AppButton(
+                      buttonText: "Boost Product",
+                      buttonColor: AppColors.pinkColor,
+                      buttonTxtColor: AppColors.blueColor,
+                      onButtonTap: (){
+                      Get.to(BoostProductScreen(makeBoostProduct: contt.editProduct));
+                    },),
 
-                    GestureDetector(
-                      onTap: () {
-                        Get.to(BoostProductScreen(makeBoostProduct: contt.editProduct));
-                      },
-                      child: Container(
-                        margin: EdgeInsets.only(right: 15),
-                        child: addText600('Boost Product',fontSize: 13,fontFamily: 'Manrope',decoration: TextDecoration.underline,
-                            color: AppColors.darkGreenColor),
-                      ),
-                    ),
                     SizedBox(height: 10,),
 
 
                     GestureDetector(
-                      onTap: () {},
+                      onTap: () {
+                        Get.toNamed(AppRoutes.contactUsScreen);
+                      },
                       child: Container(
                         margin: EdgeInsets.only(right: 15),
                         child: addText600('Need Help',fontSize: 13,fontFamily: 'Manrope',decoration: TextDecoration.underline,color: Colors.black),

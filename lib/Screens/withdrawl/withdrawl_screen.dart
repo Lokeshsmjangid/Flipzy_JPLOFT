@@ -1,8 +1,10 @@
+import 'package:flipzy/Api/repos/request_withdrawal_repo.dart';
 import 'package:flipzy/Screens/business_profile/business_profile.dart';
 import 'package:flipzy/controllers/wallet_management_controller.dart';
 import 'package:flipzy/custom_widgets/appButton.dart';
 import 'package:flipzy/custom_widgets/customAppBar.dart';
 import 'package:flipzy/resources/app_color.dart';
+import 'package:flipzy/resources/custom_loader.dart';
 import 'package:flipzy/resources/text_utility.dart';
 import 'package:flipzy/resources/utils.dart';
 import 'package:flutter/material.dart';
@@ -40,7 +42,19 @@ class WithdrawalScreen extends StatelessWidget {
             radius: 1000,
             child: AppButton(
                 onButtonTap: () {
-                  Get.to(()=>BusinessProfile());
+                  if(cntrl.withdrawalCtrl.text.isNotEmpty){
+                      showLoader(true);
+                    withdrawalApi(amount: cntrl.withdrawalCtrl.text).then((onValue){
+                      showLoader(false);
+                      if(onValue.status==true){
+
+                        showToast('${onValue.message}');
+                        Get.back();
+                      }
+                    });
+                  }else{
+                    showToastError("Please enter some amount for withdrawal request.");
+                  }
                 },
                 buttonText: 'Withdrawal').marginSymmetric(horizontal: 4)
         ).marginSymmetric(horizontal: 12,vertical: 4),

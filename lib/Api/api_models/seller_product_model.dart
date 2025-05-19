@@ -13,23 +13,35 @@ String sellerProductsModelResponseToJson(SellerProductsModelResponse data) => js
 class SellerProductsModelResponse {
   String? message;
   bool? status;
+  int? page;
+  int? limit;
+  int? totalPages;
   Data? data;
 
   SellerProductsModelResponse({
     this.message,
     this.status,
+    this.page,
+    this.limit,
+    this.totalPages,
     this.data,
   });
 
   factory SellerProductsModelResponse.fromJson(Map<String, dynamic> json) => SellerProductsModelResponse(
     message: json["message"],
     status: json["status"],
+    page: json["page"],
+    limit: json["limit"],
+    totalPages: json["totalPages"],
     data: json["data"] == null ? null : Data.fromJson(json["data"]),
   );
 
   Map<String, dynamic> toJson() => {
     "message": message,
     "status": status,
+    "page": page,
+    "limit": limit,
+    "totalPages": totalPages,
     "data": data?.toJson(),
   };
 }

@@ -4,7 +4,6 @@ import 'dart:io';
 
 import 'package:flipzy/Api/api_constant.dart';
 import 'package:flipzy/Api/api_models/common_model_response.dart';
-import 'package:flipzy/controllers/addProduct_controller.dart';
 import 'package:flipzy/resources/auth_data.dart';
 import 'package:flipzy/resources/utils.dart';
 import 'package:http/http.dart' as http;

@@ -11,7 +11,8 @@ class GetReadyDialog {
   static void show(BuildContext context,{void Function()? onTap}) {
     showDialog(
       context: context,
-      barrierColor: AppColors.blueColor.withOpacity(0.3),
+      barrierColor: Color(0xff56716a).withOpacity(0.75),
+
       barrierDismissible: false,
       builder: (_) => GetReadyDialogWidget(onTap: onTap),
     );

@@ -12,7 +12,7 @@ class SellerProductReadyDialog {
   static void show(BuildContext context,{void Function()? onTap}) {
     showDialog(
       context: context,
-      barrierColor: AppColors.blueColor.withOpacity(0.2),
+      barrierColor: Color(0xff56716a).withOpacity(0.75),
       barrierDismissible: false,
       builder: (_) => SellerProductReadyDialogWidget(onTap: onTap),
     );

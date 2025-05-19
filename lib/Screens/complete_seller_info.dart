@@ -1129,7 +1129,7 @@ class _CompleteSellerInfoState extends State<CompleteSellerInfo> {
                     CustomTextField(
                       fillColor: AppColors.whiteColor,
                       controller: contt.businessDesc,
-                      hintText: "Describe your store in few words",
+                      hintText: "Describe your store in few words...",
                       prefixIcon: Container(
                         padding: EdgeInsets.symmetric(
                             vertical: 10, horizontal: 5),
@@ -1324,13 +1324,13 @@ class _CompleteSellerInfoState extends State<CompleteSellerInfo> {
                     ),
 
                     SizedBox(height: 15,),
-                    Align(
+                    /*Align(
                         alignment: Alignment.centerLeft,
                         child: addText600("Account IFSC",
                             textAlign: TextAlign.start)
                     ),
 
-                    SizedBox(height: 5,),
+                    SizedBox(height: 5,),*/
 
                     /*CustomTextField(
                       fillColor: AppColors.whiteColor,

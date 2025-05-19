@@ -12,7 +12,7 @@ class RefundOrderNotConfirmationDialog {
   static void show(BuildContext context) {
     showDialog(
       context: context,
-      barrierColor: AppColors.blueColor.withOpacity(0.5),
+       barrierColor: Color(0xff56716a).withOpacity(0.75),
       barrierDismissible: false,
       builder: (_) => RefundOrderNotConfirmationDialogWidget(),
     );

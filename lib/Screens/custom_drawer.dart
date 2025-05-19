@@ -265,14 +265,14 @@ class _CustomDrawerState extends State<CustomDrawer> {
                       }),*/
                   // my product and boost product
 
-
-                  build_text_tile(imgPath: AppAssets.drawerHelp,title: 'Contact Us',upperBorder: false,
+//Contact Us
+                  /*build_text_tile(imgPath: AppAssets.drawerHelp,title: 'Contact Us',upperBorder: false,
                       onTap: (){
                         Future.microtask((){
                           Get.back();
                           Get.toNamed(AppRoutes.contactUsScreen);
                         });
-                      }),
+                      }),*/
 
                   build_text_tile(imgPath: AppAssets.drawerHelp,title: 'Help & Support ',upperBorder: false,
                       onTap: (){

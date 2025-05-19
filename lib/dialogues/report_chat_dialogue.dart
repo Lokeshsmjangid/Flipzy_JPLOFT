@@ -10,12 +10,12 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
 class ReportChatDialogue {
-  static void show(BuildContext context,{void Function()? onTap,TextEditingController?msgCtrl }) {
+  static void show(BuildContext context,{void Function()? onTap,TextEditingController?msgCtrl,bool? isChat }) {
     showDialog(
       context: context,
-      barrierColor: AppColors.blueColor.withOpacity(0.3),
+      barrierColor: Color(0xff56716a).withOpacity(0.75),
       barrierDismissible: true,
-      builder: (_) => ReportChatDialogueWidget(onTap: onTap,msgCtrl: msgCtrl,),
+      builder: (_) => ReportChatDialogueWidget(onTap: onTap,msgCtrl: msgCtrl,isChat: isChat,),
     );
   }
 }
@@ -23,8 +23,9 @@ class ReportChatDialogue {
 class ReportChatDialogueWidget extends StatelessWidget {
   void Function()? onTap;
   TextEditingController? msgCtrl;
+  bool? isChat;
 
-  ReportChatDialogueWidget({this.onTap,this.msgCtrl});
+  ReportChatDialogueWidget({this.onTap,this.msgCtrl,this.isChat=false});
 
 
   @override
@@ -53,8 +54,12 @@ class ReportChatDialogueWidget extends StatelessWidget {
                     // SvgPicture.asset(AppAssets.deleteUserPopupImage,height: 100,width: 100,).marginAll(15),
 
                     addText700('We’re Sorry for Your Experience',textAlign: TextAlign.center,fontFamily: 'Manrope',fontSize: 20,color: AppColors.blackColor).marginAll(15),
-                    addText500('"Please Describe why are you reporting this person"',
+
+
+
+                    addText500('"Please Describe why are you reporting this ${isChat==true?"person":"product"}"',
                         fontFamily: 'Manrope',fontSize: 13,textAlign: TextAlign.center,color: AppColors.textColor1).marginSymmetric(horizontal: 10),
+
 
                     addHeight(20),
 

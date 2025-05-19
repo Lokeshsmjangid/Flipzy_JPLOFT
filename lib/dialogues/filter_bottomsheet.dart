@@ -11,6 +11,7 @@ import 'package:get/get.dart';
 class FilterBottomsheet {
   static void show(BuildContext context,{void Function()? onTap1, void Function()? onTap2}) {
     showModalBottomSheet(
+      barrierColor: Color(0xff56716a).withOpacity(0.75),
       context: context,isDismissible: false,
       isScrollControlled: true,
       backgroundColor: Colors.white,
@@ -75,7 +76,7 @@ class _FilterBottomsheetWidgetState extends State<FilterBottomsheetWidget> {
                         shape: BoxShape.circle,
                         color: AppColors.primaryColor
                       ),
-                      child: Icon(Icons.close, size: 20,),
+                      child: Icon(Icons.close, size: 20,color: AppColors.whiteColor,),
                     ),
                   )
                 ],

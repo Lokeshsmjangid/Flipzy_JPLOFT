@@ -1,14 +1,7 @@
 import "dart:convert";
 import "dart:developer";
-import "dart:io";
 import "package:flipzy/Api/api_constant.dart";
 import "package:flipzy/Api/api_models/address_response_model.dart";
-import "package:flipzy/Api/api_models/home_model_response.dart";
-import "package:flipzy/Api/api_models/notification_model.dart";
-import "package:flipzy/Api/api_models/products_by_category_model.dart";
-import "package:flipzy/Api/api_models/rating_reviews_model.dart";
-import "package:flipzy/Api/api_models/seller_product_model.dart";
-import "package:flipzy/Api/api_models/wishlist_model_response.dart";
 import "package:flipzy/resources/auth_data.dart";
 import "package:flipzy/resources/utils.dart";
 import 'package:http/http.dart' as http;

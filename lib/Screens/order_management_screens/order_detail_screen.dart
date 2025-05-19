@@ -8,6 +8,7 @@ import 'package:flipzy/Api/repos/give_review_repo.dart' show giveRatingApi;
 import 'package:flipzy/Screens/buyer_return_product_screen.dart';
 import 'package:flipzy/Screens/order_management_screens/steper_screen.dart';
 import 'package:flipzy/controllers/order_detail_controller.dart';
+import 'package:flipzy/custom_widgets/customAppBar.dart';
 import 'package:flipzy/dialogues/dont_agree_dialogue.dart';
 import 'package:flipzy/dialogues/feedback_thanks_dialogue.dart';
 import 'package:flipzy/dialogues/purchase_thanks_dialogue.dart';
@@ -42,16 +43,28 @@ class _OrderDetailScreenState extends State<OrderDetailScreen> {
   Widget build(BuildContext context) {
 
     return Scaffold(
+      appBar: customAppBar(
+        backgroundColor: AppColors.bgColor,
+        leadingWidth: MediaQuery.of(context).size.width * 0.3 ,
+        leadingIcon: IconButton(
+            onPressed: (){
+              Get.back();},
+            icon: Row(
+              children: [
+                Icon(Icons.arrow_back_ios_outlined, color: AppColors.blackColor,size: 14,),
+                addText400("Back", color: AppColors.blackColor,fontSize: 12,fontFamily: 'Poppins'),
+              ],
+            ).marginOnly(left: 12)),
+        centerTitle: true,
+        titleTxt: "Order Details",
+        titleColor: AppColors.blackColor,
+        titleFontSize: 16,
+        bottomLine: true,
+      ),
       body: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-
-            addHeight(20),
-            backAppBar(onTapBack: () {
-              Get.back();
-            }, title: 'Order Details'),
-            // addHeight(20),
 
             Expanded(child: GetBuilder<OrderDetailController>(
                 init: OrderDetailController(),
@@ -421,10 +434,10 @@ class _OrderDetailScreenState extends State<OrderDetailScreen> {
                               decoration: TextDecoration.underline,color: AppColors.blueColor1).marginAll(10),
                         ),
                       ),
-                      
-                      
-                      
-                      
+
+
+
+
                     addHeight(2.h),
                   ],
                 ).marginSymmetric(horizontal: 20),

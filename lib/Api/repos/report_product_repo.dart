@@ -2,29 +2,33 @@ import 'dart:convert';
 import 'dart:developer';
 
 import 'package:flipzy/Api/api_constant.dart';
-import 'package:flipzy/Api/api_models/apply_coupon_model.dart';
+import 'package:flipzy/Api/api_models/common_model_response.dart';
+import 'package:flipzy/resources/auth_data.dart';
 import 'package:flipzy/resources/utils.dart';
 import 'package:http/http.dart' as http;
 
-Future<ApplyCouponModel> applyCouponApi({promoCode}) async {
+Future<CommonModelResponse> reportProductApi({productId,reason}) async {
   bool checkInternet = await hasInternetConnection();
   if (!checkInternet) { // checkInternet is false
     showToastError('No Internet Connection');
-    return ApplyCouponModel.fromJson({});
+    return CommonModelResponse.fromJson({});
   }
   try{
-
-    String url = ApiUrls.applyCouponUrl;
+    String url = ApiUrls.reportProductUrl;
     final Map<String, dynamic> map = {
-    'promoCode': promoCode,
+    'reportedBy':AuthData().userModel?.id,
+    'productId':productId,
+    'reason':reason,
     };
-    flipzyPrint(message: '${url},$map');
+
+
+    flipzyPrint(message: '$url,$map');
     http.Response response = await performPostRequest(url,map);
     var data = json.decode(response.body);
 
     if (response.statusCode == 200) {
-      log("${url}\n $map \n response Start-->\n\n $data \n\n<--response End" );
-      return ApplyCouponModel.fromJson(data);
+      log("$url\n $map \n response Start-->\n\n $data \n\n<--response End" );
+      return CommonModelResponse.fromJson(data);
     } else {
       handleErrorCases(response, data, url);
     }
@@ -33,7 +37,7 @@ Future<ApplyCouponModel> applyCouponApi({promoCode}) async {
   //   showToastError('No Internet');
   // }
   // catch(e){
-  //   // log('$e');
+  //   log('$e');
   //   showToastError('$e');
   // }
   catch (e) {
@@ -44,6 +48,6 @@ Future<ApplyCouponModel> applyCouponApi({promoCode}) async {
       log('❗ Something went wrong: $e');
     }
   }
-  return ApplyCouponModel.fromJson({}); // please add try catch to use this
-  // return ApplyCouponModel.fromJson(data); // please UnComment to print data and remove try catch
+  return CommonModelResponse.fromJson({}); // please add try catch to use this
+  // return CommonModelResponse.fromJson(data); // please UnComment to print data and remove try catch
 }

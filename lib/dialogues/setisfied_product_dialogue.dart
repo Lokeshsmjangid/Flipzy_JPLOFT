@@ -12,7 +12,7 @@ class SetisfiedProductDialog {
   static void show(BuildContext context,{void Function()? onTap1,void Function()? onTap2}) {
     showDialog(
       context: context,
-      barrierColor: AppColors.blueColor.withOpacity(0.3),
+      barrierColor: Color(0xff56716a).withOpacity(0.75),
       barrierDismissible: true,
       builder: (_) => SetisfiedProductDialogWidget(onTap1: onTap1,onTap2: onTap2),
     );

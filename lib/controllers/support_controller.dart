@@ -200,8 +200,8 @@ class SupportController extends GetxController {
         }
         isDataLoading = false;
         update();
-      }); }
-  }
+      });
+    }}
 
 
   void scrollDown() {
@@ -241,6 +241,7 @@ class SupportController extends GetxController {
         }
       });
     }
+
   }
 
   /*Future<void> openNetworkFile(String url) async { // working code
@@ -324,11 +325,8 @@ class SupportController extends GetxController {
     }
   }
 
-
-
   void sendFile(PlatformFile file) {
-    // Send the file to the backend or socket
-    // You may also need to upload and get a URL
+
 
     allMsg.add(SupportAllMsgChatModel(
       message: file.name,

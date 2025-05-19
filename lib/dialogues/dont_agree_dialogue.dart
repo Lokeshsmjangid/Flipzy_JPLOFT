@@ -13,7 +13,7 @@ class DontAgreeDialog {
   static void show(BuildContext context,{void Function()? onTap,TextEditingController?msgCtrl }) {
     showDialog(
       context: context,
-      barrierColor: AppColors.blueColor.withOpacity(0.3),
+      barrierColor: Color(0xff56716a).withOpacity(0.75),
       barrierDismissible: true,
       builder: (_) => DontAgreeDialogWidget(onTap: onTap,msgCtrl: msgCtrl,),
     );

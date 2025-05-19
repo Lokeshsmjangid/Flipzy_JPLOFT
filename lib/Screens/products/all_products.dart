@@ -108,7 +108,6 @@ class _AllProductsScreenState extends State<AllProductsScreen> {
             body: SafeArea(
               child: Column(
                 children: [
-//SearchTxtForm
                   Container(
                     padding:const EdgeInsets.symmetric(horizontal: 15, vertical: 7),
                     child: Row(
@@ -190,8 +189,7 @@ class _AllProductsScreenState extends State<AllProductsScreen> {
                     child: contt.isDataLoading
                         // ? Center(child: CircularProgressIndicator(color: AppColors.secondaryColor))
                         ? build_shimmer_loader()
-                        : contt.modelResponse.myProducts != null &&
-                                contt.modelResponse.myProducts!.isNotEmpty
+                        : contt.modelResponse.myProducts != null && contt.modelResponse.myProducts!.isNotEmpty
                             ? Stack(
                               children: [
                                 GridView.builder(

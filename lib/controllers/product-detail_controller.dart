@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:flipzy/Api/api_models/product_detail_model.dart';
 import 'package:flipzy/Api/repos/product_detail_repo.dart';
 import 'package:flipzy/resources/utils.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
 class ProductDetailController extends GetxController {
@@ -12,6 +13,7 @@ class ProductDetailController extends GetxController {
   String? productName;
   List<String>? productImages;
   int currentIndex = 0;
+  TextEditingController repportCtrl = TextEditingController();
 
   // Navigate to the previous image.
   void goToPreviousImage() {

@@ -8,6 +8,7 @@ import 'package:flipzy/resources/app_assets.dart';
 import 'package:flipzy/resources/app_color.dart';
 import 'package:flipzy/resources/app_routers.dart';
 import 'package:flipzy/resources/auth_data.dart';
+import 'package:flipzy/resources/debouncer.dart';
 import 'package:flipzy/resources/text_utility.dart';
 import 'package:flipzy/resources/utils.dart';
 import 'package:flutter/material.dart';
@@ -27,6 +28,7 @@ class SellerProfileScreen extends StatefulWidget {
 
 class _SellerProfileScreenState extends State<SellerProfileScreen> {
   SellerProductsModelResponse model = SellerProductsModelResponse();
+  final deBounce = Debouncer(milliseconds: 1000);
   bool isDaTaLoading = false;
 
 
@@ -38,6 +40,12 @@ class _SellerProfileScreenState extends State<SellerProfileScreen> {
   List<Product> products = [];
 
 
+  // pagination
+  int page =1;
+  int? maxPage;
+  bool isPageLoading = false;
+  ScrollController? paginationScrollController;
+
   @override
   void initState() {
     // TODO: implement initState
@@ -45,18 +53,68 @@ class _SellerProfileScreenState extends State<SellerProfileScreen> {
     Future.microtask((){
       if(widget.sellerId !=null && widget.sellerId!.isNotEmpty){
         fetchData();
+        paginationScrollController = new ScrollController()..addListener(_scrollListener);
       }
     });
   }
 
-  fetchData() async{
+  _scrollListener() {
+    bool isLoadingAll = page > maxPage!?true:false;
+    flipzyPrint(message: '${paginationScrollController?.position.atEdge}'); // allowImplicitScrolling,hasViewportDimension, keepScrollOffset
+    bool isTop = paginationScrollController?.position.pixels == 0;
+    flipzyPrint(message: 'isTop:::${isTop}');
+    flipzyPrint(message: 'Page:::${page}');
+    flipzyPrint(message: 'maxPage:::${maxPage}');
+    flipzyPrint(message: 'isLoadingAll:::${isLoadingAll}');
+    if(paginationScrollController!=null && paginationScrollController!.position.atEdge && isTop==false && isLoadingAll==false){
+      Future.microtask((){
+        deBounce.run(() {
+          isPageLoading = false;
+          page++;
+          setState(() {});
+        });
 
+      });
+    }
+    if (paginationScrollController!.position.atEdge && isTop==false && isPageLoading == false) {
+      // if (paginationScrollController!.position.extentAfter <= 0 && isPageLoading == false) {
+      if(isLoadingAll==false){
+        Future.microtask((){
+          fetchData();
+        });
+      } else{
+        showToastError('You reached the page limit');
+      }
+
+    }
+  }
+
+  fetchData() async{
+    isPageLoading = true;
+    if(page==1)
     isDaTaLoading = true;
     setState(() {});
-    await getSellerProductsApi(sellerID: widget.sellerId).then((value){
+    await getSellerProductsApi(sellerID: widget.sellerId,isBoosted: false,page: page).then((value){
       model = value;
+      if (page == 1) {
+          maxPage = value.totalPages;
+        if(model.data!=null){
+          sellerImg = model.data!.sellerProfileImage;
+          sellerRating = '${model.data!.sellerRating??0}';
 
-      if(model.data!=null){
+          print('object ${model.data!.sellerRating}');
+          sellerLocation = model.data!.sellerLocation??'';
+          totalProduct = '${model.data!.totalProducts??0}';
+        }
+
+        if(value.data!.listProducts!=null && value.data!.listProducts!.isNotEmpty){
+          products.addAll(value.data!.listProducts!);
+        }
+      }else {
+        products.addAll(value.data!.listProducts??[]);
+      }
+
+      /*if(model.data!=null){
 
         sellerImg = model.data!.sellerProfileImage;
         sellerRating = '${model.data!.sellerRating??0}';
@@ -68,14 +126,10 @@ class _SellerProfileScreenState extends State<SellerProfileScreen> {
 
       if(value.data!.listProducts!=null && value.data!.listProducts!.isNotEmpty){
         products.addAll(value.data!.listProducts!);
-      }
+      }*/
       isDaTaLoading = false;
 
-      setState(() {
-      });
-
-
-
+      setState(() {});
     });
   }
 
@@ -111,6 +165,7 @@ class _SellerProfileScreenState extends State<SellerProfileScreen> {
             Expanded(child:
             isDaTaLoading? Center(child: CircularProgressIndicator(color: AppColors.secondaryColor),):
             SingleChildScrollView(
+              controller: paginationScrollController,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [

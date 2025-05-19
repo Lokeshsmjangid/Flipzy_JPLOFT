@@ -51,7 +51,7 @@ class _VerifyPhoneOtpScreenState extends State<VerifyPhoneOtpScreen> {
                 ],
               ),
               addText500(
-                  'We\'ve sent a 4 digit OTP to your mobile number ${logic.country_code} ${logic.phone_number} below to verify your account.',
+                  'We\'ve sent a 4 digit OTP to your mobile number ${logic.country_code} ${logic.maskMobileNumber("${logic.phone_number}")} below to verify your account.',
                   fontSize: 13,
                   fontFamily: 'Manrope',
                   color: AppColors.blackColor),
@@ -104,7 +104,9 @@ class _VerifyPhoneOtpScreenState extends State<VerifyPhoneOtpScreen> {
                   // Space between fields
                   separatorBuilder: (context, index) => SizedBox(width: 10),
                   animationDuration: const Duration(milliseconds: 300),
-                  cursorColor: Colors.black,
+                  cursorColor: Color(0XFF989898),
+                  cursorHeight: 2,
+                  cursorWidth: 12,
                   backgroundColor: Colors.transparent,
                   enableActiveFill: true, // Enable fill colors
                   onCompleted: (v) {

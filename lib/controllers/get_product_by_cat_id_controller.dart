@@ -44,10 +44,12 @@ class ProductByCategoryController extends GetxController{
   _scrollListener() {
     bool isLoadingAll = page > maxPage!?true:false;
     flipzyPrint(message: '${paginationScrollController?.position.atEdge}'); // allowImplicitScrolling,hasViewportDimension, keepScrollOffset
+    bool isTop = paginationScrollController?.position.pixels == 0;
+    flipzyPrint(message: 'isTop:::${isTop}');
     flipzyPrint(message: 'Page:::${page}');
     flipzyPrint(message: 'maxPage:::${maxPage}');
     flipzyPrint(message: 'isLoadingAll:::${isLoadingAll}');
-    if(paginationScrollController!=null && paginationScrollController!.position.atEdge && isLoadingAll==false){
+    if(paginationScrollController!=null && paginationScrollController!.position.atEdge && isTop==false && isLoadingAll==false){
       Future.microtask((){
         deBounce.run(() {
           isPageLoading = false;
@@ -57,16 +59,15 @@ class ProductByCategoryController extends GetxController{
 
       });
     }
-    if (paginationScrollController!.position.atEdge && isPageLoading == false) {
-      // if (paginationScrollController!.position.extentAfter <= 0 && isPageLoading == false) {
+    if (paginationScrollController!.position.atEdge && isTop==false && isPageLoading == false) {
       if(isLoadingAll==false){
         Future.microtask((){
           fetchCatProductsListData(pageNumm: page);
         });
-      } else{
+      }
+      else{
         showToastError('You reached the page limit');
       }
-
     }}
 
   fetchCatProductsListData({String? searchValue,pageNumm}) async {

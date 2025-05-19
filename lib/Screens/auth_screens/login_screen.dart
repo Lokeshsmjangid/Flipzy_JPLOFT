@@ -147,7 +147,7 @@ class LoginScreen extends StatelessWidget {
                       ],
                     ),
 
-                    SizedBox(height: 20,),
+                    SizedBox(height: 20),
                 //LoginBtn
                     AppButton( onButtonTap: () {
                       if(formKey.currentState?.validate()??false){
@@ -163,7 +163,8 @@ class LoginScreen extends StatelessWidget {
                                 LocalStorage().setBoolValue(LocalStorage.REMEMBER_ME, true);
                                 LocalStorage().setValue(LocalStorage.REMEMBER_EMAIL, logic.emailCtrl.text);
                                 LocalStorage().setValue(LocalStorage.REMEMBER_PASSWORD, logic.passCtrl.text);
-                              } else{
+                              }
+                              else{
                                 LocalStorage().setBoolValue(LocalStorage.REMEMBER_ME, false);
                               }
                               AuthData().getLoginData();
@@ -171,32 +172,30 @@ class LoginScreen extends StatelessWidget {
                                 // Get.reset();
                                 Get.offAll(() => CustomBottomNav());
                               });
-                            } else {
-                              Get.offAllNamed(AppRoutes.setupProfileScreen);
                             }
-
-                          }
+                            else {
+                              Get.offAllNamed(AppRoutes.setupProfileScreen);
+                            }}
                           else if(value.status==false){
                             showToastError('${value.message}');
                           }
                         });
                       }
-                    } , buttonText: "Login", buttonTxtColor: AppColors.blackColor, ),
+                    } , buttonText: "Login", buttonTxtColor: AppColors.blackColor ),
 
                     SizedBox(height: 30,),
-                //OrLogin
+                //Or Login
                     Row(
                       children: [
                         Expanded(child: Image.asset(AppAssets.loginStickL)),
-                       SizedBox(width: 10,),
-                        addText400("or login with",
-                          color: AppColors.blackColor, fontSize: 15,  ),
+                        SizedBox(width: 10,),
+                        addText400("or login with", color: AppColors.blackColor, fontSize: 15,  ),
                         SizedBox(width: 10,),
                         Expanded(child: Image.asset(AppAssets.loginStickR)),
                       ],
                     ),
 
-                    SizedBox(height: 30,),
+                    SizedBox(height: 30),
 
 
                     if(Platform.isIOS)
@@ -274,6 +273,7 @@ class LoginScreen extends StatelessWidget {
                         ),
                       ),
                     ),
+
                     if(Platform.isIOS)
                     SizedBox(height: 10),
 
@@ -351,7 +351,7 @@ class LoginScreen extends StatelessWidget {
 
                     SizedBox(height: MediaQuery.of(context).size.height * 0.08),
 
-                    if(AuthData().userModel?.guestId ==null)
+                    if(AuthData().userModel?.guestId == null)
                     GestureDetector(
                         onTap:() async{
                           String? guestId = await AppSetId().getIdentifier();;

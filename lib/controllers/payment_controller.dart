@@ -30,7 +30,6 @@ class PaymentController extends GetxController{
             onPageFinished: (String url) {
               isLoading.value = false;
               final finalUri = Uri.parse(url);
-              // status=cancelled, status=successful
               var status = finalUri.queryParameters['status'];
               var tx_ref = finalUri.queryParameters['tx_ref'];
               log('status:$status');
@@ -45,15 +44,12 @@ class PaymentController extends GetxController{
         );
 
       // Set the initial URL here or pass it dynamically
-
       webViewController.loadRequest(Uri.parse(initialUrl!));
     };
   }
 
 
-  onPageFinished(url){
-
-  }
+  onPageFinished(url){}
 
 
 

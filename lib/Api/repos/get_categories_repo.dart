@@ -8,7 +8,7 @@ import "package:flipzy/resources/auth_data.dart";
 import "package:flipzy/resources/utils.dart";
 import 'package:http/http.dart' as http;
 
-Future<CategoryModelResponse> getCategoriesApi({page,limit=12,String? searchTerm}) async {
+Future<CategoryModelResponse> getCategoriesApi({page,limit=16,String? searchTerm}) async {
   bool checkInternet = await hasInternetConnection();
   if (!checkInternet) { // checkInternet is false
     showToastError('No Internet Connection');

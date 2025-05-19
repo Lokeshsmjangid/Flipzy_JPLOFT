@@ -76,6 +76,7 @@ class ApiUrls{
   static const String sellerProductUrl = '${baseUrl}sellerProduct'; // bussinessProfile api done
 
   static const String buyProductUrl = '${baseUrl}orderProduct'; // bussinessProfile api done
+  static const String reportProductUrl = '${baseUrl}productReport'; // bussinessProfile api done
 
   static const String categoriesListUrl = '${baseUrl}getCategories'; // bussinessProfile api done
   static const String productByCategoryUrl = '${baseUrl}getProductByCategory'; // bussinessProfile api done
@@ -112,6 +113,7 @@ class ApiUrls{
   static const String refundRespondUrl = '${baseUrl}refund/respond';
   static const String refundPickUpUrl = '${baseUrl}refund/pickup';
   static const String sendRefundUrl = '${baseUrl}order/refundSend';
+  static const String withdrawalUrl = '${baseUrl}requestWithdrawal';
 
   // Shipping Api ShipBubble
   static const String shipBubbleUrl = '${baseUrl}calculateShippingFromShipbubble';

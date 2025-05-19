@@ -357,7 +357,7 @@ class BusinessProfile extends StatelessWidget {
                 GestureDetector(
                     onTap: () {
                       // DeleteAccountDialog
-                      DeleteAccountDialog.show(context,onTap1: () {
+                      DeleteAccountDialog.show(context,isSeller: true,onTap1: () {
                         Get.back();
                         showLoader(true);
                         deleteAccountApi(userType: 'Seller').then((value){

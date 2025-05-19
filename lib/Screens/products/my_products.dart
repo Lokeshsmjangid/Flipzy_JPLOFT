@@ -35,6 +35,7 @@ class MyProductsScreen extends StatelessWidget {
         builder: (contt) {
           return Scaffold(
             backgroundColor: AppColors.lightGreyColor,
+
             appBar: customAppBar(
               backgroundColor: AppColors.bgColor,
               leadingWidth: MediaQuery.of(context).size.width * 0.3 ,
@@ -53,8 +54,10 @@ class MyProductsScreen extends StatelessWidget {
               titleFontSize: 16,
               bottomLine: true,
             ),
+
             extendBody: true,
-            bottomNavigationBar: AuthData().userModel?.userType?.toLowerCase()=='user'? null
+            bottomNavigationBar: AuthData().userModel?.userType?.toLowerCase()=='user'
+                ? null
                 : SafeArea(
               child: Container(
                 height: 58,
@@ -113,6 +116,7 @@ class MyProductsScreen extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 7),
                     child: CustomTextField(
                       borderRadius: 30,
+                      controller: contt.srchCtrl,
                       hintText: "Search Product Name",
                       fillColor: AppColors.whiteColor,
                       suffixIcon: Container(
@@ -140,7 +144,27 @@ class MyProductsScreen extends StatelessWidget {
                       },
                     ),
                   ),
-
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                    build_product_box(contt,selectedTab: 1,boxName: 'Boosted',onTap: (){
+                      contt.selectedTab=1;
+                      contt.page=1;
+                      contt.srchCtrl.clear();
+                      contt.update();
+                      contt.fetchMyProductsListData();
+                    }),
+                    addWidth(10),
+                    build_product_box(contt,selectedTab: 2,boxName: 'All Products',onTap: (){
+                      contt.selectedTab=2;
+                      contt.page=1;
+                      contt.srchCtrl.clear();
+                      contt.update();
+                      contt.fetchMyProductsListData();
+                    }),
+                  ],),
+                  addHeight(6),
                   Expanded(
                     child:  contt.isDataLoading
                         // ? Center(child: CircularProgressIndicator(color: AppColors.secondaryColor))
@@ -151,28 +175,30 @@ class MyProductsScreen extends StatelessWidget {
                       height: 300,
                       // height: MediaQuery.of(context).size.height * 0.80,/**/
 
-                      child: RefreshIndicator(
-                        onRefresh: () async{
-                          contt.onInit();
-                        },
-                        child: ListView(
-                          shrinkWrap: true,
-                          children: [
-                            GridView.builder(
-                                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                                  crossAxisCount: 2, // 2 items per row
-                                  crossAxisSpacing: 2,
-                                  mainAxisSpacing: 1,
-                                  childAspectRatio: 0.75, // Adjust height-to-width ratio
-                                ),
-                                shrinkWrap: true,
-                                physics: BouncingScrollPhysics(),
-                                scrollDirection: Axis.vertical,
+                      child: ListView(
+                        shrinkWrap: true,
+                        controller: contt.paginationScrollController,
+                        physics: BouncingScrollPhysics(),
+                        children: [
+                          GridView.builder(
 
-                                itemCount: contt.modelResponse.data!.listProducts?.length??0,
-                                itemBuilder: (context, index) {
-                                  Product item = contt.modelResponse.data!.listProducts![index];
-                                  return Container(
+                              shrinkWrap: true,
+                              scrollDirection: Axis.vertical,
+                              physics: BouncingScrollPhysics(),
+                              itemCount: contt.modelResponse.data!.listProducts?.length??0,
+                              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                                crossAxisCount: 2, // 2 items per row
+                                crossAxisSpacing: 2,
+                                mainAxisSpacing: 1,
+                                childAspectRatio: 0.75, // Adjust height-to-width ratio
+                              ),
+                              itemBuilder: (context, index) {
+                                Product item = contt.modelResponse.data!.listProducts![index];
+                                return GestureDetector(
+                                  onTap: (){
+                                    Get.toNamed(AppRoutes.editProductScreen,arguments: {'editProduct': item});
+                                  },
+                                  child: Container(
                                       height: 270,
                                       width: MediaQuery.of(context).size.width * 0.40,
                                       margin: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
@@ -256,7 +282,7 @@ class MyProductsScreen extends StatelessWidget {
                                                           onTap2: () => Get.back());
                                                     } ,
                                                     child: Container(
-                                                      
+
                                                       decoration: BoxDecoration(
                                                         color: AppColors.appRedColor,
                                                         shape: BoxShape.circle ,
@@ -305,11 +331,32 @@ class MyProductsScreen extends StatelessWidget {
 
                                         ],
                                       )
-                                  );
-                                }
-                            ),
-                          ],
-                        ),
+                                  ),
+                                );
+                              }
+                          ),
+                          if(contt.isPageLoading && contt.page != 1)
+                            Positioned(
+                              bottom:10,
+                              left: 0,right: 0,
+                              child: Container(
+                                color: Colors.red,
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Container(
+                                        height: 16,
+                                        width: 16,
+
+                                        child: CircularProgressIndicator(color: AppColors.whiteColor,strokeWidth: 1)),
+                                    addWidth(10),
+                                    addText400('Loading...',color: AppColors.whiteColor)
+                                  ],
+                                ).marginSymmetric(horizontal: 10,vertical: 4),
+                              ),
+                            )
+                        ],
                       ),
                     )
                         : Center(child: addText500('No Data Found'))
@@ -373,6 +420,34 @@ class MyProductsScreen extends StatelessWidget {
           ),
         );
       },
+    );
+  }
+  build_product_box(MyProductsController contt, {void Function()? onTap,int? selectedTab, String? boxName}) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        height: 40,
+        width: 130,
+        decoration: BoxDecoration(
+            color: selectedTab==contt.selectedTab?AppColors.armyGreenColor: Colors.white,
+            borderRadius: BorderRadius.circular(23),
+            border: Border.all(color: AppColors.containerBorderColor,width: 2)
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            SvgPicture.asset(selectedTab==1?
+            AppAssets.boostRocket:selectedTab==2?AppAssets.active:AppAssets.all,height: 20,width: 20,color: selectedTab==contt.selectedTab
+                ? AppColors.whiteColor:AppColors.armyGreenColor),
+            addWidth(6),
+            addText500('$boxName',color: selectedTab==contt.selectedTab
+                ? AppColors.whiteColor:AppColors.armyGreenColor,),
+            // addText500('$boxCount',color: selectedTab==contt.selectedTab
+            //     ? AppColors.whiteColor:AppColors.armyGreenColor,),
+          ],
+        ),
+
+      ),
     );
   }
 }

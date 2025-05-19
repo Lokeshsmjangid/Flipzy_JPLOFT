@@ -43,6 +43,7 @@ class SetupProfileScreen extends StatelessWidget {
                     children: [
                       backButton(onTap: () {
                         Get.back();
+
                       }),
                       addText700('Let\'s Set Up Your Profile', fontFamily: 'Manrope', fontSize: 22),
                     ],
@@ -87,6 +88,7 @@ class SetupProfileScreen extends StatelessWidget {
                               height: double.infinity,
                               child: SvgPicture.asset(
                                 AppAssets.uploadPPImg,
+                                color: AppColors.primaryColor,
                                 fit: BoxFit.contain, // Try 'contain' or 'fitWidth' if needed
                               ).marginAll(40),
                             ),
@@ -193,6 +195,7 @@ class SetupProfileScreen extends StatelessWidget {
                           logic.getSuggestion(val);
                         });
                       },
+                      prefixIcon: SvgPicture.asset(AppAssets.textLocationIcon),
                       suffixIcon: logic.locationCtrl.text.isNotEmpty
                           ? IconButton(onPressed: (){
                         logic.locationCtrl.clear();

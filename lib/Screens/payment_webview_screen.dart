@@ -1,5 +1,6 @@
 import 'dart:developer';
 import 'package:flipzy/controllers/payment_controller.dart';
+import 'package:flipzy/custom_widgets/customAppBar.dart';
 import 'package:flipzy/resources/app_color.dart';
 import 'package:flipzy/resources/text_utility.dart';
 import 'package:flutter/material.dart';
@@ -32,13 +33,23 @@ class _PaymentWebViewState extends State<PaymentWebView> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.whiteColor,
-      appBar: AppBar(
-          backgroundColor: Colors.white,
-          centerTitle: true,
-          title: addText600('Pay here',color: AppColors.blackColor),automaticallyImplyLeading: false,
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back,color: AppColors.blackColor,),
-          onPressed: () { Get.back(); },),
+      appBar: customAppBar(
+        backgroundColor: AppColors.bgColor,
+        leadingWidth: MediaQuery.of(context).size.width * 0.3 ,
+        leadingIcon: IconButton(
+            onPressed: (){
+              Get.back();},
+            icon: Row(
+              children: [
+                Icon(Icons.arrow_back_ios_outlined, color: AppColors.blackColor,size: 14,),
+                addText400("Back", color: AppColors.blackColor,fontSize: 12,fontFamily: 'Poppins'),
+              ],
+            ).marginOnly(left: 12)),
+        centerTitle: true,
+        titleTxt: "Pay here",
+        titleColor: AppColors.blackColor,
+        titleFontSize: 16,
+        bottomLine: true,
       ),
       body: Column(
         children: [

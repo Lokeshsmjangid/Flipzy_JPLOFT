@@ -26,7 +26,7 @@ backButton({void Function()? onTap}){
   );
 }
 
-backAppBar({void Function()? onTapBack,String? title}){
+backAppBar({void Function()? onTapBack,String? title,Widget? action}){
   return Column(
     children: [
       Row(
@@ -44,6 +44,9 @@ backAppBar({void Function()? onTapBack,String? title}){
           ),
           addWidth(54),
           addText700(title??'Order Management',fontFamily: 'Manrope',fontSize: 16),
+          Spacer(),
+          if(action!=null)
+          action
         ],
       ).marginSymmetric(horizontal: 16),
       addHeight(20),
@@ -86,6 +89,8 @@ Widget CachedImageCircle2({String? imageUrl, double? height, double? width, bool
         : Image.network(
       imageUrl ?? '',
       fit: fit,
+      cacheWidth: 280,
+      cacheHeight: 280,
       height: height ?? kMinInteractiveDimension,
       width: width ?? kMinInteractiveDimension,
       loadingBuilder: (BuildContext context, Widget child, ImageChunkEvent? loadingProgress) {
@@ -100,7 +105,8 @@ Widget CachedImageCircle2({String? imageUrl, double? height, double? width, bool
         );
       },
       errorBuilder: (BuildContext context, Object error, StackTrace? stackTrace) {
-        return const Center(
+        return Center(
+          // child: Text('$error',style: TextStyle(fontSize: 6),));
           child: Icon(Icons.error, color: Colors.red),
         );
       },

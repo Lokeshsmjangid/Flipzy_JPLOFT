@@ -76,20 +76,15 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                       return controller.currentPage.value == 0
                           ? GestureDetector(
                         onTap: (){
-                          // if(LocalStorage().getValue(LocalStorage.ROLE)=='Customer'){
-                          //   Get.offNamed(AppRoutes.customerLoginScreen);
-                          // } else if(LocalStorage().getValue(LocalStorage.ROLE)=='Car Station'){
-                          //   Get.offNamed(AppRoutes.stationLoginScreen);
-                          // }
+                          Get.offNamed(AppRoutes.loginScreen);
                         },
-                            child: const Text(
+                        child: const Text(
                                 "Skip",
                                 style: TextStyle(
                               fontSize: 16,
                               color: AppColors.blackColor,
                            ),
-                          ),
-                          )
+                          ))
                           : const Center(
                             child: Icon(Icons.arrow_back,color: AppColors.blackColor,),
                           );

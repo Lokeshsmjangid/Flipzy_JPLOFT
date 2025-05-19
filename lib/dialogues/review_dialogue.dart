@@ -16,7 +16,7 @@ class ReviewDialog {
     void Function()? onTap,  TextEditingController? reviewCtrl, double initialRating=1.0}) {
     showDialog(
       context: context,
-      barrierColor: AppColors.blueColor.withOpacity(0.5),
+       barrierColor: Color(0xff56716a).withOpacity(0.75),
       barrierDismissible: true,
       builder: (_) => ReviewDialogWidget(onTap: onTap,reviewCtrl: reviewCtrl,initialRating: initialRating,),
     );

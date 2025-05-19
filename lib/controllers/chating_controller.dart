@@ -123,6 +123,8 @@ class ChattingCtrl extends GetxController{
       // Access the blockedUsers list safely
       bool isBlocked  = decoded['data']?['isBlock'] ?? false;
 
+      // String mess = decoded['data']?['message']??'';
+
       flipzyPrint(message: 'Is user blocked? $isBlocked');
 
       // Update state

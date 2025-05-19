@@ -38,7 +38,7 @@ class OnBoardingWidget1 extends StatelessWidget {
 
               addHeight(20),
 
-              addText700('Welcome to Flipzy',fontSize: 30,
+              addText700('Welcome To Flipzy',fontSize: 30,
                   fontFamily: 'Manrope').marginSymmetric(horizontal: 16),
 
 

@@ -9,21 +9,22 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
 class DeleteAccountDialog {
-  static void show(BuildContext context,{void Function()? onTap1,void Function()? onTap2}) {
+  static void show(BuildContext context,{void Function()? onTap1,void Function()? onTap2,bool? isSeller}) {
     showDialog(
       context: context,
-      barrierColor: AppColors.blueColor.withOpacity(0.5),
+       barrierColor: Color(0xff56716a).withOpacity(0.75),
       barrierDismissible: true,
-      builder: (_) => DeleteAccountDialogWidget(onTap1: onTap1,onTap2: onTap2),
+      builder: (_) => DeleteAccountDialogWidget(onTap1: onTap1,onTap2: onTap2,isSeller: isSeller,),
     );
   }
 }
 
 class DeleteAccountDialogWidget extends StatelessWidget {
+  bool? isSeller;
   void Function()? onTap1;
   void Function()? onTap2;
 
-  DeleteAccountDialogWidget({this.onTap1,this.onTap2});
+  DeleteAccountDialogWidget({this.onTap1,this.onTap2,this.isSeller});
 
 
   @override
@@ -54,6 +55,10 @@ class DeleteAccountDialogWidget extends StatelessWidget {
                     addText700('Are you sure you want to delete your account?',textAlign: TextAlign.center,fontFamily: 'Manrope',fontSize: 22,color: AppColors.blackColor).marginSymmetric(horizontal: 20),
                     // addText500('"Your profile is complete! You can now upload your products, manage inquiries, and start selling to buyers looking for great deals."',
                     //     fontFamily: 'Manrope',fontSize: 13,textAlign: TextAlign.center,color: AppColors.textColor1).marginSymmetric(horizontal: 10),
+
+                    if(isSeller==true)
+                    addText500('"all the products posted will be removed from the account."',
+                        fontFamily: 'Manrope',fontSize: 13,textAlign: TextAlign.center,color: AppColors.textColor1).marginSymmetric(horizontal: 10),
 
                     addHeight(20),
                     Row(

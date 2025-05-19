@@ -5,6 +5,7 @@ import 'package:flipzy/Api/repos/add_product_repo.dart';
 import 'package:flipzy/Screens/help/help_support.dart';
 import 'package:flipzy/controllers/addProduct_controller.dart';
 import 'package:flipzy/custom_widgets/CustomTextField.dart';
+import 'package:flipzy/custom_widgets/customAppBar.dart';
 import 'package:flipzy/resources/app_assets.dart';
 import 'package:flipzy/resources/app_color.dart';
 import 'package:flipzy/resources/custom_loader.dart';
@@ -30,24 +31,38 @@ class AddProduct extends StatelessWidget {
         init: AddProductController(),
         builder: (contt) {
           return Scaffold(
-            // backgroundColor: AppColors.bgColor,
+            backgroundColor: Color(0xffeff2eb),
+            appBar: customAppBar(
+              backgroundColor: AppColors.bgColor,
+              leadingWidth: MediaQuery.of(context).size.width * 0.3 ,
+              leadingIcon: IconButton(
+                  onPressed: (){
+                    Get.back();},
+                  icon: Row(
+                    children: [
+                      Icon(Icons.arrow_back_ios_outlined, color: AppColors.blackColor,size: 14,),
+                      addText400("Back", color: AppColors.blackColor,fontSize: 12,fontFamily: 'Poppins'),
+                    ],
+                  ).marginOnly(left: 12)),
+              centerTitle: true,
+              titleTxt: "Add Product",
+              titleColor: AppColors.blackColor,
+              titleFontSize: 16,
+              bottomLine: false,
+            ),
             body: SingleChildScrollView(
               child: SafeArea(
                 child: Form(
                   key: formKey,
                   child: Column(
                     children: [
-                      SizedBox(height: 20,),
 
-                      addText700('Add Product',fontFamily: 'Manrope',fontSize: 16),
-                      addHeight(20),
-                      Divider(height: 0),
-                      SizedBox(height: 10,),
                       //AddImageGrid
+                      addHeight(10),
                       Container(
                         padding: EdgeInsets.all(14),
                         decoration: BoxDecoration(
-                            color: AppColors.bgColor,
+                            color: Color(0xffeef2ed),
                             borderRadius: BorderRadius.circular(26)
 
                         ),
@@ -56,6 +71,7 @@ class AddProduct extends StatelessWidget {
                             // if(contt.selectedFile.isNotEmpty)
                               contt.selectedFile.isNotEmpty
                                   ? GridView.builder(
+
                                 physics: NeverScrollableScrollPhysics(),
                                 shrinkWrap: true,
                                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -104,6 +120,7 @@ class AddProduct extends StatelessWidget {
                               )
                                   : GridView.builder(
                                 shrinkWrap: true,
+                                physics: NeverScrollableScrollPhysics(),
                                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                                   crossAxisCount: 2, // 2 items per row
                                   crossAxisSpacing: 10,
@@ -321,6 +338,8 @@ class AddProduct extends StatelessWidget {
                       CustomTextField(
                           controller: contt.pickUpLocation,
                           hintText: 'Enter your location',
+                          filled: true,
+                          fillColor: Colors.white,
                           onChanged: (val){
                             contt.deBounce.run(() {
                               contt.getSuggestion(val);

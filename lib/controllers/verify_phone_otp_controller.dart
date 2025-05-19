@@ -30,6 +30,13 @@ class VerifyPhoneOtpController extends GetxController {
   }
 
 
+
+  @override
+  void dispose() {
+    pinController.dispose();
+    super.dispose();
+  }
+
   startATimerFunc() {
     _timer?.cancel(); // Cancel previous timer if running
     timerVal.value = 30; // Reset timer to 30 seconds
@@ -44,12 +51,11 @@ class VerifyPhoneOtpController extends GetxController {
     });
   }
 
-
-
-  @override
-  void dispose() {
-    pinController.dispose();
-    super.dispose();
+  String maskMobileNumber(String number) {
+    if (number.length <= 2) return number; // not enough digits to mask
+    String lastTwo = number.substring(number.length - 2);
+    String masked = '*' * (number.length - 2);
+    return '$masked$lastTwo';
   }
 
 }

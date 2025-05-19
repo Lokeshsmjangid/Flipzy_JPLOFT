@@ -71,7 +71,7 @@ class ChattingScreen extends StatelessWidget {
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
               onSelected: (value) {
                 if (value == 'Report') {
-                  ReportChatDialogue.show(context,msgCtrl: logic.reportCtrl,onTap: (){
+                  ReportChatDialogue.show(context,isChat:true,msgCtrl: logic.reportCtrl,onTap: (){
                     if(logic.reportCtrl.text.isEmpty){
                       showToastError('Please enter your reason,why are you reporting this person');
                     } else{

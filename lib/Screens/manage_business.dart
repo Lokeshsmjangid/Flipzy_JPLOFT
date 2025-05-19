@@ -300,8 +300,8 @@ class _ManageBusinessState extends State<ManageBusiness> {
                           alignment: Alignment.bottomRight,
                           child: GestureDetector(
                             onTap: () {
-                              // Get.to(ProductManagement(fromScreen: "ManageBusiness",));
-                              Get.toNamed(AppRoutes.allBoostProduct,arguments: {'selectedBox':2});
+                              // Get.toNamed(AppRoutes.allBoostProduct,arguments: {'selectedBox':2});
+                              Get.toNamed(AppRoutes.myProductsScreen);
                             },
                             child: Container(
                               height: 25, width: 25,
@@ -393,63 +393,6 @@ class _ManageBusinessState extends State<ManageBusiness> {
                         ),
 
                       ],
-                    ),
-                  ),
-                ),
-              ],
-            ),
-
-            // All And boost Products
-            Row(
-              children: [
-                Expanded(
-                  child: GestureDetector(
-                    onTap: (){
-                      Get.toNamed(AppRoutes.myProductsScreen);
-                    },
-                    child: Container(
-                      // height: 160,
-                      padding: EdgeInsets.symmetric(horizontal: 10, vertical: 20),
-                      margin: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        color: AppColors.whiteColor,
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Align(
-                              alignment: Alignment.center,
-                              child: addText500("My Products", maxLines: 2, color: AppColors.blackColor, fontSize: 15)
-                          ),
-
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-                Expanded(
-                  child: GestureDetector(
-                    onTap: (){
-                      Get.toNamed(AppRoutes.allBoostProduct,arguments: {'selectedBox':1});
-                    },
-                    child: Container(
-                      padding: EdgeInsets.symmetric(horizontal: 10, vertical: 20),
-                      margin: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        color: AppColors.whiteColor,
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Align(
-                              alignment: Alignment.center,
-                              child: addText500("Boost Products", maxLines: 2, color: AppColors.blackColor, fontSize: 14)
-                          ),
-
-                        ],
-                      ),
                     ),
                   ),
                 ),

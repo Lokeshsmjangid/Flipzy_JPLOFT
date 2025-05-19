@@ -140,6 +140,7 @@ class _UserProfileState extends State<UserProfile> {
                           borderRadius: BorderRadius.only(topLeft: Radius.circular(30), topRight: Radius.circular(30) )
                       ),
                       child: Column(
+                        mainAxisSize: MainAxisSize.max,
                         children: [
                           Container(
                             padding: EdgeInsets.symmetric(horizontal: 20, vertical: 30),
@@ -176,7 +177,7 @@ class _UserProfileState extends State<UserProfile> {
                                         shape: BoxShape.circle,
                                         color: AppColors.lightGreyColor,
                                       ),
-                                      child: SvgPicture.asset(AppAssets.personIC, color: AppColors.blackColor,),
+                                      child: SvgPicture.asset(AppAssets.personIC,color: AppColors.textFieldHintColor,),
                                     ),
                                     SizedBox(width: 20,),
                                     addText500("${AuthData().userModel?.firstname??''} ${AuthData().userModel?.lastname??''}".capitalize.toString(), maxLines: 1, color: AppColors.blackColor, fontSize: 15),
@@ -192,7 +193,7 @@ class _UserProfileState extends State<UserProfile> {
                                         shape: BoxShape.circle,
                                         color: AppColors.lightGreyColor,
                                       ),
-                                      child: SvgPicture.asset(AppAssets.loactionIc),
+                                      child: SvgPicture.asset(AppAssets.loactionIc,color: AppColors.textFieldHintColor,),
                                     ),
                                     SizedBox(width: 20,),
                                     Expanded(child: addText500("${AuthData().userModel?.location??''}", maxLines: 2, color: AppColors.blackColor, fontSize: 15)),
@@ -209,7 +210,7 @@ class _UserProfileState extends State<UserProfile> {
                                         shape: BoxShape.circle,
                                         color: AppColors.lightGreyColor,
                                       ),
-                                      child: SvgPicture.asset(AppAssets.callIcon),
+                                      child: SvgPicture.asset(AppAssets.callIC),
                                     ),
                                     SizedBox(width: 20,),
                                     addText500("${AuthData().userModel?.mobileNumber??''}", maxLines: 1, color: AppColors.blackColor, fontSize: 15),
@@ -238,7 +239,6 @@ class _UserProfileState extends State<UserProfile> {
                             ),
                           ),
                           // Spacer(),
-                          SizedBox(height: Get.height * 0.07,),
 
 
                           // if(AuthData().userModel?.userType!.toLowerCase() !='user')
@@ -255,8 +255,7 @@ class _UserProfileState extends State<UserProfile> {
                           //
                           //     },
                           //     child: addText500("Edit Business Profile", color: AppColors.darkGreenColor)),
-                          SizedBox(height: 20),
-
+                          SizedBox(height: 10),
 
                           GestureDetector(
                               onTap: () {
@@ -289,3 +288,4 @@ class _UserProfileState extends State<UserProfile> {
         });
   }
 }
+

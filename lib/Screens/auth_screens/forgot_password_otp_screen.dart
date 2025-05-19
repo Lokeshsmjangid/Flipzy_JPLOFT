@@ -53,7 +53,7 @@ class _ForgotPasswordOtpScreenState extends State<ForgotPasswordOtpScreen> {
 
                 addHeight(40),
 
-                addText500('OTP(${logic.otp??''})', fontSize: 14, color: AppColors.blackColor),
+                addText500('OTP', fontSize: 14, color: AppColors.blackColor),
                 addHeight(6),
 
                 Center(
@@ -91,6 +91,7 @@ class _ForgotPasswordOtpScreenState extends State<ForgotPasswordOtpScreen> {
                         activeFillColor: AppColors.primaryColor, // Background for filled fields
                         selectedFillColor: Colors.transparent, // Background for selected field
                       ),
+
                       // Display a dash (-) when the field is empty
                       // showEmptyFieldIndicator: true,
                       // emptyFieldIndicator: Text(
@@ -109,7 +110,9 @@ class _ForgotPasswordOtpScreenState extends State<ForgotPasswordOtpScreen> {
                       // Space between fields
                       separatorBuilder: (context, index) => SizedBox(width: 10),
                       animationDuration: const Duration(milliseconds: 300),
-                      cursorColor: Colors.black,
+                      cursorColor: Color(0XFF989898),
+                      cursorHeight: 2,
+                      cursorWidth: 12,
                       backgroundColor: Colors.transparent,
                       enableActiveFill: true, // Enable fill colors
                       onCompleted: (v) {

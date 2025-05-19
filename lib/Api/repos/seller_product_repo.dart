@@ -11,7 +11,7 @@ import "package:flipzy/resources/auth_data.dart";
 import "package:flipzy/resources/utils.dart";
 import 'package:http/http.dart' as http;
 
-Future<SellerProductsModelResponse> getSellerProductsApi({sellerID,String? searchTerm}) async {
+Future<SellerProductsModelResponse> getSellerProductsApi({bool isBoosted= false,page,sellerID,String? searchTerm}) async {
   bool checkInternet = await hasInternetConnection();
   if (!checkInternet) { // checkInternet is false
     showToastError('No Internet Connection');
@@ -20,9 +20,9 @@ Future<SellerProductsModelResponse> getSellerProductsApi({sellerID,String? searc
   try{
     String? url;
     if(searchTerm!=null && searchTerm.isNotEmpty){
-       url = '${ApiUrls.sellerProductUrl}/${sellerID}?searchTerm=$searchTerm';
+       url = '${ApiUrls.sellerProductUrl}/${sellerID}?searchTerm=$searchTerm&productType=$isBoosted&page=$page';
     } else{
-      url = '${ApiUrls.sellerProductUrl}/${sellerID}';
+      url = '${ApiUrls.sellerProductUrl}/${sellerID}?productType=$isBoosted&page=$page';
     }
 
     http.Response response = await performGetRequest(url);

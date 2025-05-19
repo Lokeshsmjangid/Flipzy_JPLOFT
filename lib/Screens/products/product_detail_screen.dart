@@ -3,11 +3,14 @@ import 'package:flipzy/Api/api_constant.dart';
 import 'package:flipzy/Api/chat_with_users_model.dart';
 import 'package:flipzy/Api/repos/add_to_fav_repo.dart';
 import 'package:flipzy/Api/repos/bubble_ship_repo.dart';
+import 'package:flipzy/Api/repos/report_product_repo.dart';
 import 'package:flipzy/Screens/makeOfferChat.dart';
 import 'package:flipzy/Screens/seller_profile.dart';
 import 'package:flipzy/controllers/chat_controller.dart';
 import 'package:flipzy/controllers/product-detail_controller.dart';
 import 'package:flipzy/custom_widgets/appButton.dart';
+import 'package:flipzy/custom_widgets/customAppBar.dart';
+import 'package:flipzy/dialogues/report_chat_dialogue.dart';
 import 'package:flipzy/resources/app_assets.dart';
 import 'package:flipzy/resources/app_color.dart';
 import 'package:flipzy/resources/app_routers.dart';
@@ -22,22 +25,80 @@ import 'package:get/get_navigation/get_navigation.dart';
 
 class ProductDetailScreen extends StatelessWidget {
   ProductDetailScreen({super.key});
+  final ss= Get.put(ProductDetailController());
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.appBgColor,
+      appBar: customAppBar(
+        backgroundColor: AppColors.bgColor,
+        leadingWidth: MediaQuery.of(context).size.width * 0.3 ,
+        leadingIcon: IconButton(
+            onPressed: (){
+              Get.back();},
+            icon: Row(
+              children: [
+                Icon(Icons.arrow_back_ios_outlined, color: AppColors.blackColor,size: 14,),
+                addText400("Back", color: AppColors.blackColor,fontSize: 12,fontFamily: 'Poppins'),
+              ],
+            ).marginOnly(left: 12)),
+        centerTitle: true,
+        titleTxt: "${ss.productName?.capitalize??''}",
+        titleColor: AppColors.blackColor,
+        titleFontSize: 16,
+        bottomLine: true,
+        actionItems: [
+          PopupMenuButton<String>(
+            offset: Offset(0, 54),
+            icon: SvgPicture.asset(
+              AppAssets.threeDotsIc,
+              color: AppColors.blackColor,
+              height: 24,
+              width: 24,
+            ),
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+            onSelected: (value) {
+              if (value == 'Report') {
+                ReportChatDialogue.show(context,msgCtrl: ss.repportCtrl,isChat:false,onTap: (){
+                  if(ss.repportCtrl.text.isEmpty){
+                    showToastError('Please enter your reason,why are you reporting this product');
+                  } else{
+
+                    showLoader(true);
+                    reportProductApi(productId: ss.productId,reason: ss.repportCtrl.text).then((onval){
+                      showLoader(false);
+                      if(onval.status==true){
+                        ss.repportCtrl.clear();
+                        showToast('${onval.message}');
+                        Get.back();
+
+                      }else if(onval.status==false){
+                        showToastError('${onval.message}');
+                      }
+                    });
+
+                  }
+                });
+
+                // handle report
+              }
+            },
+            itemBuilder: (context) => [
+              PopupMenuItem(value: 'Report',
+                  child: addText400(
+                      'Report', fontSize: 14, color: AppColors.blackColor)),
+
+            ],
+          )
+        ]
+      ),
       body: GetBuilder<ProductDetailController>(
           init: ProductDetailController(),
           builder: (logic) {
         return Column(
           children: [
-            addHeight(44),
-            backAppBar(
-                title: "${logic.productName?.capitalize??''}",
-                onTapBack: () {
-                  Get.back();
-                }),
+            addHeight(20),
 
             Expanded(child:
             logic.isDataLoading
@@ -240,13 +301,15 @@ class ProductDetailScreen extends StatelessWidget {
                           build_tile(title: 'Stock', subTitle: '${logic.response.data?.productList?.stock?.capitalize??''}',subTitleColor: AppColors.blackColor),
 
                           if(logic.response.data!.productList!.shippingCharges!.isNotEmpty)
-                          Align(
-                            alignment: Alignment.centerLeft,
-                            child: richText2(text1: 'Available In Cities: ',fontSize1: 14,fontWeight1:FontWeight.w500,textColor1: AppColors.textColor3,
-                            text2: '${logic.response.data!.productList!.shippingCharges?.map((city)=> city.city!.capitalize)}',fontSize2: 14,fontWeight2:FontWeight.w500,textColor2: AppColors.blackColor,
-                                textAlign: TextAlign.left
-                            ),
-                          ).marginOnly(top: 12),
+                            addHeight(12),
+                          if(logic.response.data!.productList!.shippingCharges!.isNotEmpty)
+                            build_tile(
+                                title: 'Available In Cities:',
+                                subTitle: '${logic.response.data!.productList!.shippingCharges!
+                                    .map((city) => city.city?.capitalize ?? '')
+                                    .toList()
+                                    .join(', ')}',subTitleColor: AppColors.blackColor),
+
                           addHeight(12),
 
 
@@ -619,12 +682,13 @@ class ProductDetailScreen extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         addText500('$title', fontFamily: 'Manrope',
-            color: AppColors.textColor3,
-            fontSize: 14),
+            color: AppColors.textColor3, fontSize: 14),
+
         Container(
             constraints: BoxConstraints(maxWidth: 260),
             child: addText500('$subTitle', fontFamily: 'Manrope',
                 color: subTitleColor,
+                maxLines: 2,
                 fontSize: 14))
       ],
     );}

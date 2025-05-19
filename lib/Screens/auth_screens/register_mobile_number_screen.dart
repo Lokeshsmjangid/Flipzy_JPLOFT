@@ -79,7 +79,7 @@ class RegisterMobileNumberScreen extends StatelessWidget {
                       showLoader(false);
                       if(value.status==true){
                         Get.toNamed(AppRoutes.verifyPhoneOtpScreen,arguments: {
-                          'countryCode': '+91',
+                          'countryCode': '+234',
                           'mobileNumber': '${phoneCtrl.text}',
                           'otp': '${value.otp}',
                         });
