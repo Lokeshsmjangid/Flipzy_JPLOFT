@@ -6,6 +6,7 @@ import 'package:flipzy/resources/app_color.dart';
 import 'package:flipzy/resources/text_utility.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shimmer/shimmer.dart';
 
 class HelpSupport extends StatelessWidget {
   const HelpSupport({super.key});
@@ -44,7 +45,23 @@ class HelpSupport extends StatelessWidget {
 
             body: GetBuilder<HelpController>(builder: (logic) {
               return logic.isDataLoading
-                  ? Center(child: CircularProgressIndicator(color: AppColors.primaryColor))
+                  ? Shimmer.fromColors(
+              baseColor: Colors.grey.shade300,
+              highlightColor: Colors.grey.shade100,
+              child: ListView.builder(
+              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+              itemCount: 5,
+              itemBuilder: (_, __) => Container(
+              margin: EdgeInsets.symmetric(vertical: 10),
+              padding: EdgeInsets.all(20),
+              decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(20),
+              ),
+              height: 100,
+              ),
+              ),
+              )
                   : logic.model.data!=null && logic.model.data!.isNotEmpty
                   ? SingleChildScrollView(
                 child: Column(
