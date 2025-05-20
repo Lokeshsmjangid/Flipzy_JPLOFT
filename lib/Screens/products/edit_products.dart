@@ -83,38 +83,25 @@ class EditProducts extends StatelessWidget {
                             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                               crossAxisCount: 2, // 2 items per row
                               crossAxisSpacing: 10,
-                              mainAxisSpacing: 5,
+                              mainAxisSpacing: 10,
                               childAspectRatio: 0.95, // Adjust height ratio
                             ),
-                            padding: EdgeInsets.symmetric(horizontal: 15, vertical: 0),
+                            padding: EdgeInsets.symmetric(horizontal: 12, vertical: 0),
                             itemCount: contt.editProduct?.productImages?.length??0,
                             itemBuilder: (context, index) {
                               return Stack(
                                 // clipBehavior: Clip.none,
                                 children: [
                                   Container(
+                                    clipBehavior: Clip.antiAliasWithSaveLayer,
                                     decoration: BoxDecoration(
                                         color: AppColors.whiteColor,
                                         borderRadius: BorderRadius.circular(20)
                                     ),
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(30.0),
-                                      child: contt.editProduct!.productImages![index].contains('/assets/uploads')
-                                          ? ClipRRect(
-                                        borderRadius: BorderRadius.circular(10),
-                                        child: CachedImageCircle2(fit: BoxFit.cover,isCircular: false,
-                                            imageUrl: '${contt.editProduct!.productImages![index]}'),
-                                          ) // ✅ Correct widget
-                                          : Image.file(File(contt.editProduct!.productImages![index])), // ✅ Correct widget
-                                      /*child: SvgPicture.asset(
-                                        AppAssets.addImageImg,
-                                        color: AppColors.greyColor,
-                                        fit: BoxFit.contain,
-
-                                        // width: 21,
-                                        // height: 20,
-                                      ),*/
-                                    ),
+                                    child: contt.editProduct!.productImages![index].contains('/assets/uploads')
+                                        ? CachedImageCircle2(fit: BoxFit.fill,isCircular: false,
+                                            imageUrl: '${contt.editProduct!.productImages![index]}',height: 130) // ✅ Correct widget
+                                        : Image.file(File(contt.editProduct!.productImages![index]),height: 130,fit: BoxFit.fill),
                                   ),
                                   Positioned(
                                       right: 4,
@@ -907,9 +894,7 @@ class EditProducts extends StatelessWidget {
                              sellBeyondCityLimits: contt.selectedDeliviry??'No',
                              stock: contt.selectedStock,
                              stockQuantity: contt.selectedStock =='In Stock' ? contt.qtyCtrl.text=='0'?"1":contt.qtyCtrl.text : '1',
-                             productImages: contt.selectedFile.isNotEmpty?contt.selectedFile
-                                 .whereType<File>() // ✅ removes nulls
-                                 .toList():[],
+                             productImages: contt.selectedFile.isNotEmpty?contt.selectedFile.whereType<File>().toList():[],
                            ).then((value){
                              showLoader(false);
                              if(value.status==true){

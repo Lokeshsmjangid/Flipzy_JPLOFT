@@ -341,9 +341,7 @@ class CheckOutScreen extends StatelessWidget {
                               AppButton(
                                   buttonText: 'Place Order',
                                   buttonTxtColor: AppColors.blackColor,
-                                  buttonColor: logic.response.data
-                                      ?.isDelivered == false ? AppColors
-                                      .textFieldHintColor : null,
+                                  buttonColor: logic.response.data?.isDelivered == false ? AppColors.textFieldHintColor : null,
                                   onButtonTap: logic.response.data
                                       ?.isDelivered == false
                                       ? () {

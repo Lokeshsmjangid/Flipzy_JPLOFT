@@ -24,7 +24,7 @@ class NotificationScreen extends StatelessWidget {
         builder: (contt) {
       return Scaffold(
         appBar: customAppBar(
-          backgroundColor: AppColors.bgColor,
+          backgroundColor: AppColors.whiteColor,
           leadingWidth: MediaQuery.of(context).size.width * 0.3 ,
           leadingIcon: IconButton(
               onPressed: (){
@@ -36,14 +36,14 @@ class NotificationScreen extends StatelessWidget {
             ],
           ).marginOnly(left: 12)),
           centerTitle: true,
-          titleTxt: "Notification",
+          titleTxt: "Notifications",
           titleColor: AppColors.blackColor,
           titleFontSize: 16,
-          bottomLine: false,
+          bottomLine: true,
         ),
-          bottomNavigationBar: contt.modelResponse.data!=null && contt.modelResponse.data!.isNotEmpty?SafeArea(
+          bottomNavigationBar: contt.modelResponse.data!=null && contt.modelResponse.data!.isNotEmpty
+              ? SafeArea(
             child: Container(
-              height: 84,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(1000),
                 border: Border.all(
@@ -63,9 +63,10 @@ class NotificationScreen extends StatelessWidget {
                   });
                 },
 
-                buttonText: 'Clear All',buttonColor: AppColors.bgColor,).marginSymmetric(horizontal: 16,vertical: 16),
-            ).marginSymmetric(horizontal: 10,vertical: 4),
-          ):SizedBox.shrink(),
+                buttonText: 'Clear All',buttonColor: AppColors.bgColor,).marginSymmetric(horizontal: 8,vertical: 8),
+            ).marginSymmetric(horizontal:12,vertical: 8),
+          )
+              : SizedBox.shrink(),
 
         body: contt.isDataLoading
             ? Center(child: CircularProgressIndicator(color: AppColors.secondaryColor))

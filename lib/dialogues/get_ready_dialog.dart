@@ -63,14 +63,14 @@ class GetReadyDialogWidget extends StatelessWidget {
                 ),
               ),
 
-              Positioned(
+              /*Positioned(
                   right: 14,
                   top: 14,
                   child: GestureDetector(
                       onTap: (){
                         // Get.back();
                       },
-                      child: SvgPicture.asset(AppAssets.cancelIcon)))
+                      child: SvgPicture.asset(AppAssets.cancelIcon)))*/
             ],
           ),
         ),

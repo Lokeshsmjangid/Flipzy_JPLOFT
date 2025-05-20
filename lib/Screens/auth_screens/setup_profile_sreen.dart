@@ -39,15 +39,9 @@ class SetupProfileScreen extends StatelessWidget {
               child: Column(
                 children: [
                   addHeight(50),
-                  Row(
-                    children: [
-                      backButton(onTap: () {
-                        Get.back();
 
-                      }),
                       addText700('Let\'s Set Up Your Profile', fontFamily: 'Manrope', fontSize: 22),
-                    ],
-                  ),
+
 
                   addHeight(40),
                   //UploadImage
@@ -157,17 +151,17 @@ class SetupProfileScreen extends StatelessWidget {
                   CustomTextField(
                       hintText: 'Enter Your Mobile',
                       controller: logic.mobileCtrl,
-                      readOnly: true,
+                      readOnly: logic.locationCtrl.text != "null" || logic.mobileCtrl.text.isNotEmpty? true: false, // by default its true
                       keyboardType: TextInputType.number,
                       inputFormatters: [
                         FilteringTextInputFormatter.digitsOnly, // Only numbers allowed
-                        LengthLimitingTextInputFormatter(15),  // Limits input to 15 digits
+                        LengthLimitingTextInputFormatter(12),  // Limits input to 15 digits
                       ],
                       validator: MultiValidator(
                           [
                             RequiredValidator(errorText: 'Mobile is required.'),
-                            MinLengthValidator(6, errorText: 'Mobile number must be at least 6 digits'),
-                            MaxLengthValidator(15, errorText: 'Mobile number must not exceed 15 digits')
+                            MinLengthValidator(8, errorText: 'Mobile number must be at least 8 digits'),
+                            MaxLengthValidator(12, errorText: 'Mobile number must not exceed 12 digits')
                           ]),
                       prefixIcon: SvgPicture.asset(AppAssets.textCallIcon)),
                   addHeight(16),
@@ -189,12 +183,13 @@ class SetupProfileScreen extends StatelessWidget {
 
                   CustomTextField(
                       controller: logic.locationCtrl,
-                      hintText: 'Enter your location',
+                      hintText: 'Enter Your Location',
                       onChanged: (val){
                         logic.deBounce.run(() {
                           logic.getSuggestion(val);
                         });
                       },
+                      validator: MultiValidator([RequiredValidator(errorText: 'Location is required.'),]),
                       prefixIcon: SvgPicture.asset(AppAssets.textLocationIcon),
                       suffixIcon: logic.locationCtrl.text.isNotEmpty
                           ? IconButton(onPressed: (){
@@ -263,7 +258,7 @@ class SetupProfileScreen extends StatelessWidget {
                             RequiredValidator(errorText: 'Password is required.'),
                             MinLengthValidator(6, errorText: 'Password must be at least 6 char/digits long'),
                             PatternValidator(r'^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$',
-                                errorText: 'Password must include an uppercase, number & special character.'),
+                                errorText: 'Use uppercase, number & symbol.'),
 
                           ]),
                       obscureText: logic.obsurePass,

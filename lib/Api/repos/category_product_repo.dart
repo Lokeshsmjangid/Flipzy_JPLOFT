@@ -31,14 +31,6 @@ Future<ProductsByCategoryModelResponse> getCatProductsApi({catID,page,String? se
       handleErrorCases(response, data, url);
     }
   }
-  // on SocketException catch (e) {
-  //   showToastError('No Internet');
-  //  // log('message::00::$e');
-  // }
-  // catch(e)
-  // {
-  //   showToastError('$e');
-  // }
   catch (e) {
     if (e.toString().contains('Failed host lookup')) {
       showToastError('Cannot connect to server. Check your network or domain.');

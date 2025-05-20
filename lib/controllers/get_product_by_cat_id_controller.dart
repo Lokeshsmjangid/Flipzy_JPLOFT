@@ -66,7 +66,7 @@ class ProductByCategoryController extends GetxController{
         });
       }
       else{
-        showToastError('You reached the page limit');
+        showToastError('That\'s all for now.');
       }
     }}
 

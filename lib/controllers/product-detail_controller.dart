@@ -1,12 +1,16 @@
 import 'dart:developer';
 
+import 'package:carousel_slider/carousel_controller.dart';
+import 'package:flipzy/Api/api_constant.dart';
 import 'package:flipzy/Api/api_models/product_detail_model.dart';
 import 'package:flipzy/Api/repos/product_detail_repo.dart';
+import 'package:flipzy/resources/app_assets.dart';
 import 'package:flipzy/resources/utils.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
 class ProductDetailController extends GetxController {
+  CarouselSliderController carouselSliderController = CarouselSliderController();
   ProductDetailResponse response = ProductDetailResponse();
   bool isDataLoading = false;
   String? productId;
@@ -63,6 +67,8 @@ class ProductDetailController extends GetxController {
       update();
     });
   }
+
+  List<Widget> carouselItems = [CachedImageCircle2(imageUrl: ApiUrls.productEmptyImgUrl,isCircular: false,)];
 
   int counter = 1;
 

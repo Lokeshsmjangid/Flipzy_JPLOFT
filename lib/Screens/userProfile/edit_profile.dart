@@ -154,13 +154,15 @@ class EditProfile extends StatelessWidget {
                       CustomTextField(
                         controller: logic.mobileNumber,
                           hintText: 'Enter your number ',
-                          readOnly: logic.mobileNumber.text.isNotEmpty?true:false,
+                          readOnly: logic.mobileNumber.text.isNotEmpty ? true : false,
                           inputFormatters: [
                             FilteringTextInputFormatter.digitsOnly, // Only numbers allowed
-                            LengthLimitingTextInputFormatter(15),  // Limits input to 15 digits
+                            LengthLimitingTextInputFormatter(12),  // Limits input to 15 digits
                           ],
                           validator: MultiValidator([
                             RequiredValidator(errorText: 'Mobile number is required.'),
+                            MinLengthValidator(8, errorText: 'Mobile number must be at least 8 digits'),
+                            MaxLengthValidator(12, errorText: 'Mobile number must not exceed 12 digits')
 
                           ]),
                           prefixIcon: SvgPicture.asset(AppAssets.textCallIcon)),
@@ -169,13 +171,13 @@ class EditProfile extends StatelessWidget {
                       //Address
                       Align(
                           alignment: Alignment.centerLeft,
-                          child: addText500("Location",
-                              color: AppColors.blackColor)),
+                          child: addText500("Location", color: AppColors.blackColor)),
                       SizedBox(height: 10,),
 
                       CustomTextField(
                           controller: logic.address,
                           hintText: 'Enter your location',
+                          validator: MultiValidator([ RequiredValidator(errorText: 'Location number is required.'),]),
                           onChanged: (val){
                             logic.deBounce.run(() {
                               logic.getSuggestion(val);
@@ -286,7 +288,8 @@ class EditProfile extends StatelessWidget {
                                 showLoader(false);
                                 if(value.status==true){
                                   LocalStorage().setValue(LocalStorage.USER_DATA, jsonEncode(value.data));
-                                    AuthData().getLoginData(); Get.back();
+                                    AuthData().getLoginData();
+                                    Get.back();
 
                                 } else if(value.status==false){
                                   showToastError('${value.message}');

@@ -7,7 +7,7 @@ import 'package:flipzy/resources/auth_data.dart';
 import 'package:flipzy/resources/utils.dart';
 import 'package:http/http.dart' as http;
 
-Future<CheckOutDetailModel> checkOutDetailApi({productId,String? promoCode}) async {
+Future<CheckOutDetailModel> checkOutDetailApi({qty,productId,String? promoCode}) async {
   bool checkInternet = await hasInternetConnection();
   if (!checkInternet) { // checkInternet is false
     showToastError('No Internet Connection');
@@ -18,6 +18,7 @@ Future<CheckOutDetailModel> checkOutDetailApi({productId,String? promoCode}) asy
     String url = ApiUrls.checkoutDetailsUrl;
     final Map<String, dynamic> map = {
     'userId':AuthData().userModel?.id,
+    'qty':qty,
     'productId':productId,
     if(promoCode!=null)
     'promoCode':promoCode,

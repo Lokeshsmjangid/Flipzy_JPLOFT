@@ -25,7 +25,7 @@ Future<CommonModelResponse> addToFavApi({productId}) async {
     var data = json.decode(response.body);
 
     if (response.statusCode == 200) {
-      log("${ApiUrls.addToFavUrl}\n $map \n response Start-->\n\n $data \n\n<--response End" );
+      log("${ApiUrls.addToFavUrl}\n response Start-->\n\n $data \n\n<--response End" );
       return CommonModelResponse.fromJson(data);
     } else {
       handleErrorCases(response, data, ApiUrls.addToFavUrl);

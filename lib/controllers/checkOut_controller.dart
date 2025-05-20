@@ -4,12 +4,14 @@ import 'package:flipzy/Api/api_models/coupon_model.dart';
 
 import 'package:flipzy/Api/repos/checkout_details_repo.dart';
 import 'package:flipzy/resources/auth_data.dart';
+import 'package:flipzy/resources/debouncer.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../Api/api_models/home_model_response.dart';
 
 class CheckOutController extends GetxController{
   CheckOutDetailModel response = CheckOutDetailModel();
+  final deBounce = Debouncer(milliseconds: 1000);
   bool isDataLoading = false;
 
   String shippingAddress = '';
@@ -21,11 +23,8 @@ class CheckOutController extends GetxController{
   double longitude = 0.0;
 
   Product? productList;
-
   Coupon? appliedCoupon;
-
   bool isEnterCoupon = false;
-
 
 
   @override
@@ -50,7 +49,7 @@ class CheckOutController extends GetxController{
   }
 
   fetchCheckoutData() async{
-    await checkOutDetailApi(productId: productList?.id,promoCode: appliedCoupon?.promoCode).then((val){
+    await checkOutDetailApi(qty: counter,productId: productList?.id,promoCode: appliedCoupon?.promoCode).then((val){
       response = val;
       isDataLoading = false;
       /*if(val.data!=null && isEnterCoupon==true){
@@ -78,9 +77,14 @@ class CheckOutController extends GetxController{
   void updateCounter(bool isIncrement,int availableProductQty) {
     if (isIncrement && availableProductQty > counter ) {
       counter++;
+      deBounce.run((){
+        fetchCheckoutData();
+      });
     } else if(isIncrement==false && counter>1){
-
       counter--;
+      deBounce.run((){
+        fetchCheckoutData();
+      });
     }
   }
 }

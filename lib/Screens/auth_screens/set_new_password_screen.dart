@@ -64,7 +64,7 @@ class SetNewPasswordScreen extends StatelessWidget {
                           RequiredValidator(errorText: 'Password is required.'),
                           MinLengthValidator(6, errorText: 'Password must be at least 6 char/digits long'),
                           PatternValidator(r'^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$',
-                              errorText: 'Password must include an uppercase, number & special character.'),
+                              errorText: 'Use uppercase, number & symbol.'),
 
                         ]),
                   ),
@@ -103,7 +103,9 @@ class SetNewPasswordScreen extends StatelessWidget {
                      resetPasswordApi(email: logic.email,newPassword: logic.confPassController.text).then((value){
                        showLoader(false);
                        if(value.status==true){
-                         PasswordUpdateDialog.show(context, onTap: () => Get.offNamed(AppRoutes.loginScreen));
+                         logic.passController.clear();
+                         logic.confPassController.clear();
+                         PasswordUpdateDialog.show(context, onTap: () => Get.offAllNamed(AppRoutes.loginScreen));
                        } else if(value.status==false){
                          showToastError('${value.message}');
                        }

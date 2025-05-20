@@ -59,54 +59,49 @@ class _HomeScreenState extends State<HomeScreen> {
             child: Column(
               children: [
                 addHeight(1.h),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-                  child: SizedBox(
-                    height: 51,
-                    child: CustomTextField(
-                      borderRadius: 30,
-                      controller: contt.searchCtrl,
-                      // onTap: (){
-                      //   // Get.to(AllProductsScreen());
-                      //
-                      // },
-                      // readOnly: true,
-                      prefixIcon: SvgPicture.asset(
-                        AppAssets.searchBoxesIc,
-                        color: AppColors.blackColor,
-                        width: 15,
-                        height: 15,
-                      ),
-                      hintText: "Smart Phone I",
-                      fillColor: AppColors.whiteColor,
-                      suffixIcon: Container(
-                        margin: const EdgeInsets.only(left: 15, right: 15, top: 2, bottom: 2),
-                        padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 8),
-                        decoration: BoxDecoration(
-                          color: AppColors.primaryColor,
-                          border: Border.all(
-                            color: AppColors.primaryColor,
-                            width: 1.5,
-                          ),
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                        child: SvgPicture.asset(
-                          AppAssets.searchIcon,
-                          color: AppColors.blackColor,
-                          width: 31,
-                          height: 30,
-                        ),
-                      ),
-                      onChanged: (value){
-                        contt.deBounce.run(() {
-                          if(value.isNotEmpty)
-                          Get.toNamed(AppRoutes.allProductsScreen,arguments: {'searchTerm': value})?.then((valu){
-                            contt.searchCtrl.clear();
-                            contt.update();
-                          });
-                        });
-                      },
+                Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 7),
+                  child: CustomTextField(
+                    borderRadius: 30,
+                    controller: contt.searchCtrl,
+                    prefixIcon: SvgPicture.asset(
+                      AppAssets.searchBoxesIc,
+                      color: AppColors.blackColor,
+                      width: 15,
+                      height: 15,
                     ),
+                    hintText: "Smart Phone I",
+                    fillColor: AppColors.whiteColor,
+                    suffixIcon: Container(
+                      margin: const EdgeInsets.only(left: 15, right: 15, top: 2, bottom: 2),
+                      padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 8),
+                      decoration: BoxDecoration(
+                        color: AppColors.primaryColor,
+                        border: Border.all(
+                          color: AppColors.primaryColor,
+                          width: 1.5,
+                        ),
+                        borderRadius: BorderRadius.circular(25),
+                      ),
+                      child: SvgPicture.asset(
+                        AppAssets.searchIcon,
+                        color: AppColors.blackColor,
+                        width: 31,
+                        height: 30,
+                      ),
+                    ),
+                    onChanged: (value){
+                      contt.deBounce.run(() {
+                        if(value.isNotEmpty)
+                          if(AuthData().userModel?.guestId!=null){Get.toNamed(AppRoutes.loginScreen);}else{
+                            Get.toNamed(AppRoutes.allProductsScreen,arguments: {'searchTerm': value})?.then((valu){
+                              contt.searchCtrl.clear();
+                              contt.update();
+                            });
+                          }
+
+                      });
+                    },
                   ),
                 ),
 
@@ -122,16 +117,16 @@ class _HomeScreenState extends State<HomeScreen> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            // SizedBox(width: 10,),
                             Container(
-                                margin: EdgeInsets.only(left: 15),
-                                child: addText600("Browse Categories",
-                                  color: AppColors.blackColor, fontSize: 16, )
+                                margin: EdgeInsets.only(left: 16),
+                                child: addText700("Browse Categories",
+                                  color: AppColors.blackColor, fontSize: 16,fontFamily: 'Manrope')
                             ),
                             GestureDetector(
                               onTap: () {
                                 // Get.to(AllCategoriesScreen(categoryList: contt.homeModel.data!.categoryList!,));
-                                Get.toNamed(AppRoutes.allCategoriesScreen);
+                                if(AuthData().userModel?.guestId!=null){Get.toNamed(AppRoutes.loginScreen);}
+                                else { Get.toNamed(AppRoutes.allCategoriesScreen);}
                               },
                               child: Container(
                                 margin: EdgeInsets.only(right: 15),
@@ -168,8 +163,12 @@ class _HomeScreenState extends State<HomeScreen> {
                                   // },);
                                   // contt.categoryItems[item].isSelect = !contt.categoryItems[item].isSelect;
                                   // contt.update();
-                                  Get.toNamed(AppRoutes.productsTwoScreen,
-                                      arguments: {'catID':contt.homeModel.data!.categoryList![item].id,'catName':contt.homeModel.data!.categoryList![item].name}); // product based on category
+                                  if(AuthData().userModel?.guestId!=null){Get.toNamed(AppRoutes.loginScreen);}
+                                  else{
+                                    Get.toNamed(AppRoutes.productsTwoScreen, arguments: {
+                                      'catID':contt.homeModel.data!.categoryList![item].id,
+                                      'catName':contt.homeModel.data!.categoryList![item].name}); // product based on category
+                                  }
                                 },
                                 child: Container(
                                   // height: 100,
@@ -204,9 +203,9 @@ class _HomeScreenState extends State<HomeScreen> {
                           children: [
                             // SizedBox(width: 10,),
                             Container(
-                                margin: EdgeInsets.only(left: 15),
+                                margin: EdgeInsets.only(left: 16),
                                 child: addText700("Featured",
-                                  color: AppColors.blackColor, fontSize: 16, )
+                                  color: AppColors.blackColor, fontSize: 16,fontFamily: 'Manrope' )
                             ),
                             GestureDetector(
                               onTap: () {
@@ -238,10 +237,10 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
 
                       //FeaturedItems
-                      SizedBox(
+                      Container(
+                        alignment: Alignment.centerLeft,
                         height: 228,
                         child:contt.homeModel.data!.featuredProducts!.isNotEmpty? ListView.builder(
-                            padding: const EdgeInsets.only(left: 10),
                             shrinkWrap: true,
                             scrollDirection: Axis.horizontal,
                             itemCount: contt.homeModel.data?.featuredProducts?.length ?? 0,
@@ -407,7 +406,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                         ),
                                       ],
                                     )
-                                ),
+                                ).marginOnly(left: index==0 && contt.homeModel.data!.featuredProducts!.length > 1?12:0),
                               );
                             }
                         ) :Center(child: addText500('No Featured Product Found')),
@@ -421,9 +420,9 @@ class _HomeScreenState extends State<HomeScreen> {
                           children: [
                             // SizedBox(width: 10,),
                             Container(
-                                margin: EdgeInsets.only(left: 15),
+                                margin: EdgeInsets.only(left: 16),
                                 child: addText700("Products",
-                                  color: AppColors.blackColor, fontSize: 16, )
+                                  color: AppColors.blackColor, fontSize: 16,fontFamily: 'Manrope' )
                             ),
                             GestureDetector(
                               onTap: () {
@@ -453,10 +452,10 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
 
                       //MobileItems
-                      SizedBox(
+                      Container(
+                        alignment: Alignment.centerLeft,
                         height: 228,
                         child:contt.homeModel.data!.productList!.isNotEmpty? ListView.builder(
-                            padding: const EdgeInsets.only(left: 10),
                             shrinkWrap: true,
                             scrollDirection: Axis.horizontal,
                             itemCount: contt.homeModel.data?.productList?.length ?? 0,
@@ -612,7 +611,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                         ),
                                       ],
                                     )
-                                ),
+                                ).marginOnly(left: index==0 && contt.homeModel.data!.productList!.length > 1?12:0),
                               );
                             }
                         )

@@ -46,7 +46,7 @@ class _ForgotPasswordOtpScreenState extends State<ForgotPasswordOtpScreen> {
                 ),
                 addHeight(10),
                 addText400(
-                    'We\'ve sent a 4 igit OTP to your email ${logic.email} below to verify your account.',
+                    'We\'ve sent a 4 digit OTP to your email ${logic.email} below to verify your account.',
                     fontSize: 13,
                     fontFamily: 'Manrope',
                     color: AppColors.blackColor),
@@ -66,6 +66,7 @@ class _ForgotPasswordOtpScreenState extends State<ForgotPasswordOtpScreen> {
                       animationType: AnimationType.none, // No animation for simplicity
                       autoDismissKeyboard: true,
                       autoFocus: true,
+                      showCursor: logic.hasError?true:false,
                       keyboardType: TextInputType.number,
                       obscureText: false,
                       inputFormatters: [FilteringTextInputFormatter.digitsOnly],
@@ -123,6 +124,10 @@ class _ForgotPasswordOtpScreenState extends State<ForgotPasswordOtpScreen> {
                       },
                       onChanged: (value) {
                         print("OTP changed: $value");
+                        if(value.length<4)
+                        setState(() {
+                          logic.hasError = true;
+                        });
                       },
                       beforeTextPaste: (text) {
                         return true; // Allow pasting text
@@ -133,7 +138,10 @@ class _ForgotPasswordOtpScreenState extends State<ForgotPasswordOtpScreen> {
 
 
                 addHeight(36),
-                AppButton(buttonText: 'Reset Password', buttonTxtColor: AppColors.blackColor, onButtonTap: () {
+                AppButton(
+                  buttonText: 'Reset Password',
+                  buttonColor: logic.pinController.text.length<4?AppColors.greyColor:AppColors.primaryColor,
+                  buttonTxtColor: AppColors.blackColor, onButtonTap: () {
                   if(logic.pinController.text.length<4){
                     setState(() {
                       logic.hasError = true;
@@ -146,7 +154,8 @@ class _ForgotPasswordOtpScreenState extends State<ForgotPasswordOtpScreen> {
                         otp: logic.pinController.text).then((value){
                       showLoader(false);
                       if(value.status==true){
-                        Get.toNamed(AppRoutes.setNewPasswordScreen,arguments: {'email':logic.email});
+                        Get.toNamed(AppRoutes.setNewPasswordScreen,
+                            arguments: {'email':logic.email});
 
                       } else if(value.status==false){
                         showToastError('${value.message}');

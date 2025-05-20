@@ -149,9 +149,13 @@ class EditPersonalInfo extends StatelessWidget {
                     readOnly: true,
                     inputFormatters: [
                       FilteringTextInputFormatter.digitsOnly, // Only numbers allowed
-                      LengthLimitingTextInputFormatter(15),  // Limits input to 15 digits
+                      LengthLimitingTextInputFormatter(12),  // Limits input to 15 digits
                     ],
-                    validator: MultiValidator([RequiredValidator(errorText: 'Mobile number is required.'),
+                    validator: MultiValidator(
+                        [
+                          RequiredValidator(errorText: 'Mobile number is required.'),
+                          MinLengthValidator(8, errorText: 'Mobile number must be at least 8 digits'),
+                          MaxLengthValidator(12, errorText: 'Mobile number must not exceed 12 digits')
                     ]),
                     prefixIcon: SvgPicture.asset(AppAssets.textCallIcon)),
 

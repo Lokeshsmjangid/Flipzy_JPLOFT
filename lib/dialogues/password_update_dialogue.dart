@@ -68,7 +68,7 @@ class PasswordUpdateDialogWidget extends StatelessWidget {
                   top: 14,
                   child: GestureDetector(
                       onTap: (){
-                        Get.back();
+                        // Get.back();
                       },
                       child: SvgPicture.asset(AppAssets.cancelIcon, )))
             ],

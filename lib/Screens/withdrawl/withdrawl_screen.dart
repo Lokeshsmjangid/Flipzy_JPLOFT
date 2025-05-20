@@ -38,26 +38,23 @@ class WithdrawalScreen extends StatelessWidget {
           titleFontSize: 16,
           bottomLine: true,
         ),
-        bottomNavigationBar: BorderedContainer(
-            radius: 1000,
-            child: AppButton(
-                onButtonTap: () {
-                  if(cntrl.withdrawalCtrl.text.isNotEmpty){
-                      showLoader(true);
-                    withdrawalApi(amount: cntrl.withdrawalCtrl.text).then((onValue){
-                      showLoader(false);
-                      if(onValue.status==true){
+        bottomNavigationBar: AppButton(
+            onButtonTap: () {
+              if(cntrl.withdrawalCtrl.text.isNotEmpty){
+                showLoader(true);
+                withdrawalApi(amount: cntrl.withdrawalCtrl.text).then((onValue){
+                  showLoader(false);
+                  if(onValue.status==true){
 
-                        showToast('${onValue.message}');
-                        Get.back();
-                      }
-                    });
-                  }else{
-                    showToastError("Please enter some amount for withdrawal request.");
+                    showToast('${onValue.message}');
+                    Get.back();
                   }
-                },
-                buttonText: 'Withdrawal').marginSymmetric(horizontal: 4)
-        ).marginSymmetric(horizontal: 12,vertical: 4),
+                });
+              }else{
+                showToastError("Please enter some amount for withdrawal request.");
+              }
+            },
+            buttonText: 'Withdrawal').marginSymmetric(horizontal: 12,vertical: 12),
         body: SafeArea(
           child: Column(
             children: [

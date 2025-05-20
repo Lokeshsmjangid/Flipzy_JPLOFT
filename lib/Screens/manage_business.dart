@@ -9,6 +9,7 @@ import 'package:flipzy/resources/app_color.dart';
 import 'package:flipzy/resources/app_routers.dart';
 import 'package:flipzy/resources/auth_data.dart';
 import 'package:flipzy/resources/text_utility.dart';
+import 'package:flipzy/resources/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
@@ -105,7 +106,7 @@ class _ManageBusinessState extends State<ManageBusiness> {
               ),
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(50),
-                child: Image.asset(AppAssets.brandImage),
+                child:  CachedImageCircle2(isCircular: true,fit: BoxFit.cover,imageUrl: '${AuthData().userModel?.profileImage}'),
                 // child: Image.network(
                 //   AppAssets.demoProfileImageUrl ,
                 //   // "https://cdn.pixabay.com/photo/2012/04/26/19/43/profile-42914_640.png",
@@ -145,7 +146,7 @@ class _ManageBusinessState extends State<ManageBusiness> {
                             ),
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(50),
-                              child: Image.asset(AppAssets.brandImage),
+                              child: CachedImageCircle2(isCircular: true,fit: BoxFit.cover,imageUrl: '${AuthData().userModel?.profileImage}'),
                               // child: Image.network(
                               //   AppAssets.demoProfileImageUrl ,
                               //   // "https://cdn.pixabay.com/photo/2012/04/26/19/43/profile-42914_640.png",
@@ -162,7 +163,7 @@ class _ManageBusinessState extends State<ManageBusiness> {
                                 color: AppColors.pinkColor,
                                 borderRadius: BorderRadius.circular(5),
                               ),
-                              child: addText700("20%",
+                              child: addText700("${AuthData().userModel?.profilePercentage}%",
                                 color: AppColors.redColor, fontSize: 11, ),
                             ),
                           ),

@@ -109,46 +109,51 @@ class SignUpScreen extends StatelessWidget {
 
                     if(Platform.isIOS)
                     build_social_button(buttonIcon: AppAssets.appleIcon, buttonText: 'Continue with Apple Id',onTap: (){
-                      showLoader(true);
-                      signInWithApple().then((value) {
-                        showLoader(false);
-                        if(value !=null){
-                          log('Apple Data:$value');
-                          String displayName = value.givenName ?? "";
-                          List<String> nameParts = displayName.split(" ");
+                      if(acceptCondition.value) {
+                        showLoader(true);
+                        signInWithApple().then((value) {
+                          showLoader(false);
+                          if(value !=null){
+                            log('Apple Data:$value');
+                            String displayName = value.givenName ?? "";
+                            List<String> nameParts = displayName.split(" ");
 
-                          String firstName = nameParts.isNotEmpty ? nameParts[0] : "";
-                          String lastName = nameParts.length > 1 ? nameParts.sublist(1).join(" ") : "";
+                            String firstName = nameParts.isNotEmpty ? nameParts[0] : "";
+                            String lastName = nameParts.length > 1 ? nameParts.sublist(1).join(" ") : "";
 
-                          print("First Name: $firstName");
-                          print("Last Name: $lastName");
+                            print("First Name: $firstName");
+                            print("Last Name: $lastName");
 
-                          showLoader(true);
-                          socialLoginApi(
-                              firstName: firstName,
-                              lastName: lastName,
-                              email: value.email,
-                              login_type: 'apple',
-                              social_id: value.userIdentifier).then((socialValue){
-                            showLoader(false);
-                            if(socialValue.status==true){
-                              if(socialValue.data?.email!=null){
-                                LocalStorage().setValue(LocalStorage.USER_ACCESS_TOKEN, socialValue.token.toString());
-                                LocalStorage().setValue(LocalStorage.USER_DATA, jsonEncode(socialValue.data));
-                                AuthData().getLoginData();
-                                Get.to(CustomBottomNav());
-                              } else {
-                                Get.offAllNamed(AppRoutes.setupProfileScreen);
+                            showLoader(true);
+                            socialLoginApi(
+                                firstName: firstName,
+                                lastName: lastName,
+                                email: value.email,
+                                login_type: 'apple',
+                                social_id: value.userIdentifier).then((socialValue){
+                              showLoader(false);
+                              if(socialValue.status==true){
+                                if(socialValue.data?.email!=null){
+                                  LocalStorage().setValue(LocalStorage.USER_ACCESS_TOKEN, socialValue.token.toString());
+                                  LocalStorage().setValue(LocalStorage.USER_DATA, jsonEncode(socialValue.data));
+                                  AuthData().getLoginData();
+                                  Get.to(CustomBottomNav());
+                                } else {
+                                  Get.offAllNamed(AppRoutes.setupProfileScreen);
+                                }
+
                               }
+                              else if(socialValue.status==false){
+                                showToastError('${socialValue.message}');
+                              }
+                            });
 
-                            }
-                            else if(socialValue.status==false){
-                              showToastError('${socialValue.message}');
-                            }
-                          });
+                          }
+                        });
+                      } else { showToastError('Please accept flipzy\'s term & condition');}
 
-                        }
-                      });
+
+
                     }),
                     if(Platform.isIOS)
                     addHeight(16),
@@ -165,43 +170,47 @@ class SignUpScreen extends StatelessWidget {
                     ),
                     addHeight(16),
 
-                    build_social_button(buttonIcon: AppAssets.googleIcon, buttonText: 'Continue with Google',onTap: (){
-                      showLoader(true);
-                      signInWithGoogle().then((value) {
-                        showLoader(false);
-                        if(value !=null){
-                          List<String> nameParts = value.displayName!.split(" ");
-                          String firstName = nameParts.isNotEmpty ? nameParts.first : "";
-                          String lastName = nameParts.length > 1 ? nameParts.sublist(1).join(" ") : "";
+                    build_social_button(buttonIcon: AppAssets.googleIcon,
+                        buttonText: 'Continue with Google',onTap: (){
+                      if(acceptCondition.value) {
+                        showLoader(true);
+                        signInWithGoogle().then((value) {
+        showLoader(false);
+        if(value !=null){
+          List<String> nameParts = value.displayName!.split(" ");
+          String firstName = nameParts.isNotEmpty ? nameParts.first : "";
+          String lastName = nameParts.length > 1 ? nameParts.sublist(1).join(" ") : "";
 
 
-                          print("Google First Name: $firstName");
-                          print("Google Last Name: $lastName");
-                          log('Google login Data:$value');
-                          showLoader(true);
-                          socialLoginApi(
-                              firstName: firstName,
-                              lastName: lastName,
-                              email: value.email,
-                              login_type: 'google',
-                              social_id: value.uid).then((socialValue){
-                            showLoader(false);
-                            if(socialValue.status==true){
-                              if(socialValue.data?.email!=null){
-                                LocalStorage().setValue(LocalStorage.USER_ACCESS_TOKEN, socialValue.token.toString());
-                                LocalStorage().setValue(LocalStorage.USER_DATA, jsonEncode(socialValue.data));
-                                AuthData().getLoginData();
-                                Get.to(CustomBottomNav());
-                              } else {
-                                Get.offAllNamed(AppRoutes.setupProfileScreen);
-                              }
+          print("Google First Name: $firstName");
+          print("Google Last Name: $lastName");
+          log('Google login Data:$value');
+          showLoader(true);
+          socialLoginApi(
+              firstName: firstName,
+              lastName: lastName,
+              email: value.email,
+              login_type: 'google',
+              social_id: value.uid).then((socialValue){
+            showLoader(false);
+            if(socialValue.status==true){
+              if(socialValue.data?.email!=null){
+                LocalStorage().setValue(LocalStorage.USER_ACCESS_TOKEN, socialValue.token.toString());
+                LocalStorage().setValue(LocalStorage.USER_DATA, jsonEncode(socialValue.data));
+                AuthData().getLoginData();
+                Get.to(CustomBottomNav());
+              } else {
+                Get.offAllNamed(AppRoutes.setupProfileScreen);
+              }
 
-                            }
-                            else if(socialValue.status==false){
-                              showToastError('${socialValue.message}');
-                            }
-                          });
-                        }});
+            }
+            else if(socialValue.status==false){
+              showToastError('${socialValue.message}');
+            }
+          });
+        }});}
+                      else { showToastError('Please accept flipzy\'s term & condition');}
+
                     }),
                     addHeight(20),
 
@@ -216,9 +225,10 @@ class SignUpScreen extends StatelessWidget {
                           child: Container(
                             height: 17, width: 17,
                             decoration: BoxDecoration(
-                                color: acceptCondition.value ?  AppColors.primaryColor : AppColors.greyColor ,
+                                // color: acceptCondition.value ?  AppColors.primaryColor : AppColors.greyColor ,
+                                color: AppColors.primaryColor,
                                 borderRadius: BorderRadius.circular(3),
-                                border: Border.all(color: acceptCondition.value ? AppColors.primaryColor : AppColors.greyColor, width: 2)
+                                border: Border.all(color: AppColors.primaryColor, width: 2)
                             ),
                             child: acceptCondition.value ? Image.asset(AppAssets.checkIC) : IgnorePointer(),
                           ),

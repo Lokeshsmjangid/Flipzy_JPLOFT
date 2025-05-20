@@ -65,7 +65,7 @@ class MyProductsController extends GetxController{
           fetchMyProductsListData();
         });
       } else{
-        showToastError('You reached the page limit');
+        showToastError('That\'s all for now.');
       }
 
     }
@@ -89,7 +89,7 @@ class MyProductsController extends GetxController{
         maxPage = value.totalPages;
       }else {
         if(modelResponse.data!=null)
-        modelResponse.data!.listProducts!.addAll(value.data!.listProducts??[]);
+        modelResponse.data!.listProducts!.addAll(modelResponse.data!.listProducts??[]);
       }
       update();
 

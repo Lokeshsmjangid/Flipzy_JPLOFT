@@ -1,6 +1,33 @@
+import 'package:flipzy/Api/api_models/faq_model_response.dart';
+import 'package:flipzy/Api/repos/faq_quest_repo.dart';
 import 'package:get/get.dart';
 
 class HelpController extends GetxController {
+
+  FrequentlyAskQuestionsModel model = FrequentlyAskQuestionsModel();
+  bool isDataLoading = false;
+
+
+  @override
+  void onInit() {
+    // TODO: implement onInit
+    super.onInit();
+    fetchData();
+  }
+  fetchData() async{
+    isDataLoading = true;
+    update();
+    faqApi().then((faq){
+      model = faq;
+      isDataLoading = false;
+      update();
+    });
+  }
+
+
+
+
+
 
   List<HelpItems> helpItemsList = [
     HelpItems(id: 1, isSelect: false, question: "Why should I complete my business profile ?", answer: "Completing your profile increases your business’s credibility, improves visibility, and helps customers find and trust you."),

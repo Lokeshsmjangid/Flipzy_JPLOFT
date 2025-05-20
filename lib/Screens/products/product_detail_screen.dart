@@ -1,9 +1,11 @@
 
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flipzy/Api/api_constant.dart';
 import 'package:flipzy/Api/chat_with_users_model.dart';
 import 'package:flipzy/Api/repos/add_to_fav_repo.dart';
 import 'package:flipzy/Api/repos/bubble_ship_repo.dart';
 import 'package:flipzy/Api/repos/report_product_repo.dart';
+import 'package:flipzy/Screens/chats/enlarge_image.dart';
 import 'package:flipzy/Screens/makeOfferChat.dart';
 import 'package:flipzy/Screens/seller_profile.dart';
 import 'package:flipzy/controllers/chat_controller.dart';
@@ -18,6 +20,7 @@ import 'package:flipzy/resources/custom_loader.dart';
 import 'package:flipzy/resources/text_utility.dart';
 import 'package:flipzy/resources/utils.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_image_slideshow/flutter_image_slideshow.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
@@ -30,9 +33,9 @@ class ProductDetailScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.appBgColor,
+      backgroundColor: AppColors.whiteColor,
       appBar: customAppBar(
-        backgroundColor: AppColors.bgColor,
+        backgroundColor: AppColors.whiteColor,
         leadingWidth: MediaQuery.of(context).size.width * 0.3 ,
         leadingIcon: IconButton(
             onPressed: (){
@@ -107,84 +110,217 @@ class ProductDetailScreen extends StatelessWidget {
                     ? SingleChildScrollView(
               child: Column(
                 children: [
-                  addHeight(14),
 
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
+                  BorderedContainer(
+                    bGColor: AppColors.bgColor,
+                    child: Column(
+                      children: [
+                        SizedBox(
+                          height: 200,
+                          width: double.infinity,
+                          child: CarouselSlider(
+                            carouselController: logic.carouselSliderController,
+                              items: List.generate(
+                                  growable: true,
+                                  logic.productImages !=null && logic.productImages!.isNotEmpty
+                                      ? logic.productImages!.length
+                                      : 1, (index){
+                                return ClipRRect(
+                                  borderRadius: BorderRadius.circular(24),
+                                  child: GestureDetector(
+                                    onTap: (){
 
+                                      if(logic.productImages!=null && logic.productImages!.isNotEmpty)
+                                      Get.to(()=>EnlargeImage(url: logic.productImages![index]));
+                                    },
+                                    child: CachedImageCircle2(isCircular: false,
+                                        imageUrl: logic.productImages!.isNotEmpty?'${logic.productImages![index]}':ApiUrls.productEmptyImgUrl),
+                                  ),
+                                );
 
-                      if(logic.productImages!=null && logic.productImages!.length>1)
-                      IconButton(
-                        onPressed: logic.goToPreviousImage,
-                        icon: Icon(Icons.keyboard_arrow_left, size: 32),
-                      ),
-                      // Main image container
-                      Container(
-                        width: 200, // Adjust as needed
-                        height: 200, // Adjust as needed
-                        margin: EdgeInsets.symmetric(horizontal: 8),
-                        // child: Image.asset(AppAssets.bigIphoneProductDetail),
-
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(12),
-                          child: CachedImageCircle2(isCircular: false,
-                              imageUrl: logic.productImages!.isNotEmpty?'${logic.productImages![logic.currentIndex]}':ApiUrls.productEmptyImgUrl),
+                              }),
+                              options: CarouselOptions(
+                                height: 400,
+                                // aspectRatio: 12/8,
+                                viewportFraction: 0.4,
+                                // viewportFraction: 0.9,
+                                initialPage: logic.currentIndex,
+                                reverse: false,
+                                animateToClosest: true,
+                                autoPlay: logic.productImages !=null && logic.productImages!.isNotEmpty?true:false,
+                                // disableCenter: false,
+                                enableInfiniteScroll: logic.productImages !=null && logic.productImages!.isNotEmpty?true:false,
+                                autoPlayInterval: Duration(seconds: 3),
+                                autoPlayAnimationDuration: Duration(milliseconds: 2500),
+                                autoPlayCurve: Curves.fastOutSlowIn,
+                                enlargeCenterPage: true,
+                                enlargeFactor: 0.3,
+                                clipBehavior: Clip.antiAliasWithSaveLayer,
+                                onPageChanged: (val,ot){
+                                  logic.currentIndex = val;
+                                  logic.update();
+                                  // flipzyPrint(message: 'Current index: ${logic.currentIndex}' );
+                                },
+                                scrollDirection: Axis.horizontal,
+                              )
+                          ),
                         ),
 
-                      ),
+                        // indicator
+                        if(logic.productImages!=null && logic.productImages!.length>1)
+                          SingleChildScrollView(
+                            scrollDirection: Axis.horizontal,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: logic.productImages!.asMap().entries.map((entry) {
+                              int index = entry.key;
+                              String imageUrl = entry.value;
+                              return GestureDetector(
+                                onTap: () {
+                                  flipzyPrint(message: 'animateToPage: ${index}');
 
-                      if(logic.productImages!=null && logic.productImages!.length>1)
-                      IconButton(
-                        onPressed: logic.goToNextImage,
-                        icon: Icon(Icons.keyboard_arrow_right, size: 32),
-                      ),
-                    ],
+                                  if (logic.carouselSliderController != null) {
+                                    logic.carouselSliderController.animateToPage(index);
+                                  }
+                                },
+                                child: Container(
+                                    alignment: Alignment.center,
+                                    margin: EdgeInsets.symmetric(horizontal: 2,vertical: 8),
+                                    clipBehavior: Clip.antiAliasWithSaveLayer,
+                                    decoration: BoxDecoration(
+                                        border: Border.all(color: logic.currentIndex==index?AppColors.primaryColor:AppColors.containerBorderColor2,width: 1.5),
+                                        borderRadius: BorderRadius.circular(30),color: AppColors.bgColor),
+                                    child: ClipRRect(
+                                      borderRadius: BorderRadius.circular(1000000),
+                                      child: CachedImageCircle2(
+                                          isCircular: false,
+                                          imageUrl: '$imageUrl',
+                                          fit: BoxFit.cover,
+                                          height: 36, width: 60),
+                                    )
+                                ),
+                               /* child: Container(
+                                  width: 12.0,
+                                  height: 12.0,
+                                  margin: EdgeInsets.symmetric(vertical: 8.0, horizontal: 4.0),
+                                  decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      color: (Theme.of(context).brightness == Brightness.dark
+                                          ? Colors.white
+                                          : Colors.black)
+                                          .withOpacity(logic.currentIndex == entry.key ? 0.9 : 0.4)),
+                                ),*/
+                              );
+                            }).toList(),
+                          ),
+                        ),
+
+
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+
+
+
+
+                            // old image code
+                           /* if(logic.productImages!=null && logic.productImages!.length>1)
+                              IconButton(
+                                onPressed: logic.goToPreviousImage,
+                                icon: Icon(Icons.keyboard_arrow_left, size: 32),
+                              ),
+                            // Main image container
+                            GestureDetector(
+                              onTap: (){
+                                if(logic.productImages!.isNotEmpty)
+                                Get.to(()=>EnlargeImage(url: logic.productImages![logic.currentIndex]));
+                              },
+                              child: Container(
+                                width: 190, // Adjust as needed
+                                height: 190, // Adjust as needed
+                                margin: EdgeInsets.symmetric(horizontal: 8),
+                                // child: Image.asset(AppAssets.bigIphoneProductDetail),
+
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(12),
+                                  child: CachedImageCircle2(isCircular: false,
+                                      imageUrl: logic.productImages!.isNotEmpty?'${logic.productImages![logic.currentIndex]}':ApiUrls.productEmptyImgUrl),
+                                ),
+
+                              ),
+                            ),
+
+                            if(logic.productImages!=null && logic.productImages!.length>1)
+                              IconButton(
+                                onPressed: logic.goToNextImage,
+                                icon: Icon(Icons.keyboard_arrow_right, size: 32),
+                              ),*/
+                          ],
+                        ),
+                        if(logic.productImages!=null && logic.productImages!.length>1)
+                        SizedBox(height: 10,),
+
+                        /*if(logic.productImages!=null && logic.productImages!.length>1)
+                          SingleChildScrollView(
+                            scrollDirection: Axis.horizontal,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: logic.productImages!
+                                  .asMap()
+                                  .entries
+                                  .map((entry) {
+                                int index = entry.key;
+                                String imageUrl = entry.value;
+                                return GestureDetector(
+                                  onTap: (){
+
+                                    Get.to(()=>EnlargeImage(url: logic.productImages![index]));
+                                  },
+                                  child: Container(
+                                      alignment: Alignment.center,
+                                      clipBehavior: Clip.antiAliasWithSaveLayer,
+                                      decoration: BoxDecoration(
+                                          border: Border.all(color: logic.currentIndex==index?AppColors.primaryColor:AppColors.containerBorderColor2,width: 1.5),
+                                          borderRadius: BorderRadius.circular(30),color: AppColors.bgColor),
+                                      child: ClipRRect(
+                                        borderRadius: BorderRadius.circular(1000000),
+                                        child: CachedImageCircle2(
+                                            isCircular: false,
+                                            imageUrl: '$imageUrl',
+                                            fit: BoxFit.cover,
+                                            height: 36, width: 60),
+                                      )
+                                  ).marginOnly(right: 4),
+                                );
+                                // return GestureDetector(
+                                //   onTap: () => _onThumbnailTap(index),
+                                //   child: Container(
+                                //     width: 50,
+                                //     height: 80,
+                                //     margin: EdgeInsets.symmetric(horizontal: 4),
+                                //     decoration: BoxDecoration(
+                                //       borderRadius: BorderRadius.circular(10),
+                                //       // shape: BoxShape.circle,
+                                //       border: Border.all(
+                                //         color: _currentIndex == index ? Colors.blue : Colors.grey,
+                                //         width: 2,
+                                //       ),
+                                //       // image: DecorationImage(
+                                //       //   // image: Image.asset(name),
+                                //       //   image: NetworkImage(imageUrl),
+                                //       //   fit: BoxFit.cover,
+                                //       // ),
+                                //     ),
+                                //     child: Image.asset(imageUrl),
+                                //   ),
+                                // );
+                              }).toList(),),),*/
+                      ],
+                    )
                   ),
 
-                  SizedBox(height: 10,),
-
-                  if(logic.productImages!=null && logic.productImages!.length>1)
-                  SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: logic.productImages!
-                          .asMap()
-                          .entries
-                          .map((entry) {
-                        int index = entry.key;
-                        String imageUrl = entry.value;
-                        return SizedBox(
-                            height: 60, width: 60,
-                            child: CachedImageCircle2(isCircular: false,imageUrl: '$imageUrl').marginOnly(right: 10)
-                        );
-                        // return GestureDetector(
-                        //   onTap: () => _onThumbnailTap(index),
-                        //   child: Container(
-                        //     width: 50,
-                        //     height: 80,
-                        //     margin: EdgeInsets.symmetric(horizontal: 4),
-                        //     decoration: BoxDecoration(
-                        //       borderRadius: BorderRadius.circular(10),
-                        //       // shape: BoxShape.circle,
-                        //       border: Border.all(
-                        //         color: _currentIndex == index ? Colors.blue : Colors.grey,
-                        //         width: 2,
-                        //       ),
-                        //       // image: DecorationImage(
-                        //       //   // image: Image.asset(name),
-                        //       //   image: NetworkImage(imageUrl),
-                        //       //   fit: BoxFit.cover,
-                        //       // ),
-                        //     ),
-                        //     child: Image.asset(imageUrl),
-                        //   ),
-                        // );
-                      }).toList(),),),
-
-                  if(logic.productImages!=null && logic.productImages!.length>1)
                   addHeight(20),
+
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -278,8 +414,8 @@ class ProductDetailScreen extends StatelessWidget {
 
                   BorderedContainer(
                       padding: 20,
-                      isBorder: false,
-                      bGColor: AppColors.greenColor.withOpacity(0.1),
+                      isBorder: true,
+                      bGColor: AppColors.whiteColor,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -321,8 +457,8 @@ class ProductDetailScreen extends StatelessWidget {
                     width: double.infinity,
                     child: BorderedContainer(
                         padding: 20,
-                        isBorder: false,
-                        bGColor: AppColors.greenColor.withOpacity(0.1),
+                        isBorder: true,
+                        bGColor: AppColors.whiteColor,
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [

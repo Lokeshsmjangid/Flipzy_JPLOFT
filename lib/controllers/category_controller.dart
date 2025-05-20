@@ -56,7 +56,7 @@ class CategoryController extends GetxController{
           fetchCategories(pageNumm: page);
         });
       } else{
-        showToastError('You reached the page limit');
+        showToastError('That\'s all for now.');
       }
 
     }

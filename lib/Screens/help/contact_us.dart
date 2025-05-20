@@ -124,7 +124,7 @@ class _ContactUsState extends State<ContactUs> {
                             CustomTextField(
                               controller: emailCtrl,
                               borderRadius: 10000,
-                              hintText: 'Enter Email',
+                              hintText: 'Enter Email Id',
                               keyboardType: TextInputType.emailAddress,
                               validator: MultiValidator([RequiredValidator(errorText: 'Please enter email'),EmailValidator(errorText: 'Please enter valid email')]),
                             ),
@@ -173,8 +173,12 @@ class _ContactUsState extends State<ContactUs> {
                       SizedBox(height: 30,),
 
                                 //Save
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 5),
+                      Container(
+                        decoration: BoxDecoration(
+                          border: Border.all(color: AppColors.containerBorderColor),
+                          borderRadius: BorderRadius.circular(100)
+                              
+                        ),
                         child: AppButton(
                           onButtonTap: () {
                             if(formKey.currentState?.validate()??false){
@@ -186,6 +190,8 @@ class _ContactUsState extends State<ContactUs> {
                                   mobileNumber: mobileCtrl.text,message: msgCtrl.text).then((value){
                                 showLoader(false);
                                 if(value.status==true){
+                                  Get.back();
+                                  Get.back();
                                   showToast('${value.message}');
                                 }
 
@@ -193,8 +199,8 @@ class _ContactUsState extends State<ContactUs> {
                             }
 
                           },
-                          buttonText: 'Send', buttonTxtColor: AppColors.blackColor,).marginSymmetric(horizontal: 4),
-                      ),
+                          buttonText: 'Send', buttonTxtColor: AppColors.blackColor,).marginSymmetric(horizontal: 8,vertical: 6),
+                      ).marginSymmetric(horizontal: 12),
 
                       SizedBox(height: 30,),
 

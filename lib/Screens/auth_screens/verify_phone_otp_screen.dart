@@ -109,6 +109,7 @@ class _VerifyPhoneOtpScreenState extends State<VerifyPhoneOtpScreen> {
                   cursorWidth: 12,
                   backgroundColor: Colors.transparent,
                   enableActiveFill: true, // Enable fill colors
+                  showCursor: logic.hasError?true:false,
                   onCompleted: (v) {
                     print("Completed OTP entry: $v");
                     setState(() {
@@ -117,21 +118,27 @@ class _VerifyPhoneOtpScreenState extends State<VerifyPhoneOtpScreen> {
                   },
                   onChanged: (value) {
                     print("OTP changed: $value");
+                    if(value.length<4)
+                      setState(() {
+                        logic.hasError = true;
+                      });
                   },
                   beforeTextPaste: (text) {
                     return true; // Allow pasting text
                   },
                 ),
               ),
-              Visibility(
-                child: addText500(logic.pinController.text.length<4?
-                'Fill all fields':"Wrong PIN!",color: Colors.red,fontFamily: 'Manrope',fontSize: 14,height: 0
-                ),
-                visible: logic.hasError,
-              ).marginSymmetric(horizontal: 14),
+              // Visibility(
+              //   child: addText500(logic.pinController.text.length<4?
+              //   'Fill all fields':"Wrong PIN!",color: Colors.red,fontFamily: 'Manrope',fontSize: 14,height: 0
+              //   ),
+              //   visible: logic.hasError,
+              // ).marginSymmetric(horizontal: 14),
 
               addHeight(30),
-              AppButton(buttonText: 'Verify and Continue', buttonTxtColor: AppColors.blackColor, onButtonTap: () {
+              AppButton(buttonText: 'Verify and Continue',
+                buttonColor: logic.pinController.text.length<4?AppColors.greyColor:AppColors.primaryColor,
+                buttonTxtColor: AppColors.blackColor, onButtonTap: () {
                 if(logic.pinController.text.length<4){
                   setState(() {
                     logic.hasError = true;
@@ -147,7 +154,7 @@ class _VerifyPhoneOtpScreenState extends State<VerifyPhoneOtpScreen> {
                       LocalStorage().setValue(LocalStorage.USER_ACCESS_TOKEN, value.token.toString());
                       LocalStorage().setValue(LocalStorage.USER_DATA, jsonEncode(value.data));
                       AuthData().getLoginData();
-                      Get.toNamed(AppRoutes.setupProfileScreen);
+                      Get.offAllNamed(AppRoutes.setupProfileScreen);
                     } else if(value.status==false){
                       showToastError('${value.message}');
                     };

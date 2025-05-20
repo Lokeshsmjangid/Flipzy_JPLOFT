@@ -91,7 +91,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
       style: ManropeTextStyle(fontSize: 14,fontWeight: FontWeight.w500,color: AppColors.textColor1),
       onChanged: widget.onChanged,
       decoration: InputDecoration(
-        errorStyle: TextStyle(color: AppColors.redColor),
+        errorStyle: TextStyle(color: AppColors.redColor,),
         floatingLabelBehavior: FloatingLabelBehavior.always,
         enabled: true,
         hintText: widget.hintText,

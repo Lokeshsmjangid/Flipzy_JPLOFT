@@ -42,7 +42,6 @@ class CustomBottomNav extends StatelessWidget {
               ),
               child: SvgPicture.asset(
                 AppAssets.homeLogoImg,
-                // color: AppColors.blackColor,
                 width: 15,
                 height: 15,
               )
@@ -88,11 +87,11 @@ class CustomBottomNav extends StatelessWidget {
         bottomNavigationBar: SafeArea(
           child: Container(
             decoration: BoxDecoration(
-              color: Colors.white.withOpacity(0.8),
+
+              // color: Colors.white.withOpacity(0.7),
               borderRadius: BorderRadius.only(topRight: Radius.circular(30),topLeft: Radius.circular(30))
             ),
             child: Stack(
-              // clipBehavior: Clip.none,
               alignment: Alignment.center,
               children: [
                 SvgPicture.asset(AppAssets.bottomNavShape).marginOnly(bottom: 10),
@@ -114,7 +113,8 @@ class CustomBottomNav extends StatelessWidget {
                           }
                           }, icon: SvgPicture.asset(AppAssets.bottomNav0,height: 24,width: 24, color: controller.selectedIndex==0? AppColors.blackColor:Colors.grey)),
                         IconButton(onPressed: (){
-                          if(AuthData().userModel?.guestId!=null){Get.toNamed(AppRoutes.loginScreen);
+                          if(AuthData().userModel?.guestId!=null){
+                            Get.toNamed(AppRoutes.loginScreen);
                           } else{
                             controller.selectedIndex = 1;
                             controller.update();

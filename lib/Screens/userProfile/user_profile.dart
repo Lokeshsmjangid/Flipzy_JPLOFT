@@ -113,7 +113,7 @@ class _UserProfileState extends State<UserProfile> {
                                       ],)
                                 ),
 
-                                child: addText700('${AuthData().userModel?.profilePercentage}%',fontSize: 11,fontFamily: 'Poppins'),
+                                child: addText700('${AuthData().userModel?.profilePercentage}%',fontSize: 10,fontFamily: 'Poppins'),
                               ),
                             )),
                       ],
@@ -177,7 +177,7 @@ class _UserProfileState extends State<UserProfile> {
                                         shape: BoxShape.circle,
                                         color: AppColors.lightGreyColor,
                                       ),
-                                      child: SvgPicture.asset(AppAssets.personIC,color: AppColors.textFieldHintColor,),
+                                      child: SvgPicture.asset(AppAssets.personIC,color: AppColors.blackColor),
                                     ),
                                     SizedBox(width: 20,),
                                     addText500("${AuthData().userModel?.firstname??''} ${AuthData().userModel?.lastname??''}".capitalize.toString(), maxLines: 1, color: AppColors.blackColor, fontSize: 15),
@@ -193,7 +193,7 @@ class _UserProfileState extends State<UserProfile> {
                                         shape: BoxShape.circle,
                                         color: AppColors.lightGreyColor,
                                       ),
-                                      child: SvgPicture.asset(AppAssets.loactionIc,color: AppColors.textFieldHintColor,),
+                                      child: SvgPicture.asset(AppAssets.loactionIc,color: AppColors.blackColor),
                                     ),
                                     SizedBox(width: 20,),
                                     Expanded(child: addText500("${AuthData().userModel?.location??''}", maxLines: 2, color: AppColors.blackColor, fontSize: 15)),
@@ -210,7 +210,7 @@ class _UserProfileState extends State<UserProfile> {
                                         shape: BoxShape.circle,
                                         color: AppColors.lightGreyColor,
                                       ),
-                                      child: SvgPicture.asset(AppAssets.callIC),
+                                      child: SvgPicture.asset(AppAssets.callIC,color: AppColors.blackColor),
                                     ),
                                     SizedBox(width: 20,),
                                     addText500("${AuthData().userModel?.mobileNumber??''}", maxLines: 1, color: AppColors.blackColor, fontSize: 15),
@@ -228,10 +228,11 @@ class _UserProfileState extends State<UserProfile> {
                                         shape: BoxShape.circle,
                                         color: AppColors.lightGreyColor,
                                       ),
-                                      child: SvgPicture.asset(AppAssets.mailIC),
+                                      child: SvgPicture.asset(AppAssets.mailIC, color: AppColors.blackColor),
                                     ),
                                     SizedBox(width: 20,),
-                                    Expanded(child: addText500("${AuthData().userModel?.email??''}", maxLines: 2, color: AppColors.blackColor, fontSize: 15)),
+                                    Expanded(
+                                        child: addText500("${AuthData().userModel?.email??''}", maxLines: 2, color: AppColors.blackColor, fontSize: 15)),
                                   ],
                                 ),
 
@@ -273,7 +274,7 @@ class _UserProfileState extends State<UserProfile> {
                                 }, onTap2: ()=> Get.back());
                               },
                               child: addText500("Delete Account", color: AppColors.redColor)),
-                          SizedBox(height: 20,)
+                          SizedBox(height: 180)
                         ],
                       ),
                     ),

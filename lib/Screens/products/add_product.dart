@@ -11,11 +11,13 @@ import 'package:flipzy/resources/app_color.dart';
 import 'package:flipzy/resources/custom_loader.dart';
 import 'package:flipzy/resources/text_utility.dart';
 import 'package:flipzy/resources/utils.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 import 'package:get/get.dart';
+import 'package:just_the_tooltip/just_the_tooltip.dart';
 
 import '../../custom_widgets/custom_dropdown.dart';
 import '../product_management.dart';
@@ -31,7 +33,8 @@ class AddProduct extends StatelessWidget {
         init: AddProductController(),
         builder: (contt) {
           return Scaffold(
-            backgroundColor: Color(0xffeff2eb),
+            // backgroundColor: Color(0xffeff2eb),
+            backgroundColor: AppColors.whiteColor,
             appBar: customAppBar(
               backgroundColor: AppColors.bgColor,
               leadingWidth: MediaQuery.of(context).size.width * 0.3 ,
@@ -77,31 +80,21 @@ class AddProduct extends StatelessWidget {
                                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                                   crossAxisCount: 2, // 2 items per row
                                   crossAxisSpacing: 10,
-                                  mainAxisSpacing: 5,
+                                  mainAxisSpacing: 10,
                                   childAspectRatio: 0.95, // Adjust height ratio
                                 ),
-                                padding: EdgeInsets.symmetric(horizontal: 15, vertical: 0),
+                                padding: EdgeInsets.symmetric(horizontal: 12, vertical: 0),
                                 itemCount: contt.selectedFile.length??0,
                                 itemBuilder: (context, index) {
                                   return Stack(
                                     children: [
                                       Container(
+                                        clipBehavior: Clip.antiAliasWithSaveLayer,
                                         decoration: BoxDecoration(
                                             color: AppColors.whiteColor,
                                             borderRadius: BorderRadius.circular(20)
                                         ),
-                                        child: Padding(
-                                          padding: const EdgeInsets.all(30.0),
-                                          child: Image.file(File(contt.selectedFile[index]!.path)), // ✅ Correct widget
-                                          /*child: SvgPicture.asset(
-                                      AppAssets.addImageImg,
-                                      color: AppColors.greyColor,
-                                      fit: BoxFit.contain,
-
-                                      // width: 21,
-                                      // height: 20,
-                                                                      ),*/
-                                        ),
+                                        child: Image.file(File(contt.selectedFile[index]!.path),height: 130,fit: BoxFit.fill,),
                                       ),
 
                                       Positioned(
@@ -517,6 +510,17 @@ class AddProduct extends StatelessWidget {
                                   ),
                                 ),
                               ),
+                              addWidth(10),
+
+                              JustTheTooltip(
+                                triggerMode: TooltipTriggerMode.tap,
+                                child: Icon(Icons.info_rounded,size: 24,),
+                                margin: EdgeInsets.symmetric(horizontal:20),
+                                content: addText400(
+                                    '"Only one option can be active at a time."',
+                                    fontSize: 13,textAlign: TextAlign.center
+                                ).paddingAll(8),
+                              ),
                             ],
                           )
                       ),
@@ -582,6 +586,7 @@ class AddProduct extends StatelessWidget {
                           fontWeight1: FontWeight.w500,
                           fontWeight2: FontWeight.w600,
                           text2: ' FAQs page',
+                          recognizer2: TapGestureRecognizer()..onTap = () => Get.to(()=>HelpSupport()),
                           textAlign: TextAlign.left,
                           textColor2: Color(0xff738046)),
                       SizedBox(height: 10,),

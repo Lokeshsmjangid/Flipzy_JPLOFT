@@ -53,7 +53,7 @@ class FavouriteScreen extends StatelessWidget {
                             color: AppColors.primaryColor,
                             width: 1.5,
                           ),
-                          borderRadius: BorderRadius.circular(20),
+                          borderRadius: BorderRadius.circular(25),
                         ),
                         child: SvgPicture.asset(
                           AppAssets.searchIcon,
@@ -72,7 +72,6 @@ class FavouriteScreen extends StatelessWidget {
 
                   Expanded(
                     child: Container(
-                      padding: const EdgeInsets.only(left: 10),
                       height: 300,
 
                       child: contt.isDataLoading
@@ -85,10 +84,10 @@ class FavouriteScreen extends StatelessWidget {
                         children: [
                           GridView.builder(
                               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                                crossAxisCount: 2, // 2 items per row
-                                crossAxisSpacing: 2,
-                                mainAxisSpacing: 1,
-                                childAspectRatio: 0.78, // Adjust height-to-width ratio
+                                crossAxisCount: 2,
+                                crossAxisSpacing: 10,
+                                mainAxisSpacing: 10,
+                                childAspectRatio: 0.76, // Adjust height-to-width ratio
                               ),
                               shrinkWrap: true,
                               physics: BouncingScrollPhysics(),
@@ -105,8 +104,7 @@ class FavouriteScreen extends StatelessWidget {
                                   },
                                   child: Container(
                                       height: 270,
-                                      width: MediaQuery.of(context).size.width * 0.40,
-                                      margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                                      width: double.infinity,
                                       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 5),
                                       decoration: BoxDecoration(
                                         color: AppColors.whiteColor, //contt.featuredItems[item].isSelect ? AppColors.blackColor : AppColors.whiteColor,
@@ -123,7 +121,7 @@ class FavouriteScreen extends StatelessWidget {
 
                                           addHeight(2),
                                           Container(
-                                            height: 147, width: 147,
+                                            height: 147, width: double.infinity,
                                             decoration: BoxDecoration(
                                               color: AppColors.containerBorderColor,
                                               borderRadius: BorderRadius.circular(10),
@@ -202,7 +200,7 @@ class FavouriteScreen extends StatelessWidget {
                         ],
                       )
                           : Center(child: addText500('No Data Found')),
-                    ),
+                    ).marginSymmetric(horizontal: 12),
                   ),
 
                 ],

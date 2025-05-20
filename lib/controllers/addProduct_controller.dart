@@ -78,16 +78,34 @@ class AddProductController extends GetxController {
 
   Future<void> _pickImage(ImageSource source) async {
     final ImagePicker picker = ImagePicker();
-    final XFile? image = await picker.pickImage(source: source);
 
-    if (image != null) {
-      // Handle the selected image
-      print('Image selected: ${image.path}');
-      selectedFile.add(File(image.path));
-      update();
-    } else {
-      print('No image selected.');
+
+    if(source==ImageSource.gallery){
+      final List<XFile>? images = await picker.pickMultiImage(); // for multiple images
+      if (images != null && images.isNotEmpty) {
+        for (final image in images) {
+          print('Image selected: ${image.path}');
+          selectedFile.add(File(image.path));
+        }
+        update();
+      } else {
+        print('No images selected.');
+      }
+
+    }else{
+      final XFile? image = await picker.pickImage(source: source);
+
+      if (image != null) {
+        // Handle the selected image
+        print('Image selected: ${image.path}');
+        selectedFile.add(File(image.path));
+        update();
+      } else {
+        print('No image selected.');
+      }
     }
+
+
   }
 
 

@@ -47,6 +47,7 @@ class AppColors {
   static const redLightColor = Color(0xffFF6363);
   static const brownColor = Color(0xffBF9628);
   static const containerBorderColor1 = Color(0xffC7C6C6);
+  static const containerBorderColor2 = Color(0xffC3C5C3);
 
 
   // TextColors

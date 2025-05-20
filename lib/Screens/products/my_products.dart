@@ -170,195 +170,183 @@ class MyProductsScreen extends StatelessWidget {
                         // ? Center(child: CircularProgressIndicator(color: AppColors.secondaryColor))
                         ? build_shimmer_loader()
                         : contt.modelResponse.data!=null && contt.modelResponse.data!.listProducts!=null && contt.modelResponse.data!.listProducts!.isNotEmpty
-                        ? Container(
-                      padding: const EdgeInsets.only(left: 10),
-                      height: 300,
-                      // height: MediaQuery.of(context).size.height * 0.80,/**/
+                        ? ListView(
+                          shrinkWrap: true,
+                          controller: contt.paginationScrollController,
+                          physics: BouncingScrollPhysics(),
+                          children: [
+                            GridView.builder(
 
-                      child: ListView(
-                        shrinkWrap: true,
-                        controller: contt.paginationScrollController,
-                        physics: BouncingScrollPhysics(),
-                        children: [
-                          GridView.builder(
-
-                              shrinkWrap: true,
-                              scrollDirection: Axis.vertical,
-                              physics: BouncingScrollPhysics(),
-                              itemCount: contt.modelResponse.data!.listProducts?.length??0,
-                              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                                crossAxisCount: 2, // 2 items per row
-                                crossAxisSpacing: 2,
-                                mainAxisSpacing: 1,
-                                childAspectRatio: 0.75, // Adjust height-to-width ratio
-                              ),
-                              itemBuilder: (context, index) {
-                                Product item = contt.modelResponse.data!.listProducts![index];
-                                return GestureDetector(
-                                  onTap: (){
-                                    Get.toNamed(AppRoutes.editProductScreen,arguments: {'editProduct': item});
-                                  },
-                                  child: Container(
-                                      height: 270,
-                                      width: MediaQuery.of(context).size.width * 0.40,
-                                      margin: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
-                                      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-                                      decoration: BoxDecoration(
-                                        color: AppColors.whiteColor, //contt.featuredItems[item].isSelect ? AppColors.blackColor : AppColors.whiteColor,
-                                        border: Border.all(
-                                          color: Color(0XFFEDEDED),
-                                          width: 1,
-                                        ),
-                                        // shape: BoxShape.circle,
-                                        borderRadius: BorderRadius.circular(20),
-                                      ),
-                                      child: Column(
-                                        crossAxisAlignment: CrossAxisAlignment.start,
-                                        children: [
-
-                                          addHeight(4),
-                                          Container(
-                                            height: 147, width: 147,
-                                            decoration: BoxDecoration(
-                                              color: AppColors.containerBorderColor,
-                                              borderRadius: BorderRadius.circular(10),
-                                              // image: DecorationImage(
-                                              //     fit: BoxFit.fill,
-                                              //     image: AssetImage(contt.featuredItems[item].images)
-                                              //
-                                              // )
-                                            ),
-                                            child: Stack(
-                                              children: [
-                                                Container(
-                                                  width: double.infinity,
-                                                  height: double.infinity,
-                                                  clipBehavior: Clip.antiAliasWithSaveLayer,
-                                                  decoration: BoxDecoration(
-                                                    borderRadius: BorderRadius.circular(10),
-                                                  ),
-                                                  child: CachedImageCircle2(
-                                                      isCircular: false,fit: BoxFit.cover,
-                                                      imageUrl: item.productImages!.isNotEmpty?'${item.productImages![0]}':'${ApiUrls.productEmptyImgUrl}'),
-
-                                                ),
-
-                                              ],
-                                            ),
+                                shrinkWrap: true,
+                                scrollDirection: Axis.vertical,
+                                physics: BouncingScrollPhysics(),
+                                itemCount: contt.modelResponse.data!.listProducts?.length??0,
+                                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                                  crossAxisCount: 2, // 2 items per row
+                                  crossAxisSpacing: 10,
+                                  mainAxisSpacing: 10,
+                                  childAspectRatio: 0.76, // Adjust height-to-width ratio
+                                ),
+                                itemBuilder: (context, index) {
+                                  Product item = contt.modelResponse.data!.listProducts![index];
+                                  return GestureDetector(
+                                    onTap: (){
+                                      Get.toNamed(AppRoutes.editProductScreen,arguments: {'editProduct': item});
+                                    },
+                                    child: Container(
+                                        height: 270,
+                                        width: double.infinity,
+                                        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 5),
+                                        decoration: BoxDecoration(
+                                          color: AppColors.whiteColor, //contt.featuredItems[item].isSelect ? AppColors.blackColor : AppColors.whiteColor,
+                                          border: Border.all(
+                                            color: Color(0XFFEDEDED),
+                                            width: 1,
                                           ),
+                                          // shape: BoxShape.circle,
+                                          borderRadius: BorderRadius.circular(20),
+                                        ),
+                                        child: Column(
+                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          children: [
 
-                                          SizedBox(height: 5),
-
-                                          Row(
-                                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                            children: [
-                                              // SizedBox(width: 10,),
-                                              Container(
-                                                constraints: BoxConstraints(maxWidth: 80),
-                                                child: addText700("₦${item.price??0}",
-                                                  color: AppColors.blackColor, maxLines: 1,fontSize: 14, fontFamily: ''),
+                                            addHeight(4),
+                                            Container(
+                                              height: 147, width: double.infinity,
+                                              decoration: BoxDecoration(
+                                                color: AppColors.containerBorderColor,
+                                                borderRadius: BorderRadius.circular(10),
                                               ),
-
-                                              Row(
+                                              child: Stack(
                                                 children: [
-                                                  GestureDetector(
-                                                    onTap : () {
-                                                      DeleteProductDialog.show(context,
-                                                          onTap1: (){
-                                                        showLoader(true);
-                                                            deleteProductApi(productId: item.id).then((value){
-                                                              showLoader(false);
-                                                              if(value.status==true){
-                                                                Get.back();
-                                                                contt.modelResponse.data!.listProducts?.remove(item);
-                                                                contt.update();
-                                                                showToast('${value.message}');
-                                                              }
-                                                            });
-
-
-
-                                                          },
-                                                          onTap2: () => Get.back());
-                                                    } ,
-                                                    child: Container(
-
-                                                      decoration: BoxDecoration(
-                                                        color: AppColors.appRedColor,
-                                                        shape: BoxShape.circle ,
-                                                      ),
-                                                      child: SvgPicture.asset(
-                                                        AppAssets.deleteIC,
-                                                        fit: BoxFit.contain,
-                                                        height: 15, width: 15,
-                                                      ).marginAll(6),
+                                                  Container(
+                                                    width: double.infinity,
+                                                    height: double.infinity,
+                                                    clipBehavior: Clip.antiAliasWithSaveLayer,
+                                                    decoration: BoxDecoration(
+                                                      borderRadius: BorderRadius.circular(10),
                                                     ),
-                                                  ),
-                                                  addWidth(6),
-                                                  GestureDetector(
-                                                    onTap : () {
-                                                      Get.toNamed(AppRoutes.editProductScreen,arguments: {
-                                                        'editProduct': item});
-                                                    } ,
-                                                    child: Container(
-                                                      decoration: BoxDecoration(
-                                                        color: AppColors.appGreenColor,
-                                                        shape: BoxShape.circle ,
-                                                      ),
+                                                    child: CachedImageCircle2(
+                                                        isCircular: false,fit: BoxFit.cover,
+                                                        imageUrl: item.productImages!.isNotEmpty?'${item.productImages![0]}':'${ApiUrls.productEmptyImgUrl}'),
 
-                                                      child: SvgPicture.asset(
-                                                        AppAssets.editPenIc,
-                                                        // AppAssets.editPenIc,
-                                                        fit: BoxFit.contain,
-                                                        height: 15, width: 15,
-                                                      ).marginAll(6),
-                                                    ),
                                                   ),
+
                                                 ],
                                               ),
+                                            ),
 
-                                              // SizedBox(width: 80,)
-                                            ],
-                                          ),
-                                          addHeight(2),
+                                            SizedBox(height: 5),
 
-                                          Container(
-                                            constraints: BoxConstraints(maxWidth: 80) ,
-                                            child: addText500("${item.productName?.capitalize??''}",
-                                                color: AppColors.blackColor,
-                                                fontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis,fontFamily: 'Manrope' ),
-                                          ),
+                                            Row(
+                                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                              children: [
+                                                // SizedBox(width: 10,),
+                                                Container(
+                                                  constraints: BoxConstraints(maxWidth: 80),
+                                                  child: addText700("₦${item.price??0}",
+                                                    color: AppColors.blackColor, maxLines: 1,fontSize: 14, fontFamily: ''),
+                                                ),
 
-                                        ],
-                                      )
-                                  ),
-                                );
-                              }
-                          ),
-                          if(contt.isPageLoading && contt.page != 1)
-                            Positioned(
-                              bottom:10,
-                              left: 0,right: 0,
-                              child: Container(
-                                color: Colors.red,
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.min,
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Container(
-                                        height: 16,
-                                        width: 16,
+                                                Row(
+                                                  children: [
+                                                    GestureDetector(
+                                                      onTap : () {
+                                                        DeleteProductDialog.show(context,
+                                                            onTap1: (){
+                                                          showLoader(true);
+                                                              deleteProductApi(productId: item.id).then((value){
+                                                                showLoader(false);
+                                                                if(value.status==true){
+                                                                  Get.back();
+                                                                  contt.modelResponse.data!.listProducts?.remove(item);
+                                                                  contt.update();
+                                                                  showToast('${value.message}');
+                                                                }
+                                                              });
 
-                                        child: CircularProgressIndicator(color: AppColors.whiteColor,strokeWidth: 1)),
-                                    addWidth(10),
-                                    addText400('Loading...',color: AppColors.whiteColor)
-                                  ],
-                                ).marginSymmetric(horizontal: 10,vertical: 4),
-                              ),
-                            )
-                        ],
-                      ),
-                    )
+
+
+                                                            },
+                                                            onTap2: () => Get.back());
+                                                      } ,
+                                                      child: Container(
+
+                                                        decoration: BoxDecoration(
+                                                          color: AppColors.appRedColor,
+                                                          shape: BoxShape.circle ,
+                                                        ),
+                                                        child: SvgPicture.asset(
+                                                          AppAssets.deleteIC,
+                                                          fit: BoxFit.contain,
+                                                          height: 15, width: 15,
+                                                        ).marginAll(6),
+                                                      ),
+                                                    ),
+                                                    addWidth(6),
+                                                    GestureDetector(
+                                                      onTap : () {
+                                                        Get.toNamed(AppRoutes.editProductScreen,arguments: {
+                                                          'editProduct': item});
+                                                      } ,
+                                                      child: Container(
+                                                        decoration: BoxDecoration(
+                                                          color: AppColors.appGreenColor,
+                                                          shape: BoxShape.circle ,
+                                                        ),
+
+                                                        child: SvgPicture.asset(
+                                                          AppAssets.editPenIc,
+                                                          // AppAssets.editPenIc,
+                                                          fit: BoxFit.contain,
+                                                          height: 15, width: 15,
+                                                        ).marginAll(6),
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+
+                                                // SizedBox(width: 80,)
+                                              ],
+                                            ),
+                                            addHeight(2),
+
+                                            Container(
+                                              constraints: BoxConstraints(maxWidth: 80) ,
+                                              child: addText500("${item.productName?.capitalize??''}",
+                                                  color: AppColors.blackColor,
+                                                  fontSize: 10, maxLines: 1, overflow: TextOverflow.ellipsis,fontFamily: 'Manrope' ),
+                                            ),
+
+                                          ],
+                                        )
+                                    ),
+                                  );
+                                }
+                            ).marginSymmetric(horizontal: 12),
+                            if(contt.isPageLoading && contt.page != 1)
+                              Positioned(
+                                bottom:10,
+                                left: 0,right: 0,
+                                child: Container(
+                                  color: Colors.red,
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.min,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Container(
+                                          height: 16,
+                                          width: 16,
+
+                                          child: CircularProgressIndicator(color: AppColors.whiteColor,strokeWidth: 1)),
+                                      addWidth(10),
+                                      addText400('Loading...',color: AppColors.whiteColor)
+                                    ],
+                                  ).marginSymmetric(horizontal: 10,vertical: 4),
+                                ),
+                              )
+                          ],
+                        )
                         : Center(child: addText500('No Data Found'))
                     ,
                   ),

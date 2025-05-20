@@ -117,7 +117,7 @@ class BusinessProfile extends StatelessWidget {
                                   ],)
                             ),
 
-                            child: addText700('${AuthData().userModel?.profilePercentage}%',fontSize: 11,fontFamily: 'Poppins'),
+                            child: addText700('${AuthData().userModel?.profilePercentage}%',fontSize: 10,fontFamily: 'Poppins'),
                           ),
                         )),
                   ],
@@ -144,6 +144,7 @@ class BusinessProfile extends StatelessWidget {
                   ),
                   child: Column(
                     children: [
+
                       Container(
                         padding: EdgeInsets.symmetric(horizontal: 20, vertical: 30),
                         margin: EdgeInsets.symmetric(horizontal: 10, vertical: 20),
@@ -353,25 +354,38 @@ class BusinessProfile extends StatelessWidget {
                                 Expanded(child: addText500("${AuthData().userModel?.ifsc??''}", maxLines: 2, color: AppColors.blackColor, fontSize: 15)),
                               ],
                             )*/
-                          ]))])),
-                GestureDetector(
-                    onTap: () {
-                      // DeleteAccountDialog
-                      DeleteAccountDialog.show(context,isSeller: true,onTap1: () {
-                        Get.back();
-                        showLoader(true);
-                        deleteAccountApi(userType: 'Seller').then((value){
-                          showLoader(false);
-                          if(value.status==true);
-                          showToast('Delete seller profile successfully');
-                          LocalStorage().setValue(LocalStorage.USER_DATA, jsonEncode(value.data));
-                          AuthData().getLoginData();
-                          Get.to(CustomBottomNav());
-                        });
-                      }, onTap2: ()=> Get.back());
-                    },
-                    child: addText500("Delete Account", color: AppColors.redColor)),
-                SizedBox(height: 20)
+
+
+
+                          ])),
+
+                      SizedBox(height: 20),
+                      GestureDetector(
+                          onTap: () {
+                            // DeleteAccountDialog
+                            DeleteAccountDialog.show(context,isSeller: true,onTap1: () {
+                              Get.back();
+                              showLoader(true);
+                              deleteAccountApi(userType: 'Seller').then((value){
+                                showLoader(false);
+                                if(value.status==true);
+                                showToast('Delete seller profile successfully');
+                                LocalStorage().setValue(LocalStorage.USER_DATA, jsonEncode(value.data));
+                                AuthData().getLoginData();
+                                Get.to(CustomBottomNav());
+                              });
+                            }, onTap2: ()=> Get.back());
+                          },
+                          child: addText500("Delete Account", color: AppColors.redColor)),
+                      SizedBox(height: 30)
+                    ]
+
+
+
+                  )
+                ),
+
+
               ],
             ),
           ),

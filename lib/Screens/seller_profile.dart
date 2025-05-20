@@ -83,7 +83,7 @@ class _SellerProfileScreenState extends State<SellerProfileScreen> {
           fetchData();
         });
       } else{
-        showToastError('You reached the page limit');
+        showToastError('That\'s all for now.');
       }
 
     }

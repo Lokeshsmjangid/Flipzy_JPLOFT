@@ -108,10 +108,8 @@ class LoginScreen extends StatelessWidget {
                             RequiredValidator(errorText: 'Password is required.'),
                             MinLengthValidator(6, errorText: 'Password must be at least 6 char/digits long'),
                             PatternValidator(r'^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$',
-                                errorText: 'Password must include an uppercase, number & special character.')
-                      ]),
-
-                    ),
+                                errorText: 'Use uppercase, number & symbol.',),
+                      ])),
 
                     SizedBox(height: 20),
 
@@ -119,6 +117,7 @@ class LoginScreen extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
+
                         GestureDetector(
                           onTap: () {
                             logic.isEmployeeAgreed = !logic.isEmployeeAgreed;
@@ -127,21 +126,22 @@ class LoginScreen extends StatelessWidget {
                           child: Container(
                             height: 20, width: 20,
                             decoration: BoxDecoration(
-                              color: logic.isEmployeeAgreed ?  AppColors.primaryColor : AppColors.greyColor ,
+                              // color: logic.isEmployeeAgreed ?  AppColors.primaryColor : AppColors.greyColor ,
+                              color: AppColors.primaryColor,
                                 borderRadius: BorderRadius.circular(5),
-                              border: Border.all(color: logic.isEmployeeAgreed ? AppColors.primaryColor : AppColors.greyColor, width: 2)
+                              border: Border.all(color: AppColors.primaryColor, width: 2)
                             ),
                             child: logic.isEmployeeAgreed ? Image.asset(AppAssets.checkIC) : IgnorePointer(),
                           ),
                         ),
-                        SizedBox(width: 5,),
+                        SizedBox(width: 5),
                         addText400("Remember me", color: AppColors.blackColor, fontSize: 15),
 
                         Spacer(),
 
                         GestureDetector(
                             onTap: () {
-                              Get.to(ForgotPasswordEmailScreen());
+                              Get.toNamed(AppRoutes.forgotPasswordEmailScreen);
                             },
                             child: addText400("Forgot Password?", color: AppColors.blackColor, fontSize: 15))
                       ],

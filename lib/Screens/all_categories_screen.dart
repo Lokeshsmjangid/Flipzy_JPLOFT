@@ -60,7 +60,7 @@ class _AllCategoriesScreenState extends State<AllCategoriesScreen> {
                 CustomTextField(
                   borderRadius: 30,
                   // controller: ctrl.searchCtrl,
-                  hintText: "Search Product Name",
+                  hintText: "Search Category Name",
                   fillColor: AppColors.whiteColor,
                   suffixIcon: Container(
                     margin: const EdgeInsets.only(
@@ -107,9 +107,9 @@ class _AllCategoriesScreenState extends State<AllCategoriesScreen> {
                                 physics: BouncingScrollPhysics(),
                                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                                   crossAxisCount: 3, // 2 items per row
-                                  crossAxisSpacing: 2,
-                                  mainAxisSpacing: 1,
-                                  childAspectRatio: 0.8, // Adjust height-to-width ratio
+                                  crossAxisSpacing: 10,
+                                  mainAxisSpacing: 10,
+                                  childAspectRatio: 0.76, // Adjust height-to-width ratio
                                 ),
                                 shrinkWrap: true,
                                 scrollDirection: Axis.vertical,
@@ -126,11 +126,8 @@ class _AllCategoriesScreenState extends State<AllCategoriesScreen> {
 
                                     },
                                     child: Container(
-                                      // width: MediaQuery.of(context).size.width * 0.41,
-                                        margin: const EdgeInsets.symmetric(
-                                            horizontal: 5, vertical: 5),
-                                        padding: const EdgeInsets.symmetric(
-                                            horizontal: 10, vertical: 10),
+                                        width: double.infinity,
+                                        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 5),
                                         decoration: BoxDecoration(
                                           color: AppColors.whiteColor,
                                           //contt.featuredItems[item].isSelect ? AppColors.blackColor : AppColors.whiteColor,

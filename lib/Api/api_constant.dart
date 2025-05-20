@@ -117,6 +117,11 @@ class ApiUrls{
 
   // Shipping Api ShipBubble
   static const String shipBubbleUrl = '${baseUrl}calculateShippingFromShipbubble';
+
+
+
+  // CMS pages
+  static const String faqUrl = '${baseUrl}getfaq';
 }
 
 

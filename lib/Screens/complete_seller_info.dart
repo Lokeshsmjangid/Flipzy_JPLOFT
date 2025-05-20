@@ -21,11 +21,13 @@ import 'package:flipzy/resources/local_storage.dart';
 import 'package:flipzy/resources/text_utility.dart';
 import 'package:flipzy/resources/utils.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 import 'package:get/get.dart';
+import 'package:just_the_tooltip/just_the_tooltip.dart';
 
 class CompleteSellerInfo extends StatefulWidget {
   String fromScreen;
@@ -88,32 +90,22 @@ class _CompleteSellerInfoState extends State<CompleteSellerInfo> {
                           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                             crossAxisCount: 2, // 2 items per row
                             crossAxisSpacing: 10,
-                            mainAxisSpacing: 5,
+                            mainAxisSpacing: 10,
                             childAspectRatio: 0.95, // Adjust height ratio
                           ),
-                          padding: EdgeInsets.symmetric(horizontal: 15, vertical: 0),
+                          padding: EdgeInsets.symmetric(horizontal: 12, vertical: 0),
                           itemCount: contt.selectedFile.length??0,
                           itemBuilder: (context, index) {
                             return Stack(
                               clipBehavior: Clip.none,
                               children: [
                                 Container(
+                                  clipBehavior: Clip.antiAliasWithSaveLayer,
                                   decoration: BoxDecoration(
                                       color: AppColors.whiteColor,
                                       borderRadius: BorderRadius.circular(20)
                                   ),
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(30.0),
-                                    child: Image.file(File(contt.selectedFile[index]!.path)), // ✅ Correct widget
-                                    /*child: SvgPicture.asset(
-                                      AppAssets.addImageImg,
-                                      color: AppColors.greyColor,
-                                      fit: BoxFit.contain,
-
-                                      // width: 21,
-                                      // height: 20,
-                                    ),*/
-                                  ),
+                                  child: Image.file(File(contt.selectedFile[index]!.path),height: 130,fit: BoxFit.fill,),
                                 ),
                                 Positioned(
                                     right: 4,
@@ -133,7 +125,7 @@ class _CompleteSellerInfoState extends State<CompleteSellerInfo> {
                           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                             crossAxisCount: 2, // 2 items per row
                             crossAxisSpacing: 10,
-                            mainAxisSpacing: 5,
+                            mainAxisSpacing: 10,
                             childAspectRatio: 0.95, // Adjust height ratio
                           ),
                           padding: EdgeInsets.symmetric(horizontal: 15, vertical: 0),
@@ -521,6 +513,16 @@ class _CompleteSellerInfoState extends State<CompleteSellerInfo> {
                               ),
                             ),
                           ),
+                          addWidth(10),
+                          JustTheTooltip(
+                            triggerMode: TooltipTriggerMode.tap,
+                            child: Icon(Icons.info_rounded,size: 24,),
+                            margin: EdgeInsets.symmetric(horizontal:20),
+                            content: addText400(
+                                '"Only one option can be active at a time."',
+                                fontSize: 13,textAlign: TextAlign.center
+                            ).paddingAll(8),
+                          ),
                         ],
                       )
                   ),
@@ -579,13 +581,14 @@ class _CompleteSellerInfoState extends State<CompleteSellerInfo> {
                     ),
                   ),*/
 
-                  SizedBox(height: 10,),
+                  SizedBox(height: 10),
                   richText2(
                       text1: 'Not sure how to measure product? Visit our',
                       fontSize: 14,
                       fontWeight1: FontWeight.w500,
                       fontWeight2: FontWeight.w600,
                       text2: ' FAQs page',
+                      recognizer2: TapGestureRecognizer()..onTap = () => Get.to(()=>HelpSupport()),
                       textAlign: TextAlign.left,
                       textColor2: Color(0xff738046)),
                   SizedBox(height: 10,),
@@ -981,23 +984,12 @@ class _CompleteSellerInfoState extends State<CompleteSellerInfo> {
                     ),
                   ),
 
-                  SizedBox(height: 10,),
+                  SizedBox(height: 16),
+
 
                   GestureDetector(
-                    onTap: () {Get.to(()=>HelpSupport());},
-                    child: Container(
-                      margin: EdgeInsets.only(right: 15),
-                      child: Text(
-                        'Need Help',
-                        style: TextStyle(
-                          decoration: TextDecoration.underline,
-                          // Adds an underline
-                          fontSize: 13,
-                          color: AppColors.blackColor,
-                        ),
-                      ),
-                    ),
-                  ),
+                      onTap: () {Get.to(()=>HelpSupport());},
+                      child: addText500('Need Help',fontSize: 14,decoration: TextDecoration.underline)),
 
                   SizedBox(height: 20,),
 

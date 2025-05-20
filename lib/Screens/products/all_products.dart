@@ -196,17 +196,15 @@ class _AllProductsScreenState extends State<AllProductsScreen> {
                                     gridDelegate:
                                         SliverGridDelegateWithFixedCrossAxisCount(
                                       crossAxisCount: 2, // 2 items per row
-                                      crossAxisSpacing: 2,
-                                      mainAxisSpacing: 1,
-                                      childAspectRatio:
-                                          0.78, // Adjust height-to-width ratio
+                                      crossAxisSpacing: 10,
+                                      mainAxisSpacing: 10,
+                                      childAspectRatio: 0.76,
                                     ),
                                     shrinkWrap: true,
                                     physics: AlwaysScrollableScrollPhysics(),
                                     controller: contt.paginationScrollController,
                                     scrollDirection: Axis.vertical,
-                                    itemCount:
-                                        contt.modelResponse.myProducts?.length ?? 0,
+                                    itemCount: contt.modelResponse.myProducts?.length ?? 0,
                                     itemBuilder: (context, index) {
                                       Product item =
                                           contt.modelResponse.myProducts![index];
@@ -223,8 +221,7 @@ class _AllProductsScreenState extends State<AllProductsScreen> {
                                         },
                                         child: Container(
                                             height: 270,
-                                            width: MediaQuery.of(context).size.width * 0.40,
-                                            margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                                            width: double.infinity,
                                             padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 5),
                                             decoration: BoxDecoration(
                                               color: AppColors.whiteColor, //contt.featuredItems[item].isSelect ? AppColors.blackColor : AppColors.whiteColor,
@@ -243,7 +240,7 @@ class _AllProductsScreenState extends State<AllProductsScreen> {
                                                 addHeight(4),
                                                 Container(
                                                   height: 147,
-                                                  width: 147,
+                                                  width: double.infinity,
                                                   decoration: BoxDecoration(
                                                     color: AppColors.containerBorderColor,
                                                     borderRadius: BorderRadius.circular(10),
@@ -288,8 +285,7 @@ class _AllProductsScreenState extends State<AllProductsScreen> {
                                                 ),
                                                 Row(
                                                   mainAxisAlignment:
-                                                      MainAxisAlignment
-                                                          .spaceBetween,
+                                                      MainAxisAlignment.spaceBetween,
                                                   children: [
                                                     addText700("₦${item.price}",
                                                         color: AppColors.blackColor,
@@ -346,7 +342,7 @@ class _AllProductsScreenState extends State<AllProductsScreen> {
                                               ],
                                             )),
                                       );
-                                    }),
+                                    }).marginSymmetric(horizontal: 12),
                                 if(contt.isPageLoading && contt.page != 1)
                                   Positioned(
                                     bottom:10,

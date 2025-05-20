@@ -4,6 +4,7 @@ import 'package:flipzy/Screens/help/help_support.dart';
 import 'package:flipzy/Screens/auth_screens/login_screen.dart';
 import 'package:flipzy/Screens/manage_business.dart';
 import 'package:flipzy/Screens/userProfile/user_profile.dart';
+import 'package:flipzy/controllers/bottom_bar_controller.dart';
 import 'package:flipzy/dialogues/delete_acount_dialogue.dart';
 import 'package:flipzy/dialogues/logout_acount_dialogue.dart';
 import 'package:flipzy/resources/app_assets.dart';
@@ -70,7 +71,8 @@ class _CustomDrawerState extends State<CustomDrawer> {
                         tooltip: 'logout',
                         onPressed: (){
                           Get.back();
-                          LogoutAccountDialog.show(context,onTap1: (){
+                          LogoutAccountDialog.show(context,
+                              onTap1: (){
                             Get.back();
 
                             bool isRemember = LocalStorage().getBoolValue(LocalStorage.REMEMBER_ME);
@@ -82,7 +84,8 @@ class _CustomDrawerState extends State<CustomDrawer> {
                               LocalStorage().clearLocalStorage(isRemember: isRemember,email: email,pass: pass);
                               showLoader(false);
                             });
-                          });
+                          }, onTap2: (){Get.back();}
+                          );
 
                         }, icon: SvgPicture.asset(AppAssets.drawerLogout))).marginSymmetric(horizontal: 16),
               ],
@@ -96,37 +99,42 @@ class _CustomDrawerState extends State<CustomDrawer> {
                   Stack(
                     clipBehavior: Clip.none,
                     children: [
-                      CircularPercentIndicator(
-                        radius: 50,
-                        lineWidth: 4.0,
-                        percent: 0.50,
-                        startAngle: 180,
-                        fillColor: Colors.transparent,progressColor: AppColors.blackColor,
-                        backgroundColor: AppColors.greenColor,
+                      GestureDetector(
+                        onTap: (){
+                          Get.to(()=>UserProfile());
+                        },
+                        child: CircularPercentIndicator(
+                          radius: 50,
+                          lineWidth: 4.0,
+                          percent: 0.50,
+                          startAngle: 180,
+                          fillColor: Colors.transparent,progressColor: AppColors.blackColor,
+                          backgroundColor: AppColors.greenColor,
 
-                        center: Container(
-                          width: 80,
-                          height: 80,
-                          decoration: BoxDecoration(shape: BoxShape.circle),
-                          // child: Image.asset(AppAssets.profileImage),
-                          child: CachedImageCircle2(
-                              isCircular: true,
-                              width: 80,
-                              height: 80,
-                              fit: BoxFit.cover,
-                              imageUrl: '${AuthData().userModel?.profileImage}'),
+                          center: Container(
+                            width: 80,
+                            height: 80,
+                            decoration: BoxDecoration(shape: BoxShape.circle),
+                            // child: Image.asset(AppAssets.profileImage),
+                            child: CachedImageCircle2(
+                                isCircular: true,
+                                width: 80,
+                                height: 80,
+                                fit: BoxFit.cover,
+                                imageUrl: '${AuthData().userModel?.profileImage}'),
+                          ),
+                          /* linearGradient: LinearGradient(
+                        begin: Alignment.topRight,
+                        end: Alignment.bottomLeft,
+                        colors: [
+                          Color(0xFFFFD854),
+                          Color(0xffFF9249),
+                          Color(0xffEB4A66),
+                          Color(0xffCB39A6)
+                        ],
+                                            ),
+                                            rotateLinearGradient: true,*/
                         ),
-                        /* linearGradient: LinearGradient(
-                      begin: Alignment.topRight,
-                      end: Alignment.bottomLeft,
-                      colors: [
-                        Color(0xFFFFD854),
-                        Color(0xffFF9249),
-                        Color(0xffEB4A66),
-                        Color(0xffCB39A6)
-                      ],
-                    ),
-                    rotateLinearGradient: true,*/
                       ),
                       if(AuthData().userModel?.guestId ==null)
                       Positioned(
@@ -147,7 +155,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
                                     colors: [Color(0xFF91B636), Color(0xffBBD15B), Color(0xff91B636)
                                     ],)
                               ),
-                              child: addText700('${AuthData().userModel?.profilePercentage}%',fontSize: 11,fontFamily: 'Poppins'),
+                              child: addText700('${AuthData().userModel?.profilePercentage}%',fontSize: 10,fontFamily: 'Poppins'),
                             ),
                           ))
 
@@ -188,14 +196,24 @@ class _CustomDrawerState extends State<CustomDrawer> {
 
                   build_text_tile(imgPath: AppAssets.drawerHome,title: 'home',upperBorder: false,
                       onTap: (){
-                    Get.back();
-                      }),
+
+                    Future.microtask((){
+                      Get.back();
+                      Get.find<BottomBarController>().selectedIndex = 0;
+                      Get.find<BottomBarController>().update();
+
+                    });
+                  }),
 
                   if(AuthData().userModel?.guestId ==null)
                     build_text_tile(imgPath: AppAssets.drawerMyProfile,title: 'My Profile',upperBorder: false,
                         onTap: (){
-                          Get.back();
-                          Get.to(UserProfile());
+                          Future.microtask((){
+                            Get.back();
+                            Get.find<BottomBarController>().selectedIndex = 4;
+                            Get.find<BottomBarController>().update();
+
+                          });
                         }),
 
                   if(AuthData().userModel?.guestId ==null)
@@ -206,7 +224,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
                             Get.toNamed(AppRoutes.notificationScreen);
                           });
                         }),
-
+                  if(AuthData().userModel?.guestId ==null)
                   build_text_tile(imgPath: AppAssets.textLocationIcon,title: 'shipping address',upperBorder: false,
                       onTap: (){
                     Get.back();
@@ -240,11 +258,11 @@ class _CustomDrawerState extends State<CustomDrawer> {
                           Get.toNamed(AppRoutes.orderHistoryScreen,arguments: {'is_order_history':true,'userType':'User'});
                         });
                       }),
-                  if(AuthData().userModel?.guestId ==null)
+                  if(AuthData().userModel?.guestId ==null && AuthData().userModel!.userType!.toLowerCase() != 'user')
                     build_text_tile(imgPath: AppAssets.drawerManageBusiness,title: 'Manage Business',upperBorder: false,
                       onTap: (){
                         Get.back();
-                    Get.to(ManageBusiness());
+                    Get.to(()=>ManageBusiness());
                       }),
 
 
@@ -277,8 +295,9 @@ class _CustomDrawerState extends State<CustomDrawer> {
                   build_text_tile(imgPath: AppAssets.drawerHelp,title: 'Help & Support ',upperBorder: false,
                       onTap: (){
                         Get.back();
-                    Get.to(HelpSupport());
+                    Get.to(()=>HelpSupport());
                       }),
+                  if(AuthData().userModel?.guestId ==null)
                   build_text_tile(imgPath: AppAssets.drawerHelp,title: 'Chat With Support ',upperBorder: false,
                       onTap: (){
                         Get.back();
