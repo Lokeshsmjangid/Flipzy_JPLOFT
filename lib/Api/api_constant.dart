@@ -122,6 +122,9 @@ class ApiUrls{
 
   // CMS pages
   static const String faqUrl = '${baseUrl}getfaq';
+  static const String aboutUsUrl = '${baseUrl}getAboutUs';
+  static const String privacyPolicyUrl = '${baseUrl}getPrivacyPolicy';
+  static const String termsConditionsUrl = '${baseUrl}getTermsConditions';
 }
 
 

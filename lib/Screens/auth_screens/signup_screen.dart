@@ -4,10 +4,15 @@ import 'dart:io';
 
 import 'package:app_set_id/app_set_id.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flipzy/Api/api_constant.dart';
+import 'package:flipzy/Api/api_models/about_us_model.dart';
 import 'package:flipzy/Api/repos/guest_login_repo.dart';
 import 'package:flipzy/Api/repos/social_login_repo.dart';
+import 'package:flipzy/Api/repos/terms_privacy_aboutUs_repo.dart';
 import 'package:flipzy/Screens/custom_bottom_navigation.dart';
 import 'package:flipzy/Screens/auth_screens/login_screen.dart';
+import 'package:flipzy/Screens/help/help_support.dart';
+import 'package:flipzy/dialogues/about_us_dialogue.dart';
 import 'package:flipzy/resources/app_assets.dart';
 import 'package:flipzy/resources/app_color.dart';
 import 'package:flipzy/resources/app_routers.dart';
@@ -16,6 +21,7 @@ import 'package:flipzy/resources/custom_loader.dart';
 import 'package:flipzy/resources/local_storage.dart';
 import 'package:flipzy/resources/text_utility.dart';
 import 'package:flipzy/resources/utils.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
@@ -24,14 +30,21 @@ import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 
 import 'register_mobile_number_screen.dart';
 
-class SignUpScreen extends StatelessWidget {
+class SignUpScreen extends StatefulWidget {
    SignUpScreen({super.key});
 
+  @override
+  State<SignUpScreen> createState() => _SignUpScreenState();
+}
+
+class _SignUpScreenState extends State<SignUpScreen> {
   RxBool acceptCondition = false.obs;
 
    // Social Login
    final FirebaseAuth _auth = FirebaseAuth.instance;
+
    final GoogleSignIn _googleSignIn = GoogleSignIn();
+
    Future<User?> signInWithGoogle() async {
      try {
        // Sign out if a user is already signed in
@@ -216,6 +229,7 @@ class SignUpScreen extends StatelessWidget {
 
                     Row(
                       mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Obx(() => GestureDetector(
                           onTap: () {
@@ -236,9 +250,52 @@ class SignUpScreen extends StatelessWidget {
                         ),
                         SizedBox(width: 5,),
                         Expanded(
-                          child: addText500("I accept flipzy's term & condition to create my account", fontFamily: 'Manrope',
-                              fontSize: 12),
+                          child: richText2(
+                              text1: 'I accept flipzy\'s ',
+                              fontSize: 12,
+                              fontWeight1: FontWeight.w500,
+                              fontWeight6: FontWeight.w500,
+                              text2: 'Term & Condition',
+                              fontWeight2: FontWeight.w600,
+                              decoration2: TextDecoration.underline,
+                              recognizer2: TapGestureRecognizer()..onTap = () {
+                                AboutUsModel model = AboutUsModel();
+                                showLoader(true);
+                                termsAboutUsPrivacyApi(url: ApiUrls.termsConditionsUrl).then((about){
+                                  showLoader(false);
+                                  model = about;
+                                  setState(() {});
+                                  if(model.data!=null){
+                                    AboutUsDialog.show(context,pageTitle: 'Term & Condition',aboutUsDesc: '${model.data!.content}');
+                                  }
+                                });
+                              },
+                              text3: ' or ',
+                              fontWeight3: FontWeight.w500,
+                              text4: 'Privacy Policy',
+                              decoration4: TextDecoration.underline,
+                              fontWeight4: FontWeight.w600,
+                              recognizer4: TapGestureRecognizer()..onTap = () {
+                                AboutUsModel model = AboutUsModel();
+                                showLoader(true);
+                                termsAboutUsPrivacyApi(url: ApiUrls.privacyPolicyUrl).then((about){
+                                  showLoader(false);
+                                  model = about;
+                                  setState(() {});
+                                  if(model.data!=null){
+                                    AboutUsDialog.show(context,pageTitle: 'Privacy Policy',aboutUsDesc: '${model.data!.companyPolicy}');
+                                  }
+                                });
+                              },
+                              text5: ' to create my account',
+                              fontWeight5: FontWeight.w500,
+                              textAlign: TextAlign.left,
+                              textColor2: Color(0xff738046),textColor4: Color(0xff738046),),
                         ),
+                        // Expanded(
+                        //   child: addText500("I accept flipzy's term & condition to create my account", fontFamily: 'Manrope',
+                        //       fontSize: 12),
+                        // ),
                         // Text(
                         //   "I accept flipzy's term & condition to create my account",
                         //   style: TextStyle(
@@ -313,6 +370,7 @@ class SignUpScreen extends StatelessWidget {
       ),
     );
   }
+
   build_social_button({String? buttonIcon, String? buttonText,void Function()? onTap}) {
     return GestureDetector(
       onTap: onTap,

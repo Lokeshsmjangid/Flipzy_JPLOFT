@@ -1,10 +1,14 @@
 
+import 'package:flipzy/Api/api_constant.dart';
+import 'package:flipzy/Api/api_models/about_us_model.dart';
 import 'package:flipzy/Api/repos/delete__account_repo.dart';
+import 'package:flipzy/Api/repos/terms_privacy_aboutUs_repo.dart';
 import 'package:flipzy/Screens/help/help_support.dart';
 import 'package:flipzy/Screens/auth_screens/login_screen.dart';
 import 'package:flipzy/Screens/manage_business.dart';
 import 'package:flipzy/Screens/userProfile/user_profile.dart';
 import 'package:flipzy/controllers/bottom_bar_controller.dart';
+import 'package:flipzy/dialogues/about_us_dialogue.dart';
 import 'package:flipzy/dialogues/delete_acount_dialogue.dart';
 import 'package:flipzy/dialogues/logout_acount_dialogue.dart';
 import 'package:flipzy/resources/app_assets.dart';
@@ -302,6 +306,22 @@ class _CustomDrawerState extends State<CustomDrawer> {
                       onTap: (){
                         Get.back();
                     Get.toNamed(AppRoutes.supportScreen);
+                      }),
+
+
+                  build_text_tile(imgPath: AppAssets.drawerHelp,title: 'About Us',upperBorder: false,
+                      onTap: (){
+                    AboutUsModel model = AboutUsModel();
+                    showLoader(true);
+                        termsAboutUsPrivacyApi(url: ApiUrls.aboutUsUrl).then((about){
+                          showLoader(false);
+                          model = about;
+                          setState(() {});
+                          if(model.data!=null){
+                            AboutUsDialog.show(context,pageTitle: 'About Us',aboutUsDesc: '${model.data!.details}');
+                          }
+                        });
+
                       }),
 
 

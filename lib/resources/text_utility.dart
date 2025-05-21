@@ -114,14 +114,24 @@ RichText richText( String? text1,text2,
   );
 }
 
-Text richText2({TextAlign? textAlign,String? text1,String?text2,String?text3,double? fontSize,Color? textColor1,Color?textColor2,Color?textColor3,double? fontSize1,double?fontSize2,double?fontSize3,
-  FontWeight? fontWeight1,FontWeight?fontWeight2,FontWeight?fontWeight3, GestureRecognizer? recognizer2, GestureRecognizer? recognizer1}){
+Text richText2({TextAlign? textAlign,String? text1,String?text2,String?text3,String? text4,String?text5,String?text6,double? fontSize,Color? textColor1,Color?textColor2,Color?textColor3,Color? textColor4,Color?textColor5,Color?textColor6,double? fontSize1,double?fontSize2,double?fontSize3,double? fontSize4,double?fontSize5,double?fontSize6,
+  FontWeight? fontWeight1,FontWeight?fontWeight2,FontWeight?fontWeight3,FontWeight? fontWeight4,FontWeight?fontWeight5,FontWeight?fontWeight6,
+  TextDecoration? decoration2,TextDecoration? decoration4,
+  GestureRecognizer? recognizer2,
+  GestureRecognizer? recognizer1,
+  GestureRecognizer? recognizer3,
+  GestureRecognizer? recognizer4,
+  GestureRecognizer? recognizer5,
+  GestureRecognizer? recognizer6}){
   return Text.rich(
     TextSpan(
       children: <TextSpan>[
         TextSpan(text: text1,recognizer: recognizer1 ,style: TextStyle(color: textColor1,fontWeight: fontWeight1,fontSize: fontSize1)),
-        TextSpan(text: text2, recognizer: recognizer2,style: TextStyle(color: textColor2,fontWeight: fontWeight2,fontSize: fontSize2)),
-        TextSpan(text: text3, style: TextStyle(color: textColor3,fontWeight: fontWeight3,fontSize: fontSize2)),
+        TextSpan(text: text2, recognizer: recognizer2,style: TextStyle(color: textColor2,fontWeight: fontWeight2,fontSize: fontSize2,decoration: decoration2)),
+        TextSpan(text: text3, style: TextStyle(color: textColor3,fontWeight: fontWeight3,fontSize: fontSize3,)),
+        TextSpan(text: text4, recognizer: recognizer4,style: TextStyle(color: textColor4,fontWeight: fontWeight4,fontSize: fontSize4,decoration: decoration4)),
+        TextSpan(text: text5, style: TextStyle(color: textColor5,fontWeight: fontWeight5,fontSize: fontSize5)),
+        TextSpan(text: text6, style: TextStyle(color: textColor6,fontWeight: fontWeight6,fontSize: fontSize6)),
       ],
     ),
     textAlign: textAlign??TextAlign.center,

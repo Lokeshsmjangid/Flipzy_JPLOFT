@@ -105,9 +105,9 @@
     },
     {
       "name": "csslib",
-      "rootUri": "file:///Users/admin/.pub-cache/hosted/pub.dev/csslib-0.17.3",
+      "rootUri": "file:///Users/admin/.pub-cache/hosted/pub.dev/csslib-1.0.2",
       "packageUri": "lib/",
-      "languageVersion": "2.19"
+      "languageVersion": "3.1"
     },
     {
       "name": "cupertino_icons",
@@ -255,9 +255,9 @@
     },
     {
       "name": "flutter_html",
-      "rootUri": "file:///Users/admin/.pub-cache/hosted/pub.dev/flutter_html-3.0.0-beta.2",
+      "rootUri": "file:///Users/admin/.pub-cache/hosted/pub.dev/flutter_html-3.0.0",
       "packageUri": "lib/",
-      "languageVersion": "2.17"
+      "languageVersion": "3.2"
     },
     {
       "name": "flutter_image_slideshow",
@@ -447,9 +447,9 @@
     },
     {
       "name": "html",
-      "rootUri": "file:///Users/admin/.pub-cache/hosted/pub.dev/html-0.15.4",
+      "rootUri": "file:///Users/admin/.pub-cache/hosted/pub.dev/html-0.15.6",
       "packageUri": "lib/",
-      "languageVersion": "2.19"
+      "languageVersion": "3.2"
     },
     {
       "name": "http",
@@ -1100,7 +1100,7 @@
       "languageVersion": "3.4"
     }
   ],
-  "generated": "2025-05-20T10:39:08.438225Z",
+  "generated": "2025-05-21T05:57:09.819223Z",
   "generator": "pub",
   "generatorVersion": "3.7.2",
   "flutterRoot": "file:///Users/admin/Documents/flutter",

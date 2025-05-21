@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flipzy/Api/api_models/category_model.dart';
 import 'package:flipzy/Api/repos/edit_product_repo.dart';
 import 'package:flipzy/Screens/boost_product_screen.dart';
+import 'package:flipzy/Screens/help/help_support.dart';
 import 'package:flipzy/controllers/edit_product_controller.dart';
 import 'package:flipzy/controllers/my_products_controller.dart';
 import 'package:flipzy/custom_widgets/CustomTextField.dart';
@@ -16,6 +17,7 @@ import 'package:flipzy/resources/app_routers.dart';
 import 'package:flipzy/resources/custom_loader.dart';
 import 'package:flipzy/resources/text_utility.dart';
 import 'package:flipzy/resources/utils.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -566,6 +568,7 @@ class EditProducts extends StatelessWidget {
                         fontWeight1: FontWeight.w500,
                         fontWeight2: FontWeight.w600,
                         text2: ' FAQs page',
+                        recognizer2: TapGestureRecognizer()..onTap = () => Get.to(()=>HelpSupport()),
                         textAlign: TextAlign.left,
                         textColor2: Color(0xff738046)),
                     SizedBox(height: 10,),
